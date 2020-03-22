@@ -183,6 +183,7 @@
 		64D4D8CA2427F7F900FB900A /* OSMSurveyorFramework */ = {
 			isa = PBXGroup;
 			children = (
+				64D4D8E72427F87D00FB900A /* OSM */,
 				64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */,
 				64D4D8CC2427F7F900FB900A /* Info.plist */,
 			);
@@ -196,6 +197,13 @@
 				64D4D8DA2427F7F900FB900A /* Info.plist */,
 			);
 			path = OSMSurveyorFrameworkTests;
+			sourceTree = "<group>";
+		};
+		64D4D8E72427F87D00FB900A /* OSM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OSM;
 			sourceTree = "<group>";
 		};
 		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
