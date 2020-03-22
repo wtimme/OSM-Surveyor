@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		23586FDDB8B659FF937C8E72 /* Pods_OSMSurveyorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513E2E31F7E3F6BAD2AF4168 /* Pods_OSMSurveyorTests.framework */; };
 		6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B32427CE69009A6AAC /* AppDelegate.swift */; };
 		6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B52427CE69009A6AAC /* SceneDelegate.swift */; };
 		6470E7B82427CE69009A6AAC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B72427CE69009A6AAC /* ViewController.swift */; };
@@ -14,6 +15,7 @@
 		6470E7BD2427CE6A009A6AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7BC2427CE6A009A6AAC /* Assets.xcassets */; };
 		6470E7C02427CE6A009A6AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7BE2427CE6A009A6AAC /* LaunchScreen.storyboard */; };
 		6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */; };
+		E63B3B117CD739E90FFD1D62 /* Pods_OSMSurveyor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B4A25348A97A383A6AA192 /* Pods_OSMSurveyor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +29,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4FB1727F69A9D8A074C0087C /* Pods-OSMSurveyor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyor.debug.xcconfig"; path = "Target Support Files/Pods-OSMSurveyor/Pods-OSMSurveyor.debug.xcconfig"; sourceTree = "<group>"; };
+		513E2E31F7E3F6BAD2AF4168 /* Pods_OSMSurveyorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OSMSurveyorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		56B7345E362284A05DDB7CE3 /* Pods-OSMSurveyor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyor.release.xcconfig"; path = "Target Support Files/Pods-OSMSurveyor/Pods-OSMSurveyor.release.xcconfig"; sourceTree = "<group>"; };
 		6470E7B02427CE69009A6AAC /* OSMSurveyor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMSurveyor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7B32427CE69009A6AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6470E7B52427CE69009A6AAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +43,9 @@
 		6470E7C62427CE6A009A6AAC /* OSMSurveyorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSMSurveyorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSMSurveyorTests.swift; sourceTree = "<group>"; };
 		6470E7CC2427CE6A009A6AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		76B4A25348A97A383A6AA192 /* Pods_OSMSurveyor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OSMSurveyor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0EA8B24B2A20F78911FB805 /* Pods-OSMSurveyorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyorTests.release.xcconfig"; path = "Target Support Files/Pods-OSMSurveyorTests/Pods-OSMSurveyorTests.release.xcconfig"; sourceTree = "<group>"; };
+		FA00406545F816F6A11BBFC0 /* Pods-OSMSurveyorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyorTests.debug.xcconfig"; path = "Target Support Files/Pods-OSMSurveyorTests/Pods-OSMSurveyorTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E63B3B117CD739E90FFD1D62 /* Pods_OSMSurveyor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23586FDDB8B659FF937C8E72 /* Pods_OSMSurveyorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +74,8 @@
 				6470E7B22427CE69009A6AAC /* OSMSurveyor */,
 				6470E7C92427CE6A009A6AAC /* OSMSurveyorTests */,
 				6470E7B12427CE69009A6AAC /* Products */,
+				D418A5971843D39FF0D9BA2E /* Pods */,
+				C17268EA23BEA6AEB95D4E8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +111,27 @@
 			path = OSMSurveyorTests;
 			sourceTree = "<group>";
 		};
+		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				76B4A25348A97A383A6AA192 /* Pods_OSMSurveyor.framework */,
+				513E2E31F7E3F6BAD2AF4168 /* Pods_OSMSurveyorTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D418A5971843D39FF0D9BA2E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4FB1727F69A9D8A074C0087C /* Pods-OSMSurveyor.debug.xcconfig */,
+				56B7345E362284A05DDB7CE3 /* Pods-OSMSurveyor.release.xcconfig */,
+				FA00406545F816F6A11BBFC0 /* Pods-OSMSurveyorTests.debug.xcconfig */,
+				B0EA8B24B2A20F78911FB805 /* Pods-OSMSurveyorTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +139,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6470E7CF2427CE6A009A6AAC /* Build configuration list for PBXNativeTarget "OSMSurveyor" */;
 			buildPhases = (
+				50E156807514D0A0C2B01BB1 /* [CP] Check Pods Manifest.lock */,
 				6470E7AC2427CE69009A6AAC /* Sources */,
 				6470E7AD2427CE69009A6AAC /* Frameworks */,
 				6470E7AE2427CE69009A6AAC /* Resources */,
@@ -123,6 +157,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6470E7D22427CE6A009A6AAC /* Build configuration list for PBXNativeTarget "OSMSurveyorTests" */;
 			buildPhases = (
+				47F876EC207083011AD45927 /* [CP] Check Pods Manifest.lock */,
 				6470E7C22427CE6A009A6AAC /* Sources */,
 				6470E7C32427CE6A009A6AAC /* Frameworks */,
 				6470E7C42427CE6A009A6AAC /* Resources */,
@@ -194,6 +229,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		47F876EC207083011AD45927 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OSMSurveyorTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50E156807514D0A0C2B01BB1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OSMSurveyor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6470E7AC2427CE69009A6AAC /* Sources */ = {
@@ -360,6 +442,7 @@
 		};
 		6470E7D02427CE6A009A6AAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4FB1727F69A9D8A074C0087C /* Pods-OSMSurveyor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +461,7 @@
 		};
 		6470E7D12427CE6A009A6AAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 56B7345E362284A05DDB7CE3 /* Pods-OSMSurveyor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +480,7 @@
 		};
 		6470E7D32427CE6A009A6AAC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA00406545F816F6A11BBFC0 /* Pods-OSMSurveyorTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -418,6 +503,7 @@
 		};
 		6470E7D42427CE6A009A6AAC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B0EA8B24B2A20F78911FB805 /* Pods-OSMSurveyorTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
