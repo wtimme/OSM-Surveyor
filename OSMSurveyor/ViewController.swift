@@ -7,12 +7,26 @@
 //
 
 import UIKit
+import TangramMap
 
 class ViewController: UIViewController {
+    
+    @IBOutlet private var mapView: TGMapView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        configureMap()
+    }
+    
+    private func configureMap() {
+        
+        guard let sceneURL = Bundle.main.url(forResource: "scene", withExtension: "yaml") else {
+            /// Unable to get the scene.
+            return
+        }
+        
+        mapView.loadScene(from: sceneURL, with: nil)
     }
 
 
