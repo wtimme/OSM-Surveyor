@@ -26,9 +26,13 @@ class ViewController: UIViewController {
             return
         }
         
+        mapView.mapViewDelegate = self
         mapView.loadScene(from: sceneURL, with: nil)
     }
 
 
+}
+
+extension ViewController: TGMapViewDelegate {
 }
 
