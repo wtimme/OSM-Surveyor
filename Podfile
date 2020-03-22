@@ -5,6 +5,7 @@ target 'OSMSurveyor' do
   use_frameworks!
 
   # Pods for OSMSurveyor
+  pod 'Tangram-es', '~> 0.12.0'
 
   target 'OSMSurveyorTests' do
     inherit! :search_paths
