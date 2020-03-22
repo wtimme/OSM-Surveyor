@@ -15,6 +15,7 @@
 		6470E7BD2427CE6A009A6AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7BC2427CE6A009A6AAC /* Assets.xcassets */; };
 		6470E7C02427CE6A009A6AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7BE2427CE6A009A6AAC /* LaunchScreen.storyboard */; };
 		6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */; };
+		6470E7FC2427D589009A6AAC /* scene.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7FB2427D589009A6AAC /* scene.yaml */; };
 		E63B3B117CD739E90FFD1D62 /* Pods_OSMSurveyor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76B4A25348A97A383A6AA192 /* Pods_OSMSurveyor.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		6470E7C62427CE6A009A6AAC /* OSMSurveyorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSMSurveyorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSMSurveyorTests.swift; sourceTree = "<group>"; };
 		6470E7CC2427CE6A009A6AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6470E7FB2427D589009A6AAC /* scene.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = scene.yaml; sourceTree = "<group>"; };
 		76B4A25348A97A383A6AA192 /* Pods_OSMSurveyor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OSMSurveyor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0EA8B24B2A20F78911FB805 /* Pods-OSMSurveyorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyorTests.release.xcconfig"; path = "Target Support Files/Pods-OSMSurveyorTests/Pods-OSMSurveyorTests.release.xcconfig"; sourceTree = "<group>"; };
 		FA00406545F816F6A11BBFC0 /* Pods-OSMSurveyorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyorTests.debug.xcconfig"; path = "Target Support Files/Pods-OSMSurveyorTests/Pods-OSMSurveyorTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				6470E7BC2427CE6A009A6AAC /* Assets.xcassets */,
 				6470E7BE2427CE6A009A6AAC /* LaunchScreen.storyboard */,
 				6470E7C12427CE6A009A6AAC /* Info.plist */,
+				6470E7FB2427D589009A6AAC /* scene.yaml */,
 			);
 			path = OSMSurveyor;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				6470E7C02427CE6A009A6AAC /* LaunchScreen.storyboard in Resources */,
 				6470E7BD2427CE6A009A6AAC /* Assets.xcassets in Resources */,
 				6470E7BB2427CE69009A6AAC /* Main.storyboard in Resources */,
+				6470E7FC2427D589009A6AAC /* scene.yaml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
