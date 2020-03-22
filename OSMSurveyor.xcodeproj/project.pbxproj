@@ -342,6 +342,7 @@
 					};
 					64D4D8C82427F7F900FB900A = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 					64D4D8D02427F7F900FB900A = {
 						CreatedOnToolsVersion = 11.3.1;
@@ -668,6 +669,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4FB1727F69A9D8A074C0087C /* Pods-OSMSurveyor.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CH829V2QQB;
@@ -687,6 +689,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 56B7345E362284A05DDB7CE3 /* Pods-OSMSurveyor.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CH829V2QQB;
@@ -751,6 +754,7 @@
 		64D4D8E12427F7F900FB900A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -768,6 +772,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = de.wtimme.OSMSurveyorFramework;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -778,6 +783,7 @@
 		64D4D8E22427F7F900FB900A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
