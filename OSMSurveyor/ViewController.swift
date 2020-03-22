@@ -34,5 +34,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: TGMapViewDelegate {
+    func mapView(_ mapView: TGMapView, didLoadScene sceneID: Int32, withError sceneError: Error?) {
+        let coordinate = CLLocationCoordinate2D(latitude: 53.55439, longitude: 9.99413)
+        let cameraPosition = TGCameraPosition(center: coordinate,
+                                              zoom: 16,
+                                              bearing: 0,
+                                              pitch: TGRadiansFromDegrees(-15))!
+        mapView.fly(to: cameraPosition, withDuration: 1, callback: nil)
+    }
 }
 
