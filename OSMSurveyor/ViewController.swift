@@ -41,6 +41,10 @@ extension ViewController: TGMapViewDelegate {
                                               bearing: 0,
                                               pitch: TGRadiansFromDegrees(-15))!
         mapView.fly(to: cameraPosition, withDuration: 1, callback: nil)
+        
+        let marker = mapView.markerAdd()
+        marker.stylingString = "{ style: 'points', color: 'red', size: [50px, 50px], order: 2000, collide: false }"
+        marker.point = coordinate
     }
 }
 
