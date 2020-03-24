@@ -31,6 +31,11 @@ Push a new beta build to TestFlight
 fastlane ios update_nextzen_api_key
 ```
 Update the Nextzen API key that the app will use for the map
+### ios regenerate_app_icon
+```
+fastlane ios regenerate_app_icon
+```
+Re-generates the app icon from the base app_icon.png in the fastlane metadata directory
 
 ----
 
