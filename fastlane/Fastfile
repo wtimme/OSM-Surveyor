@@ -23,7 +23,9 @@ platform :ios do
     commit_version_bump(xcodeproj: "OSMSurveyor.xcodeproj")
 
     # Determine the tag (e. g. 'builds/beta/1.6.5-12')
-    git_tag = "builds/beta/#{get_version_number(target: "OSMSurveyor")}-#{get_build_number()}"
+    version_number = get_version_number(target: "OSMSurveyor")
+    build_number = get_build_number()
+    git_tag = "builds/beta/#{version_number}-#{build_number}"
 
     update_nextzen_api_key(options)
 
