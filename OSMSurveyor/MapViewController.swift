@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MapViewController.swift
 //  OSMSurveyor
 //
 //  Created by Wolfgang Timme on 3/22/20.
@@ -10,7 +10,7 @@ import UIKit
 import TangramMap
 import OSMSurveyorFramework
 
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
     
     @IBOutlet private var mapView: TGMapView!
 
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: TGMapViewDelegate {
+extension MapViewController: TGMapViewDelegate {
     func mapView(_ mapView: TGMapView, didLoadScene sceneID: Int32, withError sceneError: Error?) {
         let coordinate = CLLocationCoordinate2D(latitude: 53.55439, longitude: 9.99413)
         let cameraPosition = TGCameraPosition(center: coordinate,
@@ -49,7 +49,7 @@ extension ViewController: TGMapViewDelegate {
     }
 }
 
-extension ViewController: MapViewControllerProtocol {
+extension MapViewController: MapViewControllerProtocol {
     func fly(to position: CameraPosition, duration: TimeInterval) {
         let center = CLLocationCoordinate2D(latitude: position.center.latitude,
                                             longitude: position.center.longitude)
