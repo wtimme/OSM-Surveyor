@@ -8,6 +8,13 @@ missing information for objects around them.
 OSM Surveyor makes use of fastlane.
 For a list of available actions, please refer to [the auto-generated README][2].
 
+## Beta release
+
+In order to create a new Beta, you'll need to obtain an [API key for Nextzen][4].
+Then, run
+
+    % bundle exec fastlane beta nextzen_api_key:"<NEXTZEN_API_KEY>"
+
 ## Signing
 
 To automate the signing, this project uses [fastlane match][3].
@@ -18,3 +25,4 @@ Fetch the certificates for development with
 [1]: https://www.openstreetmap.org
 [2]: fastlane/README.md
 [3]: https://docs.fastlane.tools/actions/match/
+[4]: https://developers.nextzen.org/keys
