@@ -1,5 +1,7 @@
 default_platform(:ios)
 
+opt_out_usage
+
 platform :ios do
   desc "Push a new beta build to TestFlight"
   lane :beta do
