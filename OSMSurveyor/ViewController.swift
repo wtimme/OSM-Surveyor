@@ -8,6 +8,7 @@
 
 import UIKit
 import TangramMap
+import OSMSurveyorFramework
 
 class ViewController: UIViewController {
     
@@ -48,3 +49,20 @@ extension ViewController: TGMapViewDelegate {
     }
 }
 
+extension ViewController: MapViewControllerProtocol {
+    func fly(to position: CameraPosition, duration: TimeInterval) {
+        let center = CLLocationCoordinate2D(latitude: position.center.latitude,
+                                            longitude: position.center.longitude)
+        
+        guard
+            let cameraPosition = TGCameraPosition(center: center,
+                                                  zoom: CGFloat(position.zoom),
+                                                  bearing: position.bearing,
+                                                  pitch: CGFloat(position.pitch))
+            else {
+            return
+        }
+        
+        mapView.fly(to: cameraPosition, withDuration: duration, callback: nil)
+    }
+}
