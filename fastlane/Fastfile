@@ -3,6 +3,7 @@ default_platform(:ios)
 opt_out_usage
 
 SECRETS_PLIST = "./OSMSurveyor/Secrets.plist"
+CHANGELOG_PATH = "./CHANGELOG.md"
 
 platform :ios do
   desc "Performs basic integration checks to be run before merging"
@@ -27,6 +28,24 @@ platform :ios do
     build_number = get_build_number()
     git_tag = "builds/beta/#{version_number}-#{build_number}"
 
+    # Read the "Unreleased" section of the changelog.
+    # This will later be used when uploading the build to TestFlight.
+    changelog = read_changelog(changelog_path: CHANGELOG_PATH)
+
+    # Update the changelog
+    section_identifier = "#{version_number} (#{build_number})"
+    stamp_changelog(
+      changelog_path: CHANGELOG_PATH,
+      section_identifier: section_identifier,
+      git_tag: git_tag,
+      stamp_date: 'true'
+    )
+    git_commit(
+      path: CHANGELOG_PATH,
+      message: "Update CHANGELOG.md with changes for #{section_identifier}",
+      allow_nothing_to_commit: true
+    )
+
     update_nextzen_api_key(options)
 
     sync_code_signing(type: "appstore")
@@ -40,7 +59,9 @@ platform :ios do
 
     push_to_git_remote
 
-    upload_to_testflight
+    upload_to_testflight(
+      changelog: changelog
+    )
   end
 
   desc "Update the Nextzen API key that the app will use for the map"
