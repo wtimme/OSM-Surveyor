@@ -13,8 +13,27 @@ platform :ios do
 
   desc "Push a new beta build to TestFlight"
   lane :beta do
-    increment_build_number(xcodeproj: "OSMSurveyor.xcodeproj")
-    build_app(workspace: "OSMSurveyor.xcworkspace", scheme: "OSMSurveyor")
+    pull_request_checks
+
+    increment_build_number(
+      build_number: get_highest_build_number_from_git_tags() + 1
+    )
+    commit_version_bump(xcodeproj: "OSMSurveyor.xcodeproj")
+
+    # Determine the tag (e. g. 'builds/beta/1.6.5-12')
+    git_tag = "builds/beta/#{get_version_number()}-#{get_build_number()}"
+
+    sync_code_signing(type: "appstore")
+
+    build_app(
+      workspace: "OSMSurveyor.xcworkspace",
+      scheme: "OSMSurveyor"
+    )
+
+    add_git_tag(tag: git_tag)
+
+    push_to_git_remote
+
     upload_to_testflight
   end
 end
