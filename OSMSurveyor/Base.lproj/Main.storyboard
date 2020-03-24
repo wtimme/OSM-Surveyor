@@ -14,7 +14,23 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="TGMapView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEY-nu-FTA">
+                                <rect key="frame" x="247" y="846" width="167" height="16"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <inset key="contentEdgeInsets" minX="2" minY="1" maxX="2" maxY="1"/>
+                                <state key="normal" title="© OpenStreetMap contributors">
+                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uEY-nu-FTA" secondAttribute="bottom" id="1rr-ef-3Ue"/>
+                            <constraint firstItem="uEY-nu-FTA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6ae-ZO-kdV"/>
+                            <constraint firstAttribute="trailing" secondItem="uEY-nu-FTA" secondAttribute="trailing" id="QXS-PX-HU6"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
