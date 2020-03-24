@@ -14,7 +14,7 @@ platform :ios do
   end
 
   desc "Push a new beta build to TestFlight"
-  lane :beta do
+  lane :beta do |options|
     pull_request_checks
 
     increment_build_number(
@@ -24,6 +24,8 @@ platform :ios do
 
     # Determine the tag (e. g. 'builds/beta/1.6.5-12')
     git_tag = "builds/beta/#{get_version_number()}-#{get_build_number()}"
+
+    update_nextzen_api_key(options)
 
     sync_code_signing(type: "appstore")
 
