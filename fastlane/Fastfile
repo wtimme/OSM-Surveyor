@@ -2,6 +2,8 @@ default_platform(:ios)
 
 opt_out_usage
 
+SECRETS_PLIST = "./OSMSurveyor/Secrets.plist"
+
 platform :ios do
   desc "Performs basic integration checks to be run before merging"
   lane :pull_request_checks do
@@ -35,5 +37,20 @@ platform :ios do
     push_to_git_remote
 
     upload_to_testflight
+  end
+
+  desc "Update the Nextzen API key that the app will use for the map"
+  lane :update_nextzen_api_key do |options|
+    api_key = options[:nextzen_api_key]
+    if !api_key
+      UI.user_error!("Please provide the API key for Nextzen with `nextzen_api_key`")
+    end
+
+    update_plist(
+      plist_path: SECRETS_PLIST,
+      block: proc do |plist|
+        plist[:"Nextzen API Key"] = api_key
+      end
+    )
   end
 end
