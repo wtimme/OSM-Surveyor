@@ -9,6 +9,7 @@
 import UIKit
 import TangramMap
 import OSMSurveyorFramework
+import SafariServices
 
 class MapViewController: UIViewController {
     
@@ -48,6 +49,13 @@ class MapViewController: UIViewController {
     }
 
 
+    @IBAction private func showOpenStreetMapCopyrightAndLicensePage() {
+        guard let url = URL(string: "https://www.openstreetmap.org/copyright") else { return }
+        
+        let viewController = SFSafariViewController(url: url)
+        viewController.modalPresentationStyle = .pageSheet
+        present(viewController, animated: true)
+    }
 }
 
 extension MapViewController: TGMapViewDelegate {

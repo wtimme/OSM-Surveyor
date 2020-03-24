@@ -23,6 +23,9 @@
                                 <state key="normal" title="© OpenStreetMap contributors">
                                     <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="showOpenStreetMapCopyrightAndLicensePage" destination="BYZ-38-t0r" eventType="touchUpInside" id="yCb-HU-Nel"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
