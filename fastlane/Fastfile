@@ -3,6 +3,14 @@ default_platform(:ios)
 opt_out_usage
 
 platform :ios do
+  desc "Performs basic integration checks to be run before merging"
+  lane :pull_request_checks do
+    run_tests(
+      workspace: "OSMSurveyor.xcworkspace",
+      scheme: "OSMSurveyor"
+    )
+  end
+
   desc "Push a new beta build to TestFlight"
   lane :beta do
     increment_build_number(xcodeproj: "OSMSurveyor.xcodeproj")
