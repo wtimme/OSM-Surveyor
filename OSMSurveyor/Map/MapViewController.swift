@@ -48,7 +48,6 @@ class MapViewController: UIViewController {
         return secretsAsDictionary.object(forKey: "Nextzen API Key") as? String
     }
 
-
     @IBAction private func showOpenStreetMapCopyrightAndLicensePage() {
         guard let url = URL(string: "https://www.openstreetmap.org/copyright") else { return }
         
