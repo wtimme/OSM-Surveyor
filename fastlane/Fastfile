@@ -16,6 +16,8 @@ platform :ios do
 
   desc "Push a new beta build to TestFlight"
   lane :beta do |options|
+    ensure_git_status_clean
+
     pull_request_checks
 
     increment_build_number(
