@@ -1,0 +1,8 @@
+app_identifier("de.wtimme.OSMSurveyor") # The bundle identifier of your app
+apple_id("no-spam-please@posteo.de") # Your Apple email address
+
+itc_team_id("1916100") # App Store Connect Team ID
+team_id("CH829V2QQB") # Developer Portal Team ID
+
+# For more information about the Appfile, see:
+#     https://docs.fastlane.tools/advanced/#appfile
