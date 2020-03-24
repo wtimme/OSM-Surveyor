@@ -17,6 +17,7 @@
 		6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */; };
 		6470E7FC2427D589009A6AAC /* scene.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7FB2427D589009A6AAC /* scene.yaml */; };
 		64BDCB50242A97790098536A /* CameraPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB4F242A97790098536A /* CameraPosition.swift */; };
+		64BDCB52242A98E70098536A /* MapViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */; };
 		64D4D8D22427F7F900FB900A /* OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */; };
 		64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D8D82427F7F900FB900A /* OSMSurveyorFrameworkTests.swift */; };
 		64D4D8DB2427F7F900FB900A /* OSMSurveyorFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -89,6 +90,7 @@
 		6470E7CC2427CE6A009A6AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6470E7FB2427D589009A6AAC /* scene.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = scene.yaml; sourceTree = "<group>"; };
 		64BDCB4F242A97790098536A /* CameraPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPosition.swift; sourceTree = "<group>"; };
+		64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerProtocol.swift; sourceTree = "<group>"; };
 		64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSMSurveyorFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSMSurveyorFramework.h; sourceTree = "<group>"; };
 		64D4D8CC2427F7F900FB900A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				64BDCB4F242A97790098536A /* CameraPosition.swift */,
+				64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -489,6 +492,7 @@
 				6470E7B82427CE69009A6AAC /* ViewController.swift in Sources */,
 				64BDCB50242A97790098536A /* CameraPosition.swift in Sources */,
 				6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */,
+				64BDCB52242A98E70098536A /* MapViewControllerProtocol.swift in Sources */,
 				6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
