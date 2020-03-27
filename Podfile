@@ -12,4 +12,7 @@ target 'OSMSurveyor' do
     # Pods for testing
   end
 
+  target 'OSMSurveyorFramework' do
+  end
+
 end
