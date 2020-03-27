@@ -720,7 +720,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4FB1727F69A9D8A074C0087C /* Pods-OSMSurveyor.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CH829V2QQB;
@@ -741,7 +741,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 56B7345E362284A05DDB7CE3 /* Pods-OSMSurveyor.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = CH829V2QQB;
