@@ -30,5 +30,7 @@ public class QuestDatabase {
             
             return nil
         }
+        
+        NodeDataHelper.db = connection
     }
 }
