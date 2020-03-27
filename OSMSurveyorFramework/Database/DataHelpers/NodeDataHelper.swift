@@ -49,8 +49,8 @@ class NodeDataHelper: DataHelperProtocol {
         let tagsAsData = try encoder.encode(item.tags)
 
         let insert = table.insert(
-            latitude <- item.latitude,
-            longitude <- item.longitude,
+            latitude <- item.coordinate.latitude,
+            longitude <- item.coordinate.longitude,
             version <- item.version,
             tags <- tagsAsData.datatypeValue)
         do {
@@ -93,6 +93,8 @@ class NodeDataHelper: DataHelperProtocol {
     }
     
     static func item(from row: Row) -> T? {
+        let coordinate = Coordinate(latitude: row[latitude], longitude: row[longitude])
+        
         let tagsAsData = Data.fromDatatypeValue(row[tags])
         let jsonDecoder = JSONDecoder()
         
@@ -102,8 +104,7 @@ class NodeDataHelper: DataHelperProtocol {
         }
         
         return Node(id: row[id],
-                    latitude: row[latitude],
-                    longitude: row[longitude],
+                    coordinate: coordinate,
                     version: row[version],
                     tags: tags)
     }

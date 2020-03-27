@@ -10,8 +10,7 @@ import Foundation
 
 struct Node {
     let id: Int64
-    let latitude: Double
-    let longitude: Double
+    let coordinate: Coordinate
     let version: Int64
     let tags: [String: String]
 }
