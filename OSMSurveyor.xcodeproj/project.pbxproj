@@ -17,7 +17,6 @@
 		6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */; };
 		6470E7FC2427D589009A6AAC /* scene.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7FB2427D589009A6AAC /* scene.yaml */; };
 		64762E5C242DFEBC00E430B4 /* QuestDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */; };
-		64762E61242E035500E430B4 /* db.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 64762E5D242E02BE00E430B4 /* db.sqlite3 */; };
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
 		64BDCB50242A97790098536A /* CameraPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB4F242A97790098536A /* CameraPosition.swift */; };
@@ -97,7 +96,6 @@
 		6470E7CC2427CE6A009A6AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6470E7FB2427D589009A6AAC /* scene.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = scene.yaml; sourceTree = "<group>"; };
 		64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDatabase.swift; sourceTree = "<group>"; };
-		64762E5D242E02BE00E430B4 /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = db.sqlite3; path = OSMSurveyor/db.sqlite3; sourceTree = SOURCE_ROOT; };
 		649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		64BDCB4F242A97790098536A /* CameraPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPosition.swift; sourceTree = "<group>"; };
@@ -208,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				649DEF34242E21E3001AD0E2 /* DataHelpers */,
-				64762E5D242E02BE00E430B4 /* db.sqlite3 */,
 				64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */,
 			);
 			path = Database;
@@ -441,7 +438,6 @@
 				6470E7C02427CE6A009A6AAC /* LaunchScreen.storyboard in Resources */,
 				64BDCB54242A9C710098536A /* Secrets.plist in Resources */,
 				6470E7BD2427CE6A009A6AAC /* Assets.xcassets in Resources */,
-				64762E61242E035500E430B4 /* db.sqlite3 in Resources */,
 				6470E7BB2427CE69009A6AAC /* Main.storyboard in Resources */,
 				6470E7FC2427D589009A6AAC /* scene.yaml in Resources */,
 			);
