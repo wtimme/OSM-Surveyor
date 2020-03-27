@@ -93,21 +93,8 @@ class QuestDataHelper: DataHelperProtocol {
         return nil
        
     }
-   
-    static func findAll() throws -> [T]? {
-        guard let db = db else { return [] }
-        
-        do {
-            let rows = try db.prepare(table)
-            
-            return rows.compactMap(item(from:))
-        } catch {
-            assertionFailure("Failed to find all: \(error.localizedDescription)")
-            return nil
-        }
-    }
     
-    private static func item(from row: Row) -> T? {
+    static func item(from row: Row) -> T? {
         guard let questStatus = Quest.Status(rawValue: row[quest_status]) else {
             assertionFailure("Unable to determine the quest's status.")
             return nil

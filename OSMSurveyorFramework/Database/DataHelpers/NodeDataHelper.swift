@@ -91,21 +91,8 @@ class NodeDataHelper: DataHelperProtocol {
         return nil
        
     }
-   
-    static func findAll() throws -> [T]? {
-        guard let db = db else { return [] }
-        
-        do {
-            let rows = try db.prepare(table)
-            
-            return rows.compactMap(item(from:))
-        } catch {
-            assertionFailure("Failed to find all: \(error.localizedDescription)")
-            return nil
-        }
-    }
     
-    private static func item(from row: Row) -> T? {
+    static func item(from row: Row) -> T? {
         let tagsAsData = Data.fromDatatypeValue(row[tags])
         let jsonDecoder = JSONDecoder()
         
