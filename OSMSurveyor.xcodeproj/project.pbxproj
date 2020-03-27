@@ -196,6 +196,13 @@
 			path = OSMSurveyorTests;
 			sourceTree = "<group>";
 		};
+		64762E5A242DFDDE00E430B4 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		64BDCB4E242A975A0098536A /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,6 +216,7 @@
 		64D4D8CA2427F7F900FB900A /* OSMSurveyorFramework */ = {
 			isa = PBXGroup;
 			children = (
+				64762E5A242DFDDE00E430B4 /* Database */,
 				64D4D8E72427F87D00FB900A /* OSM */,
 				64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */,
 				64D4D8CC2427F7F900FB900A /* Info.plist */,
