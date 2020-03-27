@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		23586FDDB8B659FF937C8E72 /* Pods_OSMSurveyorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513E2E31F7E3F6BAD2AF4168 /* Pods_OSMSurveyorTests.framework */; };
+		641AEEA2242E4D18000CA2A2 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA1242E4D18000CA2A2 /* Quest.swift */; };
 		6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B32427CE69009A6AAC /* AppDelegate.swift */; };
 		6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B52427CE69009A6AAC /* SceneDelegate.swift */; };
 		6470E7B82427CE69009A6AAC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B72427CE69009A6AAC /* MapViewController.swift */; };
@@ -84,6 +85,7 @@
 		4FB1727F69A9D8A074C0087C /* Pods-OSMSurveyor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyor.debug.xcconfig"; path = "Target Support Files/Pods-OSMSurveyor/Pods-OSMSurveyor.debug.xcconfig"; sourceTree = "<group>"; };
 		513E2E31F7E3F6BAD2AF4168 /* Pods_OSMSurveyorTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OSMSurveyorTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56B7345E362284A05DDB7CE3 /* Pods-OSMSurveyor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyor.release.xcconfig"; path = "Target Support Files/Pods-OSMSurveyor/Pods-OSMSurveyor.release.xcconfig"; sourceTree = "<group>"; };
+		641AEEA1242E4D18000CA2A2 /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		6470E7B02427CE69009A6AAC /* OSMSurveyor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMSurveyor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7B32427CE69009A6AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6470E7B52427CE69009A6AAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -217,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				649DEF32242E2162001AD0E2 /* Node.swift */,
+				641AEEA1242E4D18000CA2A2 /* Quest.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -580,6 +583,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				641AEEA2242E4D18000CA2A2 /* Quest.swift in Sources */,
 				64762E5C242DFEBC00E430B4 /* QuestDatabase.swift in Sources */,
 				649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */,
 				64D4D8E92427F9B600FB900A /* BoundingBox.swift in Sources */,
