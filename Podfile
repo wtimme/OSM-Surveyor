@@ -14,6 +14,7 @@ target 'OSMSurveyor' do
 
   target 'OSMSurveyorFramework' do
     pod 'SwiftOverpassAPI'
+    pod 'SQLite.swift'
   end
 
 end
