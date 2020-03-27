@@ -13,6 +13,7 @@ target 'OSMSurveyor' do
   end
 
   target 'OSMSurveyorFramework' do
+    pod 'SwiftOverpassAPI'
   end
 
 end
