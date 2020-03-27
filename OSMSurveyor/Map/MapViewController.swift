@@ -38,7 +38,7 @@ class MapViewController: UIViewController {
     }
     
     private func testDatabaseIntegration() {
-        guard let database = QuestDatabase(name: "db") else {
+        guard let database = QuestDatabase(filename: "db.sqlite3") else {
             print("Unable to get the database")
             return
         }

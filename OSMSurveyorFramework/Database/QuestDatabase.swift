@@ -16,15 +16,15 @@ public class QuestDatabase {
     
     // MARK: Initializer
     
-    public init?(name: String, type: String = "sqlite3", bundle: Bundle = .main) {
-        guard let databaseURL = Bundle.main.path(forResource: name, ofType: type) else {
-            print("Unable to find path to database.")
+    public init?(filename: String = "db.sqlite3") {
+        guard let documentsDirectoryPath = NSSearchPathForDirectoriesInDomains(
+            .documentDirectory, .userDomainMask, true
+        ).first else {
             return nil
         }
         
         do {
-            let location = Connection.Location.uri(databaseURL)
-            connection = try Connection(location, readonly: false)
+            connection = try Connection("\(documentsDirectoryPath)/\(filename)")
         } catch {
             assertionFailure("Unable to open the database: \(error.localizedDescription)")
             
