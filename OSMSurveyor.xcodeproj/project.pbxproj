@@ -18,6 +18,7 @@
 		6470E7FC2427D589009A6AAC /* scene.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7FB2427D589009A6AAC /* scene.yaml */; };
 		64762E5C242DFEBC00E430B4 /* QuestDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */; };
 		64762E61242E035500E430B4 /* db.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 64762E5D242E02BE00E430B4 /* db.sqlite3 */; };
+		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		64BDCB50242A97790098536A /* CameraPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB4F242A97790098536A /* CameraPosition.swift */; };
 		64BDCB52242A98E70098536A /* MapViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */; };
 		64BDCB54242A9C710098536A /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64BDCB53242A9C710098536A /* Secrets.plist */; };
@@ -96,6 +97,7 @@
 		6470E7FB2427D589009A6AAC /* scene.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = scene.yaml; sourceTree = "<group>"; };
 		64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDatabase.swift; sourceTree = "<group>"; };
 		64762E5D242E02BE00E430B4 /* db.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; name = db.sqlite3; path = OSMSurveyor/db.sqlite3; sourceTree = SOURCE_ROOT; };
+		649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		64BDCB4F242A97790098536A /* CameraPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPosition.swift; sourceTree = "<group>"; };
 		64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerProtocol.swift; sourceTree = "<group>"; };
 		64BDCB53242A9C710098536A /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
@@ -203,10 +205,19 @@
 		64762E5A242DFDDE00E430B4 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				649DEF34242E21E3001AD0E2 /* DataHelpers */,
 				64762E5D242E02BE00E430B4 /* db.sqlite3 */,
 				64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		649DEF34242E21E3001AD0E2 /* DataHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */,
+			);
+			path = DataHelpers;
 			sourceTree = "<group>";
 		};
 		64BDCB4E242A975A0098536A /* Map */ = {
@@ -561,6 +572,7 @@
 			files = (
 				64762E5C242DFEBC00E430B4 /* QuestDatabase.swift in Sources */,
 				64D4D8E92427F9B600FB900A /* BoundingBox.swift in Sources */,
+				649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */,
 				64D4D8EB2427FAF700FB900A /* Coordinate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
