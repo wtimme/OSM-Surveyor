@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         configureMap()
+        testDatabaseIntegration()
     }
     
     private func configureMap() {
@@ -34,6 +35,15 @@ class MapViewController: UIViewController {
         
         mapView.mapViewDelegate = self
         mapView.loadScene(from: sceneURL, with: [TGSceneUpdate(path: "global.api_key", value: apiKey)])
+    }
+    
+    private func testDatabaseIntegration() {
+        guard let database = QuestDatabase(name: "db") else {
+            print("Unable to get the database")
+            return
+        }
+        
+        print("\(database)")
     }
     
     private var nextzenApiKey: String? {
