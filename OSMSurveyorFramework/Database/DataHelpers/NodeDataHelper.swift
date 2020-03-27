@@ -81,18 +81,10 @@ class NodeDataHelper: DataHelperProtocol {
         
         let query = table.filter(id == itemId)
         do {
-            let items = try db.prepare(query)
+            let rows = try db.prepare(query)
             
-            for item in items {
-                let tagsAsData = Data.fromDatatypeValue(item[tags])
-                let jsonDecoder = JSONDecoder()
-                let tags = try jsonDecoder.decode([String: String].self, from: tagsAsData)
-                
-                return Node(id: item[id],
-                            latitude: item[latitude],
-                            longitude: item[longitude],
-                            version: item[version],
-                            tags: tags)
+            for row in rows {
+                return item(from: row)
             }
         }
        
@@ -106,20 +98,26 @@ class NodeDataHelper: DataHelperProtocol {
         do {
             let rows = try db.prepare(table)
             
-            return try rows.map { item -> Node in
-                let tagsAsData = Data.fromDatatypeValue(item[tags])
-                let jsonDecoder = JSONDecoder()
-                let tags = try jsonDecoder.decode([String: String].self, from: tagsAsData)
-                
-                return Node(id: item[id],
-                            latitude: item[latitude],
-                            longitude: item[longitude],
-                            version: item[version],
-                            tags: tags)
-            }
+            return rows.compactMap(item(from:))
         } catch {
             assertionFailure("Failed to find all: \(error.localizedDescription)")
             return nil
         }
+    }
+    
+    private static func item(from row: Row) -> T? {
+        let tagsAsData = Data.fromDatatypeValue(row[tags])
+        let jsonDecoder = JSONDecoder()
+        
+        guard let tags = try? jsonDecoder.decode([String: String].self, from: tagsAsData) else {
+            assertionFailure("Unable to decode the node's tags.")
+            return nil
+        }
+        
+        return Node(id: row[id],
+                    latitude: row[latitude],
+                    longitude: row[longitude],
+                    version: row[version],
+                    tags: tags)
     }
 }
