@@ -10,6 +10,7 @@
 		23586FDDB8B659FF937C8E72 /* Pods_OSMSurveyorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513E2E31F7E3F6BAD2AF4168 /* Pods_OSMSurveyorTests.framework */; };
 		641AEEA2242E4D18000CA2A2 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA1242E4D18000CA2A2 /* Quest.swift */; };
 		641AEEA4242E52A9000CA2A2 /* QuestDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */; };
+		641AEEA8242E6520000CA2A2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA7242E6520000CA2A2 /* Tile.swift */; };
 		6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B32427CE69009A6AAC /* AppDelegate.swift */; };
 		6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B52427CE69009A6AAC /* SceneDelegate.swift */; };
 		6470E7B82427CE69009A6AAC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B72427CE69009A6AAC /* MapViewController.swift */; };
@@ -88,6 +89,7 @@
 		56B7345E362284A05DDB7CE3 /* Pods-OSMSurveyor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyor.release.xcconfig"; path = "Target Support Files/Pods-OSMSurveyor/Pods-OSMSurveyor.release.xcconfig"; sourceTree = "<group>"; };
 		641AEEA1242E4D18000CA2A2 /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataHelper.swift; sourceTree = "<group>"; };
+		641AEEA7242E6520000CA2A2 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		6470E7B02427CE69009A6AAC /* OSMSurveyor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMSurveyor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7B32427CE69009A6AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6470E7B52427CE69009A6AAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 			children = (
 				64D4D8E82427F9B600FB900A /* BoundingBox.swift */,
 				64D4D8EA2427FAF700FB900A /* Coordinate.swift */,
+				641AEEA7242E6520000CA2A2 /* Tile.swift */,
 			);
 			path = OSM;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				64D4D8E92427F9B600FB900A /* BoundingBox.swift in Sources */,
 				649DEF33242E2162001AD0E2 /* Node.swift in Sources */,
 				649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */,
+				641AEEA8242E6520000CA2A2 /* Tile.swift in Sources */,
 				64D4D8EB2427FAF700FB900A /* Coordinate.swift in Sources */,
 				641AEEA4242E52A9000CA2A2 /* QuestDataHelper.swift in Sources */,
 			);
