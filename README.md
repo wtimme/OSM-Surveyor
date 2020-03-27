@@ -3,6 +3,11 @@
 An iOS companion app that allows [OpenStreetMap][1] contributors to complete
 missing information for objects around them.
 
+## Join our TestFlight beta!
+
+Do you want to help testing pre-releases of OSM Surveyor?
+[Become a TestFlight tester][5] today! 🚀
+
 # Continuous delivery
 
 OSM Surveyor makes use of fastlane.
@@ -26,3 +31,4 @@ Fetch the certificates for development with
 [2]: fastlane/README.md
 [3]: https://docs.fastlane.tools/actions/match/
 [4]: https://developers.nextzen.org/keys
+[5]: https://testflight.apple.com/join/wXtE44KZ
