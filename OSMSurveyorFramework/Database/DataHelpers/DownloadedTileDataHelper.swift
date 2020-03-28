@@ -94,4 +94,23 @@ class DownloadedTileDataHelper: DataHelperProtocol {
                               questType: row[quest_type],
                               date: Date(timeIntervalSince1970: TimeInterval(row[date])))
     }
+    
+    /// Returns a list of quest type names which have already been downloaded in every tile in the given tile range
+    static func findDownloadedQuestTypes(in tilesRect: TilesRect, ignoreOlderThan date: Date) -> [String] {
+        guard let db = db else { return [] }
+        
+        let query = table
+            .select(quest_type)
+            .filter(tilesRect.left...tilesRect.right ~= x && tilesRect.top...tilesRect.bottom ~= y && Int(date.timeIntervalSince1970) < self.date)
+            .group(quest_type, having: count(*) >= 1)
+        
+        do {
+            let rows = try db.prepare(query)
+            
+            return rows.map { $0[quest_type] }
+        } catch {
+            assertionFailure("Failed to execute query: \(error.localizedDescription)")
+            return []
+        }
+    }
 }
