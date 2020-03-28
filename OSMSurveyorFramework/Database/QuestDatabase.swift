@@ -33,5 +33,6 @@ public class QuestDatabase {
         
         NodeDataHelper.db = connection
         QuestDataHelper.db = connection
+        DownloadedTileDataHelper.db = connection
     }
 }
