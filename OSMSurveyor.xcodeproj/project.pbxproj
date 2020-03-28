@@ -17,6 +17,7 @@
 		641AEEB1242E6A5E000CA2A2 /* CoordinateTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEB0242E6A5E000CA2A2 /* CoordinateTestCase.swift */; };
 		641AEEB4242E9E38000CA2A2 /* Double+Radians.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEB3242E9E38000CA2A2 /* Double+Radians.swift */; };
 		641AEEB9242F7616000CA2A2 /* DownloadedTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEB8242F7616000CA2A2 /* DownloadedTile.swift */; };
+		641AEEBB242F774E000CA2A2 /* DownloadedTileDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEBA242F774E000CA2A2 /* DownloadedTileDataHelper.swift */; };
 		6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B32427CE69009A6AAC /* AppDelegate.swift */; };
 		6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B52427CE69009A6AAC /* SceneDelegate.swift */; };
 		6470E7B82427CE69009A6AAC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B72427CE69009A6AAC /* MapViewController.swift */; };
@@ -102,6 +103,7 @@
 		641AEEB0242E6A5E000CA2A2 /* CoordinateTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateTestCase.swift; sourceTree = "<group>"; };
 		641AEEB3242E9E38000CA2A2 /* Double+Radians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Radians.swift"; sourceTree = "<group>"; };
 		641AEEB8242F7616000CA2A2 /* DownloadedTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedTile.swift; sourceTree = "<group>"; };
+		641AEEBA242F774E000CA2A2 /* DownloadedTileDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadedTileDataHelper.swift; sourceTree = "<group>"; };
 		6470E7B02427CE69009A6AAC /* OSMSurveyor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMSurveyor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7B32427CE69009A6AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6470E7B52427CE69009A6AAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 				649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */,
 				649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */,
 				641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */,
+				641AEEBA242F774E000CA2A2 /* DownloadedTileDataHelper.swift */,
 			);
 			path = DataHelpers;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				649DEF33242E2162001AD0E2 /* Node.swift in Sources */,
 				649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */,
 				641AEEB4242E9E38000CA2A2 /* Double+Radians.swift in Sources */,
+				641AEEBB242F774E000CA2A2 /* DownloadedTileDataHelper.swift in Sources */,
 				641AEEA8242E6520000CA2A2 /* Tile.swift in Sources */,
 				64D4D8EB2427FAF700FB900A /* Coordinate.swift in Sources */,
 				641AEEB9242F7616000CA2A2 /* DownloadedTile.swift in Sources */,
