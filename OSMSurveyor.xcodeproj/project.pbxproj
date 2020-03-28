@@ -11,6 +11,7 @@
 		641AEEA2242E4D18000CA2A2 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA1242E4D18000CA2A2 /* Quest.swift */; };
 		641AEEA4242E52A9000CA2A2 /* QuestDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */; };
 		641AEEA8242E6520000CA2A2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA7242E6520000CA2A2 /* Tile.swift */; };
+		641AEEAC242E6851000CA2A2 /* TilesRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEAB242E6851000CA2A2 /* TilesRect.swift */; };
 		641AEEB4242E9E38000CA2A2 /* Double+Radians.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEB3242E9E38000CA2A2 /* Double+Radians.swift */; };
 		6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B32427CE69009A6AAC /* AppDelegate.swift */; };
 		6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B52427CE69009A6AAC /* SceneDelegate.swift */; };
@@ -91,6 +92,7 @@
 		641AEEA1242E4D18000CA2A2 /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataHelper.swift; sourceTree = "<group>"; };
 		641AEEA7242E6520000CA2A2 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		641AEEAB242E6851000CA2A2 /* TilesRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesRect.swift; sourceTree = "<group>"; };
 		641AEEB3242E9E38000CA2A2 /* Double+Radians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Radians.swift"; sourceTree = "<group>"; };
 		6470E7B02427CE69009A6AAC /* OSMSurveyor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMSurveyor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7B32427CE69009A6AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				64D4D8E82427F9B600FB900A /* BoundingBox.swift */,
 				64D4D8EA2427FAF700FB900A /* Coordinate.swift */,
 				641AEEA7242E6520000CA2A2 /* Tile.swift */,
+				641AEEAB242E6851000CA2A2 /* TilesRect.swift */,
 			);
 			path = OSM;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				641AEEA2242E4D18000CA2A2 /* Quest.swift in Sources */,
+				641AEEAC242E6851000CA2A2 /* TilesRect.swift in Sources */,
 				64762E5C242DFEBC00E430B4 /* QuestDatabase.swift in Sources */,
 				649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */,
 				64D4D8E92427F9B600FB900A /* BoundingBox.swift in Sources */,
