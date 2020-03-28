@@ -12,6 +12,7 @@
 		641AEEA4242E52A9000CA2A2 /* QuestDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */; };
 		641AEEA8242E6520000CA2A2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA7242E6520000CA2A2 /* Tile.swift */; };
 		641AEEAC242E6851000CA2A2 /* TilesRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEAB242E6851000CA2A2 /* TilesRect.swift */; };
+		641AEEAF242E6996000CA2A2 /* BoundingBoxTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEAE242E6996000CA2A2 /* BoundingBoxTestCase.swift */; };
 		641AEEB1242E6A5E000CA2A2 /* CoordinateTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEB0242E6A5E000CA2A2 /* CoordinateTestCase.swift */; };
 		641AEEB4242E9E38000CA2A2 /* Double+Radians.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEB3242E9E38000CA2A2 /* Double+Radians.swift */; };
 		6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B32427CE69009A6AAC /* AppDelegate.swift */; };
@@ -94,6 +95,7 @@
 		641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataHelper.swift; sourceTree = "<group>"; };
 		641AEEA7242E6520000CA2A2 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		641AEEAB242E6851000CA2A2 /* TilesRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TilesRect.swift; sourceTree = "<group>"; };
+		641AEEAE242E6996000CA2A2 /* BoundingBoxTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBoxTestCase.swift; sourceTree = "<group>"; };
 		641AEEB0242E6A5E000CA2A2 /* CoordinateTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateTestCase.swift; sourceTree = "<group>"; };
 		641AEEB3242E9E38000CA2A2 /* Double+Radians.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Radians.swift"; sourceTree = "<group>"; };
 		6470E7B02427CE69009A6AAC /* OSMSurveyor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMSurveyor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,6 +172,7 @@
 		641AEEAD242E698D000CA2A2 /* OSM */ = {
 			isa = PBXGroup;
 			children = (
+				641AEEAE242E6996000CA2A2 /* BoundingBoxTestCase.swift */,
 				641AEEB0242E6A5E000CA2A2 /* CoordinateTestCase.swift */,
 			);
 			path = OSM;
@@ -633,6 +636,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */,
+				641AEEAF242E6996000CA2A2 /* BoundingBoxTestCase.swift in Sources */,
 				641AEEB1242E6A5E000CA2A2 /* CoordinateTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
