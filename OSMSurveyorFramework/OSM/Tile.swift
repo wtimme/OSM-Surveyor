@@ -12,3 +12,5 @@ struct Tile {
     let x: Int
     let y: Int
 }
+
+extension Tile: Equatable {}
