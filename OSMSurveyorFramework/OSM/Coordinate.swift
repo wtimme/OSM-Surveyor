@@ -19,3 +19,18 @@ extension Coordinate {
     static let minimumValue = Coordinate(latitude: -90, longitude: -180)
     static let maximumValue = Coordinate(latitude: 90, longitude: 180)
 }
+
+extension Coordinate {
+    func enclosingTile(zoom: Int) -> Tile {
+        return Tile(x: lon2tile(lon: (longitude + 180).truncatingRemainder(dividingBy: 360) - 180, zoom: zoom),
+                    y: lat2tile(lat: latitude, zoom: zoom))
+    }
+    
+    private func lat2tile(lat: Double, zoom: Int) -> Int {
+        return Int(Double(Tile.numberOfTiles(zoom: zoom)) * (1 - asinh(tan(lat.toRadians())) / .pi) / 2)
+    }
+    
+    private func lon2tile(lon: Double, zoom: Int) -> Int {
+        return Int(Double(Tile.numberOfTiles(zoom: zoom)) * (lon + 180) / 360)
+    }
+}
