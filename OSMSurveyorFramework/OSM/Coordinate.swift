@@ -12,3 +12,5 @@ public struct Coordinate {
     public let latitude: Double
     public let longitude: Double
 }
+
+extension Coordinate: Equatable {}
