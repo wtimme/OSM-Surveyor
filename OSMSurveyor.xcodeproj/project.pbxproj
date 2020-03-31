@@ -10,6 +10,7 @@
 		23586FDDB8B659FF937C8E72 /* Pods_OSMSurveyorTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 513E2E31F7E3F6BAD2AF4168 /* Pods_OSMSurveyorTests.framework */; };
 		6416210C243373FE00C4670C /* QuestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416210B243373FE00C4670C /* QuestType.swift */; };
 		6416210E2433764500C4670C /* OverpassDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416210D2433764500C4670C /* OverpassDownloader.swift */; };
+		641621112433774A00C4670C /* AddBenchBackrestQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641621102433774A00C4670C /* AddBenchBackrestQuest.swift */; };
 		641AEEA2242E4D18000CA2A2 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA1242E4D18000CA2A2 /* Quest.swift */; };
 		641AEEA4242E52A9000CA2A2 /* QuestDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */; };
 		641AEEA8242E6520000CA2A2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA7242E6520000CA2A2 /* Tile.swift */; };
@@ -98,6 +99,7 @@
 		56B7345E362284A05DDB7CE3 /* Pods-OSMSurveyor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OSMSurveyor.release.xcconfig"; path = "Target Support Files/Pods-OSMSurveyor/Pods-OSMSurveyor.release.xcconfig"; sourceTree = "<group>"; };
 		6416210B243373FE00C4670C /* QuestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestType.swift; sourceTree = "<group>"; };
 		6416210D2433764500C4670C /* OverpassDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverpassDownloader.swift; sourceTree = "<group>"; };
+		641621102433774A00C4670C /* AddBenchBackrestQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBenchBackrestQuest.swift; sourceTree = "<group>"; };
 		641AEEA1242E4D18000CA2A2 /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataHelper.swift; sourceTree = "<group>"; };
 		641AEEA7242E6520000CA2A2 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 		6416210F2433770300C4670C /* Quests */ = {
 			isa = PBXGroup;
 			children = (
+				641621102433774A00C4670C /* AddBenchBackrestQuest.swift */,
 			);
 			path = Quests;
 			sourceTree = "<group>";
@@ -648,6 +651,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				641621112433774A00C4670C /* AddBenchBackrestQuest.swift in Sources */,
 				641AEEA2242E4D18000CA2A2 /* Quest.swift in Sources */,
 				641AEEAC242E6851000CA2A2 /* TilesRect.swift in Sources */,
 				64762E5C242DFEBC00E430B4 /* QuestDatabase.swift in Sources */,
