@@ -14,6 +14,26 @@ struct BoundingBox {
 }
 
 extension BoundingBox {
+    
+    func toOverpassBoundingBoxFilter() -> String {
+        return "(\(toOverpassBoundingBox()))"
+    }
+    
+    private func toOverpassBoundingBox() -> String {
+        let formatter = NumberFormatter()
+        
+        formatter.locale = Locale(identifier: "en_US")
+        formatter.maximumFractionDigits = 340
+        
+        let valuesAsNumbers = [minimum.latitude, minimum.longitude, maximum.latitude, maximum.longitude].map { NSNumber(floatLiteral: $0) }
+        let valuesAsStrings = valuesAsNumbers.compactMap { formatter.string(from: $0) }
+        
+        return valuesAsStrings.joined(separator: ",")
+    }
+
+}
+
+extension BoundingBox {
     func enclosingTilesRect(zoom: Int) -> TilesRect {
         if (crosses180thMeridian()) {
             guard let firstBoundingBox = splitAt180thMeridian().first else {

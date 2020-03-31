@@ -29,5 +29,13 @@ class BoundingBoxTestCase: XCTestCase {
         
         XCTAssertNotEqual(firstBoundingBox, secondBoundingBox)
     }
+    
+    func testToOverpassBoundingBoxFilter_shouldReturnCorrectString() {
+        let boundingBox = BoundingBox(minimum: Coordinate(latitude: 52.49668, longitude: 13.32693),
+                                      maximum: Coordinate(latitude: 52.52985, longitude: 13.38731))
+        
+        XCTAssertEqual(boundingBox.toOverpassBoundingBoxFilter(), "(52.49668,13.32693,52.52985,13.38731)")
+        
+    }
 
 }
