@@ -179,6 +179,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6416210F2433770300C4670C /* Quests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Quests;
+			sourceTree = "<group>";
+		};
 		641AEEAD242E698D000CA2A2 /* OSM */ = {
 			isa = PBXGroup;
 			children = (
@@ -297,6 +304,7 @@
 		64D4D8CA2427F7F900FB900A /* OSMSurveyorFramework */ = {
 			isa = PBXGroup;
 			children = (
+				6416210F2433770300C4670C /* Quests */,
 				64734B0F24331FF4002234E8 /* Download */,
 				641AEEB2242E9E2A000CA2A2 /* Extensions */,
 				64762E5A242DFDDE00E430B4 /* Database */,
