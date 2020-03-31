@@ -189,6 +189,13 @@
 			path = Quests;
 			sourceTree = "<group>";
 		};
+		6416211224337FFF00C4670C /* Quests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Quests;
+			sourceTree = "<group>";
+		};
 		641AEEAD242E698D000CA2A2 /* OSM */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +329,7 @@
 		64D4D8D72427F7F900FB900A /* OSMSurveyorFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				6416211224337FFF00C4670C /* Quests */,
 				641AEEAD242E698D000CA2A2 /* OSM */,
 				64D4D8D82427F7F900FB900A /* OSMSurveyorFrameworkTests.swift */,
 				64D4D8DA2427F7F900FB900A /* Info.plist */,
