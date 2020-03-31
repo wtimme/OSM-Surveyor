@@ -241,6 +241,13 @@
 			path = OSMSurveyorTests;
 			sourceTree = "<group>";
 		};
+		64734B0F24331FF4002234E8 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
 		64762E5A242DFDDE00E430B4 /* Database */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +291,7 @@
 		64D4D8CA2427F7F900FB900A /* OSMSurveyorFramework */ = {
 			isa = PBXGroup;
 			children = (
+				64734B0F24331FF4002234E8 /* Download */,
 				641AEEB2242E9E2A000CA2A2 /* Extensions */,
 				64762E5A242DFDDE00E430B4 /* Database */,
 				649DEF31242E2157001AD0E2 /* Entities */,
