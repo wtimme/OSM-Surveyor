@@ -13,4 +13,14 @@ protocol QuestTypeProtocol {
     func download(boundingBox: BoundingBox,
                   using downloader: OverpassDownloading,
                   _ completion: @escaping (Result<[Int: OPElement], Error>) -> Void)
+    
+    var type: String { get }
+}
+
+extension QuestTypeProtocol {
+    var type: String {
+        guard let className = String(describing: self).split(separator: ".").last else { return "" }
+        
+        return className.replacingOccurrences(of: "Quest", with: "")
+    }
 }

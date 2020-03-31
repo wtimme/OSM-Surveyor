@@ -11,6 +11,7 @@
 		6416210C243373FE00C4670C /* QuestType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416210B243373FE00C4670C /* QuestType.swift */; };
 		6416210E2433764500C4670C /* OverpassDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6416210D2433764500C4670C /* OverpassDownloader.swift */; };
 		641621112433774A00C4670C /* AddBenchBackrestQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641621102433774A00C4670C /* AddBenchBackrestQuest.swift */; };
+		641621142433809E00C4670C /* QuestTypeProtocolTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641621132433809E00C4670C /* QuestTypeProtocolTestCase.swift */; };
 		641AEEA2242E4D18000CA2A2 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA1242E4D18000CA2A2 /* Quest.swift */; };
 		641AEEA4242E52A9000CA2A2 /* QuestDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */; };
 		641AEEA8242E6520000CA2A2 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 641AEEA7242E6520000CA2A2 /* Tile.swift */; };
@@ -100,6 +101,7 @@
 		6416210B243373FE00C4670C /* QuestType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestType.swift; sourceTree = "<group>"; };
 		6416210D2433764500C4670C /* OverpassDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverpassDownloader.swift; sourceTree = "<group>"; };
 		641621102433774A00C4670C /* AddBenchBackrestQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBenchBackrestQuest.swift; sourceTree = "<group>"; };
+		641621132433809E00C4670C /* QuestTypeProtocolTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestTypeProtocolTestCase.swift; sourceTree = "<group>"; };
 		641AEEA1242E4D18000CA2A2 /* Quest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quest.swift; sourceTree = "<group>"; };
 		641AEEA3242E52A9000CA2A2 /* QuestDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataHelper.swift; sourceTree = "<group>"; };
 		641AEEA7242E6520000CA2A2 /* Tile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 		6416211224337FFF00C4670C /* Quests */ = {
 			isa = PBXGroup;
 			children = (
+				641621132433809E00C4670C /* QuestTypeProtocolTestCase.swift */,
 			);
 			path = Quests;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				641621142433809E00C4670C /* QuestTypeProtocolTestCase.swift in Sources */,
 				64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */,
 				641AEEAF242E6996000CA2A2 /* BoundingBoxTestCase.swift in Sources */,
 				641AEEAA242E66E1000CA2A2 /* SlippyMapMathTestCase.swift in Sources */,
