@@ -85,6 +85,16 @@ extension BoundingBox {
     }
 }
 
+extension BoundingBox {
+    /// Returns the area enclosed by this bounding box
+    func enclosedArea(globeRadius: Double = 6371000.0) -> Double {
+        let minLatMaxLon = Coordinate(latitude: minimum.latitude, longitude: maximum.longitude)
+        let maxLatMinLon = Coordinate(latitude: maximum.latitude, longitude: minimum.longitude)
+        
+        return minimum.distance(to: minLatMaxLon, globeRadius: globeRadius) * minimum.distance(to: maxLatMinLon, globeRadius: globeRadius)
+    }
+}
+
 extension BoundingBox: Equatable {
     public static func == (lhs: BoundingBox, rhs: BoundingBox) -> Bool {
         return lhs.minimum == rhs.minimum && lhs.maximum == rhs.maximum
