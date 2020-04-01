@@ -17,13 +17,16 @@ public final class MapViewQuestDownloader {
     
     // MARK: Private properties
     
+    private let questTileZoom: Int
     private let minimumDownloadableAreaInSquareKilometers: Double
     private let maximumDownloadableAreaInSquareKilometers: Double
     
-    init(minimumDownloadableAreaInSquareKilometers: Double = 1,
+    init(questTileZoom: Int = 14,
+         minimumDownloadableAreaInSquareKilometers: Double = 1,
          maximumDownloadableAreaInSquareKilometers: Double = 20) {
-             self.minimumDownloadableAreaInSquareKilometers = minimumDownloadableAreaInSquareKilometers
-             self.maximumDownloadableAreaInSquareKilometers = maximumDownloadableAreaInSquareKilometers
+        self.questTileZoom = questTileZoom
+        self.minimumDownloadableAreaInSquareKilometers = minimumDownloadableAreaInSquareKilometers
+        self.maximumDownloadableAreaInSquareKilometers = maximumDownloadableAreaInSquareKilometers
     }
 }
 
