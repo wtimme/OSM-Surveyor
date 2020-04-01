@@ -9,6 +9,14 @@
 import Foundation
 import SQLite
 
+protocol DownloadedQuestTypesProviding {
+    /// Gets the `Quest` types which have already been downloaded in the given `TilesRect`.
+    /// - Parameters:
+    ///   - tilesRect: The `TilesRect` for which to find the downloaded quest types.
+    ///   - date: The date after after which to consider the information outdated. Records older than this date will not be returned.
+    func findDownloadedQuestTypes(in tilesRect: TilesRect, ignoreOlderThan date: Date) -> [String]
+}
+
 class DownloadedTileDataHelper: DataHelperProtocol {
     static let TABLE_NAME = "downloaded_tiles"
    
@@ -112,5 +120,12 @@ class DownloadedTileDataHelper: DataHelperProtocol {
             assertionFailure("Failed to execute query: \(error.localizedDescription)")
             return []
         }
+    }
+}
+
+extension DownloadedTileDataHelper: DownloadedQuestTypesProviding {
+    func findDownloadedQuestTypes(in tilesRect: TilesRect, ignoreOlderThan date: Date) -> [String] {
+        DownloadedTileDataHelper.findDownloadedQuestTypes(in: tilesRect,
+                                                          ignoreOlderThan: date)
     }
 }
