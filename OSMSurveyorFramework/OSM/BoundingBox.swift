@@ -39,6 +39,15 @@ extension BoundingBox {
 }
 
 extension BoundingBox {
+    /**
+     Returns the bounding box of the tile rect at the given zoom level that encloses this bounding box.
+     In other words, it expands this bounding box to fit to the tile boundaries.
+     If this bounding box crosses the 180th meridian, it'll take only the first half of the bounding box
+     */
+    func asBoundingBoxOfEnclosingTiles(zoom: Int) -> BoundingBox {
+        return enclosingTilesRect(zoom: zoom).asBoundingBox(zoom: zoom)
+    }
+    
     func enclosingTilesRect(zoom: Int) -> TilesRect {
         if (crosses180thMeridian()) {
             guard let firstBoundingBox = splitAt180thMeridian().first else {
