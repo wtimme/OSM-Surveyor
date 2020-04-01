@@ -14,6 +14,7 @@ import SafariServices
 class MapViewController: UIViewController {
     
     @IBOutlet private var mapView: TGMapView!
+    private let questDownloader: MapViewQuestDownloading = MapViewQuestDownloader.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +80,10 @@ extension MapViewController: TGMapViewDelegate {
         let marker = mapView.markerAdd()
         marker.stylingString = "{ style: 'points', color: 'red', size: [50px, 50px], order: 2000, collide: false }"
         marker.point = coordinate
+    }
+    
+    func mapView(_ mapView: TGMapView, regionDidChangeAnimated animated: Bool) {
+        questDownloader.downloadQuests(at: cameraPosition)
     }
     
     private var cameraPosition: CameraPosition {
