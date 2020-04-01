@@ -8,9 +8,14 @@
 
 import Foundation
 
-struct BoundingBox {
-    let minimum: Coordinate
-    let maximum: Coordinate
+public struct BoundingBox {
+    public let minimum: Coordinate
+    public let maximum: Coordinate
+    
+    public init(minimum: Coordinate, maximum: Coordinate) {
+        self.minimum = minimum
+        self.maximum = maximum
+    }
 }
 
 extension BoundingBox {
@@ -81,7 +86,7 @@ extension BoundingBox {
 }
 
 extension BoundingBox: Equatable {
-    static func == (lhs: BoundingBox, rhs: BoundingBox) -> Bool {
+    public static func == (lhs: BoundingBox, rhs: BoundingBox) -> Bool {
         return lhs.minimum == rhs.minimum && lhs.maximum == rhs.maximum
     }
 }
