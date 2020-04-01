@@ -39,3 +39,27 @@ extension Coordinate {
         return Int(Double(Tile.numberOfTiles(zoom: zoom)) * (lon + 180) / 360)
     }
 }
+
+extension Coordinate {
+    func distance(to otherCoordinate: Coordinate, globeRadius: Double = 6371000.0) -> Double {
+        return measuredLength(
+            latitude.toRadians(),
+            longitude.toRadians(),
+            otherCoordinate.latitude.toRadians(),
+            otherCoordinate.longitude.toRadians(),
+            globeRadius
+        )
+    }
+    
+    /// Returns the distance of two points on a sphere with the given radius
+    ///
+    /// See https://mathforum.org/library/drmath/view/51879.html for derivation
+    private func measuredLength(_ φ1: Double, _ λ1: Double, _ φ2: Double, _ λ2: Double, _ r: Double) -> Double {
+        let Δλ = λ2 - λ1
+        let Δφ = φ2 - φ1
+        let a = pow(sin(Δφ / 2), 2) + cos(φ1) * cos(φ2) * pow(sin(Δλ / 2), 2)
+        let c = 2 * atan2(sqrt(a), sqrt(1 - a))
+        
+        return c * r
+    }
+}
