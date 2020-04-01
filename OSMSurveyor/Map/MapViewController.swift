@@ -11,12 +11,6 @@ import TangramMap
 import OSMSurveyorFramework
 import SafariServices
 
-/// An object that provides the camera position.
-protocol CameraPositionProviding {
-    /// The current `CameraPosition` of the receiver.
-    var cameraPosition: CameraPosition { get }
-}
-
 class MapViewController: UIViewController {
     
     @IBOutlet private var mapView: TGMapView!
@@ -86,6 +80,16 @@ extension MapViewController: TGMapViewDelegate {
         marker.stylingString = "{ style: 'points', color: 'red', size: [50px, 50px], order: 2000, collide: false }"
         marker.point = coordinate
     }
+    
+    private var cameraPosition: CameraPosition {
+        let tangramCameraPosition = mapView.cameraPosition
+        
+        return CameraPosition(center: Coordinate(latitude: tangramCameraPosition.center.latitude,
+                                                 longitude: tangramCameraPosition.center.longitude),
+                              zoom: Double(tangramCameraPosition.zoom),
+                              bearing: tangramCameraPosition.bearing,
+                              pitch: Double(tangramCameraPosition.pitch))
+    }
 }
 
 extension MapViewController: MapViewControllerProtocol {
@@ -103,17 +107,5 @@ extension MapViewController: MapViewControllerProtocol {
         }
         
         mapView.fly(to: cameraPosition, withDuration: duration, callback: nil)
-    }
-}
-
-extension MapViewController: CameraPositionProviding {
-    var cameraPosition: CameraPosition {
-        let tangramCameraPosition = mapView.cameraPosition
-        
-        return CameraPosition(center: Coordinate(latitude: tangramCameraPosition.center.latitude,
-                                                 longitude: tangramCameraPosition.center.longitude),
-                              zoom: Double(tangramCameraPosition.zoom),
-                              bearing: tangramCameraPosition.bearing,
-                              pitch: Double(tangramCameraPosition.pitch))
     }
 }
