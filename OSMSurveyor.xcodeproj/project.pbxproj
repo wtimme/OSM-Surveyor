@@ -310,6 +310,13 @@
 			path = DataHelpers;
 			sourceTree = "<group>";
 		};
+		64B58ECA2435191100EE88C7 /* Download */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Download;
+			sourceTree = "<group>";
+		};
 		64BDCB4E242A975A0098536A /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -339,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				6416211224337FFF00C4670C /* Quests */,
+				64B58ECA2435191100EE88C7 /* Download */,
 				641AEEAD242E698D000CA2A2 /* OSM */,
 				64D4D8D82427F7F900FB900A /* OSMSurveyorFrameworkTests.swift */,
 				64D4D8DA2427F7F900FB900A /* Info.plist */,
