@@ -14,6 +14,7 @@ import SafariServices
 class MapViewController: UIViewController {
     
     @IBOutlet private var mapView: TGMapView!
+    @IBOutlet private var errorLabel: UILabel!
     private let questDownloader: MapViewQuestDownloading = MapViewQuestDownloader.shared
 
     override func viewDidLoad() {
@@ -82,9 +83,14 @@ extension MapViewController: TGMapViewDelegate {
         marker.point = coordinate
     }
     
+    private func updateErrorLabel(_ text: String?) {
+        errorLabel.text = text
+        errorLabel.isHidden = text?.isEmpty ?? true
+    }
+    
     func mapView(_ mapView: TGMapView, regionDidChangeAnimated animated: Bool) {
         guard let boundingBox = screenAreaToBoundingBox() else {
-            /// TODO: Error handling
+            updateErrorLabel("Can’t scan here. Try to zoom in further or tilt the map less.")
             return
         }
         
@@ -92,10 +98,13 @@ extension MapViewController: TGMapViewDelegate {
             try questDownloader.downloadQuests(in: boundingBox)
             
             print("All good. Would've downloaded now.")
+            updateErrorLabel(nil)
         } catch MapViewQuestDownloadError.screenAreaTooLarge {
-            print("Screen area too large.")
+            updateErrorLabel("Please zoom in further")
         } catch {
             assertionFailure("Unexpected error: \(error.localizedDescription)")
+            
+            updateErrorLabel("Unexpected error")
         }
     }
     
