@@ -95,6 +95,49 @@ extension MapViewController: TGMapViewDelegate {
                               bearing: tangramCameraPosition.bearing,
                               pitch: Double(tangramCameraPosition.pitch))
     }
+    
+    struct Padding {
+        let left: CGFloat
+        let top: CGFloat
+        let right: CGFloat
+        let bottom: CGFloat
+        
+        static var zero: Padding {
+            return Padding(left: 0, top: 0, right: 0, bottom: 0)
+        }
+    }
+    
+    private func screenAreaToBoundingBox(padding: Padding = .zero) -> BoundingBox? {
+        let width = mapView.bounds.width
+        let height = mapView.bounds.height
+        
+        guard width > 0, height > 0 else { return nil }
+        
+        let size = (width: width - padding.left - padding.right,
+                    height: height - padding.top - padding.bottom)
+
+        /**
+          the special cases here are: map tilt and map rotation:
+          * map tilt makes the screen area -> world map area into a trapezoid
+          * map rotation makes the screen area -> world map area into a rotated rectangle
+          dealing with tilt: this method is just not defined if the tilt is above a certain limit
+         */
+        guard cameraPosition.pitch <= .pi / 4 else {
+            // 45°
+            return nil
+        }
+        
+        let positions = [
+            mapView.coordinate(fromViewPosition: CGPoint(x: padding.left, y: padding.top)),
+            mapView.coordinate(fromViewPosition: CGPoint(x: padding.left + size.width, y: padding.top)),
+            mapView.coordinate(fromViewPosition: CGPoint(x: padding.left, y: padding.top + size.height)),
+            mapView.coordinate(fromViewPosition: CGPoint(x: padding.left +  size.width, y: padding.top + size.height))
+        ]
+        
+        let positionsAsCoordinates = positions.map { Coordinate(latitude: $0.latitude, longitude: $0.longitude) }
+        
+        return positionsAsCoordinates.enclosingBoundingBox
+    }
 }
 
 extension MapViewController: MapViewControllerProtocol {
