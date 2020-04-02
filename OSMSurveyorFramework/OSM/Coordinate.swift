@@ -62,4 +62,51 @@ extension Coordinate {
         
         return c * r
     }
+    
+    static func normalizeLongitude(_ longitude: Double) -> Double {
+        var normalizedLongitude = longitude
+        
+        while normalizedLongitude > 180 {
+            normalizedLongitude -= 360
+        }
+        
+        while normalizedLongitude < -180 {
+            normalizedLongitude += 360
+        }
+        
+        return normalizedLongitude
+    }
+}
+
+public extension Sequence where Iterator.Element == Coordinate {
+    /// Returns a bounding box that contains all points
+    var enclosingBoundingBox: BoundingBox? {
+        var iterator = makeIterator()
+        
+        guard let origin = iterator.next() else {
+            assertionFailure("The list of coordinates is empty.")
+            return nil
+        }
+        
+        var minLatOffset: Double = 0
+        var minLonOffset: Double = 0
+        var maxLatOffset: Double = 0
+        var maxLonOffset: Double = 0
+        
+        while let pos = iterator.next() {
+            // calculate with offsets here to properly handle 180th meridian
+            let latitude = pos.latitude - origin.latitude
+            let longitude = Coordinate.normalizeLongitude(pos.longitude - origin.longitude)
+            
+            if latitude < minLatOffset { minLatOffset = latitude }
+            if longitude < minLonOffset { minLonOffset = longitude }
+            if latitude > maxLatOffset { maxLatOffset = latitude }
+            if longitude > maxLonOffset { maxLonOffset = longitude }
+        }
+        
+        return BoundingBox(minimum: Coordinate(latitude: origin.latitude + minLatOffset,
+                                               longitude: Coordinate.normalizeLongitude(origin.longitude + minLonOffset)),
+                           maximum: Coordinate(latitude: origin.latitude + maxLatOffset,
+                                               longitude: Coordinate.normalizeLongitude(origin.longitude + maxLonOffset)))
+    }
 }
