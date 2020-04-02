@@ -83,7 +83,20 @@ extension MapViewController: TGMapViewDelegate {
     }
     
     func mapView(_ mapView: TGMapView, regionDidChangeAnimated animated: Bool) {
-        questDownloader.downloadQuests(at: cameraPosition)
+        guard let boundingBox = screenAreaToBoundingBox() else {
+            /// TODO: Error handling
+            return
+        }
+        
+        do {
+            try questDownloader.downloadQuests(in: boundingBox)
+            
+            print("All good. Would've downloaded now.")
+        } catch MapViewQuestDownloadError.screenAreaTooLarge {
+            print("Screen area too large.")
+        } catch {
+            assertionFailure("Unexpected error: \(error.localizedDescription)")
+        }
     }
     
     private var cameraPosition: CameraPosition {

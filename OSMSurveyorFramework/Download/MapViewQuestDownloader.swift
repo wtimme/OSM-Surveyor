@@ -8,8 +8,12 @@
 
 import Foundation
 
+public enum MapViewQuestDownloadError: Error {
+    case screenAreaTooLarge
+}
+
 public protocol MapViewQuestDownloading {
-    func downloadQuests(at cameraPosition: CameraPosition)
+    func downloadQuests(in boundingBox: BoundingBox) throws
 }
 
 public final class MapViewQuestDownloader {
@@ -31,8 +35,14 @@ public final class MapViewQuestDownloader {
 }
 
 extension MapViewQuestDownloader: MapViewQuestDownloading {
-    
-    public func downloadQuests(at cameraPosition: CameraPosition) {
+    public func downloadQuests(in boundingBox: BoundingBox) throws {
+        let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: 14)
+        let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedArea() / 1000000
+        
+        guard areaInSquareKilometers <= maximumDownloadableAreaInSquareKilometers else {
+            throw MapViewQuestDownloadError.screenAreaTooLarge
+        }
+        
         /// TODO: Implement me
     }
 }
