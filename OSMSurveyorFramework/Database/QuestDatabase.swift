@@ -32,7 +32,12 @@ public class QuestDatabase {
         }
         
         NodeDataHelper.db = connection
+        try? NodeDataHelper.createTable()
+        
         QuestDataHelper.db = connection
+        try? QuestDataHelper.createTable()
+        
         DownloadedTileDataHelper.db = connection
+        try? DownloadedTileDataHelper.createTable()
     }
 }
