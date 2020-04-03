@@ -19,10 +19,57 @@ protocol QuestDownloading {
 }
 
 class QuestDownloader {
+    // MARK: Private properties
+    
+    private let questProvider: QuestProviding
+    private let downloadedQuestTypesManager: DownloadedQuestTypesManaging
+    
+    /// A "best before" duration for quests. Quests will not be downloaded again for any tile before the time expired
+    private let questExpirationTime: TimeInterval
+    
+    // MARK: Initializer
+    
+    init(questProvider: QuestProviding,
+         downloadedQuestTypesManager: DownloadedQuestTypesManaging,
+         questExpirationTime: TimeInterval = 7 * 24 * 60 * 60) {
+        self.questProvider = questProvider
+        self.downloadedQuestTypesManager = downloadedQuestTypesManager
+        self.questExpirationTime = questExpirationTime
+    }
+    
+    private func questsToDownload(tilesRect: TilesRect, maxQuestTypes: Int?) -> [QuestTypeProtocol] {
+        let questExpirationDate = Date(timeIntervalSinceNow: -questExpirationTime)
+        
+        let alreadyDownloadedQuestTypes = downloadedQuestTypesManager.findDownloadedQuestTypes(in: tilesRect,
+                                                                                               ignoreOlderThan: questExpirationDate)
+        
+        let questsNotDownloadedYet = questProvider.quests.filter { quest in
+            !alreadyDownloadedQuestTypes.contains(quest.type)
+        }
+        
+        let numberOfQuestsToDownload: Int
+        if let maxQuestTypes = maxQuestTypes, maxQuestTypes > 0 {
+            numberOfQuestsToDownload = min(questsNotDownloadedYet.count, maxQuestTypes)
+        } else {
+            numberOfQuestsToDownload = questsNotDownloadedYet.count
+        }
+        
+        return Array(questsNotDownloadedYet[0..<numberOfQuestsToDownload])
+    }
+    
+    private func downloadQuest(_ quest: QuestTypeProtocol, tilesRect: TilesRect) {
+        /// TODO: Implement me.
+    }
 }
 
 extension QuestDownloader: QuestDownloading {
     func download(tilesRect: TilesRect, maxQuestTypesToDownload: Int?, isPriority: Bool) {
-        /// TODO: Implement me.
+        let quests = questsToDownload(tilesRect: tilesRect, maxQuestTypes: maxQuestTypesToDownload ?? 0)
+        
+        print("Will download \(quests.map(\.type).joined(separator: ", "))")
+        
+        quests.forEach { quest in
+            downloadQuest(quest, tilesRect: tilesRect)
+        }
     }
 }
