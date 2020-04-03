@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-protocol DownloadedQuestTypesProviding {
+protocol DownloadedQuestTypesManaging {
     /// Gets the `Quest` types which have already been downloaded in the given `TilesRect`.
     /// - Parameters:
     ///   - tilesRect: The `TilesRect` for which to find the downloaded quest types.
@@ -123,7 +123,7 @@ class DownloadedTileDataHelper: DataHelperProtocol {
     }
 }
 
-extension DownloadedTileDataHelper: DownloadedQuestTypesProviding {
+extension DownloadedTileDataHelper: DownloadedQuestTypesManaging {
     func findDownloadedQuestTypes(in tilesRect: TilesRect, ignoreOlderThan date: Date) -> [String] {
         DownloadedTileDataHelper.findDownloadedQuestTypes(in: tilesRect,
                                                           ignoreOlderThan: date)
