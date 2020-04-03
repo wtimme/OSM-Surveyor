@@ -95,7 +95,7 @@ extension MapViewController: TGMapViewDelegate {
         }
         
         do {
-            try questDownloader.downloadQuests(in: boundingBox)
+            try questDownloader.downloadQuests(in: boundingBox, cameraPosition: cameraPosition)
             
             print("All good. Would've downloaded now.")
             updateErrorLabel(nil)

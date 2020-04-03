@@ -13,7 +13,11 @@ public enum MapViewQuestDownloadError: Error {
 }
 
 public protocol MapViewQuestDownloading {
-    func downloadQuests(in boundingBox: BoundingBox) throws
+    /// Downloads the quests in the given `BoundingBox`.
+    /// - Parameters:
+    ///   - boundingBox: The bounding box in which to download the quests.
+    ///   - cameraPosition: The current camera position of the map. Will be used to calculate a larger bounding box in case the provided one is too small.
+    func downloadQuests(in boundingBox: BoundingBox, cameraPosition: CameraPosition) throws
 }
 
 public final class MapViewQuestDownloader {
@@ -35,7 +39,7 @@ public final class MapViewQuestDownloader {
 }
 
 extension MapViewQuestDownloader: MapViewQuestDownloading {
-    public func downloadQuests(in boundingBox: BoundingBox) throws {
+    public func downloadQuests(in boundingBox: BoundingBox, cameraPosition: CameraPosition) throws {
         let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: 14)
         let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedArea() / 1000000
         
