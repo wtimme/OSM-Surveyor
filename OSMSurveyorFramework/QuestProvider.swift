@@ -9,10 +9,19 @@
 import Foundation
 
 protocol QuestProviding {
+    var quests: [QuestTypeProtocol] { get }
 }
 
 class QuestProvider {
+    /// MARK: Public properties
+    
+    let quests: [QuestTypeProtocol]
+    
+    // MARK: Initializer
+    
+    init(quests: [QuestTypeProtocol] = [AddBenchBackrestQuest()]) {
+        self.quests = quests
+    }
 }
 
-extension QuestProvider: QuestProviding {
-}
+extension QuestProvider: QuestProviding {}
