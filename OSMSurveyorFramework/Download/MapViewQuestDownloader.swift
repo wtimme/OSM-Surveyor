@@ -21,19 +21,31 @@ public protocol MapViewQuestDownloading {
 }
 
 public final class MapViewQuestDownloader {
-    public static let shared = MapViewQuestDownloader()
+    public static let shared: MapViewQuestDownloader = {
+        let questProvider = QuestProvider(quests: [AddBenchBackrestQuest()])
+        let downloadedQuestTypesManager = DownloadedTileDataHelper()
+        
+        let questDownloader = QuestDownloader(questProvider: questProvider,
+                                              downloadedQuestTypesManager: downloadedQuestTypesManager)
+        let questController = QuestController(downloader: questDownloader)
+        
+        return MapViewQuestDownloader(questController: questController)
+    }()
     
     // MARK: Private properties
     
+    private let questController: QuestControlling
     private let questTileZoom: Int
     private let minimumDownloadableAreaInSquareKilometers: Double
     private let maximumDownloadableAreaInSquareKilometers: Double
     private let minimumDownloadRadiusInMeters: Double
     
-    init(questTileZoom: Int = 14,
+    init(questController: QuestControlling,
+         questTileZoom: Int = 14,
          minimumDownloadableAreaInSquareKilometers: Double = 1,
          maximumDownloadableAreaInSquareKilometers: Double = 20,
          minimumDownloadRadiusInMeters: Double = 600) {
+        self.questController = questController
         self.questTileZoom = questTileZoom
         self.minimumDownloadableAreaInSquareKilometers = minimumDownloadableAreaInSquareKilometers
         self.maximumDownloadableAreaInSquareKilometers = maximumDownloadableAreaInSquareKilometers
@@ -57,6 +69,8 @@ extension MapViewQuestDownloader: MapViewQuestDownloading {
             boundingBoxToDownload = boundingBoxOfEnclosingTiles
         }
         
-        /// TODO: Implement me
+        questController.download(boundingBox: boundingBoxToDownload,
+                                 maxQuestTypesToDownload: 10,
+                                 isPriority: true)
     }
 }
