@@ -46,6 +46,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="s8r-U3-DHO">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="wlM-wX-uE6">
+                            <connections>
+                                <action selector="didTapDownloadQuestsButton:" destination="BYZ-38-t0r" id="DBb-rl-Hfn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="errorLabel" destination="7xF-fL-NVc" id="1KG-X0-5Td"/>
                         <outlet property="mapView" destination="8bC-Xf-vdC" id="qMa-JH-xDN"/>

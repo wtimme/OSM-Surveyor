@@ -67,6 +67,10 @@ class MapViewController: UIViewController {
         viewController.modalPresentationStyle = .pageSheet
         present(viewController, animated: true)
     }
+    
+    @IBAction private func didTapDownloadQuestsButton(_ sender: AnyObject) {
+        /// TODO: Implement me.
+    }
 }
 
 extension MapViewController: TGMapViewDelegate {
