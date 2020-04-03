@@ -20,8 +20,8 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureMap()
         testDatabaseIntegration()
+        configureMap()
     }
     
     private func configureMap() {
