@@ -78,6 +78,74 @@ extension Coordinate {
     }
 }
 
+extension Coordinate {
+    /**
+     Return a bounding box that contains a circle with the given radius around this point. In
+     other words, it is a square centered at the given position and with a side length of radius*2.
+     */
+    public func enclosingBoundingBox(radius: Double, globeRadius: Double = 6371000) -> BoundingBox {
+        let distance = sqrt(2) * radius
+        
+        let minimum = translate(distance: distance, angle: 225, globeRadius: globeRadius)
+        let maximum = translate(distance: distance, angle: 45, globeRadius: globeRadius)
+        
+        return BoundingBox(minimum: minimum, maximum: maximum)
+    }
+    
+    /// Returns a new point in the given distance and angle from the this point
+    private func translate(distance: Double, angle: Double, globeRadius: Double = 6371000) -> Coordinate {
+        let pair = translate(φ1: latitude.toRadians(),
+                             λ1: longitude.toRadians(),
+                             α1: angle.toRadians(),
+                             distance: distance,
+                             radius: globeRadius)
+        
+        return Coordinate.createTranslated(latitude: pair.0.toDegrees(),
+                                           longitude: pair.1.toDegrees())
+    }
+    
+    private func translate(φ1: Double, λ1: Double, α1: Double, distance: Double, radius: Double) -> (Double, Double) {
+        let σ12 = distance / radius
+        let y = sin(φ1) * cos(σ12) + cos(φ1) * sin(σ12) * cos(α1)
+        let a = cos(φ1) * cos(σ12) - sin(φ1) * sin(σ12) * cos(α1)
+        let b = sin(σ12) * sin(α1)
+        let x = sqrt(pow(a, 2) + pow(b, 2))
+        let φ2 = atan2(y, x)
+        let λ2 = λ1 + atan2(b, a)
+        
+        return (φ2, λ2)
+    }
+    
+    private static func createTranslated(latitude: Double, longitude: Double) -> Coordinate {
+        var resultingLatitude = latitude
+        var resultingLongitude = longitude
+        
+        resultingLongitude = Coordinate.normalizeLongitude(resultingLongitude)
+        
+        let crossedPole: Bool
+        if resultingLatitude > 90 {
+            // North pole
+            resultingLatitude = 180 - resultingLatitude
+            crossedPole = true
+        } else if resultingLatitude < -90 {
+            resultingLatitude = -180 - resultingLatitude
+            crossedPole = true
+        } else {
+            crossedPole = false
+        }
+        
+        if crossedPole {
+            resultingLongitude += 180
+            
+            if resultingLongitude > 180 {
+                resultingLongitude -= 360
+            }
+        }
+        
+        return Coordinate(latitude: resultingLatitude, longitude: resultingLongitude)
+    }
+}
+
 public extension Sequence where Iterator.Element == Coordinate {
     /// Returns a bounding box that contains all points
     var enclosingBoundingBox: BoundingBox? {
