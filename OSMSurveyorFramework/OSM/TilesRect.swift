@@ -18,7 +18,7 @@ struct TilesRect {
 extension TilesRect: Equatable {}
 
 extension TilesRect {
-    func asBoundingBox(zoom: Int) -> BoundingBox {
+    func asBoundingBox(zoom: Int = 14) -> BoundingBox {
         return BoundingBox(minimum: Coordinate(latitude: Tile.tile2lat(y: bottom + 1, zoom: zoom),
                                                longitude: Tile.tile2lon(x: left, zoom: zoom)),
                            maximum: Coordinate(latitude: Tile.tile2lat(y: top, zoom: zoom),
