@@ -28,13 +28,16 @@ public final class MapViewQuestDownloader {
     private let questTileZoom: Int
     private let minimumDownloadableAreaInSquareKilometers: Double
     private let maximumDownloadableAreaInSquareKilometers: Double
+    private let minimumDownloadRadiusInMeters: Double
     
     init(questTileZoom: Int = 14,
          minimumDownloadableAreaInSquareKilometers: Double = 1,
-         maximumDownloadableAreaInSquareKilometers: Double = 20) {
+         maximumDownloadableAreaInSquareKilometers: Double = 20,
+         minimumDownloadRadiusInMeters: Double = 600) {
         self.questTileZoom = questTileZoom
         self.minimumDownloadableAreaInSquareKilometers = minimumDownloadableAreaInSquareKilometers
         self.maximumDownloadableAreaInSquareKilometers = maximumDownloadableAreaInSquareKilometers
+        self.minimumDownloadRadiusInMeters = minimumDownloadRadiusInMeters
     }
 }
 
@@ -45,6 +48,13 @@ extension MapViewQuestDownloader: MapViewQuestDownloading {
         
         guard areaInSquareKilometers <= maximumDownloadableAreaInSquareKilometers else {
             throw MapViewQuestDownloadError.screenAreaTooLarge
+        }
+        
+        let boundingBoxToDownload: BoundingBox
+        if areaInSquareKilometers < minimumDownloadableAreaInSquareKilometers {
+            boundingBoxToDownload = cameraPosition.center.enclosingBoundingBox(radius: minimumDownloadRadiusInMeters)
+        } else {
+            boundingBoxToDownload = boundingBoxOfEnclosingTiles
         }
         
         /// TODO: Implement me
