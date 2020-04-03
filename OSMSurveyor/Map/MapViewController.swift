@@ -69,7 +69,23 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func didTapDownloadQuestsButton(_ sender: AnyObject) {
-        /// TODO: Implement me.
+        guard let boundingBox = screenAreaToBoundingBox() else {
+            updateErrorLabel("Can’t scan here. Try to zoom in further or tilt the map less.")
+            return
+        }
+        
+        do {
+            try questDownloader.downloadQuests(in: boundingBox, cameraPosition: cameraPosition)
+            
+            print("All good. Would've downloaded now.")
+            updateErrorLabel(nil)
+        } catch MapViewQuestDownloadError.screenAreaTooLarge {
+            updateErrorLabel("Please zoom in further")
+        } catch {
+            assertionFailure("Unexpected error: \(error.localizedDescription)")
+            
+            updateErrorLabel("Unexpected error")
+        }
     }
 }
 
@@ -90,26 +106,6 @@ extension MapViewController: TGMapViewDelegate {
     private func updateErrorLabel(_ text: String?) {
         errorLabel.text = text
         errorLabel.isHidden = text?.isEmpty ?? true
-    }
-    
-    func mapView(_ mapView: TGMapView, regionDidChangeAnimated animated: Bool) {
-        guard let boundingBox = screenAreaToBoundingBox() else {
-            updateErrorLabel("Can’t scan here. Try to zoom in further or tilt the map less.")
-            return
-        }
-        
-        do {
-            try questDownloader.downloadQuests(in: boundingBox, cameraPosition: cameraPosition)
-            
-            print("All good. Would've downloaded now.")
-            updateErrorLabel(nil)
-        } catch MapViewQuestDownloadError.screenAreaTooLarge {
-            updateErrorLabel("Please zoom in further")
-        } catch {
-            assertionFailure("Unexpected error: \(error.localizedDescription)")
-            
-            updateErrorLabel("Unexpected error")
-        }
     }
     
     private var cameraPosition: CameraPosition {
