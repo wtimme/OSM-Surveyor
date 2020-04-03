@@ -15,6 +15,12 @@ protocol DownloadedQuestTypesManaging {
     ///   - tilesRect: The `TilesRect` for which to find the downloaded quest types.
     ///   - date: The date after after which to consider the information outdated. Records older than this date will not be returned.
     func findDownloadedQuestTypes(in tilesRect: TilesRect, ignoreOlderThan date: Date) -> [String]
+    
+    /// Marks the given quest type as downloaded in the given `TilesRect`.
+    /// - Parameters:
+    ///   - tilesRect: The `TilesRect` in which the quest types were downloaded.
+    ///   - questType: The type of quest that was downloaded.
+    func markQuestTypeAsDownloaded(tilesRect: TilesRect, questType: String) throws
 }
 
 class DownloadedTileDataHelper: DataHelperProtocol {
@@ -54,6 +60,7 @@ class DownloadedTileDataHelper: DataHelperProtocol {
         guard let db = db else { return 0 }
         
         let insert = table.insert(
+            or: .replace,
             x <- item.tile.x,
             y <- item.tile.y,
             quest_type <- item.questType,
@@ -63,6 +70,16 @@ class DownloadedTileDataHelper: DataHelperProtocol {
         } catch {
             assertionFailure("Failed to insert: \(error.localizedDescription)")
             return -1
+        }
+    }
+    
+    static func insertOrUpdate(_ items: [T]) throws {
+        guard let db = db else { return }
+        
+        try db.transaction {
+            for item in items {
+                _ = try insert(item: item)
+            }
         }
     }
    
@@ -127,5 +144,13 @@ extension DownloadedTileDataHelper: DownloadedQuestTypesManaging {
     func findDownloadedQuestTypes(in tilesRect: TilesRect, ignoreOlderThan date: Date) -> [String] {
         DownloadedTileDataHelper.findDownloadedQuestTypes(in: tilesRect,
                                                           ignoreOlderThan: date)
+    }
+    
+    func markQuestTypeAsDownloaded(tilesRect: TilesRect, questType: String) throws {
+        let downloadedTiles = tilesRect.tiles().map { tile in
+            DownloadedTile(tile: tile, questType: questType, date: Date())
+        }
+        
+        try DownloadedTileDataHelper.insertOrUpdate(downloadedTiles)
     }
 }
