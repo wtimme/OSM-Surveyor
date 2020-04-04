@@ -24,9 +24,11 @@ public final class MapViewQuestDownloader {
     public static let shared: MapViewQuestDownloader = {
         let questProvider = QuestProvider(quests: [AddBenchBackrestQuest()])
         let downloadedQuestTypesManager = DownloadedTileDataHelper()
+        let overpassDownloader = OverpassDownloader()
         
         let questDownloader = QuestDownloader(questProvider: questProvider,
-                                              downloadedQuestTypesManager: downloadedQuestTypesManager)
+                                              downloadedQuestTypesManager: downloadedQuestTypesManager,
+                                              overpassDownloader: overpassDownloader)
         let questController = QuestController(downloader: questDownloader)
         
         return MapViewQuestDownloader(questController: questController)

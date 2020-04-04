@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftOverpassAPI
 
 protocol QuestDownloading {
     /// Download quests in the given `TilesRect`.
@@ -23,6 +24,7 @@ class QuestDownloader {
     
     private let questProvider: QuestProviding
     private let downloadedQuestTypesManager: DownloadedQuestTypesManaging
+    private let overpassDownloader: OverpassDownloading
     
     /// A "best before" duration for quests. Quests will not be downloaded again for any tile before the time expired
     private let questExpirationTime: TimeInterval
@@ -31,9 +33,11 @@ class QuestDownloader {
     
     init(questProvider: QuestProviding,
          downloadedQuestTypesManager: DownloadedQuestTypesManaging,
+         overpassDownloader: OverpassDownloading,
          questExpirationTime: TimeInterval = 7 * 24 * 60 * 60) {
         self.questProvider = questProvider
         self.downloadedQuestTypesManager = downloadedQuestTypesManager
+        self.overpassDownloader = overpassDownloader
         self.questExpirationTime = questExpirationTime
     }
     
@@ -58,6 +62,19 @@ class QuestDownloader {
     }
     
     private func downloadQuest(_ quest: QuestTypeProtocol, tilesRect: TilesRect) {
+        quest.download(boundingBox: tilesRect.asBoundingBox(), using: overpassDownloader) { [weak self] result in
+            switch result {
+            case let .failure(error):
+                assertionFailure("Failed to download quest: \(error.localizedDescription)")
+            case let .success(elements):
+                self?.processDownloadedQuest(quest, elements: elements)
+                
+                try? self?.downloadedQuestTypesManager.markQuestTypeAsDownloaded(tilesRect: tilesRect, questType: quest.type)
+            }
+        }
+    }
+    
+    private func processDownloadedQuest(_ quest: QuestTypeProtocol, elements: [Int: OPElement]) {
         /// TODO: Implement me.
     }
 }
