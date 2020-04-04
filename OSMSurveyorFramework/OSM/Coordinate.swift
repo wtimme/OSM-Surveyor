@@ -22,6 +22,8 @@ extension Coordinate: Equatable {}
 
 extension Coordinate: Hashable {}
 
+extension Coordinate: Codable {}
+
 extension Coordinate {
     static let minimumValue = Coordinate(latitude: -90, longitude: -180)
     static let maximumValue = Coordinate(latitude: 90, longitude: 180)
