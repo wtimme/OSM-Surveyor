@@ -36,6 +36,7 @@
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
 		649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */; };
 		64A77B392438AD21000A9822 /* OsmQuestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B382438AD21000A9822 /* OsmQuestDownloader.swift */; };
+		64A77B3B2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B3A2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift */; };
 		64B58EC7243515A000EE88C7 /* CameraPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB4F242A97790098536A /* CameraPosition.swift */; };
 		64B58EC9243516EC00EE88C7 /* MapViewQuestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B58EC8243516EC00EE88C7 /* MapViewQuestDownloader.swift */; };
 		64BDCB52242A98E70098536A /* MapViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */; };
@@ -136,6 +137,7 @@
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDataHelper.swift; sourceTree = "<group>"; };
 		64A77B382438AD21000A9822 /* OsmQuestDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsmQuestDownloader.swift; sourceTree = "<group>"; };
+		64A77B3A2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OsmQuestDownloaderTestCase.swift; path = OSMSurveyorFramework/Download/OsmQuestDownloaderTestCase.swift; sourceTree = SOURCE_ROOT; };
 		64B58EC8243516EC00EE88C7 /* MapViewQuestDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewQuestDownloader.swift; sourceTree = "<group>"; };
 		64BDCB4F242A97790098536A /* CameraPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPosition.swift; sourceTree = "<group>"; };
 		64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerProtocol.swift; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 		64B58ECA2435191100EE88C7 /* Download */ = {
 			isa = PBXGroup;
 			children = (
+				64A77B3A2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift */,
 			);
 			path = Download;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 			files = (
 				641621142433809E00C4670C /* QuestTypeProtocolTestCase.swift in Sources */,
 				64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */,
+				64A77B3B2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift in Sources */,
 				641AEEAF242E6996000CA2A2 /* BoundingBoxTestCase.swift in Sources */,
 				641AEEAA242E66E1000CA2A2 /* SlippyMapMathTestCase.swift in Sources */,
 				641AEEB1242E6A5E000CA2A2 /* CoordinateTestCase.swift in Sources */,
