@@ -102,7 +102,7 @@ class QuestDataHelper: DataHelperProtocol {
         
         let lastUpdateDate = Date(timeIntervalSince1970: TimeInterval(row[last_update]))
         
-        guard let elementType = OPElementType(rawValue: row[element_type]) else {
+        guard let elementType = ElementGeometry.ElementType(rawValue: row[element_type]) else {
             assertionFailure("Unable to determine the quest's element type.")
             return nil
         }

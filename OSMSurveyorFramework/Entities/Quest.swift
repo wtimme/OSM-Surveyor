@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftOverpassAPI
 
 /// A `Quest` represents one single task that the mapper can solve.
 struct Quest {
@@ -56,7 +55,7 @@ struct Quest {
     let lastUpdate: Date
     
     /// The type of the OSM element that this quest refers to.
-    let elementType: OPElementType
+    let elementType: ElementGeometry.ElementType
     
     /// The ID of the OSM element that this quest refers to.
     let elementId: Int
