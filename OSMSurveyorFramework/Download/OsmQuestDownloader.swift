@@ -9,10 +9,17 @@
 import Foundation
 
 protocol OsmQuestDownloading {
+    func download(questType: QuestTypeProtocol,
+                  boundingBox: BoundingBox,
+                  blacklistedPositions: Set<Coordinate>,
+                  completion: (Bool) -> Void)
 }
 
 class OsmQuestDownloader {
 }
 
 extension OsmQuestDownloader: OsmQuestDownloading {
+    func download(questType: QuestTypeProtocol, boundingBox: BoundingBox, blacklistedPositions: Set<Coordinate>, completion: (Bool) -> Void) {
+        /// TODO: Implement me.
+    }
 }
