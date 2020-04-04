@@ -30,7 +30,6 @@ class FullQuestsViewHelper {
         } catch {
             assertionFailure("Failed to create view: \(error.localizedDescription)")
         }
-       
     }
     
     static func findElementKeysForQuests(ofTypes questTypes: [String], in boundingBox: BoundingBox) -> [ElementKey] {
