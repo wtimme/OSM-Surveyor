@@ -66,6 +66,11 @@ extension QuestDownloader: QuestDownloading {
     func download(tilesRect: TilesRect, maxQuestTypesToDownload: Int?, isPriority: Bool) {
         let quests = questsToDownload(tilesRect: tilesRect, maxQuestTypes: maxQuestTypesToDownload ?? 0)
         
+        guard !quests.isEmpty else {
+            print("Won't download any quests.")
+            return
+        }
+        
         print("Will download \(quests.map(\.type).joined(separator: ", "))")
         
         quests.forEach { quest in
