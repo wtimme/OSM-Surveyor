@@ -42,5 +42,8 @@ public class QuestDatabase {
         
         ElementsGeometryDataHelper.db = connection
         try? ElementsGeometryDataHelper.createTable()
+        
+        FullQuestsViewHelper.db = connection
+        try? FullQuestsViewHelper.createView()
     }
 }
