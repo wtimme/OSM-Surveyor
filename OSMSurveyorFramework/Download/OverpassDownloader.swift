@@ -20,7 +20,7 @@ class OverpassDownloader {
     
     // MARK: Initializer
     
-    init(client: OPClient) {
+    init(client: OPClient = .init()) {
         self.client = client
     }
 }
