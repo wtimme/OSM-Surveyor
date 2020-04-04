@@ -39,5 +39,8 @@ public class QuestDatabase {
         
         DownloadedTileDataHelper.db = connection
         try? DownloadedTileDataHelper.createTable()
+        
+        ElementsGeometryDataHelper.db = connection
+        try? ElementsGeometryDataHelper.createTable()
     }
 }
