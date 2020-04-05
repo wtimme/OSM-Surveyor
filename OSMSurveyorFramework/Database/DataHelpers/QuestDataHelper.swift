@@ -48,7 +48,6 @@ class QuestDataHelper: DataHelperProtocol {
         guard let db = db else { return 0 }
         
         let insert = table.insert(
-            quest_id <- item.id,
             quest_type <- item.type,
             quest_status <- item.status.rawValue,
             last_update <- Int(item.lastUpdate.timeIntervalSince1970),
