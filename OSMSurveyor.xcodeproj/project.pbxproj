@@ -214,7 +214,6 @@
 		6416210F2433770300C4670C /* Quests */ = {
 			isa = PBXGroup;
 			children = (
-				641621102433774A00C4670C /* AddBenchBackrestQuest.swift */,
 			);
 			path = Quests;
 			sourceTree = "<group>";
@@ -345,6 +344,7 @@
 			isa = PBXGroup;
 			children = (
 				64A77B49243A20DC000A9822 /* OverpassQuest.swift */,
+				641621102433774A00C4670C /* AddBenchBackrestQuest.swift */,
 			);
 			path = Overpass;
 			sourceTree = "<group>";
