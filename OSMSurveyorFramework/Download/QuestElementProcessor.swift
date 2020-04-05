@@ -9,6 +9,13 @@
 import Foundation
 
 final class QuestElementProcessor {
+    // MARK: Private properties
+    private let questDataManager: QuestDataManaging
+    
+    // MARK: Initializer
+    init(questDataManager: QuestDataManaging) {
+        self.questDataManager = questDataManager
+    }
 }
 
 extension QuestElementProcessor: QuestElementProcessing {

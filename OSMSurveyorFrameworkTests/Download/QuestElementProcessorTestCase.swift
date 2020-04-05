@@ -12,13 +12,17 @@ import XCTest
 class QuestElementProcessorTestCase: XCTestCase {
     
     var processor: QuestElementProcessing!
+    var questDataManagerMock: QuestDataManagerMock!
 
     override func setUpWithError() throws {
-        processor = QuestElementProcessor()
+        questDataManagerMock = QuestDataManagerMock()
+        
+        processor = QuestElementProcessor(questDataManager: questDataManagerMock)
     }
 
     override func tearDownWithError() throws {
         processor = nil
+        questDataManagerMock = nil
     }
 
 }
