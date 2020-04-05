@@ -42,8 +42,17 @@ extension OverpassQuestManager: QuestManaging {
         for quest in questsToDownload {
             let query = quest.query(boundingBox: boundingBox)
             
-            queryExecutor.execute(query: query) { result in
-                /// TODO: Implement me.
+            queryExecutor.execute(query: query) { [weak self] result in
+                guard let self = self else { return }
+                
+                switch result {
+                case let .failure(error):
+                    print("Failed to execute query: \(error.localizedDescription)")
+                case let .success(elements):
+                    self.questElementProcessor.processElements(elements,
+                                                               in: boundingBox,
+                                                               forQuestOfType: quest.type)
+                }
             }
         }
     }

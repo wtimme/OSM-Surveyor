@@ -146,5 +146,58 @@ class OverpassQuestManagerTestCase: XCTestCase {
         /// Then
         XCTAssertEqual(queryExecutorMock.executeQueryArguments?.query, secondQuestMock.queryToReturn)
     }
+    
+    func testUpdateQuestsInBoundingBox_whenQueryResultedInError_shouldNotMarkTilesRectAsDownloaded() {
+        /// Given
+        let error = NSError(domain: "com.sample.error", code: 1, userInfo: nil)
+        let queryExecutorResult: OverpassQueryResult = .failure(error)
+        
+        questProviderMock.quests = [OverpassQuestMock(type: "ExampleQuest")]
+        
+        /// When
+        manager.updateQuests(in: BoundingBox(minimum: Coordinate(latitude: 0, longitude: 0),
+                                             maximum: Coordinate(latitude: 0, longitude: 0)),
+                             ignoreDownloadedQuestsBefore: Date())
+        
+        queryExecutorMock.executeQueryArguments?.completion(queryExecutorResult)
+        
+        /// Then
+        XCTAssertFalse(questElementProcessorMock.didCallProcessElements)
+    }
+    
+    func testUpdateQuestsInBoundingBox_whenQueryWasSuccessful_shouldAskQuestElementProcessorToProcess() {
+        /// Given
+        let questType = "ExampleQuest"
+        
+        let boundingBox = BoundingBox(minimum: Coordinate(latitude: 53.0123, longitude: 9.0123),
+                                      maximum: Coordinate(latitude: 54.987, longitude: 10.987))
+        
+        let element = Node(id: 1,
+                           coordinate: Coordinate(latitude: 53.1, longitude: 9.5),
+                           version: 2,
+                           tags: ["lorem": "ipsum"])
+        let elementGeometry = ElementGeometry(type: .node,
+                                              elementId: 1,
+                                              polylines: nil,
+                                              polygons: nil,
+                                              center: Coordinate(latitude: 53.1, longitude: 9.5))
+        let elements = [(element, elementGeometry)]
+        
+        let queryExecutorResult: OverpassQueryResult = .success(elements)
+        
+        questProviderMock.quests = [OverpassQuestMock(type: questType)]
+        
+        /// When
+        manager.updateQuests(in: boundingBox, ignoreDownloadedQuestsBefore: Date())
+        
+        queryExecutorMock.executeQueryArguments?.completion(queryExecutorResult)
+        
+        /// Then
+        XCTAssertTrue(questElementProcessorMock.didCallProcessElements)
+        XCTAssertEqual(questElementProcessorMock.processElementsArguments?.elements.first?.0 as? Node, element)
+        XCTAssertEqual(questElementProcessorMock.processElementsArguments?.elements.first?.1, elementGeometry)
+        XCTAssertEqual(questElementProcessorMock.processElementsArguments?.boundingBox, boundingBox)
+        XCTAssertEqual(questElementProcessorMock.processElementsArguments?.questType, questType)
+    }
 
 }
