@@ -8,20 +8,18 @@
 
 import Foundation
 
-final class AddBenchBackrestQuest: QuestTypeProtocol {
-    func download(boundingBox: BoundingBox, using downloader: OverpassDownloading, _ completion: @escaping (Result<[(Element, ElementGeometry?)], Error>) -> Void) {
+final class AddBenchBackrestQuest: OverpassQuest {
+    func query(boundingBox: BoundingBox) -> String {
         let queryWithPlaceholder = """
         node["amenity"="bench"]["backrest"!~".*"]{{bbox}};
         """
         
         let queryWithBoundingBox = queryWithPlaceholder.replacingOccurrences(of: "{{bbox}}", with: boundingBox.toOverpassBoundingBoxFilter())
         
-        let query = """
+        return """
         [out:json];
         \(queryWithBoundingBox)
         out;
         """
-        
-        downloader.fetchElements(query: query, completion)
     }
 }
