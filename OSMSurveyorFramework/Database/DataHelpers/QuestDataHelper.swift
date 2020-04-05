@@ -8,7 +8,6 @@
 
 import Foundation
 import SQLite
-import SwiftOverpassAPI
 
 class QuestDataHelper: DataHelperProtocol {
     static let TABLE_NAME = "osm_quests"
