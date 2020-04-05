@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Node {
+struct Node: Element {
+    let type: ElementGeometry.ElementType = .node
     let id: Int64
     let coordinate: Coordinate
     let version: Int64
