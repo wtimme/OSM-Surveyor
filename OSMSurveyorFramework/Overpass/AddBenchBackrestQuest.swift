@@ -9,7 +9,7 @@
 import Foundation
 
 final class AddBenchBackrestQuest: OverpassQuest {
-    func query(boundingBox: BoundingBox) -> String {
+    func query(boundingBox: BoundingBox) -> OverpassQuery {
         let queryWithPlaceholder = """
         node["amenity"="bench"]["backrest"!~".*"]{{bbox}};
         """
