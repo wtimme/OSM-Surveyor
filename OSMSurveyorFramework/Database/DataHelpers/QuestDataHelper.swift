@@ -123,4 +123,29 @@ class QuestDataHelper: DataHelperProtocol {
                      elementType: elementType,
                      elementId: row[element_id])
     }
+    
+    static private func insert(questType: String, elementId: Int, geometry: ElementGeometry) throws {
+        let quest = Quest(id: 0,
+                          type: questType,
+                          status: .new,
+                          lastUpdate: Date(),
+                          elementType: geometry.type,
+                          elementId: elementId)
+        
+        try _ = insert(item: quest)
+    }
+}
+
+extension QuestDataHelper: QuestDataManaging {
+    func insert(questType: String, elementId: Int, geometry: ElementGeometry) {
+        do {
+            try QuestDataHelper.insert(questType: questType,
+                                       elementId: elementId,
+                                       geometry: geometry)
+        } catch {
+            assertionFailure("Failed to insert Quest: \(error.localizedDescription)")
+        }
+    }
+    
+    
 }
