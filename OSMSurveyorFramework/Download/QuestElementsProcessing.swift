@@ -9,6 +9,7 @@
 import Foundation
 
 /// An object that processes downloaded elements for a quest.
+/// The logic implemented is similar to StreetComplete's `OsmQuestDownloader`.
 protocol QuestElementProcessing {
     /// Processes the given elements.
     /// - Parameters:
