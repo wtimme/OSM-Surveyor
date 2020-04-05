@@ -24,5 +24,14 @@ class OverpassQuestManagerTestCase: XCTestCase {
         manager = nil
         downloadedQuestTypesManagerMock = nil
     }
+    
+    // MARK: updateQuests(in:)
+    
+    func testUpdateQuestsInBoundingBox_whenCalled_shouldAskDownloadedQuestTypesManagerForDownloadedQuestTypes() {
+        manager.updateQuests(in: BoundingBox(minimum: Coordinate(latitude: 0, longitude: 0),
+                                             maximum: Coordinate(latitude: 0, longitude: 0)))
+        
+        XCTAssertTrue(downloadedQuestTypesManagerMock.didCallFindDownloadedQuestTypes)
+    }
 
 }
