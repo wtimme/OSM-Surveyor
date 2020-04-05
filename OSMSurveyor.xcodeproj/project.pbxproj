@@ -44,6 +44,7 @@
 		64A77B452439B840000A9822 /* Element.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B442439B840000A9822 /* Element.swift */; };
 		64A77B4A243A20DC000A9822 /* OverpassQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B49243A20DC000A9822 /* OverpassQuest.swift */; };
 		64A77B4D243A2291000A9822 /* OverpassQuestTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B4C243A2291000A9822 /* OverpassQuestTestCase.swift */; };
+		64A77B52243A2602000A9822 /* OverpassQueryExecuting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B51243A2602000A9822 /* OverpassQueryExecuting.swift */; };
 		64B58EC7243515A000EE88C7 /* CameraPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB4F242A97790098536A /* CameraPosition.swift */; };
 		64B58EC9243516EC00EE88C7 /* MapViewQuestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B58EC8243516EC00EE88C7 /* MapViewQuestDownloader.swift */; };
 		64BDCB52242A98E70098536A /* MapViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */; };
@@ -152,6 +153,7 @@
 		64A77B442439B840000A9822 /* Element.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Element.swift; sourceTree = "<group>"; };
 		64A77B49243A20DC000A9822 /* OverpassQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverpassQuest.swift; sourceTree = "<group>"; };
 		64A77B4C243A2291000A9822 /* OverpassQuestTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverpassQuestTestCase.swift; sourceTree = "<group>"; };
+		64A77B51243A2602000A9822 /* OverpassQueryExecuting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverpassQueryExecuting.swift; sourceTree = "<group>"; };
 		64B58EC8243516EC00EE88C7 /* MapViewQuestDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewQuestDownloader.swift; sourceTree = "<group>"; };
 		64BDCB4F242A97790098536A /* CameraPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPosition.swift; sourceTree = "<group>"; };
 		64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerProtocol.swift; sourceTree = "<group>"; };
@@ -345,6 +347,7 @@
 			children = (
 				64A77B49243A20DC000A9822 /* OverpassQuest.swift */,
 				641621102433774A00C4670C /* AddBenchBackrestQuest.swift */,
+				64A77B51243A2602000A9822 /* OverpassQueryExecuting.swift */,
 			);
 			path = Overpass;
 			sourceTree = "<group>";
@@ -745,6 +748,7 @@
 				64A77B3F24390CC0000A9822 /* ElementsGeometryDataHelper.swift in Sources */,
 				641AEEA8242E6520000CA2A2 /* Tile.swift in Sources */,
 				64A77B4A243A20DC000A9822 /* OverpassQuest.swift in Sources */,
+				64A77B52243A2602000A9822 /* OverpassQueryExecuting.swift in Sources */,
 				64A77B4124390E3D000A9822 /* ElementGeometry.swift in Sources */,
 				64A77B3D24390B45000A9822 /* FullQuestsViewDataHelper.swift in Sources */,
 				64EB1DC324370AAD00010FFC /* QuestController.swift in Sources */,
