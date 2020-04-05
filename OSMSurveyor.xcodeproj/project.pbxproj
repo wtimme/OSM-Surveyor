@@ -57,6 +57,7 @@
 		64A77B67243A45A7000A9822 /* QuestElementProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B66243A45A7000A9822 /* QuestElementProcessor.swift */; };
 		64A77B69243A45F7000A9822 /* QuestElementProcessorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B68243A45F7000A9822 /* QuestElementProcessorMock.swift */; };
 		64A77B6B243A498D000A9822 /* QuestElementProcessorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B6A243A498D000A9822 /* QuestElementProcessorTestCase.swift */; };
+		64A77B6E243A4B99000A9822 /* Node+MakeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B6D243A4B99000A9822 /* Node+MakeNode.swift */; };
 		64B58EC7243515A000EE88C7 /* CameraPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB4F242A97790098536A /* CameraPosition.swift */; };
 		64B58EC9243516EC00EE88C7 /* MapViewQuestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64B58EC8243516EC00EE88C7 /* MapViewQuestDownloader.swift */; };
 		64BDCB52242A98E70098536A /* MapViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */; };
@@ -178,6 +179,7 @@
 		64A77B66243A45A7000A9822 /* QuestElementProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestElementProcessor.swift; sourceTree = "<group>"; };
 		64A77B68243A45F7000A9822 /* QuestElementProcessorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestElementProcessorMock.swift; sourceTree = "<group>"; };
 		64A77B6A243A498D000A9822 /* QuestElementProcessorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestElementProcessorTestCase.swift; sourceTree = "<group>"; };
+		64A77B6D243A4B99000A9822 /* Node+MakeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Node+MakeNode.swift"; sourceTree = "<group>"; };
 		64B58EC8243516EC00EE88C7 /* MapViewQuestDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewQuestDownloader.swift; sourceTree = "<group>"; };
 		64BDCB4F242A97790098536A /* CameraPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPosition.swift; sourceTree = "<group>"; };
 		64BDCB51242A98E70098536A /* MapViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewControllerProtocol.swift; sourceTree = "<group>"; };
@@ -405,6 +407,7 @@
 		64A77B6C243A4B8D000A9822 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				64A77B6D243A4B99000A9822 /* Node+MakeNode.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -831,6 +834,7 @@
 				64A77B69243A45F7000A9822 /* QuestElementProcessorMock.swift in Sources */,
 				64A77B3B2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift in Sources */,
 				641AEEAF242E6996000CA2A2 /* BoundingBoxTestCase.swift in Sources */,
+				64A77B6E243A4B99000A9822 /* Node+MakeNode.swift in Sources */,
 				64A77B4D243A2291000A9822 /* OverpassQuestTestCase.swift in Sources */,
 				64A77B5F243A3186000A9822 /* OverpassQuestProviderMock.swift in Sources */,
 				64A77B56243A2831000A9822 /* OverpassQuestManagerTestCase.swift in Sources */,
