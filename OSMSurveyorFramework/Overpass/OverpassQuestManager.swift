@@ -14,15 +14,18 @@ final class OverpassQuestManager {
     private let queryExecutor: OverpassQueryExecuting
     private let zoomForDownloadedTiles: Int
     private let downloadedQuestTypesManager: DownloadedQuestTypesManaging
+    private let questElementProcessor: QuestElementProcessing
     
     init(questProvider: OverpassQuestProviding,
          queryExecutor: OverpassQueryExecuting,
          zoomForDownloadedTiles: Int,
-         downloadedQuestTypesManager: DownloadedQuestTypesManaging) {
+         downloadedQuestTypesManager: DownloadedQuestTypesManaging,
+         questElementProcessor: QuestElementProcessing) {
         self.questProvider = questProvider
         self.queryExecutor = queryExecutor
         self.zoomForDownloadedTiles = zoomForDownloadedTiles
         self.downloadedQuestTypesManager = downloadedQuestTypesManager
+        self.questElementProcessor = questElementProcessor
     }
 }
 

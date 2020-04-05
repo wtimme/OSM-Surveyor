@@ -17,16 +17,19 @@ class OverpassQuestManagerTestCase: XCTestCase {
     private var questProviderMock: OverpassQuestProviderMock!
     private var queryExecutorMock: OverpassQueryExecutorMock!
     private var downloadedQuestTypesManagerMock: DownloadedQuestTypesManagerMock!
+    private var questElementProcessorMock: QuestElementProcessorMock!
 
     override func setUpWithError() throws {
         questProviderMock = OverpassQuestProviderMock()
         queryExecutorMock = OverpassQueryExecutorMock()
         downloadedQuestTypesManagerMock = DownloadedQuestTypesManagerMock()
+        questElementProcessorMock = QuestElementProcessorMock()
         
         manager = OverpassQuestManager(questProvider: questProviderMock,
                                        queryExecutor: queryExecutorMock,
                                        zoomForDownloadedTiles: zoomForTiles,
-                                       downloadedQuestTypesManager: downloadedQuestTypesManagerMock)
+                                       downloadedQuestTypesManager: downloadedQuestTypesManagerMock,
+                                       questElementProcessor: questElementProcessorMock)
     }
 
     override func tearDownWithError() throws {
@@ -34,6 +37,7 @@ class OverpassQuestManagerTestCase: XCTestCase {
         questProviderMock = nil
         queryExecutorMock = nil
         downloadedQuestTypesManagerMock = nil
+        questElementProcessorMock = nil
     }
     
     // MARK: updateQuests(in:)
