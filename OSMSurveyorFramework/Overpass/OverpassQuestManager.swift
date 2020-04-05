@@ -10,15 +10,20 @@ import Foundation
 
 final class OverpassQuestManager {
     // MARK: Private properties
+    private let zoomForDownloadedTiles: Int
     private let downloadedQuestTypesManager: DownloadedQuestTypesManaging
     
-    init(downloadedQuestTypesManager: DownloadedQuestTypesManaging) {
+    init(zoomForDownloadedTiles: Int,
+         downloadedQuestTypesManager: DownloadedQuestTypesManaging) {
+        self.zoomForDownloadedTiles = zoomForDownloadedTiles
         self.downloadedQuestTypesManager = downloadedQuestTypesManager
     }
 }
 
 extension OverpassQuestManager: QuestManaging {
     func updateQuests(in boundingBox: BoundingBox) {
-        _ = downloadedQuestTypesManager.findDownloadedQuestTypes(in: TilesRect(left: 0, top: 1, right: 2, bottom: 3), ignoreOlderThan: Date())
+        let tilesRect = boundingBox.enclosingTilesRect(zoom: zoomForDownloadedTiles)
+        
+        _ = downloadedQuestTypesManager.findDownloadedQuestTypes(in: tilesRect, ignoreOlderThan: Date())
     }
 }

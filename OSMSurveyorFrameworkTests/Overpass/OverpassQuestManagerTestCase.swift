@@ -11,13 +11,16 @@ import XCTest
 
 class OverpassQuestManagerTestCase: XCTestCase {
     
+    private let zoomForTiles = 42
+    
     private var manager: OverpassQuestManager!
     private var downloadedQuestTypesManagerMock: DownloadedQuestTypesManagerMock!
 
     override func setUpWithError() throws {
         downloadedQuestTypesManagerMock = DownloadedQuestTypesManagerMock()
         
-        manager = OverpassQuestManager(downloadedQuestTypesManager: downloadedQuestTypesManagerMock)
+        manager = OverpassQuestManager(zoomForDownloadedTiles: zoomForTiles,
+                                       downloadedQuestTypesManager: downloadedQuestTypesManagerMock)
     }
 
     override func tearDownWithError() throws {
@@ -32,6 +35,19 @@ class OverpassQuestManagerTestCase: XCTestCase {
                                              maximum: Coordinate(latitude: 0, longitude: 0)))
         
         XCTAssertTrue(downloadedQuestTypesManagerMock.didCallFindDownloadedQuestTypes)
+    }
+    
+    func testUpdateQuestsInBoundingBox_whenCalled_shouldAskDownloadedQuestTypesManagerForDownloadedQuestTypesWithTheCorrectTilesRect() {
+        /// Given
+        let boundingBox = BoundingBox(minimum: Coordinate(latitude: 53.0123, longitude: 9.0123),
+                                      maximum: Coordinate(latitude: 54.987, longitude: 10.987))
+        
+        /// When
+        manager.updateQuests(in: boundingBox)
+        
+        /// Then
+        XCTAssertEqual(downloadedQuestTypesManagerMock.findDownloadedQuestTypesArguments?.tilesRect,
+                       boundingBox.enclosingTilesRect(zoom: zoomForTiles))
     }
 
 }
