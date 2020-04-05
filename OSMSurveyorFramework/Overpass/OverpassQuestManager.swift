@@ -9,4 +9,10 @@
 import Foundation
 
 final class OverpassQuestManager {
+    // MARK: Private properties
+    private let downloadedQuestTypesManager: DownloadedQuestTypesManaging
+    
+    init(downloadedQuestTypesManager: DownloadedQuestTypesManaging) {
+        self.downloadedQuestTypesManager = downloadedQuestTypesManager
+    }
 }

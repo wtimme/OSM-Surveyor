@@ -12,13 +12,17 @@ import XCTest
 class OverpassQuestManagerTestCase: XCTestCase {
     
     private var manager: OverpassQuestManager!
+    private var downloadedQuestTypesManagerMock: DownloadedQuestTypesManagerMock!
 
     override func setUpWithError() throws {
-        manager = OverpassQuestManager()
+        downloadedQuestTypesManagerMock = DownloadedQuestTypesManagerMock()
+        
+        manager = OverpassQuestManager(downloadedQuestTypesManager: downloadedQuestTypesManagerMock)
     }
 
     override func tearDownWithError() throws {
         manager = nil
+        downloadedQuestTypesManagerMock = nil
     }
 
 }
