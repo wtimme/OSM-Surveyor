@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftOverpassAPI
 
 final class AddBenchBackrestQuest: QuestTypeProtocol {
     func download(boundingBox: BoundingBox, using downloader: OverpassDownloading, _ completion: @escaping (Result<[(Element, ElementGeometry?)], Error>) -> Void) {
