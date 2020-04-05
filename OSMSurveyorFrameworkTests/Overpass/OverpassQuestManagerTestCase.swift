@@ -50,5 +50,18 @@ class OverpassQuestManagerTestCase: XCTestCase {
         XCTAssertEqual(downloadedQuestTypesManagerMock.findDownloadedQuestTypesArguments?.tilesRect,
                        boundingBox.enclosingTilesRect(zoom: zoomForTiles))
     }
+    
+    func testUpdateQuestsInBoundingBox_whenCalled_shouldAskDownloadedQuestTypesManagerForDownloadedQuestTypesWithTheCorrectDate() {
+        /// Given
+        let date = Date(timeIntervalSinceNow: -60 * 60 * 24)
+        
+        /// When
+        manager.updateQuests(in: BoundingBox(minimum: Coordinate(latitude: 0, longitude: 0),
+                                             maximum: Coordinate(latitude: 0, longitude: 0)),
+                             ignoreDownloadedQuestsBefore: date)
+        
+        /// Then
+        XCTAssertEqual(downloadedQuestTypesManagerMock.findDownloadedQuestTypesArguments?.date, date)
+    }
 
 }
