@@ -10,7 +10,7 @@ import Foundation
 import SwiftOverpassAPI
 
 protocol OverpassDownloading {
-    func fetchElements(query: String, _ completion: @escaping (Result<[Int: OPElement], Error>) -> Void)
+    func fetchElements(query: String, _ completion: @escaping (Result<[(Element, ElementGeometry?)], Error>) -> Void)
 }
 
 class OverpassDownloader {
@@ -26,14 +26,22 @@ class OverpassDownloader {
 }
 
 extension OverpassDownloader: OverpassDownloading {
-    func fetchElements(query: String, _ completion: @escaping (Result<[Int : OPElement], Error>) -> Void) {
-        client.fetchElements(query: query) { result in
+    func fetchElements(query: String, _ completion: @escaping (Result<[(Element, ElementGeometry?)], Error>) -> Void) {
+        client.fetchElements(query: query) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
             case let .failure(error):
                 completion(.failure(error))
             case let .success(elements):
-                completion(.success(elements))
+                self.processElements(Array(elements.values)) { processedElements in
+                    completion(.success(processedElements))
+                }
             }
         }
+    }
+    
+    private func processElements(_ overpassElements: [OPElement], completion: @escaping ([(Element, ElementGeometry?)]) -> Void) {
+        /// TODO: Implement me.
     }
 }

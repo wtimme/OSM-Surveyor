@@ -7,12 +7,11 @@
 //
 
 import Foundation
-import SwiftOverpassAPI
 
 protocol QuestTypeProtocol {
     func download(boundingBox: BoundingBox,
                   using downloader: OverpassDownloading,
-                  _ completion: @escaping (Result<[Int: OPElement], Error>) -> Void)
+                  _ completion: @escaping (Result<[(Element, ElementGeometry?)], Error>) -> Void)
     
     var type: String { get }
 }

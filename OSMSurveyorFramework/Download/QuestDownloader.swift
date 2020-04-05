@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwiftOverpassAPI
 
 protocol QuestDownloading {
     /// Download quests in the given `TilesRect`.
@@ -74,7 +73,7 @@ class QuestDownloader {
         }
     }
     
-    private func processDownloadedQuest(_ quest: QuestTypeProtocol, elements: [Int: OPElement]) {
+    private func processDownloadedQuest(_ quest: QuestTypeProtocol, elements: [(Element, ElementGeometry?)]) {
         /// TODO: Implement me.
     }
 }

@@ -8,12 +8,11 @@
 
 import XCTest
 @testable import OSMSurveyorFramework
-import SwiftOverpassAPI
 
 class QuestTypeProtocolTestCase: XCTestCase {
 
     private class MyExampleQuest: QuestTypeProtocol {
-        func download(boundingBox: BoundingBox, using downloader: OverpassDownloading, _ completion: @escaping (Result<[Int : OPElement], Error>) -> Void) {}
+        func download(boundingBox: BoundingBox, using downloader: OverpassDownloading, _ completion: @escaping (Result<[(Element, ElementGeometry?)], Error>) -> Void) {}
     }
     
     func testType_whenUsingDefaultImplementation_shouldReturnClassNameWithoutQuestSuffix() {
