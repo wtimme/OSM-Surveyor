@@ -21,7 +21,7 @@ final class OverpassQuestManager {
 }
 
 extension OverpassQuestManager: QuestManaging {
-    func updateQuests(in boundingBox: BoundingBox) {
+    func updateQuests(in boundingBox: BoundingBox, ignoreDownloadedQuestsBefore date: Date) {
         let tilesRect = boundingBox.enclosingTilesRect(zoom: zoomForDownloadedTiles)
         
         _ = downloadedQuestTypesManager.findDownloadedQuestTypes(in: tilesRect, ignoreOlderThan: Date())

@@ -32,7 +32,8 @@ class OverpassQuestManagerTestCase: XCTestCase {
     
     func testUpdateQuestsInBoundingBox_whenCalled_shouldAskDownloadedQuestTypesManagerForDownloadedQuestTypes() {
         manager.updateQuests(in: BoundingBox(minimum: Coordinate(latitude: 0, longitude: 0),
-                                             maximum: Coordinate(latitude: 0, longitude: 0)))
+                                             maximum: Coordinate(latitude: 0, longitude: 0)),
+                             ignoreDownloadedQuestsBefore: Date())
         
         XCTAssertTrue(downloadedQuestTypesManagerMock.didCallFindDownloadedQuestTypes)
     }
@@ -43,7 +44,7 @@ class OverpassQuestManagerTestCase: XCTestCase {
                                       maximum: Coordinate(latitude: 54.987, longitude: 10.987))
         
         /// When
-        manager.updateQuests(in: boundingBox)
+        manager.updateQuests(in: boundingBox, ignoreDownloadedQuestsBefore: Date())
         
         /// Then
         XCTAssertEqual(downloadedQuestTypesManagerMock.findDownloadedQuestTypesArguments?.tilesRect,

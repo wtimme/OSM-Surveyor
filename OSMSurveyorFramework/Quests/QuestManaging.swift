@@ -11,5 +11,7 @@ import Foundation
 protocol QuestManaging {
     /// Updates the `Quest`s in the given `BoundingBox`
     /// - Parameter boundingBox: The `BoundingBox` in which to update the quests.
-    func updateQuests(in boundingBox: BoundingBox)
+    /// - Parameter ignoreDownloadedQuestsBefore: Already downloaded quests that are older than this `Date` are not considered "downloaded" anymore, and will be fetched again.
+    func updateQuests(in boundingBox: BoundingBox,
+                      ignoreDownloadedQuestsBefore date: Date)
 }
