@@ -22,7 +22,7 @@ public protocol MapViewQuestDownloading {
 
 public final class MapViewQuestDownloader {
     public static let shared: MapViewQuestDownloader = {
-        let questProvider = QuestProvider(quests: [AddBenchBackrestQuest()])
+        let questProvider = QuestProvider(quests: [])
         let downloadedQuestTypesManager = DownloadedTileDataHelper()
         let overpassDownloader = OverpassDownloader()
         

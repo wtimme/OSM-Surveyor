@@ -19,7 +19,7 @@ class QuestProvider {
     
     // MARK: Initializer
     
-    init(quests: [QuestTypeProtocol] = [AddBenchBackrestQuest()]) {
+    init(quests: [QuestTypeProtocol] = []) {
         self.quests = quests
     }
 }
