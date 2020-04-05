@@ -16,3 +16,11 @@ protocol OverpassQuest {
     /// - Parameter boundingBox: The bounding box for which to get the query.
     func query(boundingBox: BoundingBox) -> String
 }
+
+extension OverpassQuest {
+    var type: String {
+        guard let className = String(describing: self).split(separator: ".").last else { return "" }
+        
+        return className.replacingOccurrences(of: "Quest", with: "")
+    }
+}
