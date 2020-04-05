@@ -11,13 +11,16 @@ import Foundation
 final class OverpassQuestManager {
     // MARK: Private properties
     private let questProvider: OverpassQuestProviding
+    private let queryExecutor: OverpassQueryExecuting
     private let zoomForDownloadedTiles: Int
     private let downloadedQuestTypesManager: DownloadedQuestTypesManaging
     
     init(questProvider: OverpassQuestProviding,
+         queryExecutor: OverpassQueryExecuting,
          zoomForDownloadedTiles: Int,
          downloadedQuestTypesManager: DownloadedQuestTypesManaging) {
         self.questProvider = questProvider
+        self.queryExecutor = queryExecutor
         self.zoomForDownloadedTiles = zoomForDownloadedTiles
         self.downloadedQuestTypesManager = downloadedQuestTypesManager
     }
