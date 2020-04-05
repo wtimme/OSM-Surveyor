@@ -15,3 +15,5 @@ struct Node: Element {
     let version: Int64
     let tags: [String: String]
 }
+
+extension Node: Equatable {}
