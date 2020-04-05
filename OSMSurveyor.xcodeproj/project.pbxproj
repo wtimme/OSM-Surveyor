@@ -366,6 +366,13 @@
 			path = Overpass;
 			sourceTree = "<group>";
 		};
+		64A77B57243A28AC000A9822 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		64B58ECA2435191100EE88C7 /* Download */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +412,7 @@
 		64D4D8D72427F7F900FB900A /* OSMSurveyorFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				64A77B57243A28AC000A9822 /* Mocks */,
 				64A77B4B243A2283000A9822 /* Overpass */,
 				6416211224337FFF00C4670C /* Quests */,
 				64B58ECA2435191100EE88C7 /* Download */,
