@@ -71,5 +71,76 @@ class OverpassQuestManagerTestCase: XCTestCase {
         /// Then
         XCTAssertEqual(downloadedQuestTypesManagerMock.findDownloadedQuestTypesArguments?.date, date)
     }
+    
+    func testUpdateQuestsInBoundingBox_whenQuestTypeHasBeenDownloaded_shouldNotExecuteQuery() {
+        /// Given
+        let questType = "ExampleQuest"
+        let questMock = OverpassQuestMock(type: questType)
+        questProviderMock.quests = [questMock]
+        
+        downloadedQuestTypesManagerMock.findDownloadedQuestTypesReturnValue = [questType]
+        
+        /// When
+        manager.updateQuests(in: BoundingBox(minimum: Coordinate(latitude: 0, longitude: 0),
+                                             maximum: Coordinate(latitude: 0, longitude: 0)),
+                             ignoreDownloadedQuestsBefore: Date())
+        
+        /// Then
+        XCTAssertFalse(queryExecutorMock.didCallExecuteQuery)
+    }
+    
+    func testUpdateQuestsInBoundingBox_whenQuestTypeHasNotYetBeenDownloaded_shouldExecuteQuery() {
+        /// Given
+        let questMock = OverpassQuestMock(type: "ExampleQuest")
+        questProviderMock.quests = [questMock]
+        
+        downloadedQuestTypesManagerMock.findDownloadedQuestTypesReturnValue = []
+        
+        /// When
+        manager.updateQuests(in: BoundingBox(minimum: Coordinate(latitude: 0, longitude: 0),
+                                             maximum: Coordinate(latitude: 0, longitude: 0)),
+                             ignoreDownloadedQuestsBefore: Date())
+        
+        /// Then
+        XCTAssertTrue(queryExecutorMock.didCallExecuteQuery)
+    }
+    
+    func testUpdateQuestsInBoundingBox_whenCalled_shouldAskQuestForQueryInBoundingBox() {
+        /// Given
+        let boundingBox = BoundingBox(minimum: Coordinate(latitude: 53.0123, longitude: 9.0123),
+                                      maximum: Coordinate(latitude: 54.987, longitude: 10.987))
+        
+        let questMock = OverpassQuestMock(type: "ExampleQuest")
+        
+        questProviderMock.quests = [questMock]
+        
+        /// When
+        manager.updateQuests(in: boundingBox,
+                             ignoreDownloadedQuestsBefore: Date())
+        
+        /// Then
+        XCTAssertEqual(questMock.queryBoundingBox, boundingBox)
+    }
+    
+    func testUpdateQuestsInBoundingBox_whenCalled_shouldExecuteQueryOfNotDownloaded() {
+        /// Given
+        let typeOfDownloadedQuest = "FirstQuest"
+        let firstQuestMock = OverpassQuestMock(type: typeOfDownloadedQuest)
+        
+        let secondQuestMock = OverpassQuestMock(type: "SecondQuest")
+        secondQuestMock.queryToReturn = "lorem ipsum"
+        
+        questProviderMock.quests = [firstQuestMock, secondQuestMock]
+        
+        downloadedQuestTypesManagerMock.findDownloadedQuestTypesReturnValue = [typeOfDownloadedQuest]
+        
+        /// When
+        manager.updateQuests(in: BoundingBox(minimum: Coordinate(latitude: 0, longitude: 0),
+                                             maximum: Coordinate(latitude: 0, longitude: 0)),
+                             ignoreDownloadedQuestsBefore: Date())
+        
+        /// Then
+        XCTAssertEqual(queryExecutorMock.executeQueryArguments?.query, secondQuestMock.queryToReturn)
+    }
 
 }

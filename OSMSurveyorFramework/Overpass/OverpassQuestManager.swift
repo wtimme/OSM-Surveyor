@@ -30,6 +30,18 @@ extension OverpassQuestManager: QuestManaging {
     func updateQuests(in boundingBox: BoundingBox, ignoreDownloadedQuestsBefore date: Date) {
         let tilesRect = boundingBox.enclosingTilesRect(zoom: zoomForDownloadedTiles)
         
-        _ = downloadedQuestTypesManager.findDownloadedQuestTypes(in: tilesRect, ignoreOlderThan: date)
+        let downloadedQuestTypes = downloadedQuestTypesManager.findDownloadedQuestTypes(in: tilesRect, ignoreOlderThan: date)
+        
+        let questsToDownload = questProvider.quests.filter { quest in
+            return !downloadedQuestTypes.contains(quest.type)
+        }
+        
+        for quest in questsToDownload {
+            let query = quest.query(boundingBox: boundingBox)
+            
+            queryExecutor.execute(query: query) { result in
+                /// TODO: Implement me.
+            }
+        }
     }
 }
