@@ -9,6 +9,17 @@
 import Foundation
 import SQLite
 
+protocol QuestDataManaging {
+    /// Inserts a new `Quest`.
+    /// - Parameters:
+    ///   - questType: The type of the `Quest`.
+    ///   - elementId: The ID of the related element.
+    ///   - geometry: The `ElementGeometry` of the quest.
+    func insert(questType: String,
+                elementId: Int,
+                geometry: ElementGeometry)
+}
+
 class QuestDataHelper: DataHelperProtocol {
     static let TABLE_NAME = "osm_quests"
    
