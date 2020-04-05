@@ -347,6 +347,13 @@
 			path = Overpass;
 			sourceTree = "<group>";
 		};
+		64A77B4B243A2283000A9822 /* Overpass */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Overpass;
+			sourceTree = "<group>";
+		};
 		64B58ECA2435191100EE88C7 /* Download */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +393,7 @@
 		64D4D8D72427F7F900FB900A /* OSMSurveyorFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				64A77B4B243A2283000A9822 /* Overpass */,
 				6416211224337FFF00C4670C /* Quests */,
 				64B58ECA2435191100EE88C7 /* Download */,
 				641AEEAD242E698D000CA2A2 /* OSM */,
