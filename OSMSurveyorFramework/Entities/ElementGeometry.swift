@@ -25,3 +25,5 @@ struct ElementGeometry {
     let polygons: [Polygon]?
     let center: Coordinate
 }
+
+extension ElementGeometry: Equatable {}
