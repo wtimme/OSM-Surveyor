@@ -20,6 +20,13 @@ final class QuestElementProcessor {
 
 extension QuestElementProcessor: QuestElementProcessing {
     func processElements(_ elements: [(Element, ElementGeometry?)], in boundingBox: BoundingBox, forQuestOfType questType: String) {
-        /// TODO: Implement me.
+        for elementToProcess in elements {
+            guard let geometry = elementToProcess.1 else {
+                print("\(questType): Not adding a quest because the element \(elementToProcess.0.type.rawValue)#\(elementToProcess.0.id) has no valid geometry")
+                continue
+            }
+            
+            questDataManager.insert(questType: questType, elementId: Int(elementToProcess.0.id), geometry: geometry)
+        }
     }
 }
