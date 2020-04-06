@@ -24,7 +24,7 @@ extension BoundingBox {
         return "(\(toOverpassBoundingBox()))"
     }
     
-    private func toOverpassBoundingBox() -> String {
+    func toOverpassBoundingBox() -> String {
         let formatter = NumberFormatter()
         
         formatter.locale = Locale(identifier: "en_US")
