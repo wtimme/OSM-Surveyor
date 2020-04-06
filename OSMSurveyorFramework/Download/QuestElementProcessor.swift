@@ -47,5 +47,8 @@ extension QuestElementProcessor: QuestElementProcessing {
             elementGeometryDataManager.insert(geometry)
             nodeDataManager.insert(node)
         }
+        
+        downloadedQuestTypesManager.markQuestTypeAsDownloaded(tilesRect: boundingBox.enclosingTilesRect(zoom: zoomForDownloadedTiles),
+                                                              questType: questType)
     }
 }

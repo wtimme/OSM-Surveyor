@@ -40,6 +40,23 @@ class QuestElementProcessorTestCase: XCTestCase {
         nodeDataManagerMock = nil
     }
     
+    func testProcess_shouldMarkQuestTypeAsDownloaded() {
+        /// Given
+        let questType = "LoremIpsum"
+        let boundingBox = BoundingBox.makeBoundingBox()
+        
+        /// When
+        processor.processElements([],
+                                  in: boundingBox,
+                                  forQuestOfType: questType)
+        
+        /// Then
+        XCTAssertTrue(downloadedQuestTypesManagerMock.didCallMarkQuestTypeAsDownloaded)
+        XCTAssertEqual(downloadedQuestTypesManagerMock.markQuestTypeAsDownloadedArguments?.questType, questType)
+        XCTAssertEqual(downloadedQuestTypesManagerMock.markQuestTypeAsDownloadedArguments?.tilesRect,
+                       boundingBox.enclosingTilesRect(zoom: zoomForTiles))
+    }
+    
     func testProcess_whenElementIsMissingGeometry_shouldNotInsertIntoDatabase() {
         /// Given
         let elementGeometry: ElementGeometry? = nil
