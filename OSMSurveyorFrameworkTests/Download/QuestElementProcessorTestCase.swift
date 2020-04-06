@@ -45,6 +45,7 @@ class QuestElementProcessorTestCase: XCTestCase {
         /// Then
         XCTAssertFalse(questDataManagerMock.didCallInsert)
         XCTAssertFalse(elementGeometryDataManagerMock.didCallInsert)
+        XCTAssertFalse(nodeDataManagerMock.didCallInsert)
     }
     
     func testProcess_whenBothElementAndGeometryArePresent_shouldInsertQuestIntoDatabase() {
@@ -94,6 +95,20 @@ class QuestElementProcessorTestCase: XCTestCase {
         /// Then
         XCTAssertTrue(elementGeometryDataManagerMock.didCallInsert)
         XCTAssertEqual(elementGeometryDataManagerMock.insertElement, elementGeometry)
+    }
+    
+    func testProcess_whenBothElementAndGeometryArePresent_shouldInsertNodeIntoDatabase() {
+        /// Given
+        let element = Node.makeNode()
+        
+        /// When
+        processor.processElements([(element, ElementGeometry.makeGeometry())],
+                                  in: BoundingBox.makeBoundingBox(),
+                                  forQuestOfType: "")
+        
+        /// Then
+        XCTAssertTrue(nodeDataManagerMock.didCallInsert)
+        XCTAssertEqual(nodeDataManagerMock.insertElement, element)
     }
 
 }

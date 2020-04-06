@@ -32,8 +32,14 @@ extension QuestElementProcessor: QuestElementProcessing {
                 continue
             }
             
+            guard let node = elementToProcess.0 as? Node else {
+                assertionFailure("As of now, only nodes are supported.")
+                continue
+            }
+            
             questDataManager.insert(questType: questType, elementId: Int(elementToProcess.0.id), geometry: geometry)
             elementGeometryDataManager.insert(geometry)
+            nodeDataManager.insert(node)
         }
     }
 }
