@@ -32,8 +32,8 @@ class FullQuestsViewHelper {
         }
     }
     
-    static func findElementKeysForQuests(ofTypes questTypes: [String], in boundingBox: BoundingBox) -> [ElementKey] {
-        guard let db = db else { return [] }
+    private static func findRows(ofTypes questTypes: [String], in boundingBox: BoundingBox) -> AnySequence<Row>? {
+        guard let db = db else { return nil }
         
         var query = view
         if !questTypes.isEmpty {
@@ -46,22 +46,28 @@ class FullQuestsViewHelper {
         do {
             let rows = try db.prepare(query)
             
-            return rows.compactMap { row in
-                guard
-                    let elementTypeAsString = try? row.get(QuestDataHelper.element_type),
-                    let elementType = ElementGeometry.ElementType(rawValue: elementTypeAsString),
-                    let elementId = try? row.get(QuestDataHelper.element_id)
-                else {
-                    return nil
-                }
-                
-                return ElementKey(elementType: elementType, elementId: elementId)
-            }
+            return rows
         } catch {
             assertionFailure("Failed to find element keys")
         }
         
-        return []
+        return nil
+    }
+    
+    static func findElementKeysForQuests(ofTypes questTypes: [String], in boundingBox: BoundingBox) -> [ElementKey] {
+        guard let rows = findRows(ofTypes: questTypes, in: boundingBox) else { return [] }
+        
+        return rows.compactMap { row in
+            guard
+                let elementTypeAsString = try? row.get(QuestDataHelper.element_type),
+                let elementType = ElementGeometry.ElementType(rawValue: elementTypeAsString),
+                let elementId = try? row.get(QuestDataHelper.element_id)
+            else {
+                return nil
+            }
+            
+            return ElementKey(elementType: elementType, elementId: elementId)
+        }
     }
 }
 
