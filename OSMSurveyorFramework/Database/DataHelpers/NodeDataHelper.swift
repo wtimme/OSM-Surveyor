@@ -9,6 +9,12 @@
 import Foundation
 import SQLite
 
+protocol NodeDataManaging {
+    /// Inserts the given `Node`.
+    /// - Parameter node: The `Node` to insert.
+    func insert(_ node: Node)
+}
+
 class NodeDataHelper: DataHelperProtocol {
     static let TABLE_NAME = "osm_nodes"
    
