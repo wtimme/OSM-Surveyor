@@ -52,7 +52,7 @@ extension OverpassDownloader: OverpassDownloading {
             let resultingElement = Node(id: singleElement.id,
                                         coordinate: Coordinate(latitude: coordinate.latitude,
                                                                longitude: coordinate.longitude),
-                                        version: -1,
+                                        version: singleElement.meta?.version ?? -1,
                                         tags: singleElement.tags)
             
             let elementGeometry = ElementGeometry(type: .node,
