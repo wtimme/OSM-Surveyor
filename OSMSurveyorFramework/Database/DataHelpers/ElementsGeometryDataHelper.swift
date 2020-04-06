@@ -72,6 +72,7 @@ class ElementsGeometryDataHelper: DataHelperProtocol {
         }
 
         let insert = table.insert(
+            or: .replace,
             element_type <- item.type.rawValue,
             element_id <- item.elementId,
             geometry_polylines <- polylinesAsData?.datatypeValue,
