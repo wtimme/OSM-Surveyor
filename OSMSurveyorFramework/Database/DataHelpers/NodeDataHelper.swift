@@ -115,3 +115,14 @@ class NodeDataHelper: DataHelperProtocol {
                     tags: tags)
     }
 }
+
+extension NodeDataHelper: NodeDataManaging {
+    func insert(_ node: Node) {
+        do {
+            _ = try NodeDataHelper.insert(item: node)
+        } catch {
+            assertionFailure("Failed to insert element: \(error.localizedDescription)")
+        }
+    }
+}
+
