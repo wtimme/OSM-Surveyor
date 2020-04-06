@@ -32,6 +32,4 @@ extension DownloadedQuestTypesManagerMock: DownloadedQuestTypesManaging {
         
         markQuestTypeAsDownloadedArguments = (tilesRect, questType)
     }
-    
-    
 }
