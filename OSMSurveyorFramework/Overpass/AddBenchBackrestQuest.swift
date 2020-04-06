@@ -19,7 +19,7 @@ final class AddBenchBackrestQuest: OverpassQuest {
         return """
         [out:json];
         \(queryWithBoundingBox)
-        out;
+        out meta;
         """
     }
 }
