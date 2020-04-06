@@ -99,7 +99,8 @@ extension MapViewController: TGMapViewDelegate {
         mapView.fly(to: cameraPosition, withDuration: 1, callback: nil)
         
         let marker = mapView.markerAdd()
-        marker.stylingString = "{ style: 'points', color: 'red', size: [50px, 50px], order: 2000, collide: false }"
+        let pointDiameter = 16
+        marker.stylingString = "{ style: 'points', color: 'lightgray', outline: { width: 2px, color: 'black' }, size: [\(pointDiameter)px, \(pointDiameter)px], order: 2000, collide: false }"
         marker.point = coordinate
     }
     
