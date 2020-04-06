@@ -11,6 +11,8 @@ import XCTest
 
 class QuestElementProcessorTestCase: XCTestCase {
     
+    private let zoomForTiles = 42
+    
     var processor: QuestElementProcessing!
     var downloadedQuestTypesManagerMock: DownloadedQuestTypesManagerMock!
     var questDataManagerMock: QuestDataManagerMock!
@@ -23,7 +25,8 @@ class QuestElementProcessorTestCase: XCTestCase {
         elementGeometryDataManagerMock = ElementGeometryDataManagerMock()
         nodeDataManagerMock = NodeDataManagerMock()
         
-        processor = QuestElementProcessor(downloadedQuestTypesManager: downloadedQuestTypesManagerMock,
+        processor = QuestElementProcessor(zoomForDownloadedTiles: zoomForTiles,
+                                          downloadedQuestTypesManager: downloadedQuestTypesManagerMock,
                                           questDataManager: questDataManagerMock,
                                           elementGeometryDataManager: elementGeometryDataManagerMock,
                                           nodeDataManager: nodeDataManagerMock)

@@ -10,16 +10,19 @@ import Foundation
 
 final class QuestElementProcessor {
     // MARK: Private properties
+    private let zoomForDownloadedTiles: Int
     private let downloadedQuestTypesManager: DownloadedQuestTypesManaging
     private let questDataManager: QuestDataManaging
     private let elementGeometryDataManager: ElementGeometryDataManaging
     private let nodeDataManager: NodeDataManaging
     
     // MARK: Initializer
-    init(downloadedQuestTypesManager: DownloadedQuestTypesManaging,
+    init(zoomForDownloadedTiles: Int,
+         downloadedQuestTypesManager: DownloadedQuestTypesManaging,
          questDataManager: QuestDataManaging,
          elementGeometryDataManager: ElementGeometryDataManaging,
          nodeDataManager: NodeDataManaging) {
+        self.zoomForDownloadedTiles = zoomForDownloadedTiles
         self.downloadedQuestTypesManager = downloadedQuestTypesManager
         self.questDataManager = questDataManager
         self.elementGeometryDataManager = elementGeometryDataManager
