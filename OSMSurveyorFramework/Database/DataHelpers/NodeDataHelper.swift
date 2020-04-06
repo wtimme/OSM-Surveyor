@@ -55,6 +55,7 @@ class NodeDataHelper: DataHelperProtocol {
         let tagsAsData = try encoder.encode(item.tags)
 
         let insert = table.insert(
+            or: .replace,
             id <- item.id,
             latitude <- item.coordinate.latitude,
             longitude <- item.coordinate.longitude,
