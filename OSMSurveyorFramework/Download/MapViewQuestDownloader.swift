@@ -31,23 +31,38 @@ public final class MapViewQuestDownloader {
                                               overpassDownloader: overpassDownloader)
         let questController = QuestController(downloader: questDownloader)
         
-        return MapViewQuestDownloader(questController: questController)
+        let overpassQuestProvider = StaticOverpassQuestProvider()
+        let overpassQueryExecutor = overpassDownloader
+        let zoomForDownloadedTiles = 14
+        let questElementProcessor = QuestElementProcessor(questDataManager: QuestDataHelper())
+        
+        let questManager = OverpassQuestManager(questProvider: overpassQuestProvider,
+                                                queryExecutor: overpassQueryExecutor,
+                                                zoomForDownloadedTiles: zoomForDownloadedTiles,
+                                                downloadedQuestTypesManager: downloadedQuestTypesManager,
+                                                questElementProcessor: questElementProcessor)
+        
+        return MapViewQuestDownloader(questController: questController,
+                                      questManager: questManager)
     }()
     
     // MARK: Private properties
     
     private let questController: QuestControlling
+    private let questManager: QuestManaging
     private let questTileZoom: Int
     private let minimumDownloadableAreaInSquareKilometers: Double
     private let maximumDownloadableAreaInSquareKilometers: Double
     private let minimumDownloadRadiusInMeters: Double
     
     init(questController: QuestControlling,
+         questManager: QuestManaging,
          questTileZoom: Int = 14,
          minimumDownloadableAreaInSquareKilometers: Double = 1,
          maximumDownloadableAreaInSquareKilometers: Double = 20,
          minimumDownloadRadiusInMeters: Double = 600) {
         self.questController = questController
+        self.questManager = questManager
         self.questTileZoom = questTileZoom
         self.minimumDownloadableAreaInSquareKilometers = minimumDownloadableAreaInSquareKilometers
         self.maximumDownloadableAreaInSquareKilometers = maximumDownloadableAreaInSquareKilometers
@@ -71,8 +86,6 @@ extension MapViewQuestDownloader: MapViewQuestDownloading {
             boundingBoxToDownload = boundingBoxOfEnclosingTiles
         }
         
-        questController.download(boundingBox: boundingBoxToDownload,
-                                 maxQuestTypesToDownload: 10,
-                                 isPriority: true)
+        questManager.updateQuests(in: boundingBoxToDownload, ignoreDownloadedQuestsBefore: Date(timeIntervalSinceNow: -60 * 60 * 24))
     }
 }
