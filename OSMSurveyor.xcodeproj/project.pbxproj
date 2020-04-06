@@ -35,7 +35,6 @@
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
 		649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */; };
-		64A77B392438AD21000A9822 /* OsmQuestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B382438AD21000A9822 /* OsmQuestDownloader.swift */; };
 		64A77B3D24390B45000A9822 /* FullQuestsViewDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B3C24390B45000A9822 /* FullQuestsViewDataHelper.swift */; };
 		64A77B3F24390CC0000A9822 /* ElementsGeometryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B3E24390CBF000A9822 /* ElementsGeometryDataHelper.swift */; };
 		64A77B4124390E3D000A9822 /* ElementGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B4024390E3D000A9822 /* ElementGeometry.swift */; };
@@ -157,7 +156,6 @@
 		649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDataHelper.swift; sourceTree = "<group>"; };
-		64A77B382438AD21000A9822 /* OsmQuestDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsmQuestDownloader.swift; sourceTree = "<group>"; };
 		64A77B3C24390B45000A9822 /* FullQuestsViewDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullQuestsViewDataHelper.swift; sourceTree = "<group>"; };
 		64A77B3E24390CBF000A9822 /* ElementsGeometryDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsGeometryDataHelper.swift; sourceTree = "<group>"; };
 		64A77B4024390E3D000A9822 /* ElementGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementGeometry.swift; sourceTree = "<group>"; };
@@ -327,7 +325,6 @@
 				6416210D2433764500C4670C /* OverpassDownloader.swift */,
 				6416211A2434784E00C4670C /* QuestAutoDownloadStrategy.swift */,
 				64B58EC8243516EC00EE88C7 /* MapViewQuestDownloader.swift */,
-				64A77B382438AD21000A9822 /* OsmQuestDownloader.swift */,
 				64A77B64243A4495000A9822 /* QuestElementsProcessing.swift */,
 				64A77B66243A45A7000A9822 /* QuestElementProcessor.swift */,
 			);
@@ -818,7 +815,6 @@
 				6416210C243373FE00C4670C /* QuestType.swift in Sources */,
 				64A77B452439B840000A9822 /* Element.swift in Sources */,
 				64A77B65243A4495000A9822 /* QuestElementsProcessing.swift in Sources */,
-				64A77B392438AD21000A9822 /* OsmQuestDownloader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
