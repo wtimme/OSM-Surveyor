@@ -14,7 +14,8 @@ final class QuestElementProcessor {
     private let elementGeometryDataManager: ElementGeometryDataManaging
     
     // MARK: Initializer
-    init(questDataManager: QuestDataManaging, elementGeometryDataManager: ElementGeometryDataManaging) {
+    init(questDataManager: QuestDataManaging,
+         elementGeometryDataManager: ElementGeometryDataManaging) {
         self.questDataManager = questDataManager
         self.elementGeometryDataManager = elementGeometryDataManager
     }
