@@ -36,7 +36,6 @@
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
 		649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */; };
 		64A77B392438AD21000A9822 /* OsmQuestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B382438AD21000A9822 /* OsmQuestDownloader.swift */; };
-		64A77B3B2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B3A2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift */; };
 		64A77B3D24390B45000A9822 /* FullQuestsViewDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B3C24390B45000A9822 /* FullQuestsViewDataHelper.swift */; };
 		64A77B3F24390CC0000A9822 /* ElementsGeometryDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B3E24390CBF000A9822 /* ElementsGeometryDataHelper.swift */; };
 		64A77B4124390E3D000A9822 /* ElementGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A77B4024390E3D000A9822 /* ElementGeometry.swift */; };
@@ -159,7 +158,6 @@
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDataHelper.swift; sourceTree = "<group>"; };
 		64A77B382438AD21000A9822 /* OsmQuestDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OsmQuestDownloader.swift; sourceTree = "<group>"; };
-		64A77B3A2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = OsmQuestDownloaderTestCase.swift; path = OSMSurveyorFramework/Download/OsmQuestDownloaderTestCase.swift; sourceTree = SOURCE_ROOT; };
 		64A77B3C24390B45000A9822 /* FullQuestsViewDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullQuestsViewDataHelper.swift; sourceTree = "<group>"; };
 		64A77B3E24390CBF000A9822 /* ElementsGeometryDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementsGeometryDataHelper.swift; sourceTree = "<group>"; };
 		64A77B4024390E3D000A9822 /* ElementGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementGeometry.swift; sourceTree = "<group>"; };
@@ -419,7 +417,6 @@
 		64B58ECA2435191100EE88C7 /* Download */ = {
 			isa = PBXGroup;
 			children = (
-				64A77B3A2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift */,
 				64A77B6A243A498D000A9822 /* QuestElementProcessorTestCase.swift */,
 			);
 			path = Download;
@@ -834,7 +831,6 @@
 				64A77B59243A28D2000A9822 /* DownloadedQuestTypesManagerMock.swift in Sources */,
 				64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */,
 				64A77B69243A45F7000A9822 /* QuestElementProcessorMock.swift in Sources */,
-				64A77B3B2438AF3C000A9822 /* OsmQuestDownloaderTestCase.swift in Sources */,
 				641AEEAF242E6996000CA2A2 /* BoundingBoxTestCase.swift in Sources */,
 				64A77B6E243A4B99000A9822 /* Node+MakeNode.swift in Sources */,
 				64A77B4D243A2291000A9822 /* OverpassQuestTestCase.swift in Sources */,
