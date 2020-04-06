@@ -72,7 +72,6 @@
 		64D4D8EB2427FAF700FB900A /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D8EA2427FAF700FB900A /* Coordinate.swift */; };
 		64D6A185243A56490097FEDD /* QuestDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */; };
 		64D6A187243A5C120097FEDD /* StaticOverpassQuestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */; };
-		64EB1DC324370AAD00010FFC /* QuestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB1DC224370AAD00010FFC /* QuestController.swift */; };
 		64EB1DC52437106A00010FFC /* QuestDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB1DC42437106A00010FFC /* QuestDownloader.swift */; };
 		64EB1DC72437140E00010FFC /* QuestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64EB1DC62437140E00010FFC /* QuestProvider.swift */; };
 		E5B869097359A45232BF78F2 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCA560E746E2607ADEEC4B00 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework */; };
@@ -198,7 +197,6 @@
 		64D4D8EA2427FAF700FB900A /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataManagerMock.swift; sourceTree = "<group>"; };
 		64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticOverpassQuestProvider.swift; sourceTree = "<group>"; };
-		64EB1DC224370AAD00010FFC /* QuestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestController.swift; sourceTree = "<group>"; };
 		64EB1DC42437106A00010FFC /* QuestDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDownloader.swift; sourceTree = "<group>"; };
 		64EB1DC62437140E00010FFC /* QuestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestProvider.swift; sourceTree = "<group>"; };
 		76B4A25348A97A383A6AA192 /* Pods_OSMSurveyor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OSMSurveyor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -452,7 +450,6 @@
 				64BDCB4F242A97790098536A /* CameraPosition.swift */,
 				64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */,
 				64D4D8CC2427F7F900FB900A /* Info.plist */,
-				64EB1DC224370AAD00010FFC /* QuestController.swift */,
 				64EB1DC62437140E00010FFC /* QuestProvider.swift */,
 			);
 			path = OSMSurveyorFramework;
@@ -820,7 +817,6 @@
 				64A77B4124390E3D000A9822 /* ElementGeometry.swift in Sources */,
 				64A77B67243A45A7000A9822 /* QuestElementProcessor.swift in Sources */,
 				64A77B3D24390B45000A9822 /* FullQuestsViewDataHelper.swift in Sources */,
-				64EB1DC324370AAD00010FFC /* QuestController.swift in Sources */,
 				6416210E2433764500C4670C /* OverpassDownloader.swift in Sources */,
 				64D4D8EB2427FAF700FB900A /* Coordinate.swift in Sources */,
 				641AEEB9242F7616000CA2A2 /* DownloadedTile.swift in Sources */,
