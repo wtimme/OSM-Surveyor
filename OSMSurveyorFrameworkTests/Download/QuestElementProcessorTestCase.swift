@@ -13,16 +13,20 @@ class QuestElementProcessorTestCase: XCTestCase {
     
     var processor: QuestElementProcessing!
     var questDataManagerMock: QuestDataManagerMock!
+    var elementGeometryDataManagerMock: ElementGeometryDataManagerMock!
 
     override func setUpWithError() throws {
         questDataManagerMock = QuestDataManagerMock()
+        elementGeometryDataManagerMock = ElementGeometryDataManagerMock()
         
-        processor = QuestElementProcessor(questDataManager: questDataManagerMock)
+        processor = QuestElementProcessor(questDataManager: questDataManagerMock,
+                                          elementGeometryDataManager: elementGeometryDataManagerMock)
     }
 
     override func tearDownWithError() throws {
         processor = nil
         questDataManagerMock = nil
+        elementGeometryDataManagerMock = nil
     }
     
     func testProcess_whenElementIsMissingGeometry_shouldNotInsertIntoDatabase() {

@@ -11,10 +11,12 @@ import Foundation
 final class QuestElementProcessor {
     // MARK: Private properties
     private let questDataManager: QuestDataManaging
+    private let elementGeometryDataManager: ElementGeometryDataManaging
     
     // MARK: Initializer
-    init(questDataManager: QuestDataManaging) {
+    init(questDataManager: QuestDataManaging, elementGeometryDataManager: ElementGeometryDataManaging) {
         self.questDataManager = questDataManager
+        self.elementGeometryDataManager = elementGeometryDataManager
     }
 }
 

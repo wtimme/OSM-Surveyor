@@ -26,7 +26,8 @@ public final class MapViewQuestDownloader {
         let overpassQuestProvider = StaticOverpassQuestProvider()
         let overpassQueryExecutor = OverpassDownloader()
         let zoomForDownloadedTiles = 14
-        let questElementProcessor = QuestElementProcessor(questDataManager: QuestDataHelper())
+        let questElementProcessor = QuestElementProcessor(questDataManager: QuestDataHelper(),
+                                                          elementGeometryDataManager: ElementsGeometryDataHelper())
         
         let questManager = OverpassQuestManager(questProvider: overpassQuestProvider,
                                                 queryExecutor: overpassQueryExecutor,
