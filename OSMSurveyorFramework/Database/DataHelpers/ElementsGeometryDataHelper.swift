@@ -150,3 +150,13 @@ class ElementsGeometryDataHelper: DataHelperProtocol {
                                center: center)
     }
 }
+
+extension ElementsGeometryDataHelper: ElementGeometryDataManaging {
+    func insert(_ element: ElementGeometry) {
+        do {
+            _ = try ElementsGeometryDataHelper.insert(item: element)
+        } catch {
+            assertionFailure("Failed to insert element: \(error.localizedDescription)")
+        }
+    }
+}
