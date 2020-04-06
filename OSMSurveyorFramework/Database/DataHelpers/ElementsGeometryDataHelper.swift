@@ -9,6 +9,12 @@
 import Foundation
 import SQLite
 
+protocol ElementGeometryDataManaging {
+    /// Inserts the given `ElementGeometry`.
+    /// - Parameter element: The element to insert.
+    func insert(_ element: ElementGeometry)
+}
+
 class ElementsGeometryDataHelper: DataHelperProtocol {
     static let TABLE_NAME = "elements_geometry"
    
