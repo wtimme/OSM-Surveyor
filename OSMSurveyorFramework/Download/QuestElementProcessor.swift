@@ -29,6 +29,7 @@ extension QuestElementProcessor: QuestElementProcessing {
             }
             
             questDataManager.insert(questType: questType, elementId: Int(elementToProcess.0.id), geometry: geometry)
+            elementGeometryDataManager.insert(geometry)
         }
     }
 }
