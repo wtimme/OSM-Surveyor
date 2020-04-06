@@ -10,9 +10,9 @@ import Foundation
 
 struct Node: Element {
     let type: ElementGeometry.ElementType = .node
-    let id: Int64
+    let id: Int
     let coordinate: Coordinate
-    let version: Int64
+    let version: Int
     let tags: [String: String]
 }
 

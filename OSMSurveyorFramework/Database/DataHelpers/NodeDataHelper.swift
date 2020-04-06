@@ -17,10 +17,10 @@ class NodeDataHelper: DataHelperProtocol {
     static var db: Connection?
     
     /// Columns
-    static let id = Expression<Int64>("id")
+    static let id = Expression<Int>("id")
     static let latitude = Expression<Double>("latitude")
     static let longitude = Expression<Double>("longitude")
-    static let version = Expression<Int64>("version")
+    static let version = Expression<Int>("version")
     static let tags = Expression<SQLite.Blob>("tags")
    
     typealias T = Node
@@ -76,7 +76,7 @@ class NodeDataHelper: DataHelperProtocol {
         }
     }
    
-    static func find(itemId: Int64) throws -> T? {
+    static func find(itemId: Int) throws -> T? {
         guard let db = db else { return nil }
         
         let query = table.filter(id == itemId)

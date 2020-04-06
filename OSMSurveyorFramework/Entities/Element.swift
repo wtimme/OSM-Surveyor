@@ -10,7 +10,7 @@ import Foundation
 
 protocol Element {
     var type: ElementGeometry.ElementType { get }    
-    var id: Int64 { get }
-    var version: Int64 { get }
+    var id: Int { get }
+    var version: Int { get }
     var tags: [String: String] { get }
 }
