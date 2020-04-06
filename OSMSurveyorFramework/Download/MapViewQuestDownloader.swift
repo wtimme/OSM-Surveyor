@@ -22,17 +22,9 @@ public protocol MapViewQuestDownloading {
 
 public final class MapViewQuestDownloader {
     public static let shared: MapViewQuestDownloader = {
-        let questProvider = QuestProvider(quests: [])
         let downloadedQuestTypesManager = DownloadedTileDataHelper()
-        let overpassDownloader = OverpassDownloader()
-        
-        let questDownloader = QuestDownloader(questProvider: questProvider,
-                                              downloadedQuestTypesManager: downloadedQuestTypesManager,
-                                              overpassDownloader: overpassDownloader)
-        let questController = QuestController(downloader: questDownloader)
-        
         let overpassQuestProvider = StaticOverpassQuestProvider()
-        let overpassQueryExecutor = overpassDownloader
+        let overpassQueryExecutor = OverpassDownloader()
         let zoomForDownloadedTiles = 14
         let questElementProcessor = QuestElementProcessor(questDataManager: QuestDataHelper())
         
@@ -42,26 +34,22 @@ public final class MapViewQuestDownloader {
                                                 downloadedQuestTypesManager: downloadedQuestTypesManager,
                                                 questElementProcessor: questElementProcessor)
         
-        return MapViewQuestDownloader(questController: questController,
-                                      questManager: questManager)
+        return MapViewQuestDownloader(questManager: questManager)
     }()
     
     // MARK: Private properties
     
-    private let questController: QuestControlling
     private let questManager: QuestManaging
     private let questTileZoom: Int
     private let minimumDownloadableAreaInSquareKilometers: Double
     private let maximumDownloadableAreaInSquareKilometers: Double
     private let minimumDownloadRadiusInMeters: Double
     
-    init(questController: QuestControlling,
-         questManager: QuestManaging,
+    init(questManager: QuestManaging,
          questTileZoom: Int = 14,
          minimumDownloadableAreaInSquareKilometers: Double = 1,
          maximumDownloadableAreaInSquareKilometers: Double = 20,
          minimumDownloadRadiusInMeters: Double = 600) {
-        self.questController = questController
         self.questManager = questManager
         self.questTileZoom = questTileZoom
         self.minimumDownloadableAreaInSquareKilometers = minimumDownloadableAreaInSquareKilometers
