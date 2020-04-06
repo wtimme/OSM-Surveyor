@@ -12,16 +12,16 @@ import Foundation
 struct Quest {
     enum Status: String {
         /// just created
-        case new
+        case new = "NEW"
         
         /// user answered the question (waiting for changes to be uploaded)
-        case answered
+        case answered = "ANSWERED"
         
         /// user chose to hide the quest
-        case hidden
+        case hidden = "HIDDEN"
         
         /// The system (decided that it) doesn't show the quest. They may become visible again (-> NEW)
-        case invisible
+        case invisible = "INVISIBLE"
         
         /**
          The quest has been uploaded (either solved or dropped through conflict). The app needs to
@@ -30,7 +30,7 @@ struct Quest {
          where the app is uploading its changes to.
          Note quests are generally closed after upload, they are never deleted
          */
-        case closed
+        case closed = "CLOSED"
         
         /**
          The quest has been closed and after that the user chose to revert (aka undo) it. This state
@@ -38,7 +38,7 @@ struct Quest {
          changes. Note, that the revert-change is done via another Quest upload, this state is only
          to mark this quest as that a revert-quest has already been created
          */
-        case revert
+        case revert = "REVERT"
     }
     
     /// An auto-incremented ID to identify the quest.
