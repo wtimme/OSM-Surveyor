@@ -20,7 +20,7 @@ protocol DownloadedQuestTypesManaging {
     /// - Parameters:
     ///   - tilesRect: The `TilesRect` in which the quest types were downloaded.
     ///   - questType: The type of quest that was downloaded.
-    func markQuestTypeAsDownloaded(tilesRect: TilesRect, questType: String) throws
+    func markQuestTypeAsDownloaded(tilesRect: TilesRect, questType: String)
 }
 
 class DownloadedTileDataHelper: DataHelperProtocol {
@@ -146,11 +146,11 @@ extension DownloadedTileDataHelper: DownloadedQuestTypesManaging {
                                                           ignoreOlderThan: date)
     }
     
-    func markQuestTypeAsDownloaded(tilesRect: TilesRect, questType: String) throws {
+    func markQuestTypeAsDownloaded(tilesRect: TilesRect, questType: String) {
         let downloadedTiles = tilesRect.tiles().map { tile in
             DownloadedTile(tile: tile, questType: questType, date: Date())
         }
         
-        try DownloadedTileDataHelper.insertOrUpdate(downloadedTiles)
+        try? DownloadedTileDataHelper.insertOrUpdate(downloadedTiles)
     }
 }

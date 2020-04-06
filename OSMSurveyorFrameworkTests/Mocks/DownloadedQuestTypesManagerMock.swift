@@ -16,7 +16,6 @@ final class DownloadedQuestTypesManagerMock {
     
     private(set) var didCallMarkQuestTypeAsDownloaded = false
     private(set) var markQuestTypeAsDownloadedArguments: (tilesRect: TilesRect, questType: String)?
-    var markQuestTypeAsDownloadedError: Error?
 }
 
 extension DownloadedQuestTypesManagerMock: DownloadedQuestTypesManaging {
@@ -28,14 +27,10 @@ extension DownloadedQuestTypesManagerMock: DownloadedQuestTypesManaging {
         return findDownloadedQuestTypesReturnValue
     }
     
-    func markQuestTypeAsDownloaded(tilesRect: TilesRect, questType: String) throws {
+    func markQuestTypeAsDownloaded(tilesRect: TilesRect, questType: String) {
         didCallMarkQuestTypeAsDownloaded = true
         
         markQuestTypeAsDownloadedArguments = (tilesRect, questType)
-        
-        if let error = markQuestTypeAsDownloadedError {
-            throw error
-        }
     }
     
     
