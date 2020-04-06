@@ -11,7 +11,8 @@ import Foundation
 struct StaticOverpassQuestProvider {
     let quests: [OverpassQuest]
     
-    init(quests: [OverpassQuest] = [AddBenchBackrestQuest()]) {
+    init(quests: [OverpassQuest] = [AddBenchBackrestQuest(),
+                                    AddBusStopShelterQuest()]) {
         self.quests = quests
     }
 }
