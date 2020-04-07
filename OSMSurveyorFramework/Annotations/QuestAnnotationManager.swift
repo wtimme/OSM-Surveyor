@@ -25,10 +25,13 @@ public final class QuestAnnotationManager {
     public weak var delegate: QuestAnnotationManagerDelegate?
     
     // MARK: Private properties
+    private let zoomForDownloadedTiles: Int
     private let fullQuestsDataProvider: FullQuestsDataProviding
     
     // MARK: Initializer
-    init(fullQuestsDataProvider: FullQuestsDataProviding) {
+    init(zoomForDownloadedTiles: Int = 14,
+         fullQuestsDataProvider: FullQuestsDataProviding) {
+        self.zoomForDownloadedTiles = zoomForDownloadedTiles
         self.fullQuestsDataProvider = fullQuestsDataProvider
     }
 }
