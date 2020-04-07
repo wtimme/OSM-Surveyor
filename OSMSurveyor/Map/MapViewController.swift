@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
     @IBOutlet private var mapView: TGMapView!
     @IBOutlet private var errorLabel: UILabel!
     private let questDownloader: MapViewQuestDownloading = MapViewQuestDownloader.shared
+    private var annotationManager = QuestAnnotationManager.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
