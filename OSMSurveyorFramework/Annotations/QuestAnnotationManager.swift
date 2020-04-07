@@ -13,12 +13,15 @@ public protocol QuestAnnotationManagerDelegate: class {
 }
 
 public protocol QuestAnnotationManaging {
+    var delegate: QuestAnnotationManagerDelegate? { get set }
+    
     func mapDidUpdatePosition(to boundingBox: BoundingBox)
 }
 
 public final class QuestAnnotationManager {
     // MARK: Public properties
     public static let shared: QuestAnnotationManaging = QuestAnnotationManager()
+    public weak var delegate: QuestAnnotationManagerDelegate?
 }
 
 extension QuestAnnotationManager: QuestAnnotationManaging {
