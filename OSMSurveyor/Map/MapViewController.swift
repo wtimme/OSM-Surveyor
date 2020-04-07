@@ -21,6 +21,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        annotationManager.delegate = self
         testDatabaseIntegration()
         configureMap()
     }
@@ -179,5 +180,16 @@ extension MapViewController: MapViewControllerProtocol {
         }
         
         mapView.fly(to: cameraPosition, withDuration: duration, callback: nil)
+    }
+}
+
+extension MapViewController: QuestAnnotationManagerDelegate {
+    func addAnnotations(_ annotations: [Annotation]) {
+        for singleAnnotation in annotations {
+            addAnnotation(singleAnnotation)
+        }
+    }
+    
+    private func addAnnotation(_ annotation: Annotation) {
     }
 }
