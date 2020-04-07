@@ -17,6 +17,8 @@ public protocol QuestAnnotationManaging {
 }
 
 public final class QuestAnnotationManager {
+    // MARK: Public properties
+    public static let shared: QuestAnnotationManaging = QuestAnnotationManager()
 }
 
 extension QuestAnnotationManager: QuestAnnotationManaging {
