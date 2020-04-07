@@ -8,11 +8,19 @@
 
 import Foundation
 
+public protocol QuestAnnotationManagerDelegate {
+    func addAnnotations(_ annotations: [Annotation])
+}
+
 public protocol QuestAnnotationManaging {
+    func mapDidUpdatePosition(to boundingBox: BoundingBox)
 }
 
 public final class QuestAnnotationManager {
 }
 
 extension QuestAnnotationManager: QuestAnnotationManaging {
+    public func mapDidUpdatePosition(to boundingBox: BoundingBox) {
+        /// TODO: Implement me.
+    }
 }
