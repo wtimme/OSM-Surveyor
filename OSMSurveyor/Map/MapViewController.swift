@@ -100,10 +100,6 @@ extension MapViewController: TGMapViewDelegate {
                                               pitch: TGRadiansFromDegrees(-15))!
         mapView.fly(to: cameraPosition, withDuration: 1, callback: nil)
         
-        let marker = mapView.markerAdd()
-        let pointDiameter = 16
-        marker.stylingString = "{ style: 'points', color: 'lightgray', outline: { width: 2px, color: 'black' }, size: [\(pointDiameter)px, \(pointDiameter)px], order: 2000, collide: false }"
-        marker.point = coordinate
     }
     
     private func updateErrorLabel(_ text: String?) {
@@ -191,5 +187,15 @@ extension MapViewController: QuestAnnotationManagerDelegate {
     }
     
     private func addAnnotation(_ annotation: Annotation) {
+        let marker = mapView.markerAdd()
+        let pointDiameter = 32
+        
+        marker.stylingString = "{ style: 'points', color: 'white', size: [\(pointDiameter)px, \(pointDiameter)px], order: 2000, collide: false }"
+        marker.point = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude,
+                                              longitude: annotation.coordinate.longitude)
+        
+        if let iconImage = UIImage(named: "ic_quest_bench", in: Bundle(for: MapViewQuestDownloader.self), compatibleWith: nil) {
+            marker.icon = iconImage
+        }
     }
 }
