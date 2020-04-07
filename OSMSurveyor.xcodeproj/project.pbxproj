@@ -29,6 +29,7 @@
 		6455414D243BD7B00049AD07 /* QuestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6455414C243BD7B00049AD07 /* QuestAssets.xcassets */; };
 		6455414F243C5B9C0049AD07 /* QuestAnnotationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6455414E243C5B9B0049AD07 /* QuestAnnotationManagerDelegate.swift */; };
 		64554151243C5C030049AD07 /* QuestAnnotationManagerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554150243C5C030049AD07 /* QuestAnnotationManagerDelegateMock.swift */; };
+		64554154243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554153243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift */; };
 		6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B32427CE69009A6AAC /* AppDelegate.swift */; };
 		6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B52427CE69009A6AAC /* SceneDelegate.swift */; };
 		6470E7B82427CE69009A6AAC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B72427CE69009A6AAC /* MapViewController.swift */; };
@@ -151,6 +152,7 @@
 		6455414C243BD7B00049AD07 /* QuestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = QuestAssets.xcassets; sourceTree = "<group>"; };
 		6455414E243C5B9B0049AD07 /* QuestAnnotationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestAnnotationManagerDelegate.swift; sourceTree = "<group>"; };
 		64554150243C5C030049AD07 /* QuestAnnotationManagerDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestAnnotationManagerDelegateMock.swift; sourceTree = "<group>"; };
+		64554153243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestAnnotationManagerTestCase.swift; sourceTree = "<group>"; };
 		6470E7B02427CE69009A6AAC /* OSMSurveyor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMSurveyor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7B32427CE69009A6AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6470E7B52427CE69009A6AAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -285,6 +287,7 @@
 		64554152243C5C790049AD07 /* Annotations */ = {
 			isa = PBXGroup;
 			children = (
+				64554153243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift */,
 			);
 			path = Annotations;
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				64A77B70243A4C0E000A9822 /* BoundingBox+MakeBoundingBox.swift in Sources */,
 				64A77B5F243A3186000A9822 /* OverpassQuestProviderMock.swift in Sources */,
 				64A77B56243A2831000A9822 /* OverpassQuestManagerTestCase.swift in Sources */,
+				64554154243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift in Sources */,
 				641AEEAA242E66E1000CA2A2 /* SlippyMapMathTestCase.swift in Sources */,
 				64A77B63243A344F000A9822 /* OverpassQuestMock.swift in Sources */,
 				641AEEB1242E6A5E000CA2A2 /* CoordinateTestCase.swift in Sources */,
