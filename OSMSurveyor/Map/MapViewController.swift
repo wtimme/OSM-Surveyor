@@ -99,7 +99,12 @@ extension MapViewController: TGMapViewDelegate {
                                               bearing: 0,
                                               pitch: TGRadiansFromDegrees(-15))!
         mapView.fly(to: cameraPosition, withDuration: 1, callback: nil)
+    }
+    
+    func mapView(_ mapView: TGMapView, regionDidChangeAnimated animated: Bool) {
+        guard let boundingBox = screenAreaToBoundingBox() else { return }
         
+        annotationManager.mapDidUpdatePosition(to: boundingBox)
     }
     
     private func updateErrorLabel(_ text: String?) {
