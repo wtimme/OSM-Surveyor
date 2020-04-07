@@ -32,7 +32,7 @@ class FullQuestsViewHelper {
         }
     }
     
-    private static func findRows(ofTypes questTypes: [String], in boundingBox: BoundingBox) -> AnySequence<Row>? {
+    private static func findRows(ofTypes questTypes: [String] = [], in boundingBox: BoundingBox) -> AnySequence<Row>? {
         guard let db = db else { return nil }
         
         var query = view
