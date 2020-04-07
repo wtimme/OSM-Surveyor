@@ -282,6 +282,13 @@
 			path = Annotations;
 			sourceTree = "<group>";
 		};
+		64554152243C5C790049AD07 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
 		6470E7A72427CE69009A6AAC = {
 			isa = PBXGroup;
 			children = (
@@ -467,6 +474,7 @@
 			children = (
 				64A77B6C243A4B8D000A9822 /* Factories */,
 				64A77B57243A28AC000A9822 /* Mocks */,
+				64554152243C5C790049AD07 /* Annotations */,
 				64A77B4B243A2283000A9822 /* Overpass */,
 				64B58ECA2435191100EE88C7 /* Download */,
 				641AEEAD242E698D000CA2A2 /* OSM */,
