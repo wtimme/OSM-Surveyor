@@ -25,6 +25,7 @@
 		64554144243BABDD0049AD07 /* ElementGeometry+MakeElementGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554143243BABDD0049AD07 /* ElementGeometry+MakeElementGeometry.swift */; };
 		64554146243BB5FB0049AD07 /* AddBusStopShelterQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554145243BB5FB0049AD07 /* AddBusStopShelterQuest.swift */; };
 		64554149243BC06D0049AD07 /* QuestAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554148243BC06D0049AD07 /* QuestAnnotationManager.swift */; };
+		6455414B243BC1420049AD07 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6455414A243BC1420049AD07 /* Annotation.swift */; };
 		6455414D243BD7B00049AD07 /* QuestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6455414C243BD7B00049AD07 /* QuestAssets.xcassets */; };
 		6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B32427CE69009A6AAC /* AppDelegate.swift */; };
 		6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B52427CE69009A6AAC /* SceneDelegate.swift */; };
@@ -144,6 +145,7 @@
 		64554143243BABDD0049AD07 /* ElementGeometry+MakeElementGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementGeometry+MakeElementGeometry.swift"; sourceTree = "<group>"; };
 		64554145243BB5FB0049AD07 /* AddBusStopShelterQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBusStopShelterQuest.swift; sourceTree = "<group>"; };
 		64554148243BC06D0049AD07 /* QuestAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestAnnotationManager.swift; sourceTree = "<group>"; };
+		6455414A243BC1420049AD07 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		6455414C243BD7B00049AD07 /* QuestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = QuestAssets.xcassets; sourceTree = "<group>"; };
 		6470E7B02427CE69009A6AAC /* OSMSurveyor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMSurveyor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7B32427CE69009A6AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				64554148243BC06D0049AD07 /* QuestAnnotationManager.swift */,
+				6455414A243BC1420049AD07 /* Annotation.swift */,
 			);
 			path = Annotations;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 				641AEEB4242E9E38000CA2A2 /* Double+Radians.swift in Sources */,
 				641AEEBB242F774E000CA2A2 /* DownloadedTileDataHelper.swift in Sources */,
 				64A77B3F24390CC0000A9822 /* ElementsGeometryDataHelper.swift in Sources */,
+				6455414B243BC1420049AD07 /* Annotation.swift in Sources */,
 				641AEEA8242E6520000CA2A2 /* Tile.swift in Sources */,
 				64A77B4A243A20DC000A9822 /* OverpassQuest.swift in Sources */,
 				64A77B52243A2602000A9822 /* OverpassQueryExecuting.swift in Sources */,
