@@ -28,6 +28,9 @@ public final class QuestAnnotationManager {
     private let zoomForDownloadedTiles: Int
     private let fullQuestsDataProvider: FullQuestsDataProviding
     
+    /// The tiles that have already been retrieved from the database.
+    private var retrievedTiles = [Tile]()
+    
     // MARK: Initializer
     init(zoomForDownloadedTiles: Int = 14,
          fullQuestsDataProvider: FullQuestsDataProviding) {
@@ -38,5 +41,25 @@ public final class QuestAnnotationManager {
 
 extension QuestAnnotationManager: QuestAnnotationManaging {
     public func mapDidUpdatePosition(to boundingBox: BoundingBox) {
+        guard let delegate = delegate else { return }
+        
+        let tilesRect = boundingBox.enclosingTilesRect(zoom: zoomForDownloadedTiles)
+        let tiles = tilesRect.tiles()
+        let tilesNotYetRetrieved = tiles.filter { !retrievedTiles.contains($0) }
+        
+        guard let minTilesRect = tilesNotYetRetrieved.minTileRect() else {
+            /// All tiles have already been retrieved; nothing to do here.
+            return
+        }
+        
+        let quests = fullQuestsDataProvider.findQuests(in: minTilesRect.asBoundingBox(zoom: zoomForDownloadedTiles))
+        
+        retrievedTiles.append(contentsOf: minTilesRect.tiles())
+        
+        guard !quests.isEmpty else { return }
+        
+        let annotations = quests.map { Annotation(coordinate: $0.coordinate) }
+        
+        delegate.addAnnotations(annotations)
     }
 }
