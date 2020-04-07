@@ -8,10 +8,6 @@
 
 import Foundation
 
-public protocol QuestAnnotationManagerDelegate: class {
-    func addAnnotations(_ annotations: [Annotation])
-}
-
 public protocol QuestAnnotationManaging {
     var delegate: QuestAnnotationManagerDelegate? { get set }
     
