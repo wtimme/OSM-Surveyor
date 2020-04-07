@@ -12,11 +12,14 @@ import XCTest
 class QuestAnnotationManagerTestCase: XCTestCase {
     
     private var manager: QuestAnnotationManaging!
+    private var fullQuestsDataProviderMock: FullQuestsDataProviderMock!
     
     private var delegateMock: QuestAnnotationManagerDelegateMock!
 
     override func setUpWithError() throws {
-        manager = QuestAnnotationManager()
+        fullQuestsDataProviderMock = FullQuestsDataProviderMock()
+        
+        manager = QuestAnnotationManager(fullQuestsDataProvider: fullQuestsDataProviderMock)
         
         delegateMock = QuestAnnotationManagerDelegateMock()
         manager.delegate = delegateMock
@@ -24,6 +27,7 @@ class QuestAnnotationManagerTestCase: XCTestCase {
 
     override func tearDownWithError() throws {
         manager = nil
+        fullQuestsDataProviderMock = nil
         
         delegateMock = nil
     }

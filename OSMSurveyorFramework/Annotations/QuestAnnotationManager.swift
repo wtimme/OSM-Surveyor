@@ -16,8 +16,21 @@ public protocol QuestAnnotationManaging {
 
 public final class QuestAnnotationManager {
     // MARK: Public properties
-    public static let shared: QuestAnnotationManaging = QuestAnnotationManager()
+    public static let shared: QuestAnnotationManaging = {
+        let fullQuestsDataProvider = FullQuestsViewHelper()
+        
+        return QuestAnnotationManager(fullQuestsDataProvider: fullQuestsDataProvider)
+    }()
+    
     public weak var delegate: QuestAnnotationManagerDelegate?
+    
+    // MARK: Private properties
+    private let fullQuestsDataProvider: FullQuestsDataProviding
+    
+    // MARK: Initializer
+    init(fullQuestsDataProvider: FullQuestsDataProviding) {
+        self.fullQuestsDataProvider = fullQuestsDataProvider
+    }
 }
 
 extension QuestAnnotationManager: QuestAnnotationManaging {
