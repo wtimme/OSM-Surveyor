@@ -11,3 +11,5 @@ import Foundation
 public struct Annotation {
     public let coordinate: Coordinate
 }
+
+extension Annotation: Equatable {}
