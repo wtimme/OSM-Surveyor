@@ -74,7 +74,7 @@ class MapViewController: UIViewController {
         downloadQuestsInScreenArea()
     }
     
-    private func downloadQuestsInScreenArea() {
+    private func downloadQuestsInScreenArea(ignoreDownloaded: Bool = false) {
         guard let boundingBox = screenAreaToBoundingBox() else {
             updateErrorLabel("Can’t scan here. Try to zoom in further or tilt the map less.")
             return
@@ -83,7 +83,7 @@ class MapViewController: UIViewController {
         do {
             try questDownloader.downloadQuests(in: boundingBox,
                                                cameraPosition: cameraPosition,
-                                               ignoreDownloaded: false)
+                                               ignoreDownloaded: ignoreDownloaded)
             
             print("All good. Would've downloaded now.")
             updateErrorLabel(nil)
