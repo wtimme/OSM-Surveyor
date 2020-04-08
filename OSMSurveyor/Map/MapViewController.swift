@@ -78,7 +78,8 @@ class MapViewController: UIViewController {
         
         do {
             try questDownloader.downloadQuests(in: boundingBox,
-                                               cameraPosition: cameraPosition)
+                                               cameraPosition: cameraPosition,
+                                               ignoreDownloaded: false)
             
             print("All good. Would've downloaded now.")
             updateErrorLabel(nil)

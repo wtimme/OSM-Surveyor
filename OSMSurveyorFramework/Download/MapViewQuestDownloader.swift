@@ -17,8 +17,10 @@ public protocol MapViewQuestDownloading {
     /// - Parameters:
     ///   - boundingBox: The bounding box in which to download the quests.
     ///   - cameraPosition: The current camera position of the map. Will be used to calculate a larger bounding box in case the provided one is too small.
+    ///   - ignoreDownloaded: Flag whether to ignore the tiles/areas that have already been downloaded, and forces the downloaded.
     func downloadQuests(in boundingBox: BoundingBox,
-                        cameraPosition: CameraPosition) throws
+                        cameraPosition: CameraPosition,
+                        ignoreDownloaded: Bool) throws
 }
 
 public final class MapViewQuestDownloader {
@@ -65,7 +67,8 @@ public final class MapViewQuestDownloader {
 
 extension MapViewQuestDownloader: MapViewQuestDownloading {
     public func downloadQuests(in boundingBox: BoundingBox,
-                               cameraPosition: CameraPosition) throws {
+                               cameraPosition: CameraPosition,
+                               ignoreDownloaded: Bool) throws {
         let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: 14)
         let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedAreaInSquareKilometers()
         
@@ -80,6 +83,13 @@ extension MapViewQuestDownloader: MapViewQuestDownloading {
             boundingBoxToDownload = boundingBoxOfEnclosingTiles
         }
         
-        questManager.updateQuests(in: boundingBoxToDownload, ignoreDownloadedQuestsBefore: Date(timeIntervalSinceNow: -60 * 60 * 24))
+        let ignoreDownloadedQuestsBefore: Date
+        if ignoreDownloaded {
+            ignoreDownloadedQuestsBefore = Date()
+        } else {
+            ignoreDownloadedQuestsBefore = Date(timeIntervalSinceNow: -60 * 60 * 24)
+        }
+        
+        questManager.updateQuests(in: boundingBoxToDownload, ignoreDownloadedQuestsBefore: ignoreDownloadedQuestsBefore)
     }
 }
