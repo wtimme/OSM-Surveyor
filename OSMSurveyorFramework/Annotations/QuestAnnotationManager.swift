@@ -28,6 +28,11 @@ public final class QuestAnnotationManager {
     private let zoomForDownloadedTiles: Int
     private let fullQuestsDataProvider: FullQuestsDataProviding
     
+    /// The maximum area in square kilometers in which the data provider is queried for quests.
+    /// This limit is set here mainly for performance reasons, since without it, the app might crash.
+    /// It is not calculated. Rather, it was decided on after some manual testing with an actual device.
+    private let maximumQueryAreaInSquareKilometers: Double = 20
+    
     /// The tiles that have already been retrieved from the database.
     private var retrievedTiles = [Tile]()
     
@@ -42,6 +47,11 @@ public final class QuestAnnotationManager {
 extension QuestAnnotationManager: QuestAnnotationManaging {
     public func mapDidUpdatePosition(to boundingBox: BoundingBox) {
         guard let delegate = delegate else { return }
+        
+        guard boundingBox.enclosedAreaInSquareKilometers() <= maximumQueryAreaInSquareKilometers else {
+            /// The area is too large; don't query the database.
+            return
+        }
         
         let tilesRect = boundingBox.enclosingTilesRect(zoom: zoomForDownloadedTiles)
         let tiles = tilesRect.tiles()
