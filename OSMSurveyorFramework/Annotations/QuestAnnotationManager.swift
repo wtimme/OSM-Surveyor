@@ -31,15 +31,17 @@ public final class QuestAnnotationManager {
     /// The maximum area in square kilometers in which the data provider is queried for quests.
     /// This limit is set here mainly for performance reasons, since without it, the app might crash.
     /// It is not calculated. Rather, it was decided on after some manual testing with an actual device.
-    private let maximumQueryAreaInSquareKilometers: Double = 20
+    private let maximumQueryAreaInSquareKilometers: Double
     
     /// The tiles that have already been retrieved from the database.
     private var retrievedTiles = [Tile]()
     
     // MARK: Initializer
     init(zoomForDownloadedTiles: Int = 14,
+         maximumQueryAreaInSquareKilometers: Double = 20,
          fullQuestsDataProvider: FullQuestsDataProviding) {
         self.zoomForDownloadedTiles = zoomForDownloadedTiles
+        self.maximumQueryAreaInSquareKilometers = maximumQueryAreaInSquareKilometers
         self.fullQuestsDataProvider = fullQuestsDataProvider
     }
 }
