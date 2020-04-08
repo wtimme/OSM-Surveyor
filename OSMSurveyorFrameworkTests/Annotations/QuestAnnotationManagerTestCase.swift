@@ -49,7 +49,8 @@ class QuestAnnotationManagerTestCase: XCTestCase {
     
     func testMapDidUpdateBoundingBox_shouldAskQuestDataProviderForQuests() {
         /// Given
-        let boundingBox = BoundingBox.makeBoundingBox()
+        let boundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 53.55546, longitude: 9.98903),
+                                                      maximum: Coordinate(latitude: 53.55556, longitude: 9.98913))
         
         /// When
         manager.mapDidUpdatePosition(to: boundingBox)
@@ -74,6 +75,9 @@ class QuestAnnotationManagerTestCase: XCTestCase {
     
     func testMapDidUpdateBoundingBox_whenQuestsWereFound_shouldAskDelegateToAddAnnotations() {
         /// Given
+        let boundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 53.55546, longitude: 9.98903),
+                                                      maximum: Coordinate(latitude: 53.55556, longitude: 9.98913))
+        
         let firstCoordinate = Coordinate(latitude: 1, longitude: 1)
         let secondCoordinate = Coordinate(latitude: 2, longitude: 2)
         let thirdCoordinate = Coordinate(latitude: 3, longitude: 3)
@@ -83,7 +87,7 @@ class QuestAnnotationManagerTestCase: XCTestCase {
                                                      (thirdCoordinate, "")]
         
         /// When
-        manager.mapDidUpdatePosition(to: BoundingBox.makeBoundingBox())
+        manager.mapDidUpdatePosition(to: boundingBox)
         
         /// Then
         XCTAssertTrue(delegateMock.didCallAddAnnotations)
@@ -94,7 +98,8 @@ class QuestAnnotationManagerTestCase: XCTestCase {
     
     func testMapDidUpdateBoundingBox_whenTheAnnotationsForBoundingBoxHaveAlreadyBeenRetrieved_shouldNotAskQuestDataProviderToProvideQuests() {
         /// Given
-        let boundingBox = BoundingBox.makeBoundingBox()
+        let boundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 53.55546, longitude: 9.98903),
+                                                      maximum: Coordinate(latitude: 53.55556, longitude: 9.98913))
         
         /// When
         manager.mapDidUpdatePosition(to: boundingBox)
