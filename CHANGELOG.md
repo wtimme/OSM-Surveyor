@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0 (5)] - 2020-04-08
+
 ### Added
 - Download quest data, store it in the database and show markers on the map
 
@@ -37,3 +39,4 @@ Initial release 🎉
 [1.0.0 (2)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-1...builds/beta/1.0.0-2
 [1.0.0 (3)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-2...builds/beta/1.0.0-3
 [1.0.0 (4)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-3...builds/beta/1.0.0-4
+[1.0.0 (5)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-4...builds/beta/1.0.0-5
