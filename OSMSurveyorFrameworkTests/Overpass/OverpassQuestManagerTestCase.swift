@@ -147,6 +147,30 @@ class OverpassQuestManagerTestCase: XCTestCase {
         XCTAssertEqual(queryExecutorMock.executeQueryArguments?.query, secondQuestMock.queryToReturn)
     }
     
+    func testUpdateQuestsInBoundingBox_whenCalled_shouldOnlyExecuteOneRequestAtOneTime() {
+        /// Given
+        let firstQuestMock = OverpassQuestMock(type: "")
+        let secondQuestMock = OverpassQuestMock(type: "")
+        questProviderMock.quests = [firstQuestMock, secondQuestMock]
+        
+        /// When
+        manager.updateQuests(in: BoundingBox(minimum: Coordinate(latitude: 0, longitude: 0),
+                                             maximum: Coordinate(latitude: 0, longitude: 0)),
+                             ignoreDownloadedQuestsBefore: Date())
+        
+        /// Then
+        XCTAssertTrue(firstQuestMock.didCallQuery)
+        XCTAssertFalse(secondQuestMock.didCallQuery)
+        
+        
+        /// And when
+        queryExecutorMock.executeQueryArguments?.completion(.success([]))
+        
+        /// Then
+        XCTAssertTrue(secondQuestMock.didCallQuery,
+                      "After the query executor has executed the first quest's `completion`, it should use query the second quest.")
+    }
+    
     func testUpdateQuestsInBoundingBox_whenQueryResultedInError_shouldNotMarkTilesRectAsDownloaded() {
         /// Given
         let error = NSError(domain: "com.sample.error", code: 1, userInfo: nil)

@@ -39,21 +39,39 @@ extension OverpassQuestManager: QuestManaging {
             return !downloadedQuestTypes.contains(quest.type)
         }
         
-        for quest in questsToDownload {
-            let query = quest.query(boundingBox: boundingBox)
+        executeQueryOfQuests(questsToDownload, in: boundingBox)
+    }
+    
+    /// Recursively executes the queries for the given `remainingQuests`.
+    /// - Parameters:
+    ///   - quests: The quests for which to execute the queries.
+    ///   - boundingBox: The `BoundingBox` for which to execute the queries.
+    private func executeQueryOfQuests(_ quests: [OverpassQuest],
+                                      in boundingBox: BoundingBox) {
+        guard let nextQuest = quests.first else {
+            /// No more quests to process; nothing to do here.
+            return
+        }
+        
+        let query = nextQuest.query(boundingBox: boundingBox)
+        
+        queryExecutor.execute(query: query) { [weak self] result in
+            guard let self = self else { return }
             
-            queryExecutor.execute(query: query) { [weak self] result in
-                guard let self = self else { return }
-                
-                switch result {
-                case let .failure(error):
-                    print("Failed to execute query: \(error.localizedDescription)")
-                case let .success(elements):
-                    self.questElementProcessor.processElements(elements,
-                                                               in: boundingBox,
-                                                               forQuestOfType: quest.type)
-                }
+            switch result {
+            case let .failure(error):
+                print("Failed to execute query: \(error.localizedDescription)")
+            case let .success(elements):
+                self.questElementProcessor.processElements(elements,
+                                                           in: boundingBox,
+                                                           forQuestOfType: nextQuest.type)
             }
+            
+            /// Proceed with the remaining quests.
+            var remainingQuests = quests
+            remainingQuests.removeFirst()
+            
+            self.executeQueryOfQuests(remainingQuests, in: boundingBox)
         }
     }
 }
