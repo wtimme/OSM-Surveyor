@@ -65,7 +65,7 @@ public final class MapViewQuestDownloader {
 extension MapViewQuestDownloader: MapViewQuestDownloading {
     public func downloadQuests(in boundingBox: BoundingBox, cameraPosition: CameraPosition) throws {
         let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: 14)
-        let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedArea() / 1000000
+        let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedAreaInSquareKilometers()
         
         guard areaInSquareKilometers <= maximumDownloadableAreaInSquareKilometers else {
             throw MapViewQuestDownloadError.screenAreaTooLarge

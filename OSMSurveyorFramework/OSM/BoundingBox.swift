@@ -102,6 +102,13 @@ extension BoundingBox {
         
         return minimum.distance(to: minLatMaxLon, globeRadius: globeRadius) * minimum.distance(to: maxLatMinLon, globeRadius: globeRadius)
     }
+    
+    func enclosedAreaInSquareKilometers(globeRadius: Double = 6371000) -> Double {
+        let oneKilometer = 1000
+        let oneSquareKilometer = oneKilometer*oneKilometer
+        
+        return enclosedArea(globeRadius: globeRadius) / Double(oneSquareKilometer)
+    }
 }
 
 extension BoundingBox: Equatable {
