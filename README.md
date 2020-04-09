@@ -6,7 +6,7 @@ missing information for objects around them.
 ## Join our TestFlight beta!
 
 Do you want to help testing pre-releases of OSM Surveyor?
-[Become a TestFlight tester][5] today! 🚀
+[Become a TestFlight tester][4] today! 🚀
 
 # Continuous delivery
 
@@ -29,4 +29,4 @@ Fetch the certificates for development with
 [1]: https://www.openstreetmap.org
 [2]: fastlane/README.md
 [3]: https://docs.fastlane.tools/actions/match/
-[5]: https://testflight.apple.com/join/wXtE44KZ
+[4]: https://testflight.apple.com/join/wXtE44KZ
