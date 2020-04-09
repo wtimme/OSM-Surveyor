@@ -17,6 +17,7 @@ class MapViewController: UIViewController {
     @IBOutlet private var errorLabel: UILabel!
     private let questDownloader: MapViewQuestDownloading = MapViewQuestDownloader.shared
     private var annotationManager = QuestAnnotationManager.shared
+    private var annotationLayer: AnnotationLayerProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +40,14 @@ class MapViewController: UIViewController {
         
         mapView.mapViewDelegate = self
         mapView.loadScene(from: sceneURL, with: [TGSceneUpdate(path: "global.api_key", value: apiKey)])
+    }
+    
+    private func setupAnnotationLayer() {
+        guard let mapData = mapView.addDataLayer(TangramAnnotationLayer.Name, generateCentroid: false) else {
+            return
+        }
+        
+        annotationLayer = TangramAnnotationLayer(mapData: mapData)
     }
     
     private func testDatabaseIntegration() {

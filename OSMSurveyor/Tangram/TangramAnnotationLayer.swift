@@ -10,6 +10,12 @@ import OSMSurveyorFramework
 import TangramMap
 
 class TangramAnnotationLayer {
+    // MARK: Public properties
+    
+    static let Name = "OSMSurveyor_quests"
+    
+    // MARK: Private properties
+    
     private let mapData: TGMapData
     
     init(mapData: TGMapData) {
