@@ -32,6 +32,7 @@
 		64554154243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554153243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift */; };
 		64554156243C5D3C0049AD07 /* FullQuestsDataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554155243C5D3C0049AD07 /* FullQuestsDataProviderMock.swift */; };
 		646008B2243FB9E60015F89C /* AnnotationLayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646008B1243FB9E60015F89C /* AnnotationLayerProtocol.swift */; };
+		646008B5243FBB000015F89C /* TangramAnnotationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646008B4243FBB000015F89C /* TangramAnnotationLayer.swift */; };
 		6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B32427CE69009A6AAC /* AppDelegate.swift */; };
 		6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B52427CE69009A6AAC /* SceneDelegate.swift */; };
 		6470E7B82427CE69009A6AAC /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7B72427CE69009A6AAC /* MapViewController.swift */; };
@@ -157,6 +158,7 @@
 		64554153243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestAnnotationManagerTestCase.swift; sourceTree = "<group>"; };
 		64554155243C5D3C0049AD07 /* FullQuestsDataProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullQuestsDataProviderMock.swift; sourceTree = "<group>"; };
 		646008B1243FB9E60015F89C /* AnnotationLayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationLayerProtocol.swift; sourceTree = "<group>"; };
+		646008B4243FBB000015F89C /* TangramAnnotationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangramAnnotationLayer.swift; sourceTree = "<group>"; };
 		6470E7B02427CE69009A6AAC /* OSMSurveyor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSMSurveyor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7B32427CE69009A6AAC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6470E7B52427CE69009A6AAC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -297,6 +299,14 @@
 			path = Annotations;
 			sourceTree = "<group>";
 		};
+		646008B3243FBAEF0015F89C /* Tangram */ = {
+			isa = PBXGroup;
+			children = (
+				646008B4243FBB000015F89C /* TangramAnnotationLayer.swift */,
+			);
+			path = Tangram;
+			sourceTree = "<group>";
+		};
 		6470E7A72427CE69009A6AAC = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +334,7 @@
 		6470E7B22427CE69009A6AAC /* OSMSurveyor */ = {
 			isa = PBXGroup;
 			children = (
+				646008B3243FBAEF0015F89C /* Tangram */,
 				64BDCB4E242A975A0098536A /* Map */,
 				6470E7B32427CE69009A6AAC /* AppDelegate.swift */,
 				6470E7B52427CE69009A6AAC /* SceneDelegate.swift */,
@@ -797,6 +808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6470E7B82427CE69009A6AAC /* MapViewController.swift in Sources */,
+				646008B5243FBB000015F89C /* TangramAnnotationLayer.swift in Sources */,
 				6470E7B42427CE69009A6AAC /* AppDelegate.swift in Sources */,
 				64BDCB52242A98E70098536A /* MapViewControllerProtocol.swift in Sources */,
 				6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */,
