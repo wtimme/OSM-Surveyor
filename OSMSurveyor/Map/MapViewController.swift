@@ -30,12 +30,27 @@ class MapViewController: UIViewController {
     }
     
     private func configureMap() {
-        guard let sceneURL = Bundle.main.url(forResource: "scene-light", withExtension: "yaml", subdirectory: "map_theme") else {
+        mapView.mapViewDelegate = self
+        
+        loadMapScene()
+    }
+    
+    private func loadMapScene() {
+        let sceneName: String
+        switch traitCollection.userInterfaceStyle {
+        case .dark:
+            sceneName = "scene-dark"
+        case .unspecified, .light:
+            sceneName = "scene-light"
+        @unknown default:
+            sceneName = "scene-light"
+        }
+        
+        guard let sceneURL = Bundle.main.url(forResource: sceneName, withExtension: "yaml", subdirectory: "map_theme") else {
             /// Unable to get the scene.
             return
         }
         
-        mapView.mapViewDelegate = self
         mapView.loadScene(from: sceneURL, with: [])
     }
     
