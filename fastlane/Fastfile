@@ -48,8 +48,6 @@ platform :ios do
       allow_nothing_to_commit: true
     )
 
-    update_nextzen_api_key(options)
-
     sync_code_signing(type: "appstore")
 
     build_app(
@@ -63,21 +61,6 @@ platform :ios do
 
     upload_to_testflight(
       changelog: changelog
-    )
-  end
-
-  desc "Update the Nextzen API key that the app will use for the map"
-  lane :update_nextzen_api_key do |options|
-    api_key = options[:nextzen_api_key]
-    if !api_key
-      UI.user_error!("Please provide the API key for Nextzen with `nextzen_api_key`")
-    end
-
-    update_plist(
-      plist_path: SECRETS_PLIST,
-      block: proc do |plist|
-        plist[:"Nextzen API Key"] = api_key
-      end
     )
   end
 
