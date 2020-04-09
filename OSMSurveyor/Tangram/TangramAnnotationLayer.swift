@@ -35,7 +35,9 @@ extension TangramAnnotationLayer: AnnotationLayerProtocol {
             let coordinate = CLLocationCoordinate2D(latitude: singleAnnotation.coordinate.latitude,
                                                     longitude: singleAnnotation.coordinate.longitude)
             
-            return TGMapFeature(point: coordinate, properties: [:])
+            let properties = ["type": "point"]
+            
+            return TGMapFeature(point: coordinate, properties: properties)
         }
         
         mapData.setFeatures(features)
