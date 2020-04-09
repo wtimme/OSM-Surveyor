@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0 (6)] - 2020-04-10
+
 ### Added
 - StreetComplete map style - light and dark
 
@@ -43,3 +45,4 @@ Initial release 🎉
 [1.0.0 (3)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-2...builds/beta/1.0.0-3
 [1.0.0 (4)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-3...builds/beta/1.0.0-4
 [1.0.0 (5)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-4...builds/beta/1.0.0-5
+[1.0.0 (6)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-5...builds/beta/1.0.0-6
