@@ -12,11 +12,12 @@ import TangramMap
 class TangramAnnotationLayer {
     // MARK: Public properties
     
-    static let Name = "OSMSurveyor_quests"
+    static let Name = "streetcomplete_quests"
     
     // MARK: Private properties
     
     private let mapData: TGMapData
+    private var features = [TGMapFeature]()
     
     init(mapData: TGMapData) {
         self.mapData = mapData
@@ -31,11 +32,16 @@ extension TangramAnnotationLayer: AnnotationLayerProtocol {
             return
         }
         
-        let features: [TGMapFeature] = annotations.map { singleAnnotation in
+        features = annotations.map { singleAnnotation in
             let coordinate = CLLocationCoordinate2D(latitude: singleAnnotation.coordinate.latitude,
                                                     longitude: singleAnnotation.coordinate.longitude)
             
-            let properties = ["type": "point"]
+            let properties = [
+                "type": "point",
+                "kind": "AddBenchBackrest",
+                "quest_group": "OSM",
+                "quest_id": "-1"
+            ]
             
             return TGMapFeature(point: coordinate, properties: properties)
         }
