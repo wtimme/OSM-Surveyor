@@ -30,18 +30,13 @@ class MapViewController: UIViewController {
     }
     
     private func configureMap() {
-        guard let apiKey = nextzenApiKey else {
-            assertionFailure("Unable to load map: Missing API key for Nextzen")
-            return
-        }
-        
-        guard let sceneURL = Bundle.main.url(forResource: "scene", withExtension: "yaml") else {
+        guard let sceneURL = Bundle.main.url(forResource: "scene-light", withExtension: "yaml", subdirectory: "map_theme") else {
             /// Unable to get the scene.
             return
         }
         
         mapView.mapViewDelegate = self
-        mapView.loadScene(from: sceneURL, with: [TGSceneUpdate(path: "global.api_key", value: apiKey)])
+        mapView.loadScene(from: sceneURL, with: [])
     }
     
     private func setupAnnotationLayer() {
