@@ -17,10 +17,12 @@ class MapViewController: UIViewController {
     @IBOutlet private var errorLabel: UILabel!
     private let questDownloader: MapViewQuestDownloading = MapViewQuestDownloader.shared
     private var annotationManager = QuestAnnotationManager.shared
-    private var annotationLayer: AnnotationLayerProtocol!
+    private var annotationLayer: AnnotationLayerProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupAnnotationLayer()
         
         annotationManager.delegate = self
         testDatabaseIntegration()
