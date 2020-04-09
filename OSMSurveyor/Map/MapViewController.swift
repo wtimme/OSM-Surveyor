@@ -55,18 +55,6 @@ class MapViewController: UIViewController {
         
         print("\(database)")
     }
-    
-    private var nextzenApiKey: String? {
-        guard
-            let secretsPlistPath = Bundle.main.path(forResource: "Secrets", ofType: "plist"),
-            let secretsAsDictionary = NSDictionary(contentsOfFile: secretsPlistPath)
-        else {
-            assertionFailure("Unable to read the property list")
-            return nil
-        }
-        
-        return secretsAsDictionary.object(forKey: "Nextzen API Key") as? String
-    }
 
     @IBAction private func showOpenStreetMapCopyrightAndLicensePage() {
         guard let url = URL(string: "https://www.openstreetmap.org/copyright") else { return }
