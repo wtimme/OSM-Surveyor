@@ -122,6 +122,10 @@ extension MapViewController: TGMapViewDelegate {
         guard let boundingBox = screenAreaToBoundingBox() else { return }
         
         annotationManager.mapDidUpdatePosition(to: boundingBox)
+        
+        let coordinate = Coordinate(latitude: mapView.cameraPosition.center.latitude,
+                                    longitude: mapView.cameraPosition.center.longitude)
+        annotationLayer?.setAnnotations([Annotation(coordinate: coordinate)])
     }
     
     private func updateErrorLabel(_ text: String?) {
