@@ -206,6 +206,9 @@ extension MapViewController: QuestAnnotationManagerDelegate {
         }
     }
     
+    func setAnnotations(_ annotations: [Annotation]) {
+    }
+    
     private func addAnnotation(_ annotation: Annotation) {
         let marker = mapView.markerAdd()
         let pointDiameter = 32

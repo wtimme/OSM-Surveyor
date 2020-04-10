@@ -10,4 +10,5 @@ import Foundation
 
 public protocol QuestAnnotationManagerDelegate: class {
     func addAnnotations(_ annotations: [Annotation])
+    func setAnnotations(_ annotations: [Annotation])
 }

@@ -12,6 +12,9 @@ import Foundation
 final class QuestAnnotationManagerDelegateMock {
     private(set) var didCallAddAnnotations = false
     private(set) var annotations = [Annotation]()
+    
+    private(set) var didCallSetAnnotations = false
+    private(set) var annotationsToSet = [Annotation]()
 }
 
 extension QuestAnnotationManagerDelegateMock: QuestAnnotationManagerDelegate {
@@ -19,5 +22,11 @@ extension QuestAnnotationManagerDelegateMock: QuestAnnotationManagerDelegate {
         didCallAddAnnotations = true
         
         self.annotations = annotations
+    }
+    
+    func setAnnotations(_ annotations: [Annotation]) {
+        didCallSetAnnotations = true
+        
+        self.annotationsToSet = annotations
     }
 }
