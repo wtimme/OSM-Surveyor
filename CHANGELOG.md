@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Annotations that behave similar to the ones in StreetComplete (e. g. with  points when there's too little space)
+- Navigation bar style that is similar to StreetComplete
+
 ## [1.0.0 (6)] - 2020-04-10
 
 ### Added
