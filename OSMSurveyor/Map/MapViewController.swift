@@ -78,7 +78,10 @@ class MapViewController: UIViewController {
     @IBAction private func showOpenStreetMapCopyrightAndLicensePage() {
         guard let url = URL(string: "https://www.openstreetmap.org/copyright") else { return }
         
-        let viewController = SFSafariViewController(url: url)
+        let configuration = SFSafariViewController.Configuration()
+        configuration.entersReaderIfAvailable = true
+        
+        let viewController = SFSafariViewController(url: url, configuration: configuration)
         viewController.modalPresentationStyle = .pageSheet
         present(viewController, animated: true)
     }
