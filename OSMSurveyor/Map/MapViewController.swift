@@ -27,6 +27,9 @@ class MapViewController: UIViewController {
         annotationManager.delegate = self
         testDatabaseIntegration()
         configureMap()
+        
+        /// Make sure that the status bar has a white color.
+        navigationController?.navigationBar.barStyle = .black
     }
     
     private func configureMap() {
