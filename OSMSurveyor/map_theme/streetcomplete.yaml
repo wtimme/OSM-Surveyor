@@ -3,9 +3,9 @@ global:
 
 textures:
     quests:
-        url: ''
+        url: ic_quest_bench.png
         filtering: mipmap
-        sprites: {}
+        sprites: { ic_quest_bench: [0,0,384,384] }
     quest_dot:
         url: images/quest_dot@2x.png
         filtering: mipmap
