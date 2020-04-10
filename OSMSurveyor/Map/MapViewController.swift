@@ -31,6 +31,7 @@ class MapViewController: UIViewController {
     
     private func configureMap() {
         mapView.mapViewDelegate = self
+        mapView.gestureDelegate = self
         
         loadMapScene()
     }
@@ -120,6 +121,10 @@ extension MapViewController: TGMapViewDelegate {
         guard let boundingBox = screenAreaToBoundingBox() else { return }
         
         annotationManager.mapDidUpdatePosition(to: boundingBox)
+    }
+    
+    func mapView(_ mapView: TGMapView, didSelectLabel labelPickResult: TGLabelPickResult?, atScreenPosition position: CGPoint) {
+        /// TODO: Implement me.
     }
     
     private func updateErrorLabel(_ text: String?) {
@@ -220,5 +225,11 @@ extension MapViewController: QuestAnnotationManagerDelegate {
         if let iconImage = UIImage(named: "ic_quest_bench", in: Bundle(for: MapViewQuestDownloader.self), compatibleWith: nil) {
             marker.icon = iconImage
         }
+    }
+}
+
+extension MapViewController: TGRecognizerDelegate {
+    func mapView(_ view: TGMapView!, recognizer: UIGestureRecognizer!, didRecognizeSingleTapGesture location: CGPoint) {
+        view.pickLabel(at: location)
     }
 }
