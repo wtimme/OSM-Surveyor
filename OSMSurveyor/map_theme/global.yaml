@@ -81,5 +81,5 @@ textures:
     oneway-arrow:
         url: images/oneway_arrow@2x.png
         # url: https://raw.githubusercontent.com/ENT8R/streetcomplete-mapstyle/master/images/oneway_arrow@2x.png
-#        filtering: mipmap
+        filtering: mipmap
         density: 5

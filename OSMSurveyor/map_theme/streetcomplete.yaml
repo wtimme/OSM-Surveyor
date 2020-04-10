@@ -4,11 +4,11 @@ global:
 textures:
     quests:
         url: ''
-#        filtering: mipmap
+        filtering: mipmap
         sprites: {}
     quest_dot:
         url: images/quest_dot@2x.png
-#        filtering: mipmap
+        filtering: mipmap
         density: 5
 
 styles:
