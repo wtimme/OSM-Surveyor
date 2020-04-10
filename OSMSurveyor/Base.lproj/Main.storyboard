@@ -47,6 +47,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="s8r-U3-DHO">
+                        <barButtonItem key="leftBarButtonItem" image="settings" id="0Vr-2B-CJe">
+                            <connections>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="wlM-wX-uE6">
                             <connections>
                                 <action selector="didTapDownloadQuestsButton:" destination="BYZ-38-t0r" id="DBb-rl-Hfn"/>
@@ -79,4 +83,7 @@
             <point key="canvasLocation" x="-712" y="127"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="settings" width="30" height="30"/>
+    </resources>
 </document>
