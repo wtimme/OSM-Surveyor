@@ -205,27 +205,8 @@ extension MapViewController: MapViewControllerProtocol {
 }
 
 extension MapViewController: QuestAnnotationManagerDelegate {
-    func addAnnotations(_ annotations: [Annotation]) {
-        for singleAnnotation in annotations {
-            addAnnotation(singleAnnotation)
-        }
-    }
-    
     func setAnnotations(_ annotations: [Annotation]) {
         annotationLayer?.setAnnotations(annotations)
-    }
-    
-    private func addAnnotation(_ annotation: Annotation) {
-        let marker = mapView.markerAdd()
-        let pointDiameter = 32
-        
-        marker.stylingString = "{ style: 'points', color: 'white', size: [\(pointDiameter)px, \(pointDiameter)px], order: 2000, collide: false }"
-        marker.point = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude,
-                                              longitude: annotation.coordinate.longitude)
-        
-        if let iconImage = UIImage(named: "ic_quest_bench", in: Bundle(for: MapViewQuestDownloader.self), compatibleWith: nil) {
-            marker.icon = iconImage
-        }
     }
 }
 

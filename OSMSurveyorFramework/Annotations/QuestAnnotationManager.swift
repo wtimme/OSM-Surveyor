@@ -77,7 +77,6 @@ extension QuestAnnotationManager: QuestAnnotationManaging {
         
         allAnnotations.append(contentsOf: annotations)
         
-        delegate.addAnnotations(annotations)
         delegate.setAnnotations(allAnnotations)
     }
 }

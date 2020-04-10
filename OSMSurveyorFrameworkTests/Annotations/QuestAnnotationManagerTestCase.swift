@@ -62,7 +62,7 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         
     }
     
-    func testMapDidUpdateBoundingBox_whenNoQuestsWereFound_shouldNotAskDelegateToAddAnnotations() {
+    func testMapDidUpdateBoundingBox_whenNoQuestsWereFound_shouldNotAskDelegateToSetAnnotations() {
         /// Given
         fullQuestsDataProviderMock.questsToReturn = []
         
@@ -70,10 +70,10 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         manager.mapDidUpdatePosition(to: BoundingBox.makeBoundingBox())
         
         /// Then
-        XCTAssertFalse(delegateMock.didCallAddAnnotations)
+        XCTAssertFalse(delegateMock.didCallSetAnnotations)
     }
     
-    func testMapDidUpdateBoundingBox_whenQuestsWereFound_shouldAskDelegateToAddAnnotations() {
+    func testMapDidUpdateBoundingBox_whenQuestsWereFound_shouldAskDelegateToSetAnnotations() {
         /// Given
         let boundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 53.55546, longitude: 9.98903),
                                                       maximum: Coordinate(latitude: 53.55556, longitude: 9.98913))
@@ -90,13 +90,13 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         manager.mapDidUpdatePosition(to: boundingBox)
         
         /// Then
-        XCTAssertTrue(delegateMock.didCallAddAnnotations)
+        XCTAssertTrue(delegateMock.didCallSetAnnotations)
         
         let expectedAnnotations = [firstCoordinate, secondCoordinate, thirdCoordinate].map { Annotation(coordinate: $0) }
         XCTAssertEqual(delegateMock.annotations, expectedAnnotations)
     }
     
-    func testMapDidUpdateBoundingBox_whenQuestsWereFound_shouldAskDelegateToSetAnnotations() {
+    func testMapDidUpdateBoundingBox_whenQuestsWereFound_shouldAskDelegateToSetAllAnnotations() {
         /// Given
         let firstCoordinate = Coordinate(latitude: 1, longitude: 1)
         let secondCoordinate = Coordinate(latitude: 2, longitude: 2)
@@ -123,7 +123,7 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         XCTAssertTrue(delegateMock.didCallSetAnnotations)
         
         let expectedAnnotations = [firstCoordinate, secondCoordinate, thirdCoordinate].map { Annotation(coordinate: $0) }
-        XCTAssertEqual(delegateMock.annotationsToSet, expectedAnnotations)
+        XCTAssertEqual(delegateMock.annotations, expectedAnnotations)
     }
     
     func testMapDidUpdateBoundingBox_whenTheAnnotationsForBoundingBoxHaveAlreadyBeenRetrieved_shouldNotAskQuestDataProviderToProvideQuests() {

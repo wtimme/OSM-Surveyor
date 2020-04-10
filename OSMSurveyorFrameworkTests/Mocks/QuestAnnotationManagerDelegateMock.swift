@@ -10,23 +10,14 @@ import Foundation
 @testable import OSMSurveyorFramework
 
 final class QuestAnnotationManagerDelegateMock {
-    private(set) var didCallAddAnnotations = false
-    private(set) var annotations = [Annotation]()
-    
     private(set) var didCallSetAnnotations = false
-    private(set) var annotationsToSet = [Annotation]()
+    private(set) var annotations = [Annotation]()
 }
 
 extension QuestAnnotationManagerDelegateMock: QuestAnnotationManagerDelegate {
-    func addAnnotations(_ annotations: [Annotation]) {
-        didCallAddAnnotations = true
-        
-        self.annotations = annotations
-    }
-    
     func setAnnotations(_ annotations: [Annotation]) {
         didCallSetAnnotations = true
         
-        self.annotationsToSet = annotations
+        self.annotations = annotations
     }
 }
