@@ -49,6 +49,7 @@
                     <navigationItem key="navigationItem" id="s8r-U3-DHO">
                         <barButtonItem key="leftBarButtonItem" image="settings" id="0Vr-2B-CJe">
                             <connections>
+                                <action selector="didTapSettingsButton" destination="BYZ-38-t0r" id="xhx-PU-f3i"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="wlM-wX-uE6">
