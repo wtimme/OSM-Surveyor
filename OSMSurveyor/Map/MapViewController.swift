@@ -212,6 +212,7 @@ extension MapViewController: QuestAnnotationManagerDelegate {
     }
     
     func setAnnotations(_ annotations: [Annotation]) {
+        annotationLayer?.setAnnotations(annotations)
     }
     
     private func addAnnotation(_ annotation: Annotation) {
