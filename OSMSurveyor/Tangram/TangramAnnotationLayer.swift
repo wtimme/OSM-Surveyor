@@ -38,7 +38,7 @@ extension TangramAnnotationLayer: AnnotationLayerProtocol {
             
             let properties = [
                 "type": "point",
-                "kind": "AddBenchBackrest",
+                "kind": "ic_quest_bench",
                 "quest_group": "OSM",
                 "quest_id": "-1"
             ]
