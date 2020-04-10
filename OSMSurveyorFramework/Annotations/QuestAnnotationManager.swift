@@ -36,6 +36,9 @@ public final class QuestAnnotationManager {
     /// The tiles that have already been retrieved from the database.
     private var retrievedTiles = [Tile]()
     
+    /// All annotations that have already been retrieved.
+    private var allAnnotations = [Annotation]()
+    
     // MARK: Initializer
     init(zoomForDownloadedTiles: Int = 14,
          maximumQueryAreaInSquareKilometers: Double = 20,
@@ -72,6 +75,9 @@ extension QuestAnnotationManager: QuestAnnotationManaging {
         
         let annotations = quests.map { Annotation(coordinate: $0.coordinate) }
         
+        allAnnotations.append(contentsOf: annotations)
+        
         delegate.addAnnotations(annotations)
+        delegate.setAnnotations(allAnnotations)
     }
 }

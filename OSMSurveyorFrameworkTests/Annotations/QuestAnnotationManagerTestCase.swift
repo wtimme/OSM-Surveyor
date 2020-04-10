@@ -96,6 +96,36 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         XCTAssertEqual(delegateMock.annotations, expectedAnnotations)
     }
     
+    func testMapDidUpdateBoundingBox_whenQuestsWereFound_shouldAskDelegateToSetAnnotations() {
+        /// Given
+        let firstCoordinate = Coordinate(latitude: 1, longitude: 1)
+        let secondCoordinate = Coordinate(latitude: 2, longitude: 2)
+        
+        fullQuestsDataProviderMock.questsToReturn = [(firstCoordinate, ""),
+                                                     (secondCoordinate, "")]
+        
+        /// Update position for the first time.
+        let firstBoundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 53.55546, longitude: 9.98903),
+                                                           maximum: Coordinate(latitude: 53.55556, longitude: 9.98913))
+        manager.mapDidUpdatePosition(to: firstBoundingBox)
+        
+        /// Now, act as if new quests were found.
+        let thirdCoordinate = Coordinate(latitude: 2, longitude: 2)
+        fullQuestsDataProviderMock.questsToReturn = [(thirdCoordinate, "")]
+        
+        /// Update position for a second time.
+        let secondBoundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 54.55546, longitude: 10.98903),
+                                                            maximum: Coordinate(latitude: 54.55556, longitude: 10.98913))
+        
+        manager.mapDidUpdatePosition(to: secondBoundingBox)
+        
+        /// Then
+        XCTAssertTrue(delegateMock.didCallSetAnnotations)
+        
+        let expectedAnnotations = [firstCoordinate, secondCoordinate, thirdCoordinate].map { Annotation(coordinate: $0) }
+        XCTAssertEqual(delegateMock.annotationsToSet, expectedAnnotations)
+    }
+    
     func testMapDidUpdateBoundingBox_whenTheAnnotationsForBoundingBoxHaveAlreadyBeenRetrieved_shouldNotAskQuestDataProviderToProvideQuests() {
         /// Given
         let boundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 53.55546, longitude: 9.98903),
