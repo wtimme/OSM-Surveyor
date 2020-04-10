@@ -1,4 +1,5 @@
 PODS:
+  - OAuthSwift (2.1.0)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -6,12 +7,14 @@ PODS:
   - Tangram-es (0.12.0)
 
 DEPENDENCIES:
+  - OAuthSwift (~> 2.1.0)
   - SQLite.swift
   - SwiftOverpassAPI (from `https://github.com/wtimme/SwiftOverpassAPI.git`, branch `feature/1-Add-support-for-meta-data`)
   - Tangram-es (~> 0.12.0)
 
 SPEC REPOS:
   trunk:
+    - OAuthSwift
     - SQLite.swift
     - Tangram-es
 
@@ -26,10 +29,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/wtimme/SwiftOverpassAPI.git
 
 SPEC CHECKSUMS:
+  OAuthSwift: ab1675598273e04355e0282459c328e65c9ddacd
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   SwiftOverpassAPI: 431ebc770f161cc72f03fccd9c267898e58a2698
   Tangram-es: 398024d49425e5eb3d860d33e5a4616753316ddd
 
-PODFILE CHECKSUM: 2b01ea26ab228209b1bb9e65861aa4c77e325989
+PODFILE CHECKSUM: 8a17b21c87741ac875e89a9a64a78559c0952623
 
 COCOAPODS: 1.9.1
