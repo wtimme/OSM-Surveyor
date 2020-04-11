@@ -23,6 +23,10 @@ public struct OAuth1Credentials: Codable, Equatable {
 public protocol KeychainHandling {
     var entries: [(username: String, credentials: OAuth1Credentials)] { get }
     
+    /// Adds a new account to the keychain.
+    /// - Parameters:
+    ///   - username: The username of the account.
+    ///   - credentials: The OAuth1 credentials.
     func add(username: String, credentials: OAuth1Credentials)
     
     func remove(username: String)
