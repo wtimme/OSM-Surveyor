@@ -26,10 +26,28 @@ class KeychainHandlerTestCase: XCTestCase {
         let credentials = OAuth1Credentials(token: "lorem",
                                             tokenSecret: "ipsum")
         
-        handler.add(username: username, credentials: credentials)
+        try? handler.add(username: username, credentials: credentials)
         
         XCTAssertEqual(handler.entries.first?.username, username)
         XCTAssertEqual(handler.entries.first?.credentials, credentials)
+    }
+    
+    func testAdd_whenInsertingAUsernameThatAlreadyExists_shouldThrowCorrespondingError() {
+        let username = "jane.doe"
+        let credentials = OAuth1Credentials(token: "lorem", tokenSecret: "ipsum")
+        
+        /// Add the entry for the first time.
+        try? handler.add(username: username, credentials: credentials)
+        
+        do {
+            /// Add the entry for a second time.
+            try handler.add(username: username, credentials: credentials)
+            
+            /// Adding an entry for a username that already exist should throw; execution should jump to `catch` clause and _not_ continue here.
+            XCTFail()
+        } catch {
+            XCTAssertEqual(error as? KeychainError, KeychainError.usernameAlreadyExists)
+        }
     }
     
     func testAdd_whenInsertingTheSameUsernameMultipleTimes_shouldResultInOnlyOneEntry() {
@@ -38,7 +56,7 @@ class KeychainHandlerTestCase: XCTestCase {
             let credentials = OAuth1Credentials(token: "lorem",
                                                 tokenSecret: "ipsum")
             
-            handler.add(username: username, credentials: credentials)
+            try? handler.add(username: username, credentials: credentials)
         }
         
         XCTAssertEqual(handler.entries.count, 1)
@@ -49,7 +67,7 @@ class KeychainHandlerTestCase: XCTestCase {
         let credentials = OAuth1Credentials(token: "lorem",
                                             tokenSecret: "ipsum")
         
-        handler.add(username: username, credentials: credentials)
+        try? handler.add(username: username, credentials: credentials)
         
         handler.remove(username: username)
         

@@ -20,6 +20,11 @@ public struct OAuth1Credentials: Codable, Equatable {
     }
 }
 
+public enum KeychainError: Error {
+    /// The Keychain already contains an entry for the given username.
+    case usernameAlreadyExists
+}
+
 public protocol KeychainHandling {
     var entries: [(username: String, credentials: OAuth1Credentials)] { get }
     
@@ -27,7 +32,7 @@ public protocol KeychainHandling {
     /// - Parameters:
     ///   - username: The username of the account.
     ///   - credentials: The OAuth1 credentials.
-    func add(username: String, credentials: OAuth1Credentials)
+    func add(username: String, credentials: OAuth1Credentials) throws
     
     func remove(username: String)
 }
@@ -56,7 +61,11 @@ extension KeychainHandler: KeychainHandling {
         }
     }
     
-    public func add(username: String, credentials: OAuth1Credentials) {
+    public func add(username: String, credentials: OAuth1Credentials) throws {
+        guard !keychain.allKeys().contains(username) else {
+            throw KeychainError.usernameAlreadyExists
+        }
+        
         let encoder = JSONEncoder()
         guard let credentialsAsData = try? encoder.encode(credentials) else { return }
         
