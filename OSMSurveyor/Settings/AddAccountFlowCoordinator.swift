@@ -30,5 +30,6 @@ final class AddAccountFlowCoordinator {
 
 extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
     func start() {
+        oAuthHandler.authorize(from: navigationController)
     }
 }
