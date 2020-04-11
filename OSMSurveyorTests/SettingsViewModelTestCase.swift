@@ -58,6 +58,7 @@ class SettingsViewModelTestCase: XCTestCase {
         let row = viewModel.row(at: IndexPath(row: indexOfLastRow, section: accountSection))
         
         XCTAssertEqual(row?.title, "Add Account")
+        XCTAssertEqual(row?.accessoryType, .disclosureIndicator)
     }
     
     // MARK: Help Section

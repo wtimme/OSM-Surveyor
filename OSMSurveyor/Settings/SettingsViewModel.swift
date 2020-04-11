@@ -120,7 +120,8 @@ final class SettingsViewModel {
     
     private func createAccountsSection() -> Section {
         let rows = [
-            Row(title: "Add Account")
+            Row(title: "Add Account",
+                accessoryType: .disclosureIndicator)
         ]
         
         return Section(headerTitle: "OpenStreetMap Accounts",
