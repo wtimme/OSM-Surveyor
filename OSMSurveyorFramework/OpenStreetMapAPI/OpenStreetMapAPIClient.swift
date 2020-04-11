@@ -131,7 +131,27 @@ extension OpenStreetMapAPIClient: OpenStreetMapAPIClientProtocol {
     }
     
     public func permissions(oAuthToken: String, oAuthTokenSecret: String, completion: @escaping (Result<[Permission], Error>) -> Void) {
-        /// TODO: Implement me.
+        let session = temporarySession(oAuthToken: oAuthToken, oAuthTokenSecret: oAuthTokenSecret)
+        
+        let url = baseURL.appendingPathComponent("/api/0.6/permissions")
+        session.request(url).response(completionHandler: { [weak self] response in
+            guard let self = self else { return }
+            
+            /// Since the request has finished, the session can be removed.
+            self.temporarySession = nil
+            
+            if let error = response.error {
+                completion(.failure(error))
+            } else if
+                let responseData = response.data,
+                let responseString = String(data: responseData, encoding: .utf8)
+            {
+                let permissions = self.permissions(from: responseString)
+                completion(.success(permissions))
+            } else {
+                assertionFailure("No error, but unable to read permissions from response.")
+            }
+        })
     }
     
     /// Parses the permissions from the given XML string.
