@@ -130,13 +130,18 @@ final class SettingsViewModel {
     // MARK: Private methods
     
     private func createAccountsSection() -> Section {
-        let rows = [
-            Row(title: "Add Account",
+        let accountRows = accountHandler.accounts.map { account in
+            Row(title: account.username,
                 accessoryType: .disclosureIndicator)
-        ]
+        }
+        
+        let addAccountRow = Row(title: "Add Account",
+                                accessoryType: .disclosureIndicator)
+        
+        let allRows = accountRows + [addAccountRow]
         
         return Section(headerTitle: "OpenStreetMap Accounts",
-                       rows: rows)
+                       rows: allRows)
     }
     
     private func createHelpSection() -> Section {
