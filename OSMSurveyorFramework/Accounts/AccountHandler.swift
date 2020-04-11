@@ -9,8 +9,8 @@
 import Foundation
 
 public struct Account {
-    let uuid: UUID
-    let username: String
+    public let uuid: UUID
+    public let username: String
 }
 
 public protocol AccountHandling {
