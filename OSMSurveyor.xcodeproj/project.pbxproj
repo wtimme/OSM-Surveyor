@@ -332,6 +332,7 @@
 		6470E7B22427CE69009A6AAC /* OSMSurveyor */ = {
 			isa = PBXGroup;
 			children = (
+				64D5D92C2441B1A600AB0EC2 /* Settings */,
 				646008B3243FBAEF0015F89C /* Tangram */,
 				64BDCB4E242A975A0098536A /* Map */,
 				6470E7B32427CE69009A6AAC /* AppDelegate.swift */,
@@ -511,6 +512,13 @@
 				641AEEAB242E6851000CA2A2 /* TilesRect.swift */,
 			);
 			path = OSM;
+			sourceTree = "<group>";
+		};
+		64D5D92C2441B1A600AB0EC2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
