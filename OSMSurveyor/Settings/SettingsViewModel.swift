@@ -11,13 +11,21 @@ import Foundation
 final class SettingsViewModel {
     // MARK: Types
     
+    struct Row {
+        let title: String
+    }
+    
     struct Section {
         let headerTitle: String?
         let footerTitle: String?
+        let rows: [Row]
         
-        init(headerTitle: String? = nil, footerTitle: String? = nil) {
+        init(headerTitle: String? = nil,
+             footerTitle: String? = nil,
+             rows: [Row] = [Row]()) {
             self.headerTitle = headerTitle
             self.footerTitle = footerTitle
+            self.rows = rows
         }
     }
     
