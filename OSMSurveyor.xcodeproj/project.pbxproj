@@ -489,6 +489,7 @@
 		64D4D8CA2427F7F900FB900A /* OSMSurveyorFramework */ = {
 			isa = PBXGroup;
 			children = (
+				64D5D93D2441DD3F00AB0EC2 /* OAuth */,
 				64554147243BC0560049AD07 /* Annotations */,
 				64A77B462439F790000A9822 /* Overpass */,
 				6416210F2433770300C4670C /* Quests */,
@@ -556,6 +557,13 @@
 				64D5D9392441CDD200AB0EC2 /* SettingsCoordinatorMock.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		64D5D93D2441DD3F00AB0EC2 /* OAuth */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = OAuth;
 			sourceTree = "<group>";
 		};
 		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
