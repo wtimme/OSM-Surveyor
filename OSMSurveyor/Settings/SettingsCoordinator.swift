@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol SettingsCoordinatorProtocol: class {
     func start()
+    
+    /// Presents the app's GitHub repository.
+    func presentGitHubRepository()
 }
 
 final class SettingsCoordinator {
@@ -34,5 +38,18 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
         self.navigationController = navigationController
         
         presentingViewController.present(navigationController, animated: true)
+    }
+    
+    func presentGitHubRepository() {
+        guard let url = URL(string: "https://github.com/wtimme/OSM-Surveyor") else { return }
+        
+        openExternalURL(url)
+    }
+    
+    private func openExternalURL(_ url: URL) {
+        let viewController = SFSafariViewController(url: url)
+        viewController.modalPresentationStyle = .currentContext
+        
+        navigationController?.present(viewController, animated: true)
     }
 }
