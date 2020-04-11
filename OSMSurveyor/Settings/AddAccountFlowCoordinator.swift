@@ -45,6 +45,10 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
             
             if case let .failure(error) = result {
                 self.onFinish?(.failure(error))
+            } else if case let .success(credentials) = result {
+                self.apiClient.userDetails(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { userDetailsResult in
+                    /// TODO: Implement me.
+                }
             }
         }
     }

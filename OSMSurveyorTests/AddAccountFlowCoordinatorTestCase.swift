@@ -67,5 +67,20 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         
         XCTAssertEqual(coordinatorError as? NSError, error)
     }
+    
+    func testStart_whenOAuthHandlerAuthorizedSuccessful_shouldAskOpenStreetMapAPIClientToFetchUserDetails() {
+        /// Given
+        let token = "foo"
+        let tokenSecret = "bar"
+        
+        coordinator.start()
+        
+        /// When
+        oAuthHandlerMock.authorizeCompletion?(.success((token, tokenSecret)))
+        
+        XCTAssertTrue(apiClientMock.didCallUserDetails)
+        XCTAssertEqual(apiClientMock.userDetailsArguments?.token, token)
+        XCTAssertEqual(apiClientMock.userDetailsArguments?.tokenSecret, tokenSecret)
+    }
 
 }
