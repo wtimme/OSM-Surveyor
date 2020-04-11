@@ -26,6 +26,17 @@ public protocol OpenStreetMapAPIClientProtocol {
     func userDetails(oAuthToken: String,
                      oAuthTokenSecret: String,
                      completion: @escaping (Result<UserDetails, Error>) -> Void)
+    
+    /// Fetches the permissions that the user has granted the app.
+    ///
+    /// Use this method to verify that the user has given the app all required permissions before saving the credentials.
+    /// - Parameters:
+    ///   - oAuthToken: The token for OAuth.
+    ///   - oAuthTokenSecret: The token's secret for OAuth.
+    ///   - completion: Closure that is executed as soon as the permissions were retrieved or an error occurred.
+    func permissions(oAuthToken: String,
+                     oAuthTokenSecret: String,
+                     completion: @escaping (Result<[Permission], Error>) -> Void)
 }
 
 public final class OpenStreetMapAPIClient {
@@ -70,6 +81,10 @@ extension OpenStreetMapAPIClient: OpenStreetMapAPIClientProtocol {
     public func userDetails(oAuthToken: String,
                      oAuthTokenSecret: String,
                      completion: @escaping (Result<UserDetails, Error>) -> Void) {
+        /// TODO: Implement me.
+    }
+    
+    public func permissions(oAuthToken: String, oAuthTokenSecret: String, completion: @escaping (Result<[Permission], Error>) -> Void) {
         /// TODO: Implement me.
     }
 }

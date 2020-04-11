@@ -12,6 +12,9 @@ import Foundation
 final class OpenStreetMapAPIClientMock {
     private(set) var didCallUserDetails = false
     private(set) var userDetailsArguments: (token: String, tokenSecret: String, completion: (Result<UserDetails, Error>) -> Void)?
+    
+    private(set) var didCallPermissions = false
+    private(set) var permissionsArguments: (token: String, tokenSecret: String, completion: (Result<[Permission], Error>) -> Void)?
 }
 
 extension OpenStreetMapAPIClientMock: OpenStreetMapAPIClientProtocol {
@@ -21,5 +24,11 @@ extension OpenStreetMapAPIClientMock: OpenStreetMapAPIClientProtocol {
         didCallUserDetails = true
         
         userDetailsArguments = (oAuthToken, oAuthTokenSecret, completion)
+    }
+    
+    func permissions(oAuthToken: String, oAuthTokenSecret: String, completion: @escaping (Result<[Permission], Error>) -> Void) {
+        didCallPermissions = true
+        
+        permissionsArguments = (oAuthToken, oAuthTokenSecret, completion)
     }
 }
