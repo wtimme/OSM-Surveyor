@@ -134,6 +134,32 @@ extension OpenStreetMapAPIClient: OpenStreetMapAPIClientProtocol {
         /// TODO: Implement me.
     }
     
+    /// Parses the permissions from the given XML string.
+    ///
+    /// I do realize that this is not an optimal solution, but it works for now. Later, we can add an auto-generated API client for this, and properly parse the XML,
+    /// but for now, this will do.
+    /// - Parameter xmlString: The XML string to parse the permissions from.
+    /// - Returns: The permissions the user has given the app, if available.
+    private func permissions(from xmlString: String) -> [Permission] {
+        let pattern = #"permission name="([^"]+)"#
+        guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return [] }
+        
+        var permissions = [String]()
+        
+        let nsrange = NSRange(xmlString.startIndex..<xmlString.endIndex, in: xmlString)
+        regex.enumerateMatches(in: xmlString, options: [], range: nsrange) { (match, _, stop) in
+            guard let match = match else { return }
+            
+            if let range = Range(match.range(at: 1), in: xmlString) {
+                let permission = String(xmlString[range])
+                
+                permissions.append(permission)
+            }
+        }
+        
+        return permissions.compactMap { Permission(rawValue: $0) }
+    }
+    
     private func temporarySession(oAuthToken: String, oAuthTokenSecret: String) -> Session {
         /// Setup a (temporary) `Session` for fetching the user details.
         let oAuthSwift = OAuth1Swift(consumerKey: oAuthConsumerKey, consumerSecret: oAuthConsumerSecret)
