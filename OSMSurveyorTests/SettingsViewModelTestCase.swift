@@ -83,4 +83,15 @@ class SettingsViewModelTestCase: XCTestCase {
                        "\(appName) \(appVersion) (Build \(appBuildNumber))")
     }
     
+    func testSelectRow_whenTappingFirstRowInHelpSection_shouldAskCoordinatorToPresentGitHubRepository() {
+        /// Given
+        let lastSection = viewModel.numberOfSections() - 1
+        
+        /// When
+        viewModel.selectRow(at: IndexPath(row: 0, section: lastSection))
+        
+        /// Then
+        XCTAssertTrue(coordinatorMock.didCallPresentGitHubRepository)
+    }
+    
 }

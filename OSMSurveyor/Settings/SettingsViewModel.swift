@@ -91,6 +91,13 @@ final class SettingsViewModel {
     }
     
     func selectRow(at indexPath: IndexPath) {
+        let helpSection = numberOfSections() - 1
+        
+        if indexPath.section == helpSection {
+            if indexPath.row == 0 {
+                coordinator?.presentGitHubRepository()
+            }
+        }
     }
     
     // MARK: Private methods
