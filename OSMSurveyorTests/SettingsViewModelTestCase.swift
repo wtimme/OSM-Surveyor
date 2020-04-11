@@ -40,6 +40,20 @@ class SettingsViewModelTestCase: XCTestCase {
         XCTAssertEqual(numberOfRows, 2)
     }
     
+    func testRowAtIndexPath_forFirstRowInLastSection_shouldReturnGitHubRepository() {
+        let lastSection = viewModel.numberOfSections() - 1
+        
+        XCTAssertEqual(viewModel.row(at: IndexPath(item: 0, section: lastSection))?.title,
+                       "GitHub Repository")
+    }
+    
+    func testRowAtIndexPath_forSecondRowInLastSection_shouldReturnBugTracker() {
+        let lastSection = viewModel.numberOfSections() - 1
+        
+        XCTAssertEqual(viewModel.row(at: IndexPath(item: 1, section: lastSection))?.title,
+                       "Bug Tracker")
+    }
+    
     func testLastSectionShouldHaveHelpAsHeaderTitle() {
         let lastSection = viewModel.numberOfSections() - 1
         

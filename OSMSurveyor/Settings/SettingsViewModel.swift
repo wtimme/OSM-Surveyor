@@ -90,8 +90,8 @@ final class SettingsViewModel {
     
     private func createHelpSection() -> Section {
         let rows = [
-            Row(title: "foo"),
-            Row(title: "bar")
+            Row(title: "GitHub Repository"),
+            Row(title: "Bug Tracker")
         ]
         
         return Section(headerTitle: "Help",
