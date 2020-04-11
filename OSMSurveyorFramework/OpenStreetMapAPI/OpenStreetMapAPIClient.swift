@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct UserDetails {
-    let username: String
+public struct UserDetails {
+    public let username: String
 }
 
-protocol OpenStreetMapAPIClientProtocol {
+public protocol OpenStreetMapAPIClientProtocol {
     /// Fetches the details of the user that is authenticated with the given credentials.
     /// Use this method to verify that OAuth credentials are still valid.
     /// - Parameters:
@@ -22,4 +22,15 @@ protocol OpenStreetMapAPIClientProtocol {
     func userDetails(oAuthToken: String,
                      oAuthTokenSecret: String,
                      completion: @escaping (Result<UserDetails, Error>) -> Void)
+}
+
+public final class OpenStreetMapAPIClient {
+}
+
+extension OpenStreetMapAPIClient: OpenStreetMapAPIClientProtocol {
+    public func userDetails(oAuthToken: String,
+                     oAuthTokenSecret: String,
+                     completion: @escaping (Result<UserDetails, Error>) -> Void) {
+        /// TODO: Implement me.
+    }
 }
