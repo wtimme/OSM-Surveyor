@@ -18,6 +18,8 @@ public protocol AccountHandling {
 }
 
 public final class AccountHandler {
+    // MARK: Public properties
+    
     public private(set) var accounts = [Account]()
 }
 
