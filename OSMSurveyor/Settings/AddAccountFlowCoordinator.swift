@@ -37,7 +37,12 @@ final class AddAccountFlowCoordinator {
 
 extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
     func start() {
-        oAuthHandler.authorize(from: navigationController) { result in
+        oAuthHandler.authorize(from: navigationController) { [weak self] result in
+            guard let self = self else { return }
+            
+            if case let .failure(error) = result {
+                self.onFinish?(.failure(error))
+            }
         }
     }
 }

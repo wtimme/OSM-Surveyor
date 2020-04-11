@@ -29,5 +29,39 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         navigationController = nil
         oAuthHandlerMock = nil
     }
+    
+    func testStart_shouldAskOAuthHandlerToAuthorize() {
+        /// When
+        coordinator.start()
+        
+        /// Then
+        XCTAssertTrue(oAuthHandlerMock.didCallAuthorize)
+        XCTAssertEqual(oAuthHandlerMock.authorizeFromViewController as? UIViewController, navigationController)
+    }
+    
+    func testStart_whenOAuthHandlerEncountersAnError_shouldExecuteOnFinishWithError() {
+        /// Given
+        let error = NSError(domain: "com.example.error", code: 1, userInfo: nil)
+        
+        let onFinishExpectation = expectation(description: "Coordinator should finish")
+        var coordinatorError: Error?
+        coordinator.onFinish = { result in
+            if case let .failure(resultingError) = result {
+                coordinatorError = resultingError
+            }
+            
+            onFinishExpectation.fulfill()
+        }
+        
+        coordinator.start()
+        
+        /// When
+        oAuthHandlerMock.authorizeCompletion?(.failure(error))
+        
+        /// Then
+        waitForExpectations(timeout: 1, handler: nil)
+        
+        XCTAssertEqual(coordinatorError as? NSError, error)
+    }
 
 }
