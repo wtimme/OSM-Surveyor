@@ -602,11 +602,19 @@
 		64D5D9492441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks */ = {
 			isa = PBXGroup;
 			children = (
+				64D5D9542441F22E00AB0EC2 /* Factories */,
 				64A77B57243A28AC000A9822 /* Mocks */,
 				64D5D94A2441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks.h */,
 				64D5D94B2441EE5B00AB0EC2 /* Info.plist */,
 			);
 			path = OSMSurveyorFrameworkMocks;
+			sourceTree = "<group>";
+		};
+		64D5D9542441F22E00AB0EC2 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
