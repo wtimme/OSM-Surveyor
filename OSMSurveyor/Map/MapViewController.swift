@@ -91,10 +91,9 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func didTapSettingsButton() {
-        let viewController = SettingsViewController()
-        let navigationController = UINavigationController(rootViewController: viewController)
+        let coordinator = SettingsCoordinator(presentingViewController: self)
         
-        present(navigationController, animated: true)
+        coordinator.start()
     }
     
     private func downloadQuestsInScreenArea(ignoreDownloaded: Bool = false) {
