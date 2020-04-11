@@ -21,6 +21,9 @@ public final class AccountHandler {
     // MARK: Public properties
     
     public private(set) var accounts = [Account]()
+    
+    /// Singleton instance of the handler.
+    public static let shared: AccountHandling = AccountHandler()
 }
 
 extension AccountHandler: AccountHandling {
