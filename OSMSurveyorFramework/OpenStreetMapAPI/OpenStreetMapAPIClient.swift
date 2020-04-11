@@ -10,6 +10,10 @@ import Foundation
 
 public struct UserDetails {
     public let username: String
+    
+    public init(username: String) {
+        self.username = username
+    }
 }
 
 public protocol OpenStreetMapAPIClientProtocol {
