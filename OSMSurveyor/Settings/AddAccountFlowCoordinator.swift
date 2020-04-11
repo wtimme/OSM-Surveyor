@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OSMSurveyorFramework
 
 protocol AddAccountFlowCoordinatorProtocol {
     func start()
@@ -16,11 +17,14 @@ final class AddAccountFlowCoordinator {
     // MARK: Private properties
     
     private let navigationController: UINavigationController
+    private let oAuthHandler: OAuthHandling
     
     // MARK: Initializer
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController,
+         oAuthHandler: OAuthHandling) {
         self.navigationController = navigationController
+        self.oAuthHandler = oAuthHandler
     }
 }
 

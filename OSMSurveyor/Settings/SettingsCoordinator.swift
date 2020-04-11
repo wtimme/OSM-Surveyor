@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import OSMSurveyorFramework
 
 protocol SettingsCoordinatorProtocol: class {
     func start()
@@ -52,7 +53,16 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
     func startAddAccountFlow() {
         guard let navigationController = navigationController else { return }
         
-        let coordinator = AddAccountFlowCoordinator(navigationController: navigationController)
+        guard
+            let pathToSecretsPropertyList = Bundle.main.path(forResource: "Secrets", ofType: "plist"),
+            let oAuthHandler = OAuthHandler(propertyListPath: pathToSecretsPropertyList)
+        else {
+            assertionFailure("Unable to initialize the OAuthHandler")
+            return
+        }
+        
+        let coordinator = AddAccountFlowCoordinator(navigationController: navigationController,
+                                                    oAuthHandler: oAuthHandler)
         coordinator.start()
     }
     
