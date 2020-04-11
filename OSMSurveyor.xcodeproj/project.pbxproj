@@ -78,6 +78,7 @@
 		64D4D8E92427F9B600FB900A /* BoundingBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D8E82427F9B600FB900A /* BoundingBox.swift */; };
 		64D4D8EB2427FAF700FB900A /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D8EA2427FAF700FB900A /* Coordinate.swift */; };
 		64D5D92E2441B1CC00AB0EC2 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D92D2441B1CC00AB0EC2 /* SettingsViewController.swift */; };
+		64D5D9302441B24200AB0EC2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D92F2441B24200AB0EC2 /* SettingsViewModel.swift */; };
 		64D6A185243A56490097FEDD /* QuestDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */; };
 		64D6A187243A5C120097FEDD /* StaticOverpassQuestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */; };
 		E5B869097359A45232BF78F2 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCA560E746E2607ADEEC4B00 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework */; };
@@ -209,6 +210,7 @@
 		64D4D8E82427F9B600FB900A /* BoundingBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundingBox.swift; sourceTree = "<group>"; };
 		64D4D8EA2427FAF700FB900A /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		64D5D92D2441B1CC00AB0EC2 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		64D5D92F2441B24200AB0EC2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataManagerMock.swift; sourceTree = "<group>"; };
 		64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticOverpassQuestProvider.swift; sourceTree = "<group>"; };
 		76B4A25348A97A383A6AA192 /* Pods_OSMSurveyor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OSMSurveyor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -520,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				64D5D92D2441B1CC00AB0EC2 /* SettingsViewController.swift */,
+				64D5D92F2441B24200AB0EC2 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -820,6 +823,7 @@
 				64BDCB52242A98E70098536A /* MapViewControllerProtocol.swift in Sources */,
 				6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */,
 				64D5D92E2441B1CC00AB0EC2 /* SettingsViewController.swift in Sources */,
+				64D5D9302441B24200AB0EC2 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
