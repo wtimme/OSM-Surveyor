@@ -23,7 +23,7 @@ final class SettingsViewModel {
     
     // MARK: Public properties
     
-    private(set) var sections: [Section]
+    private(set) var sections = [Section]()
     
     // MARK: Private properties
     
@@ -33,8 +33,6 @@ final class SettingsViewModel {
     
     init(appName: String, appVersion: String, appBuildNumber: String) {
         appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
-        
-        sections = []
     }
     
     convenience init() {
