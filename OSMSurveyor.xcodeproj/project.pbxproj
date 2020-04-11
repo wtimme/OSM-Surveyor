@@ -491,6 +491,7 @@
 		64D4D8CA2427F7F900FB900A /* OSMSurveyorFramework */ = {
 			isa = PBXGroup;
 			children = (
+				64D5D9402441EAA100AB0EC2 /* Accounts */,
 				64D5D93D2441DD3F00AB0EC2 /* OAuth */,
 				64554147243BC0560049AD07 /* Annotations */,
 				64A77B462439F790000A9822 /* Overpass */,
@@ -567,6 +568,13 @@
 				64D5D93E2441DD6700AB0EC2 /* OAuthHandler.swift */,
 			);
 			path = OAuth;
+			sourceTree = "<group>";
+		};
+		64D5D9402441EAA100AB0EC2 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
