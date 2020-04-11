@@ -31,15 +31,18 @@ final class AddAccountFlowCoordinator {
     private let navigationController: UINavigationController
     private let oAuthHandler: OAuthHandling
     private let apiClient: OpenStreetMapAPIClientProtocol
+    private let keychainHandler: KeychainHandling
     
     // MARK: Initializer
     
     init(navigationController: UINavigationController,
          oAuthHandler: OAuthHandling,
-         apiClient: OpenStreetMapAPIClientProtocol) {
+         apiClient: OpenStreetMapAPIClientProtocol,
+         keychainHandler: KeychainHandling) {
         self.navigationController = navigationController
         self.oAuthHandler = oAuthHandler
         self.apiClient = apiClient
+        self.keychainHandler = keychainHandler
     }
 }
 
