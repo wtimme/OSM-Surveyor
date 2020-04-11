@@ -44,7 +44,10 @@ final class SettingsViewModel {
     init(appName: String, appVersion: String, appBuildNumber: String) {
         appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
         
-        sections = [createHelpSection()]
+        sections = [
+            createAccountsSection(),
+            createHelpSection()
+        ]
     }
     
     convenience init() {
@@ -103,6 +106,15 @@ final class SettingsViewModel {
     }
     
     // MARK: Private methods
+    
+    private func createAccountsSection() -> Section {
+        let rows = [
+            Row(title: "Add Account")
+        ]
+        
+        return Section(headerTitle: "OpenStreetMap Accounts",
+                       rows: rows)
+    }
     
     private func createHelpSection() -> Section {
         let rows = [

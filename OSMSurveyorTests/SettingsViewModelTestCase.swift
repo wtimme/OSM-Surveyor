@@ -36,6 +36,30 @@ class SettingsViewModelTestCase: XCTestCase {
         XCTAssertNil(viewModel.row(at: IndexPath(item: -101, section: 42)))
     }
     
+    // MARK: Accounts section
+    
+    func testHeaderTitle_whenAskedAboutAccountSection_shouldReturnExpectedTitle() {
+        let accountSection = 0
+        let headerTitle = viewModel.headerTitleOfSection(accountSection)
+        
+        XCTAssertEqual(headerTitle, "OpenStreetMap Accounts")
+    }
+    
+    func testNumberOfRowsInSection_whenAskedAboutAccountSection_shouldReturnOne() {
+        let accountSection = 0
+        let numberOfRows = viewModel.numberOfRows(in: accountSection)
+        
+        XCTAssertEqual(numberOfRows, 1)
+    }
+    
+    func testRowAtIndexPath_forLastRowInAccountSection_shouldReturnAddAccount() {
+        let accountSection = 0
+        let indexOfLastRow = viewModel.numberOfRows(in: accountSection) - 1
+        let row = viewModel.row(at: IndexPath(row: indexOfLastRow, section: accountSection))
+        
+        XCTAssertEqual(row?.title, "Add Account")
+    }
+    
     // MARK: Help Section
     
     func testNumberOfRowsInSection_whenAskedAboutLastSection_shouldReturnExpectedNumber() {
