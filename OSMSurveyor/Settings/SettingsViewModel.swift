@@ -14,6 +14,7 @@ final class SettingsViewModel {
     struct Row {
         enum AccessoryType {
             case none
+            case disclosureIndicator
         }
         
         let title: String

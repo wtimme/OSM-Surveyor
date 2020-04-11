@@ -51,6 +51,13 @@ final class SettingsViewController: UITableViewController {
         
         if let row = viewModel.row(at: indexPath) {
             cell.textLabel?.text = row.title
+            
+            switch row.accessoryType {
+            case .disclosureIndicator:
+                cell.accessoryType = .disclosureIndicator
+            case .none:
+                cell.accessoryType = .none
+            }
         }
         
         return cell
