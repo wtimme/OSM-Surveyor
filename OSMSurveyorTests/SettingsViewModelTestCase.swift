@@ -42,6 +42,8 @@ class SettingsViewModelTestCase: XCTestCase {
     }
     
     func testLastSectionShouldHaveAppDetailsAsFooterTitle() {
+        let lastSection = viewModel.numberOfSections() - 1
+        
         /// Given
         let appName = "Lorem Ipsum"
         let appVersion = "42"
@@ -53,7 +55,8 @@ class SettingsViewModelTestCase: XCTestCase {
                                              appBuildNumber: appBuildNumber)
         
         /// Then
-        XCTAssertEqual(newViewModel.sections.last?.footerTitle, "\(appName) \(appVersion) (Build \(appBuildNumber))")
+        XCTAssertEqual(newViewModel.footerTitleOfSection(lastSection),
+                       "\(appName) \(appVersion) (Build \(appBuildNumber))")
     }
     
 }

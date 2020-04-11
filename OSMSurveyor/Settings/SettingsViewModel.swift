@@ -71,6 +71,10 @@ final class SettingsViewModel {
         return self.section(at: section)?.headerTitle
     }
     
+    func footerTitleOfSection(_ section: Int) -> String? {
+        return self.section(at: section)?.footerTitle
+    }
+    
     // MARK: Private methods
     
     private func createHelpSection() -> Section {
