@@ -25,6 +25,41 @@ public protocol OpenStreetMapAPIClientProtocol {
 }
 
 public final class OpenStreetMapAPIClient {
+    // MARK: Private properties
+    
+    private let baseURL: URL
+    
+    private let oAuthConsumerKey: String
+    private let oAuthConsumerSecret: String
+    
+    // MARK: Initializer
+    
+    init(baseURL: URL,
+         oAuthConsumerKey: String,
+         oAuthConsumerSecret: String) {
+        self.baseURL = baseURL
+        self.oAuthConsumerKey = oAuthConsumerKey
+        self.oAuthConsumerSecret = oAuthConsumerSecret
+    }
+    
+    /// Initializes the handler with the path to a Property List file in which the OAuth secrets can be found.
+    /// - Parameter propertyListPath: Path to a Property List file that contains the OAuth secrets.
+    public convenience init?(propertyListPath: String) {
+        guard let url = URL(string: "https://api.openstreetmap.org") else { return nil }
+        
+        guard
+            let propertiesAsDictionary = NSDictionary(contentsOfFile: propertyListPath),
+            let consumerKey = propertiesAsDictionary.object(forKey: "OSM_OAuth_ConsumerKey") as? String,
+            let consumerSecret = propertiesAsDictionary.object(forKey: "OSM_OAuth_ConsumerSecret") as? String
+        else {
+            assertionFailure("Unable to read OAuth secrets from file \(propertyListPath)")
+            return nil
+        }
+        
+        self.init(baseURL: url,
+                  oAuthConsumerKey: consumerKey,
+                  oAuthConsumerSecret: consumerSecret)
+    }
 }
 
 extension OpenStreetMapAPIClient: OpenStreetMapAPIClientProtocol {
