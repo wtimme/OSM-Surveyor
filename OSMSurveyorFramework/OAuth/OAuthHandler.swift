@@ -10,6 +10,9 @@ import Foundation
 import OAuthSwift
 
 public protocol OAuthHandling {
+    /// Asks the handler to handle the given `URL`.
+    /// - Parameter url: The `URL` to handle.
+    func handle(url: URL)
 }
 
 public final class OAuthHandler {
@@ -56,4 +59,7 @@ public final class OAuthHandler {
 }
 
 extension OAuthHandler: OAuthHandling {
+    public func handle(url: URL) {
+        OAuthSwift.handle(url: url)
+    }
 }
