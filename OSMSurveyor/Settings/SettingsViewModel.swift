@@ -105,9 +105,16 @@ final class SettingsViewModel {
     }
     
     func selectRow(at indexPath: IndexPath) {
+        let accountSection = 0
         let helpSection = numberOfSections() - 1
         
-        if indexPath.section == helpSection {
+        if indexPath.section == accountSection {
+            let indexOfLastRow = numberOfRows(in: accountSection) - 1
+            
+            if indexPath.row == indexOfLastRow {
+                coordinator?.startAddAccountFlow()
+            }
+        } else if indexPath.section == helpSection {
             if indexPath.row == 0 {
                 coordinator?.presentGitHubRepository()
             } else if indexPath.row == 1 {

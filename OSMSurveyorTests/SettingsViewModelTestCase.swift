@@ -61,6 +61,18 @@ class SettingsViewModelTestCase: XCTestCase {
         XCTAssertEqual(row?.accessoryType, .disclosureIndicator)
     }
     
+    func testSelectRow_whenTappingLastRowInAccountSection_shouldAskCoordinatorToStartAddAccountFlow() {
+        /// Given
+        let accountSection = 0
+        let indexOfLastRow = viewModel.numberOfRows(in: accountSection) - 1
+        
+        /// When
+        viewModel.selectRow(at: IndexPath(row: indexOfLastRow, section: accountSection))
+        
+        /// Then
+        XCTAssertTrue(coordinatorMock.didCallStartAddAccountFlow)
+    }
+    
     // MARK: Help Section
     
     func testNumberOfRowsInSection_whenAskedAboutLastSection_shouldReturnExpectedNumber() {
