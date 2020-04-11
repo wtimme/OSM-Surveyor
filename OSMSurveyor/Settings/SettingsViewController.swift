@@ -64,6 +64,13 @@ final class SettingsViewController: UITableViewController {
         return viewModel.footerTitleOfSection(section)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectRow(at: indexPath)
+        
+        /// Immediately deselect the row again, so that it doesn't visually stay selected.
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     // MARK: Private method
     
     @objc private func didTapDoneButton() {

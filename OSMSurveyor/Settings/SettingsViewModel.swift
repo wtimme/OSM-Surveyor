@@ -90,6 +90,9 @@ final class SettingsViewModel {
         return self.section(at: section)?.footerTitle
     }
     
+    func selectRow(at indexPath: IndexPath) {
+    }
+    
     // MARK: Private methods
     
     private func createHelpSection() -> Section {
