@@ -9,6 +9,10 @@
 import UIKit
 import OSMSurveyorFramework
 
+enum AddAccountFlowCoordinatorError: Error {
+    case insufficientPermissions
+}
+
 protocol AddAccountFlowCoordinatorProtocol {
     func start()
     
@@ -48,8 +52,28 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
             case let .failure(error):
                 self.onFinish?(.failure(error))
             case let .success(credentials):
-                self.apiClient.userDetails(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { userDetailsResult in
-                    /// TODO: Implement me.
+                self.apiClient.userDetails(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { [weak self] userDetailsResult in
+                    guard let self = self else { return }
+                    
+                    switch userDetailsResult {
+                    case let .failure(error):
+                        self.onFinish?(.failure(error))
+                    case let .success(userDetails):
+                        self.apiClient.permissions(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { [weak self] permissionResult in
+                            guard let self = self else { return }
+                            
+                            switch permissionResult {
+                            case let .failure(error):
+                                self.onFinish?(.failure(error))
+                            case let .success(permissions):
+                                if permissions.contains(.allow_read_prefs), permissions.contains(.allow_write_api) {
+                                    self.onFinish?(.success(userDetails.username))
+                                } else {
+                                    self.onFinish?(.failure(AddAccountFlowCoordinatorError.insufficientPermissions))
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import OSMSurveyor
+@testable import OSMSurveyorFramework
 @testable import OSMSurveyorFrameworkMocks
 
 class AddAccountFlowCoordinatorTestCase: XCTestCase {
@@ -81,6 +82,101 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         XCTAssertTrue(apiClientMock.didCallUserDetails)
         XCTAssertEqual(apiClientMock.userDetailsArguments?.token, token)
         XCTAssertEqual(apiClientMock.userDetailsArguments?.tokenSecret, tokenSecret)
+    }
+    
+    func testStart_whenAPIClientFailedToFetchUserDetails_shouldExecuteOnFinishWithError() {
+        /// Given
+        let error = NSError(domain: "com.example.error", code: 1, userInfo: nil)
+        
+        let onFinishExpectation = expectation(description: "Coordinator should finish")
+        var coordinatorError: Error?
+        coordinator.onFinish = { result in
+            if case let .failure(resultingError) = result {
+                coordinatorError = resultingError
+            }
+            
+            onFinishExpectation.fulfill()
+        }
+        
+        coordinator.start()
+        
+        /// When
+        oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
+        apiClientMock.userDetailsArguments?.completion(.failure(error))
+        
+        /// Then
+        waitForExpectations(timeout: 1, handler: nil)
+        
+        XCTAssertEqual(coordinatorError as? NSError, error)
+    }
+    
+    func testStart_whenOAuthHandlerAuthorizedAndTheUserDetailsWereFetchedSuccessful_shouldAskOpenStreetMapAPIClientToGetPermissions() {
+        /// Given
+        let token = "foo"
+        let tokenSecret = "bar"
+        
+        coordinator.start()
+        
+        /// When
+        oAuthHandlerMock.authorizeCompletion?(.success((token, tokenSecret)))
+        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: "")))
+        
+        XCTAssertTrue(apiClientMock.didCallPermissions)
+        XCTAssertEqual(apiClientMock.permissionsArguments?.token, token)
+        XCTAssertEqual(apiClientMock.permissionsArguments?.tokenSecret, tokenSecret)
+    }
+    
+    func testStart_whenPermissionsAreInsufficient_shouldExecuteOnFinishWithError() {
+        /// Given
+        let permissions: [Permission] = [.allow_read_gpx, .allow_write_notes]
+        
+        let onFinishExpectation = expectation(description: "Coordinator should finish")
+        var coordinatorError: Error?
+        coordinator.onFinish = { result in
+            if case let .failure(resultingError) = result {
+                coordinatorError = resultingError
+            }
+            
+            onFinishExpectation.fulfill()
+        }
+        
+        /// When
+        coordinator.start()
+        oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
+        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: "")))
+        apiClientMock.permissionsArguments?.completion(.success(permissions))
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+        
+        XCTAssertTrue(AddAccountFlowCoordinatorError.insufficientPermissions == (coordinatorError as? AddAccountFlowCoordinatorError))
+    }
+    
+    func testStart_whenOAuthHandlerAuthorizedAndTheUserDetailsWereFetchedAndAllRequiredPermissionsArePresent_shouldExecuteOnFinishWithSuccess() {
+        /// Given
+        let username = "jane.doe"
+        let permissions: [Permission] = [.allow_write_api, .allow_read_prefs]
+        
+        let onFinishExpectation = expectation(description: "Coordinator should finish")
+        var coordinatorUsername: String?
+        coordinator.onFinish = { result in
+            if case let .success(username) = result {
+                coordinatorUsername = username
+            }
+            
+            onFinishExpectation.fulfill()
+        }
+        
+        /// When
+        coordinator.start()
+        oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
+        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: username)))
+        apiClientMock.permissionsArguments?.completion(.success(permissions))
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+        
+        XCTAssertEqual(coordinatorUsername, username)
     }
 
 }
