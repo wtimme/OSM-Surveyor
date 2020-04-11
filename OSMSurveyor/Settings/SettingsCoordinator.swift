@@ -75,7 +75,7 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
                 let controller = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
                 controller.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 navigationController.present(controller, animated: true)
-            case .success():
+            case let .success(username):
                 /// TODO: Implement me.
                 print("Account added successfully.")
             }

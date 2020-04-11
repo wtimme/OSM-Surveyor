@@ -13,13 +13,14 @@ protocol AddAccountFlowCoordinatorProtocol {
     func start()
     
     /// Closure that is executed as soon as the coordinator finished its flow.
-    var onFinish: ((Result<Void, Error>) -> Void)? { set get }
+    /// In case of a success, the `Result` contains the username.
+    var onFinish: ((Result<String, Error>) -> Void)? { set get }
 }
 
 final class AddAccountFlowCoordinator {
     // MARK: Public properties
     
-    var onFinish: ((Result<Void, Error>) -> Void)?
+    var onFinish: ((Result<String, Error>) -> Void)?
     
     // MARK: Private properties
     
