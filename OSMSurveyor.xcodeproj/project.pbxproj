@@ -81,6 +81,7 @@
 		64D5D9302441B24200AB0EC2 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D92F2441B24200AB0EC2 /* SettingsViewModel.swift */; };
 		64D5D9322441B67400AB0EC2 /* SettingsViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D9312441B67400AB0EC2 /* SettingsViewModelTestCase.swift */; };
 		64D5D9372441C86A00AB0EC2 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D9362441C86A00AB0EC2 /* SettingsCoordinator.swift */; };
+		64D5D93A2441CDD200AB0EC2 /* SettingsCoordinatorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D9392441CDD200AB0EC2 /* SettingsCoordinatorMock.swift */; };
 		64D6A185243A56490097FEDD /* QuestDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */; };
 		64D6A187243A5C120097FEDD /* StaticOverpassQuestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */; };
 		E5B869097359A45232BF78F2 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCA560E746E2607ADEEC4B00 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework */; };
@@ -215,6 +216,7 @@
 		64D5D92F2441B24200AB0EC2 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		64D5D9312441B67400AB0EC2 /* SettingsViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModelTestCase.swift; sourceTree = "<group>"; };
 		64D5D9362441C86A00AB0EC2 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		64D5D9392441CDD200AB0EC2 /* SettingsCoordinatorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinatorMock.swift; sourceTree = "<group>"; };
 		64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataManagerMock.swift; sourceTree = "<group>"; };
 		64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticOverpassQuestProvider.swift; sourceTree = "<group>"; };
 		76B4A25348A97A383A6AA192 /* Pods_OSMSurveyor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OSMSurveyor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -545,6 +547,7 @@
 		64D5D9382441CDA600AB0EC2 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				64D5D9392441CDD200AB0EC2 /* SettingsCoordinatorMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -855,6 +858,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */,
+				64D5D93A2441CDD200AB0EC2 /* SettingsCoordinatorMock.swift in Sources */,
 				64D5D9322441B67400AB0EC2 /* SettingsViewModelTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
