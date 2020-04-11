@@ -86,6 +86,7 @@
 		64D5D93C2441DAE500AB0EC2 /* AddAccountFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D93B2441DAE500AB0EC2 /* AddAccountFlowCoordinator.swift */; };
 		64D5D93F2441DD6700AB0EC2 /* OAuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D93E2441DD6700AB0EC2 /* OAuthHandler.swift */; };
 		64D5D9422441EAB800AB0EC2 /* AccountHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D9412441EAB800AB0EC2 /* AccountHandler.swift */; };
+		64D5D94C2441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D5D94A2441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		64D6A185243A56490097FEDD /* QuestDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */; };
 		64D6A187243A5C120097FEDD /* StaticOverpassQuestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */; };
 		E5B869097359A45232BF78F2 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCA560E746E2607ADEEC4B00 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework */; };
@@ -225,6 +226,9 @@
 		64D5D93B2441DAE500AB0EC2 /* AddAccountFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountFlowCoordinator.swift; sourceTree = "<group>"; };
 		64D5D93E2441DD6700AB0EC2 /* OAuthHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthHandler.swift; sourceTree = "<group>"; };
 		64D5D9412441EAB800AB0EC2 /* AccountHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountHandler.swift; sourceTree = "<group>"; };
+		64D5D9482441EE5A00AB0EC2 /* OSMSurveyorFrameworkMocks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSMSurveyorFrameworkMocks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64D5D94A2441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSMSurveyorFrameworkMocks.h; sourceTree = "<group>"; };
+		64D5D94B2441EE5B00AB0EC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataManagerMock.swift; sourceTree = "<group>"; };
 		64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticOverpassQuestProvider.swift; sourceTree = "<group>"; };
 		76B4A25348A97A383A6AA192 /* Pods_OSMSurveyor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OSMSurveyor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -265,6 +269,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D4D8D22427F7F900FB900A /* OSMSurveyorFramework.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D5D9452441EE5A00AB0EC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +341,7 @@
 				6470E7C92427CE6A009A6AAC /* OSMSurveyorTests */,
 				64D4D8CA2427F7F900FB900A /* OSMSurveyorFramework */,
 				64D4D8D72427F7F900FB900A /* OSMSurveyorFrameworkTests */,
+				64D5D9492441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks */,
 				6470E7B12427CE69009A6AAC /* Products */,
 				D418A5971843D39FF0D9BA2E /* Pods */,
 				C17268EA23BEA6AEB95D4E8B /* Frameworks */,
@@ -343,6 +355,7 @@
 				6470E7C62427CE6A009A6AAC /* OSMSurveyorTests.xctest */,
 				64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */,
 				64D4D8D12427F7F900FB900A /* OSMSurveyorFrameworkTests.xctest */,
+				64D5D9482441EE5A00AB0EC2 /* OSMSurveyorFrameworkMocks.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -580,6 +593,15 @@
 			path = Accounts;
 			sourceTree = "<group>";
 		};
+		64D5D9492441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks */ = {
+			isa = PBXGroup;
+			children = (
+				64D5D94A2441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks.h */,
+				64D5D94B2441EE5B00AB0EC2 /* Info.plist */,
+			);
+			path = OSMSurveyorFrameworkMocks;
+			sourceTree = "<group>";
+		};
 		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -611,6 +633,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D4D8DB2427F7F900FB900A /* OSMSurveyorFramework.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D5D9432441EE5A00AB0EC2 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D5D94C2441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +725,24 @@
 			productReference = 64D4D8D12427F7F900FB900A /* OSMSurveyorFrameworkTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		64D5D9472441EE5A00AB0EC2 /* OSMSurveyorFrameworkMocks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64D5D94D2441EE5B00AB0EC2 /* Build configuration list for PBXNativeTarget "OSMSurveyorFrameworkMocks" */;
+			buildPhases = (
+				64D5D9432441EE5A00AB0EC2 /* Headers */,
+				64D5D9442441EE5A00AB0EC2 /* Sources */,
+				64D5D9452441EE5A00AB0EC2 /* Frameworks */,
+				64D5D9462441EE5A00AB0EC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OSMSurveyorFrameworkMocks;
+			productName = OSMSurveyorFrameworkMocks;
+			productReference = 64D5D9482441EE5A00AB0EC2 /* OSMSurveyorFrameworkMocks.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -720,6 +768,9 @@
 						CreatedOnToolsVersion = 11.3.1;
 						TestTargetID = 6470E7AF2427CE69009A6AAC;
 					};
+					64D5D9472441EE5A00AB0EC2 = {
+						CreatedOnToolsVersion = 11.4;
+					};
 				};
 			};
 			buildConfigurationList = 6470E7AB2427CE69009A6AAC /* Build configuration list for PBXProject "OSMSurveyor" */;
@@ -739,6 +790,7 @@
 				6470E7C52427CE6A009A6AAC /* OSMSurveyorTests */,
 				64D4D8C82427F7F900FB900A /* OSMSurveyorFramework */,
 				64D4D8D02427F7F900FB900A /* OSMSurveyorFrameworkTests */,
+				64D5D9472441EE5A00AB0EC2 /* OSMSurveyorFrameworkMocks */,
 			);
 		};
 /* End PBXProject section */
@@ -772,6 +824,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		64D4D8CF2427F7F900FB900A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D5D9462441EE5A00AB0EC2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -962,6 +1021,13 @@
 				64A77B63243A344F000A9822 /* OverpassQuestMock.swift in Sources */,
 				641AEEB1242E6A5E000CA2A2 /* CoordinateTestCase.swift in Sources */,
 				64A77B61243A32A1000A9822 /* OverpassQueryExecutorMock.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D5D9442441EE5A00AB0EC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1313,6 +1379,62 @@
 			};
 			name = Release;
 		};
+		64D5D94E2441EE5B00AB0EC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CH829V2QQB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = OSMSurveyorFrameworkMocks/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.wtimme.OSMSurveyorFrameworkMocks;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		64D5D94F2441EE5B00AB0EC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = CH829V2QQB;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = OSMSurveyorFrameworkMocks/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.wtimme.OSMSurveyorFrameworkMocks;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1357,6 +1479,15 @@
 			buildConfigurations = (
 				64D4D8E32427F7F900FB900A /* Debug */,
 				64D4D8E42427F7F900FB900A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64D5D94D2441EE5B00AB0EC2 /* Build configuration list for PBXNativeTarget "OSMSurveyorFrameworkMocks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64D5D94E2441EE5B00AB0EC2 /* Debug */,
+				64D5D94F2441EE5B00AB0EC2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
