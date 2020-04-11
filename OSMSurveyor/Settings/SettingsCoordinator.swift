@@ -14,6 +14,9 @@ protocol SettingsCoordinatorProtocol: class {
     
     /// Presents the app's GitHub repository.
     func presentGitHubRepository()
+    
+    /// Presents the bug/issue tracker.
+    func presentBugTracker()
 }
 
 final class SettingsCoordinator {
@@ -45,6 +48,12 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
     
     func presentGitHubRepository() {
         guard let url = URL(string: "https://github.com/wtimme/OSM-Surveyor") else { return }
+        
+        openExternalURL(url)
+    }
+    
+    func presentBugTracker() {
+        guard let url = URL(string: "https://github.com/wtimme/OSM-Surveyor/issues") else { return }
         
         openExternalURL(url)
     }

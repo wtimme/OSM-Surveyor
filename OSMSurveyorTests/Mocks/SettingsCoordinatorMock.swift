@@ -11,6 +11,7 @@ import Foundation
 
 final class SettingsCoordinatorMock {
     private(set) var didCallPresentGitHubRepository = false
+    private(set) var didCallPresentBugTracker = false
 }
 
 extension SettingsCoordinatorMock: SettingsCoordinatorProtocol {
@@ -18,5 +19,9 @@ extension SettingsCoordinatorMock: SettingsCoordinatorProtocol {
     
     func presentGitHubRepository() {
         didCallPresentGitHubRepository = true
+    }
+    
+    func presentBugTracker() {
+        didCallPresentBugTracker = true
     }
 }

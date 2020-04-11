@@ -96,6 +96,8 @@ final class SettingsViewModel {
         if indexPath.section == helpSection {
             if indexPath.row == 0 {
                 coordinator?.presentGitHubRepository()
+            } else if indexPath.row == 1 {
+                coordinator?.presentBugTracker()
             }
         }
     }

@@ -94,4 +94,15 @@ class SettingsViewModelTestCase: XCTestCase {
         XCTAssertTrue(coordinatorMock.didCallPresentGitHubRepository)
     }
     
+    func testSelectRow_whenTappingSecondRowInHelpSection_shouldAskCoordinatorToPresentBugTracker() {
+        /// Given
+        let lastSection = viewModel.numberOfSections() - 1
+        
+        /// When
+        viewModel.selectRow(at: IndexPath(row: 1, section: lastSection))
+        
+        /// Then
+        XCTAssertTrue(coordinatorMock.didCallPresentBugTracker)
+    }
+    
 }
