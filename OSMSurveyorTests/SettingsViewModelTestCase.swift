@@ -21,4 +21,37 @@ class SettingsViewModelTestCase: XCTestCase {
         viewModel = nil
     }
     
+    func testNumberOfRowsInSection_whenProvidedWithInvalidSection_shouldReturnZero() {
+        XCTAssertEqual(viewModel.numberOfRows(in: 9999), 0)
+        XCTAssertEqual(viewModel.numberOfRows(in: -5), 0)
+    }
+    
+    // MARK: Help Section
+    
+    func testNumberOfRowsInSection_whenAskedAboutLastSection_shouldReturnExpectedNumber() {
+        let lastSection = viewModel.sections.count - 1
+        let numberOfRows = viewModel.numberOfRows(in: lastSection)
+        
+        XCTAssertEqual(numberOfRows, 2)
+    }
+    
+    func testLastSectionShouldHaveHelpAsHeaderTitle() {
+        XCTAssertEqual(viewModel.sections.last?.headerTitle, "Help")
+    }
+    
+    func testLastSectionShouldHaveAppDetailsAsFooterTitle() {
+        /// Given
+        let appName = "Lorem Ipsum"
+        let appVersion = "42"
+        let appBuildNumber = "999"
+        
+        /// When
+        let newViewModel = SettingsViewModel(appName: appName,
+                                             appVersion: appVersion,
+                                             appBuildNumber: appBuildNumber)
+        
+        /// Then
+        XCTAssertEqual(newViewModel.sections.last?.footerTitle, "\(appName) \(appVersion) (Build \(appBuildNumber))")
+    }
+    
 }

@@ -41,6 +41,8 @@ final class SettingsViewModel {
     
     init(appName: String, appVersion: String, appBuildNumber: String) {
         appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
+        
+        sections = [createHelpSection()]
     }
     
     convenience init() {
@@ -63,4 +65,16 @@ final class SettingsViewModel {
         return sections[section].rows.count
     }
     
+    // MARK: Private methods
+    
+    private func createHelpSection() -> Section {
+        let rows = [
+            Row(title: "foo"),
+            Row(title: "bar")
+        ]
+        
+        return Section(headerTitle: "Help",
+                       footerTitle: appNameAndVersion,
+                       rows: rows)
+    }
 }
