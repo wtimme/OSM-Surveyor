@@ -27,5 +27,14 @@ final class SettingsViewController: UITableViewController {
         super.viewDidLoad()
         
         title = "Settings"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
+                                                           target: self,
+                                                           action: #selector(didTapDoneButton))
+    }
+    
+    // MARK: Private method
+    
+    @objc private func didTapDoneButton() {
+        dismiss(animated: true)
     }
 }
