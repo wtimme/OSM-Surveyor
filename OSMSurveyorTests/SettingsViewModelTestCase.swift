@@ -8,13 +8,16 @@
 
 import XCTest
 @testable import OSMSurveyor
+@testable import OSMSurveyorFrameworkMocks
 
 class SettingsViewModelTestCase: XCTestCase {
     
     var viewModel: SettingsViewModel!
+    var accountHandlerMock: AccountHandlerMock!
     var coordinatorMock: SettingsCoordinatorMock!
 
     override func setUpWithError() throws {
+        accountHandlerMock = AccountHandlerMock()
         viewModel = SettingsViewModel()
         
         coordinatorMock = SettingsCoordinatorMock()
@@ -22,6 +25,7 @@ class SettingsViewModelTestCase: XCTestCase {
     }
 
     override func tearDownWithError() throws {
+        accountHandlerMock = nil
         viewModel = nil
         coordinatorMock = nil
     }
@@ -111,7 +115,8 @@ class SettingsViewModelTestCase: XCTestCase {
         let appBuildNumber = "999"
         
         /// When
-        let newViewModel = SettingsViewModel(appName: appName,
+        let newViewModel = SettingsViewModel(accountHandler: accountHandlerMock,
+                                             appName: appName,
                                              appVersion: appVersion,
                                              appBuildNumber: appBuildNumber)
         

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import OSMSurveyorFramework
 
 final class SettingsViewModel {
     // MARK: Types
@@ -46,13 +47,16 @@ final class SettingsViewModel {
     
     // MARK: Private properties
     
+    private let accountHandler: AccountHandling
     private let appNameAndVersion: String
     
     private var sections = [Section]()
     
     // MARK: Initializer
     
-    init(appName: String, appVersion: String, appBuildNumber: String) {
+    init(accountHandler: AccountHandling, appName: String, appVersion: String, appBuildNumber: String) {
+        self.accountHandler = accountHandler
+        
         appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
         
         sections = [
@@ -69,8 +73,8 @@ final class SettingsViewModel {
         else {
             fatalError("Unable to get the app details from the info dictionary.")
         }
-
-        self.init(appName: appName, appVersion: appVersion, appBuildNumber: appBuildNumber)
+        
+        self.init(accountHandler: AccountHandler.shared, appName: appName, appVersion: appVersion, appBuildNumber: appBuildNumber)
     }
     
     // MARK: Public methods
