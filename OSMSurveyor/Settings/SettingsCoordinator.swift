@@ -50,7 +50,10 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
     }
     
     func startAddAccountFlow() {
-        /// TODO: Implement me.
+        guard let navigationController = navigationController else { return }
+        
+        let coordinator = AddAccountFlowCoordinator(navigationController: navigationController)
+        coordinator.start()
     }
     
     func presentGitHubRepository() {
