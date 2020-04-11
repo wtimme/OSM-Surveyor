@@ -358,6 +358,7 @@
 		6470E7C92427CE6A009A6AAC /* OSMSurveyorTests */ = {
 			isa = PBXGroup;
 			children = (
+				64D5D9382441CDA600AB0EC2 /* Mocks */,
 				6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */,
 				6470E7CC2427CE6A009A6AAC /* Info.plist */,
 				64D5D9312441B67400AB0EC2 /* SettingsViewModelTestCase.swift */,
@@ -539,6 +540,13 @@
 			children = (
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		64D5D9382441CDA600AB0EC2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
