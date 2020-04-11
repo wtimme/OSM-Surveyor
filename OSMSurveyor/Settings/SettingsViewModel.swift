@@ -60,15 +60,11 @@ final class SettingsViewModel {
     // MARK: Public methods
     
     func numberOfRows(in section: Int) -> Int {
-        guard section >= 0, section < sections.count else { return 0 }
-        
-        return sections[section].rows.count
+        return self.section(at: section)?.rows.count ?? 0
     }
     
     func headerTitleOfSection(_ section: Int) -> String? {
-        guard section >= 0, section < sections.count else { return nil }
-        
-        return sections[section].headerTitle
+        return self.section(at: section)?.headerTitle
     }
     
     // MARK: Private methods
@@ -82,5 +78,11 @@ final class SettingsViewModel {
         return Section(headerTitle: "Help",
                        footerTitle: appNameAndVersion,
                        rows: rows)
+    }
+    
+    private func section(at index: Int) -> Section? {
+        guard index >= 0, index < sections.count else { return nil }
+        
+        return sections[index]
     }
 }
