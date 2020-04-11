@@ -26,6 +26,11 @@ class SettingsViewModelTestCase: XCTestCase {
         XCTAssertEqual(viewModel.numberOfRows(in: -5), 0)
     }
     
+    func testRowAtIndexPath_whenProvidedWithInvalidIndexPath_shouldReturnNil() {
+        XCTAssertNil(viewModel.row(at: IndexPath(item: 23, section: -1)))
+        XCTAssertNil(viewModel.row(at: IndexPath(item: -101, section: 42)))
+    }
+    
     // MARK: Help Section
     
     func testNumberOfRowsInSection_whenAskedAboutLastSection_shouldReturnExpectedNumber() {

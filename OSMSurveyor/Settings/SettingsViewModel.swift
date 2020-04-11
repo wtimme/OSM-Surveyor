@@ -65,6 +65,19 @@ final class SettingsViewModel {
         return self.section(at: section)?.rows.count ?? 0
     }
     
+    func row(at indexPath: IndexPath) -> Row? {
+        guard
+            let section = self.section(at: indexPath.section),
+            indexPath.row >= 0,
+            indexPath.row < section.rows.count
+        else {
+            /// Invalid index path.
+            return nil
+        }
+        
+        return section.rows[indexPath.row]
+    }
+    
     func headerTitleOfSection(_ section: Int) -> String? {
         return self.section(at: section)?.headerTitle
     }
