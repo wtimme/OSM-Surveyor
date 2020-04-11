@@ -29,6 +29,10 @@ final class SettingsViewModel {
         }
     }
     
+    // MARK: Public properties
+    
+    weak var coordinator: SettingsCoordinatorProtocol?
+    
     // MARK: Private properties
     
     private let appNameAndVersion: String

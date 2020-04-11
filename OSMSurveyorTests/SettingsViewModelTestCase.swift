@@ -12,13 +12,18 @@ import XCTest
 class SettingsViewModelTestCase: XCTestCase {
     
     var viewModel: SettingsViewModel!
+    var coordinatorMock: SettingsCoordinatorMock!
 
     override func setUpWithError() throws {
         viewModel = SettingsViewModel()
+        
+        coordinatorMock = SettingsCoordinatorMock()
+        viewModel.coordinator = coordinatorMock
     }
 
     override func tearDownWithError() throws {
         viewModel = nil
+        coordinatorMock = nil
     }
     
     func testNumberOfRowsInSection_whenProvidedWithInvalidSection_shouldReturnZero() {

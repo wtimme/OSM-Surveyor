@@ -31,7 +31,10 @@ final class SettingsCoordinator {
 
 extension SettingsCoordinator: SettingsCoordinatorProtocol {
     func start() {
-        let settingsViewController = SettingsViewController()
+        let viewModel = SettingsViewModel()
+        viewModel.coordinator = self
+        
+        let settingsViewController = SettingsViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: settingsViewController)
         
         /// Remember the navigation controller so that we can later use it for other actions.
