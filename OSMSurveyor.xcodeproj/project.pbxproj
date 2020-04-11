@@ -338,6 +338,7 @@
 		6470E7B22427CE69009A6AAC /* OSMSurveyor */ = {
 			isa = PBXGroup;
 			children = (
+				64D5D9332441B8B200AB0EC2 /* Extensions */,
 				64D5D92C2441B1A600AB0EC2 /* Settings */,
 				646008B3243FBAEF0015F89C /* Tangram */,
 				64BDCB4E242A975A0098536A /* Map */,
@@ -528,6 +529,13 @@
 				64D5D92F2441B24200AB0EC2 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		64D5D9332441B8B200AB0EC2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
