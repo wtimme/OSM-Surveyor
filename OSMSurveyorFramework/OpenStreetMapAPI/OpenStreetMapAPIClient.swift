@@ -18,6 +18,7 @@ public struct UserDetails {
 
 public protocol OpenStreetMapAPIClientProtocol {
     /// Fetches the details of the user that is authenticated with the given credentials.
+    /// 
     /// Use this method to verify that OAuth credentials are still valid.
     /// - Parameters:
     ///   - oAuthToken: The token for OAuth.
