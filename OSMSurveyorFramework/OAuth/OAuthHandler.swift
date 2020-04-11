@@ -13,6 +13,12 @@ public protocol OAuthHandling {
 }
 
 public final class OAuthHandler {
+    // MARK: Public properties
+    
+    /// Singleton instance. Is only available if the `OAuthHandler` has been initialized from somewhere.
+    /// This is is far from ideal, but since the framework lacks a proper injection mechanism, this is a quick hack to have access to a shared instance.
+    public private(set) static var shared: OAuthHandling?
+    
     // MARK: Private properties
     
     private let oauthswift: OAuth1Swift
@@ -29,6 +35,8 @@ public final class OAuthHandler {
                                       requestTokenUrl: requestTokenUrl,
                                       authorizeUrl: authorizeUrl,
                                       accessTokenUrl: accessTokenUrl)
+        
+        OAuthHandler.shared = self
     }
     
     /// Initializes the handler with the path to a Property List file in which the OAuth secrets can be found.
