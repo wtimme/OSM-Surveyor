@@ -51,8 +51,8 @@ public final class OpenStreetMapAPIClient {
     private let oAuthConsumerKey: String
     private let oAuthConsumerSecret: String
     
-    /// A temporary `Session` that is being used to retrieve the details of a user when checking the OAuth credentials.
-    private var userDetailsSession: Session?
+    /// A temporary `Session` that is being used to call the API when checking the OAuth credentials.
+    private var temporarySession: Session?
     
     // MARK: Initializer
     
@@ -88,19 +88,14 @@ extension OpenStreetMapAPIClient: OpenStreetMapAPIClientProtocol {
     public func userDetails(oAuthToken: String,
                      oAuthTokenSecret: String,
                      completion: @escaping (Result<UserDetails, Error>) -> Void) {
-        /// Setup a (temporary) `Session` for fetching the user details.
-        let oAuthSwift = OAuth1Swift(consumerKey: oAuthConsumerKey,
-                                     consumerSecret: oAuthConsumerSecret)
-        oAuthSwift.client.credential.oauthToken = oAuthToken
-        oAuthSwift.client.credential.oauthTokenSecret = oAuthTokenSecret
-        userDetailsSession = Session(interceptor: OAuthSwiftRequestInterceptor(oAuthSwift))
+        let session = temporarySession(oAuthToken: oAuthToken, oAuthTokenSecret: oAuthTokenSecret)
         
         let url = baseURL.appendingPathComponent("/api/0.6/user/details")
-        userDetailsSession?.request(url).response(completionHandler: { [weak self] response in
+        session.request(url).response(completionHandler: { [weak self] response in
             guard let self = self else { return }
             
             /// Since the request has finished, the session can be removed.
-            self.userDetailsSession = nil
+            self.temporarySession = nil
             
             if let error = response.error {
                 completion(.failure(error))
@@ -137,5 +132,19 @@ extension OpenStreetMapAPIClient: OpenStreetMapAPIClientProtocol {
     
     public func permissions(oAuthToken: String, oAuthTokenSecret: String, completion: @escaping (Result<[Permission], Error>) -> Void) {
         /// TODO: Implement me.
+    }
+    
+    private func temporarySession(oAuthToken: String, oAuthTokenSecret: String) -> Session {
+        /// Setup a (temporary) `Session` for fetching the user details.
+        let oAuthSwift = OAuth1Swift(consumerKey: oAuthConsumerKey, consumerSecret: oAuthConsumerSecret)
+        
+        oAuthSwift.client.credential.oauthToken = oAuthToken
+        oAuthSwift.client.credential.oauthTokenSecret = oAuthTokenSecret
+        let session = Session(interceptor: OAuthSwiftRequestInterceptor(oAuthSwift))
+        
+        /// Store a reference to the `Session`. Otherwise, the request(s) get cancelled.
+        self.temporarySession = session
+        
+        return session
     }
 }
