@@ -11,9 +11,16 @@ import OSMSurveyorFramework
 
 protocol AddAccountFlowCoordinatorProtocol {
     func start()
+    
+    /// Closure that is executed as soon as the coordinator finished its flow.
+    var onFinish: ((Result<Void, Error>) -> Void)? { set get }
 }
 
 final class AddAccountFlowCoordinator {
+    // MARK: Public properties
+    
+    var onFinish: ((Result<Void, Error>) -> Void)?
+    
     // MARK: Private properties
     
     private let navigationController: UINavigationController
