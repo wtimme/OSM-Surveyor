@@ -29,6 +29,8 @@ final class SettingsCoordinator {
     private let presentingViewController: UIViewController
     private var navigationController: UINavigationController?
     
+    private var addAccountCoordinator: AddAccountFlowCoordinatorProtocol?
+    
     // MARK: Initializer
     
     init(presentingViewController: UIViewController) {
@@ -65,6 +67,8 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
         let coordinator = AddAccountFlowCoordinator(navigationController: navigationController,
                                                     oAuthHandler: oAuthHandler,
                                                     apiClient: apiClient)
+        addAccountCoordinator = coordinator
+        
         coordinator.start()
     }
     
