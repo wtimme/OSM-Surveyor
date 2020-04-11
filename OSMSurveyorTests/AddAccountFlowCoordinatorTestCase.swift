@@ -15,19 +15,23 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
     var coordinator: AddAccountFlowCoordinatorProtocol!
     var navigationController: UINavigationController!
     var oAuthHandlerMock: OAuthHandlerMock!
+    var apiClientMock: OpenStreetMapAPIClientMock!
 
     override func setUpWithError() throws {
         oAuthHandlerMock = OAuthHandlerMock()
         navigationController = UINavigationController()
+        apiClientMock = OpenStreetMapAPIClientMock()
         
         coordinator = AddAccountFlowCoordinator(navigationController: navigationController,
-                                                oAuthHandler: oAuthHandlerMock)
+                                                oAuthHandler: oAuthHandlerMock,
+                                                apiClient: apiClientMock)
     }
 
     override func tearDownWithError() throws {
         coordinator = nil
         navigationController = nil
         oAuthHandlerMock = nil
+        apiClientMock = nil
     }
     
     func testStart_shouldAskOAuthHandlerToAuthorize() {

@@ -55,14 +55,16 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
         
         guard
             let pathToSecretsPropertyList = Bundle.main.path(forResource: "Secrets", ofType: "plist"),
-            let oAuthHandler = OAuthHandler(propertyListPath: pathToSecretsPropertyList)
+            let oAuthHandler = OAuthHandler(propertyListPath: pathToSecretsPropertyList),
+            let apiClient = OpenStreetMapAPIClient(propertyListPath: pathToSecretsPropertyList)
         else {
             assertionFailure("Unable to initialize the OAuthHandler")
             return
         }
         
         let coordinator = AddAccountFlowCoordinator(navigationController: navigationController,
-                                                    oAuthHandler: oAuthHandler)
+                                                    oAuthHandler: oAuthHandler,
+                                                    apiClient: apiClient)
         coordinator.start()
     }
     
