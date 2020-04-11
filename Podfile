@@ -18,6 +18,7 @@ target 'OSMSurveyor' do
     pod 'SQLite.swift'
     pod 'OAuthSwift', '~> 2.1.0'
     pod 'OAuthSwiftAlamofire', :git => 'https://github.com/OAuthSwift/OAuthSwiftAlamofire.git', :branch => 'master'
+    pod 'KeychainAccess'
   end
 
 end
