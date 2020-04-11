@@ -87,6 +87,8 @@
 		64D5D93F2441DD6700AB0EC2 /* OAuthHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D93E2441DD6700AB0EC2 /* OAuthHandler.swift */; };
 		64D5D9422441EAB800AB0EC2 /* AccountHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D9412441EAB800AB0EC2 /* AccountHandler.swift */; };
 		64D5D94C2441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D5D94A2441EE5B00AB0EC2 /* OSMSurveyorFrameworkMocks.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		64D5D9522441EF7E00AB0EC2 /* OSMSurveyorFrameworkMocks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D5D9482441EE5A00AB0EC2 /* OSMSurveyorFrameworkMocks.framework */; };
+		64D5D9532441EFE400AB0EC2 /* OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */; };
 		64D6A185243A56490097FEDD /* QuestDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */; };
 		64D6A187243A5C120097FEDD /* StaticOverpassQuestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */; };
 		E5B869097359A45232BF78F2 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCA560E746E2607ADEEC4B00 /* Pods_OSMSurveyor_OSMSurveyorFramework.framework */; };
@@ -252,6 +254,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D5D9522441EF7E00AB0EC2 /* OSMSurveyorFrameworkMocks.framework in Frameworks */,
 				23586FDDB8B659FF937C8E72 /* Pods_OSMSurveyorTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -276,6 +279,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D5D9532441EFE400AB0EC2 /* OSMSurveyorFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +774,7 @@
 					};
 					64D5D9472441EE5A00AB0EC2 = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
