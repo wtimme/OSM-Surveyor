@@ -54,4 +54,13 @@ final class SettingsViewModel {
 
         self.init(appName: appName, appVersion: appVersion, appBuildNumber: appBuildNumber)
     }
+    
+    // MARK: Public methods
+    
+    func numberOfRows(in section: Int) -> Int {
+        guard section >= 0, section < sections.count else { return 0 }
+        
+        return sections[section].rows.count
+    }
+    
 }
