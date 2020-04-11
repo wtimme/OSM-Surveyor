@@ -69,9 +69,7 @@ extension OAuthHandler: OAuthHandling {
         oauthswift.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: oauthswift)
         
         guard let callbackURL = URL(string: "osm-surveyor://oauth-callback/osm") else { return }
-        oauthswift.authorize(withCallbackURL: callbackURL) { [weak self] result in
-            guard let self = self else { return }
-            
+        oauthswift.authorize(withCallbackURL: callbackURL) { result in
             switch result {
             case let .failure(error):
                 completion(.failure(error))
