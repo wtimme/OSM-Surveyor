@@ -9,8 +9,10 @@
 import Foundation
 import OAuthSwift
 
+public typealias OAuthAuthorizationResult = Result<(token: String, tokenSecret: String), Error>
+
 public protocol OAuthHandling {
-    func authorize(from viewController: Any)
+    func authorize(from viewController: Any, completion: @escaping (OAuthAuthorizationResult) -> Void)
     
     /// Asks the handler to handle the given `URL`.
     /// - Parameter url: The `URL` to handle.
@@ -61,18 +63,20 @@ public final class OAuthHandler {
 }
 
 extension OAuthHandler: OAuthHandling {
-    public func authorize(from viewController: Any) {
+    public func authorize(from viewController: Any, completion: @escaping (OAuthAuthorizationResult) -> Void) {
         /// Configure OAuthSwift to use SFSafariViewController
         guard let viewController = viewController as? UIViewController else { return }
         oauthswift.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: oauthswift)
         
         guard let callbackURL = URL(string: "osm-surveyor://oauth-callback/osm") else { return }
-        oauthswift.authorize(withCallbackURL: callbackURL) { result in
+        oauthswift.authorize(withCallbackURL: callbackURL) { [weak self] result in
+            guard let self = self else { return }
+            
             switch result {
-            case .failure(let error):
-                print("Failed to authorize: \(error.localizedDescription)")
-            case .success(let (credential, response, parameters)):
-                print("Success!")
+            case let .failure(error):
+                completion(.failure(error))
+            case let .success((credential, _, _)):
+                completion(.success((credential.oauthToken, credential.oauthTokenSecret)))
             }
         }
     }
