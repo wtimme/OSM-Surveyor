@@ -12,6 +12,9 @@ import SafariServices
 protocol SettingsCoordinatorProtocol: class {
     func start()
     
+    /// Starts the flow for adding a new OpenStreetMap account.
+    func startAddAccountFlow()
+    
     /// Presents the app's GitHub repository.
     func presentGitHubRepository()
     
@@ -44,6 +47,10 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
         self.navigationController = navigationController
         
         presentingViewController.present(navigationController, animated: true)
+    }
+    
+    func startAddAccountFlow() {
+        /// TODO: Implement me.
     }
     
     func presentGitHubRepository() {

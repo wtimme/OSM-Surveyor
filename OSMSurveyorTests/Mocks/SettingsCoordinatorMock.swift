@@ -10,12 +10,17 @@ import Foundation
 @testable import OSMSurveyor
 
 final class SettingsCoordinatorMock {
+    private(set) var didCallStartAddAccountFlow = false
     private(set) var didCallPresentGitHubRepository = false
     private(set) var didCallPresentBugTracker = false
 }
 
 extension SettingsCoordinatorMock: SettingsCoordinatorProtocol {
     func start() {}
+    
+    func startAddAccountFlow() {
+        didCallStartAddAccountFlow = true
+    }
     
     func presentGitHubRepository() {
         didCallPresentGitHubRepository = true
