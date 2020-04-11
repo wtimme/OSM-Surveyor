@@ -18,6 +18,8 @@ class MapViewController: UIViewController {
     private let questDownloader: MapViewQuestDownloading = MapViewQuestDownloader.shared
     private var annotationManager = QuestAnnotationManager.shared
     private var annotationLayer: AnnotationLayerProtocol?
+    
+    private var settingsCoordinator: SettingsCoordinatorProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,9 +93,9 @@ class MapViewController: UIViewController {
     }
     
     @IBAction private func didTapSettingsButton() {
-        let coordinator = SettingsCoordinator(presentingViewController: self)
+        settingsCoordinator = SettingsCoordinator(presentingViewController: self)
         
-        coordinator.start()
+        settingsCoordinator?.start()
     }
     
     private func downloadQuestsInScreenArea(ignoreDownloaded: Bool = false) {
