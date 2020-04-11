@@ -72,7 +72,17 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
         coordinator.onFinish = { result in
             switch result {
             case let .failure(error):
-                let controller = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                let title: String?
+                let message: String?
+                if case AddAccountFlowCoordinatorError.insufficientPermissions = error {
+                    title = "Insufficient privileges"
+                    message = "Please allow the app to access ALL OAuth permissions. Do not uncheck the checkboxes! Otherwise, the app will not work properly."
+                } else {
+                    title = "Error"
+                    message = error.localizedDescription
+                }
+                
+                let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
                 controller.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
                 navigationController.present(controller, animated: true)
             case let .success(username):
