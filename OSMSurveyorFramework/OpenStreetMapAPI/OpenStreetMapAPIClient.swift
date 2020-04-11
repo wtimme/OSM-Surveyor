@@ -99,6 +99,9 @@ extension OpenStreetMapAPIClient: OpenStreetMapAPIClientProtocol {
         userDetailsSession?.request(url).response(completionHandler: { [weak self] response in
             guard let self = self else { return }
             
+            /// Since the request has finished, the session can be removed.
+            self.userDetailsSession = nil
+            
             if let error = response.error {
                 completion(.failure(error))
             } else if
