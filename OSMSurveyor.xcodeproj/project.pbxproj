@@ -93,6 +93,7 @@
 		64D5D9562441F23B00AB0EC2 /* Account+MakeAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D9552441F23B00AB0EC2 /* Account+MakeAccount.swift */; };
 		64D5D9582442121100AB0EC2 /* KeychainHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D9572442121100AB0EC2 /* KeychainHandler.swift */; };
 		64D5D95B2442143200AB0EC2 /* OpenStreetMapAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D95A2442143200AB0EC2 /* OpenStreetMapAPIClient.swift */; };
+		64D5D95D244234C000AB0EC2 /* AddAccountFlowCoordinatorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D95C244234C000AB0EC2 /* AddAccountFlowCoordinatorTestCase.swift */; };
 		64D5D95F2442353800AB0EC2 /* OAuthHandlerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D5D95E2442353800AB0EC2 /* OAuthHandlerMock.swift */; };
 		64D6A185243A56490097FEDD /* QuestDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */; };
 		64D6A187243A5C120097FEDD /* StaticOverpassQuestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */; };
@@ -240,6 +241,7 @@
 		64D5D9552441F23B00AB0EC2 /* Account+MakeAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+MakeAccount.swift"; sourceTree = "<group>"; };
 		64D5D9572442121100AB0EC2 /* KeychainHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHandler.swift; sourceTree = "<group>"; };
 		64D5D95A2442143200AB0EC2 /* OpenStreetMapAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenStreetMapAPIClient.swift; sourceTree = "<group>"; };
+		64D5D95C244234C000AB0EC2 /* AddAccountFlowCoordinatorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountFlowCoordinatorTestCase.swift; sourceTree = "<group>"; };
 		64D5D95E2442353800AB0EC2 /* OAuthHandlerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthHandlerMock.swift; sourceTree = "<group>"; };
 		64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDataManagerMock.swift; sourceTree = "<group>"; };
 		64D6A186243A5C120097FEDD /* StaticOverpassQuestProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticOverpassQuestProvider.swift; sourceTree = "<group>"; };
@@ -400,6 +402,7 @@
 				6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */,
 				6470E7CC2427CE6A009A6AAC /* Info.plist */,
 				64D5D9312441B67400AB0EC2 /* SettingsViewModelTestCase.swift */,
+				64D5D95C244234C000AB0EC2 /* AddAccountFlowCoordinatorTestCase.swift */,
 			);
 			path = OSMSurveyorTests;
 			sourceTree = "<group>";
@@ -982,6 +985,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D5D95D244234C000AB0EC2 /* AddAccountFlowCoordinatorTestCase.swift in Sources */,
 				6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */,
 				64D5D93A2441CDD200AB0EC2 /* SettingsCoordinatorMock.swift in Sources */,
 				64D5D9322441B67400AB0EC2 /* SettingsViewModelTestCase.swift in Sources */,
