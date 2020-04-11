@@ -17,6 +17,7 @@ target 'OSMSurveyor' do
     pod 'SwiftOverpassAPI', :git => 'https://github.com/wtimme/SwiftOverpassAPI.git', :branch => 'feature/1-Add-support-for-meta-data'
     pod 'SQLite.swift'
     pod 'OAuthSwift', '~> 2.1.0'
+    pod 'OAuthSwiftAlamofire', :git => 'https://github.com/OAuthSwift/OAuthSwiftAlamofire.git', :branch => 'master'
   end
 
 end
