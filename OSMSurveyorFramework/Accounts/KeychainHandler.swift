@@ -8,6 +8,17 @@
 
 import Foundation
 
+/// The token and its secret for OAuth1
+public struct OAuth1Credentials: Codable, Equatable {
+    public let token: String
+    public let tokenSecret: String
+    
+    public init(token: String, tokenSecret: String) {
+        self.token = token
+        self.tokenSecret = tokenSecret
+    }
+}
+
 public protocol KeychainHandling {
 }
 
