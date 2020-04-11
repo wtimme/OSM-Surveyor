@@ -8,10 +8,17 @@
 
 import Foundation
 
+public struct Account {
+    let uuid: UUID
+    let username: String
+}
+
 public protocol AccountHandling {
+    var accounts: [Account] { get }
 }
 
 public final class AccountHandler {
+    public private(set) var accounts = [Account]()
 }
 
 extension AccountHandler: AccountHandling {
