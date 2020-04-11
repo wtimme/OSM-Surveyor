@@ -12,7 +12,17 @@ final class SettingsViewModel {
     // MARK: Types
     
     struct Row {
+        enum AccessoryType {
+            case none
+        }
+        
         let title: String
+        let accessoryType: AccessoryType
+        
+        init(title: String, accessoryType: AccessoryType = .none) {
+            self.title = title
+            self.accessoryType = accessoryType
+        }
     }
     
     struct Section {
