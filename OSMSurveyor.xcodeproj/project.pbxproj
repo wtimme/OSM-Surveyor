@@ -552,6 +552,7 @@
 		64D4D8D72427F7F900FB900A /* OSMSurveyorFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				64D5D9642442855100AB0EC2 /* Accounts */,
 				64A77B6C243A4B8D000A9822 /* Factories */,
 				64554152243C5C790049AD07 /* Annotations */,
 				64A77B4B243A2283000A9822 /* Overpass */,
@@ -644,6 +645,13 @@
 				64D5D9622442712B00AB0EC2 /* Permission.swift */,
 			);
 			path = OpenStreetMapAPI;
+			sourceTree = "<group>";
+		};
+		64D5D9642442855100AB0EC2 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Accounts;
 			sourceTree = "<group>";
 		};
 		C17268EA23BEA6AEB95D4E8B /* Frameworks */ = {
