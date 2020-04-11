@@ -59,6 +59,10 @@ final class SettingsViewModel {
     
     // MARK: Public methods
     
+    func numberOfSections() -> Int {
+        return sections.count
+    }
+    
     func numberOfRows(in section: Int) -> Int {
         return self.section(at: section)?.rows.count ?? 0
     }
@@ -81,7 +85,7 @@ final class SettingsViewModel {
     }
     
     private func section(at index: Int) -> Section? {
-        guard index >= 0, index < sections.count else { return nil }
+        guard index >= 0, index < numberOfSections() else { return nil }
         
         return sections[index]
     }

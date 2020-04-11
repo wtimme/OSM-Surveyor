@@ -29,14 +29,14 @@ class SettingsViewModelTestCase: XCTestCase {
     // MARK: Help Section
     
     func testNumberOfRowsInSection_whenAskedAboutLastSection_shouldReturnExpectedNumber() {
-        let lastSection = viewModel.sections.count - 1
+        let lastSection = viewModel.numberOfSections() - 1
         let numberOfRows = viewModel.numberOfRows(in: lastSection)
         
         XCTAssertEqual(numberOfRows, 2)
     }
     
     func testLastSectionShouldHaveHelpAsHeaderTitle() {
-        let lastSection = viewModel.sections.count - 1
+        let lastSection = viewModel.numberOfSections() - 1
         
         XCTAssertEqual(viewModel.headerTitleOfSection(lastSection), "Help")
     }
