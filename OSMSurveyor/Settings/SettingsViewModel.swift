@@ -29,13 +29,11 @@ final class SettingsViewModel {
         }
     }
     
-    // MARK: Public properties
-    
-    private(set) var sections = [Section]()
-    
     // MARK: Private properties
     
     private let appNameAndVersion: String
+    
+    private var sections = [Section]()
     
     // MARK: Initializer
     
