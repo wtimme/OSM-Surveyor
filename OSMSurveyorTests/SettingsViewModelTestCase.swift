@@ -14,11 +14,11 @@ import XCTest
 class SettingsViewModelTestCase: XCTestCase {
     
     var viewModel: SettingsViewModel!
-    var accountHandlerMock: AccountHandlerMock!
+    var keychainHandlerMock: KeychainHandlerMock!
     var coordinatorMock: SettingsCoordinatorMock!
 
     override func setUpWithError() throws {
-        accountHandlerMock = AccountHandlerMock()
+        keychainHandlerMock = KeychainHandlerMock()
         viewModel = SettingsViewModel()
         
         coordinatorMock = SettingsCoordinatorMock()
@@ -26,7 +26,7 @@ class SettingsViewModelTestCase: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        accountHandlerMock = nil
+        keychainHandlerMock = nil
         viewModel = nil
         coordinatorMock = nil
     }
@@ -51,7 +51,7 @@ class SettingsViewModelTestCase: XCTestCase {
     }
     
     func testNumberOfRowsInSection_whenAskedAboutAccountSectionAndThereAreNoAccounts_shouldReturnOne() {
-        accountHandlerMock.accounts = []
+        keychainHandlerMock.entries = []
         
         let accountSection = 0
         let numberOfRows = viewModel.numberOfRows(in: accountSection)
@@ -61,10 +61,14 @@ class SettingsViewModelTestCase: XCTestCase {
     
     func testNumberOfRowsInSection_whenAskedAboutAccountSectionAndThereAreAccounts_shouldNumberOfAccountsPlusOne() {
         let numberOfAccounts = 42
-        accountHandlerMock.accounts = (1...numberOfAccounts).map { Account.makeAccount(username: "User #\($0)") }
+        keychainHandlerMock.entries = (1...numberOfAccounts).map {
+            let credentials = OAuth1Credentials(token: "", tokenSecret: "")
+            
+            return (username: "User #\($0)", credentials: credentials)
+        }
         
-        /// Re-generate the view model, since the account handler's accounts are retrieved during initialization.
-        viewModel = SettingsViewModel(accountHandler: accountHandlerMock,
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        viewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
                                       appName: "",
                                       appVersion: "",
                                       appBuildNumber: "")
@@ -79,10 +83,10 @@ class SettingsViewModelTestCase: XCTestCase {
         let accountSection = 0
         
         let username = "jane.doe"
-        accountHandlerMock.accounts = [Account.makeAccount(username: username)]
+        keychainHandlerMock.entries = [(username: username, credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
         
-        /// Re-generate the view model, since the account handler's accounts are retrieved during initialization.
-        viewModel = SettingsViewModel(accountHandler: accountHandlerMock,
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        viewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
                                       appName: "",
                                       appVersion: "",
                                       appBuildNumber: "")
@@ -152,7 +156,7 @@ class SettingsViewModelTestCase: XCTestCase {
         let appBuildNumber = "999"
         
         /// When
-        let newViewModel = SettingsViewModel(accountHandler: accountHandlerMock,
+        let newViewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
                                              appName: appName,
                                              appVersion: appVersion,
                                              appBuildNumber: appBuildNumber)

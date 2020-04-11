@@ -47,15 +47,15 @@ final class SettingsViewModel {
     
     // MARK: Private properties
     
-    private let accountHandler: AccountHandling
+    private let keychainHandler: KeychainHandling
     private let appNameAndVersion: String
     
     private var sections = [Section]()
     
     // MARK: Initializer
     
-    init(accountHandler: AccountHandling, appName: String, appVersion: String, appBuildNumber: String) {
-        self.accountHandler = accountHandler
+    init(keychainHandler: KeychainHandling, appName: String, appVersion: String, appBuildNumber: String) {
+        self.keychainHandler = keychainHandler
         
         appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
         
@@ -74,7 +74,7 @@ final class SettingsViewModel {
             fatalError("Unable to get the app details from the info dictionary.")
         }
         
-        self.init(accountHandler: AccountHandler.shared, appName: appName, appVersion: appVersion, appBuildNumber: appBuildNumber)
+        self.init(keychainHandler: KeychainHandler(service: "api.openstreetmap.org"), appName: appName, appVersion: appVersion, appBuildNumber: appBuildNumber)
     }
     
     // MARK: Public methods
@@ -130,8 +130,8 @@ final class SettingsViewModel {
     // MARK: Private methods
     
     private func createAccountsSection() -> Section {
-        let accountRows = accountHandler.accounts.map { account in
-            Row(title: account.username,
+        let accountRows = keychainHandler.entries.map { keychainEntry in
+            Row(title: keychainEntry.username,
                 accessoryType: .disclosureIndicator)
         }
         
