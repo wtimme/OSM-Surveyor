@@ -36,7 +36,9 @@ class SettingsViewModelTestCase: XCTestCase {
     }
     
     func testLastSectionShouldHaveHelpAsHeaderTitle() {
-        XCTAssertEqual(viewModel.sections.last?.headerTitle, "Help")
+        let lastSection = viewModel.sections.count - 1
+        
+        XCTAssertEqual(viewModel.headerTitleOfSection(lastSection), "Help")
     }
     
     func testLastSectionShouldHaveAppDetailsAsFooterTitle() {

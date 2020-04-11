@@ -65,6 +65,12 @@ final class SettingsViewModel {
         return sections[section].rows.count
     }
     
+    func headerTitleOfSection(_ section: Int) -> String? {
+        guard section >= 0, section < sections.count else { return nil }
+        
+        return sections[section].headerTitle
+    }
+    
     // MARK: Private methods
     
     private func createHelpSection() -> Section {
