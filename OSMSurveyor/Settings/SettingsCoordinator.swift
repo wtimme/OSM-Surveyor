@@ -69,6 +69,18 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
                                                     apiClient: apiClient)
         addAccountCoordinator = coordinator
         
+        coordinator.onFinish = { result in
+            switch result {
+            case let .failure(error):
+                let controller = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+                controller.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                navigationController.present(controller, animated: true)
+            case .success():
+                /// TODO: Implement me.
+                print("Account added successfully.")
+            }
+        }
+        
         coordinator.start()
     }
     
