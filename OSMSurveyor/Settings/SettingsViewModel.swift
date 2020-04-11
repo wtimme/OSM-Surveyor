@@ -20,4 +20,26 @@ final class SettingsViewModel {
             self.footerTitle = footerTitle
         }
     }
+    
+    // MARK: Private properties
+    
+    private let appNameAndVersion: String
+    
+    // MARK: Initializer
+    
+    init(appName: String, appVersion: String, appBuildNumber: String) {
+        appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
+    }
+    
+    convenience init() {
+        guard
+            let appName = Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String,
+            let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
+            let appBuildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
+        else {
+            fatalError("Unable to get the app details from the info dictionary.")
+        }
+
+        self.init(appName: appName, appVersion: appVersion, appBuildNumber: appBuildNumber)
+    }
 }
