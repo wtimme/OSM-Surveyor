@@ -16,6 +16,13 @@ protocol SettingsCoordinatorProtocol: class {
     /// Starts the flow for adding a new OpenStreetMap account.
     func startAddAccountFlow()
     
+    /// Asks the user whether they want to remove the account with the given `username` from the app.
+    /// - Parameters:
+    ///   - username: The username of the account the user is about to remove.
+    ///   - confirm: Closure that, when executed, will continue with the removal of the account.
+    func askForConfirmationToRemoveAccount(username: String,
+                                           _ confirm: @escaping () -> Void)
+    
     /// Presents the app's GitHub repository.
     func presentGitHubRepository()
     
@@ -96,6 +103,10 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
         }
         
         coordinator.start()
+    }
+    
+    func askForConfirmationToRemoveAccount(username: String, _ confirm: @escaping () -> Void) {
+        /// TODO: Implement me.
     }
     
     func presentGitHubRepository() {
