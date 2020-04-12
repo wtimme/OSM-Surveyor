@@ -73,7 +73,7 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         XCTAssertEqual(coordinatorError as? NSError, error)
     }
     
-    func testStart_whenOAuthHandlerAuthorizedSuccessful_shouldAskOpenStreetMapAPIClientToFetchUserDetails() {
+    func testStart_whenOAuthHandlerAuthorizedSuccessful_shouldAskOpenStreetMapAPIClientToFetchPermissions() {
         /// Given
         let token = "foo"
         let tokenSecret = "bar"
@@ -83,12 +83,12 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         /// When
         oAuthHandlerMock.authorizeCompletion?(.success((token, tokenSecret)))
         
-        XCTAssertTrue(apiClientMock.didCallUserDetails)
-        XCTAssertEqual(apiClientMock.userDetailsArguments?.token, token)
-        XCTAssertEqual(apiClientMock.userDetailsArguments?.tokenSecret, tokenSecret)
+        XCTAssertTrue(apiClientMock.didCallPermissions)
+        XCTAssertEqual(apiClientMock.permissionsArguments?.token, token)
+        XCTAssertEqual(apiClientMock.permissionsArguments?.tokenSecret, tokenSecret)
     }
     
-    func testStart_whenAPIClientFailedToFetchUserDetails_shouldExecuteOnFinishWithError() {
+    func testStart_whenAPIClientFailedToFetchPermissions_shouldExecuteOnFinishWithError() {
         /// Given
         let error = NSError(domain: "com.example.error", code: 1, userInfo: nil)
         
@@ -106,28 +106,12 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         
         /// When
         oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
-        apiClientMock.userDetailsArguments?.completion(.failure(error))
+        apiClientMock.permissionsArguments?.completion(.failure(error))
         
         /// Then
         waitForExpectations(timeout: 1, handler: nil)
         
         XCTAssertEqual(coordinatorError as? NSError, error)
-    }
-    
-    func testStart_whenOAuthHandlerAuthorizedAndTheUserDetailsWereFetchedSuccessful_shouldAskOpenStreetMapAPIClientToGetPermissions() {
-        /// Given
-        let token = "foo"
-        let tokenSecret = "bar"
-        
-        coordinator.start()
-        
-        /// When
-        oAuthHandlerMock.authorizeCompletion?(.success((token, tokenSecret)))
-        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: "")))
-        
-        XCTAssertTrue(apiClientMock.didCallPermissions)
-        XCTAssertEqual(apiClientMock.permissionsArguments?.token, token)
-        XCTAssertEqual(apiClientMock.permissionsArguments?.tokenSecret, tokenSecret)
     }
     
     func testStart_whenPermissionsAreInsufficient_shouldExecuteOnFinishWithError() {
@@ -147,7 +131,6 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         /// When
         coordinator.start()
         oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
-        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: "")))
         apiClientMock.permissionsArguments?.completion(.success(permissions))
         
         // Then
@@ -156,7 +139,23 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         XCTAssertTrue(AddAccountFlowCoordinatorError.insufficientPermissions == (coordinatorError as? AddAccountFlowCoordinatorError))
     }
     
-    func testStart_whenOAuthHandlerAuthorizedAndTheUserDetailsWereFetchedAndAllRequiredPermissionsArePresent_shouldAskKeychainHandlerToAddEntry() {
+    func testStart_whenOAuthHandlerAuthorizedAndThePermissionsAreSufficient_shouldAskOpenStreetMapAPIClientToFetchUserDetails() {
+        /// Given
+        let token = "foo"
+        let tokenSecret = "bar"
+        
+        coordinator.start()
+        
+        /// When
+        oAuthHandlerMock.authorizeCompletion?(.success((token, tokenSecret)))
+        apiClientMock.permissionsArguments?.completion(.success([.allow_write_api, .allow_read_prefs]))
+        
+        XCTAssertTrue(apiClientMock.didCallUserDetails)
+        XCTAssertEqual(apiClientMock.userDetailsArguments?.token, token)
+        XCTAssertEqual(apiClientMock.userDetailsArguments?.tokenSecret, tokenSecret)
+    }
+    
+    func testStart_whenOAuthHandlerAuthorizedAndAllRequiredPermissionsArePresentAndTheUserDetailsWereFetched_shouldAskKeychainHandlerToAddEntry() {
         /// Given
         let username = "jane.doe"
         let token = "lorem"
@@ -165,8 +164,8 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         /// When
         coordinator.start()
         oAuthHandlerMock.authorizeCompletion?(.success((token, tokenSecret)))
-        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: username)))
         apiClientMock.permissionsArguments?.completion(.success([.allow_write_api, .allow_read_prefs]))
+        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: username)))
         
         // Then
         XCTAssertTrue(keychainHandlerMock.didCallAdd)
@@ -194,8 +193,8 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         /// When
         coordinator.start()
         oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
-        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: "")))
         apiClientMock.permissionsArguments?.completion(.success([.allow_write_api, .allow_read_prefs]))
+        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: "")))
         
         // Then
         waitForExpectations(timeout: 1, handler: nil)
@@ -222,8 +221,8 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         /// When
         coordinator.start()
         oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
-        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: username)))
         apiClientMock.permissionsArguments?.completion(.success([.allow_write_api, .allow_read_prefs]))
+        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: username)))
         
         // Then
         waitForExpectations(timeout: 1, handler: nil)

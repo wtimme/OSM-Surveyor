@@ -55,28 +55,28 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
             case let .failure(error):
                 self.onFinish?(.failure(error))
             case let .success(credentials):
-                self.apiClient.userDetails(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { [weak self] userDetailsResult in
+                self.apiClient.permissions(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { [weak self] permissionResult in
                     guard let self = self else { return }
                     
-                    switch userDetailsResult {
+                    switch permissionResult {
                     case let .failure(error):
                         self.onFinish?(.failure(error))
-                    case let .success(userDetails):
-                        self.apiClient.permissions(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { [weak self] permissionResult in
-                            guard let self = self else { return }
-                            
-                            switch permissionResult {
-                            case let .failure(error):
-                                self.onFinish?(.failure(error))
-                            case let .success(permissions):
-                                if permissions.contains(.allow_read_prefs), permissions.contains(.allow_write_api) {
+                    case let .success(permissions):
+                        if permissions.contains(.allow_read_prefs), permissions.contains(.allow_write_api) {
+                            self.apiClient.userDetails(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { [weak self] userDetailsResult in
+                                guard let self = self else { return }
+                                
+                                switch userDetailsResult {
+                                case let .failure(error):
+                                    self.onFinish?(.failure(error))
+                                case let .success(userDetails):
                                     self.attemptToAddEntryToKeychain(username: userDetails.username,
                                                                      token: credentials.token,
                                                                      tokenSecret: credentials.tokenSecret)
-                                } else {
-                                    self.onFinish?(.failure(AddAccountFlowCoordinatorError.insufficientPermissions))
                                 }
                             }
+                        } else {
+                            self.onFinish?(.failure(AddAccountFlowCoordinatorError.insufficientPermissions))
                         }
                     }
                 }
