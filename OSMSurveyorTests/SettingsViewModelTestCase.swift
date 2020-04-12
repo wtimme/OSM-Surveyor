@@ -16,10 +16,12 @@ class SettingsViewModelTestCase: XCTestCase {
     var viewModel: SettingsViewModel!
     var keychainHandlerMock: KeychainHandlerMock!
     var coordinatorMock: SettingsCoordinatorMock!
+    var delegateMock: SettingsViewModelDelegateMock!
 
     override func setUpWithError() throws {
         keychainHandlerMock = KeychainHandlerMock()
         coordinatorMock = SettingsCoordinatorMock()
+        delegateMock = SettingsViewModelDelegateMock()
         
         recreateViewModel()
     }
@@ -28,6 +30,7 @@ class SettingsViewModelTestCase: XCTestCase {
         keychainHandlerMock = nil
         viewModel = nil
         coordinatorMock = nil
+        delegateMock = nil
     }
     
     func testNumberOfRowsInSection_whenProvidedWithInvalidSection_shouldReturnZero() {
@@ -227,6 +230,7 @@ class SettingsViewModelTestCase: XCTestCase {
                                       appBuildNumber: "")
         
         viewModel.coordinator = coordinatorMock
+        viewModel.delegate = delegateMock
     }
     
 }

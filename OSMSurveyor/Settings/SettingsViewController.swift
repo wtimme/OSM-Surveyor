@@ -28,6 +28,8 @@ final class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel.delegate = self
+        
         title = "Settings"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done,
                                                            target: self,
@@ -82,5 +84,11 @@ final class SettingsViewController: UITableViewController {
     
     @objc private func didTapDoneButton() {
         dismiss(animated: true)
+    }
+}
+
+extension SettingsViewController: SettingsViewModelDelegate {
+    func reloadAccountSection(section: Int) {
+        tableView.reloadSections(IndexSet(arrayLiteral: section), with: .automatic)
     }
 }

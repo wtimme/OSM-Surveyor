@@ -48,6 +48,7 @@ final class SettingsViewModel {
     // MARK: Public properties
     
     weak var coordinator: SettingsCoordinatorProtocol?
+    weak var delegate: SettingsViewModelDelegate?
     
     // MARK: Private properties
     
