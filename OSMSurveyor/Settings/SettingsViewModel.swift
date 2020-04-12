@@ -120,8 +120,8 @@ final class SettingsViewModel {
             } else {
                 let username = keychainHandler.entries[indexPath.row].username
                 
-                coordinator?.askForConfirmationToRemoveAccount(username: username) {
-                    /// TODO: Implement me.
+                coordinator?.askForConfirmationToRemoveAccount(username: username) { [weak self] in
+                    self?.keychainHandler.remove(username: username)
                 }
             }
         } else if indexPath.section == helpSection {

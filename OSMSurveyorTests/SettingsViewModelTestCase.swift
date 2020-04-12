@@ -109,6 +109,24 @@ class SettingsViewModelTestCase: XCTestCase {
         XCTAssertEqual(coordinatorMock.askForConfirmationToRemoveAccountArguments?.username, username)
     }
     
+    func testSelectRow_afterConfirmingRemovalOfAccount_shouldAskKeychainHandlerToRemoveAccount() {
+        let accountSection = 0
+        
+        let username = "jane.doe"
+        keychainHandlerMock.entries = [(username: username, credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        /// When
+        viewModel.selectRow(at: IndexPath(row: 0, section: accountSection))
+        coordinatorMock.askForConfirmationToRemoveAccountArguments?.confirm()
+        
+        /// Then
+        XCTAssertTrue(keychainHandlerMock.didCallRemove)
+        XCTAssertEqual(keychainHandlerMock.usernameToRemove, username)
+    }
+    
     func testRowAtIndexPath_forLastRowInAccountSection_shouldReturnAddAccount() {
         let accountSection = 0
         let indexOfLastRow = viewModel.numberOfRows(in: accountSection) - 1
