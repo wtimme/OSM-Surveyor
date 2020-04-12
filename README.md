@@ -15,9 +15,11 @@ For a list of available actions, please refer to [the auto-generated README][2].
 
 ## Beta release
 
-In order to create a new Beta, run
+In order to create a new Beta, you first need to sign in to [OpenStreetMap.org][1]
+and create a new OAuth application.
+Obtain the "Consumer Key" and "Consumer Secret", and run
 
-    % bundle exec fastlane beta
+    % bundle exec fastlane beta osm_consumer_key:"<OSM_CONSUMER_KEY>" osm_consumer_secret:"<OSM_CONSUMER_SECRET>"
 
 ## Signing
 
