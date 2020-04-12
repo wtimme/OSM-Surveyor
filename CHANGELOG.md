@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- New "Settings" menu
+- OpenStreetMap account(s) management using OAuth1
+- Quick access to the repository and the bug tracker
+
+Please note that right now, both the repository and the bug tracker are private.
+
+### Changed
+- The OpenStreetMap copyright page now opens in "Reader" mode
+
 ## [1.0.0 (7)] - 2020-04-10
 
 ### Added
