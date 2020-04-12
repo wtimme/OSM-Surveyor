@@ -53,6 +53,7 @@ final class SettingsViewModel {
     // MARK: Private properties
     
     private let keychainHandler: KeychainHandling
+    private let notificationCenter: NotificationCenter
     private let appNameAndVersion: String
     
     private var sections = [Section]()
@@ -60,10 +61,12 @@ final class SettingsViewModel {
     // MARK: Initializer
     
     init(keychainHandler: KeychainHandling,
+         notificationCenter: NotificationCenter = .default,
          appName: String,
          appVersion: String,
          appBuildNumber: String) {
         self.keychainHandler = keychainHandler
+        self.notificationCenter = notificationCenter
         
         appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
         

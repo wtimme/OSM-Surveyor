@@ -15,11 +15,13 @@ class SettingsViewModelTestCase: XCTestCase {
     
     var viewModel: SettingsViewModel!
     var keychainHandlerMock: KeychainHandlerMock!
+    var notificationCenter: NotificationCenter!
     var coordinatorMock: SettingsCoordinatorMock!
     var delegateMock: SettingsViewModelDelegateMock!
 
     override func setUpWithError() throws {
         keychainHandlerMock = KeychainHandlerMock()
+        notificationCenter = NotificationCenter()
         coordinatorMock = SettingsCoordinatorMock()
         delegateMock = SettingsViewModelDelegateMock()
         
@@ -28,6 +30,7 @@ class SettingsViewModelTestCase: XCTestCase {
 
     override func tearDownWithError() throws {
         keychainHandlerMock = nil
+        notificationCenter = nil
         viewModel = nil
         coordinatorMock = nil
         delegateMock = nil
@@ -190,6 +193,7 @@ class SettingsViewModelTestCase: XCTestCase {
         
         /// When
         let newViewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
+                                             notificationCenter: notificationCenter,
                                              appName: appName,
                                              appVersion: appVersion,
                                              appBuildNumber: appBuildNumber)
@@ -225,6 +229,7 @@ class SettingsViewModelTestCase: XCTestCase {
     
     private func recreateViewModel() {
         viewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
+                                      notificationCenter: notificationCenter,
                                       appName: "",
                                       appVersion: "",
                                       appBuildNumber: "")
