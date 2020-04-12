@@ -26,6 +26,11 @@ Performs basic integration checks to be run before merging
 fastlane ios beta
 ```
 Push a new beta build to TestFlight
+### ios update_osm_oauth_credentials
+```
+fastlane ios update_osm_oauth_credentials
+```
+Update the OAuth1 credentials that are used for communication with OpenStreetMap.org
 ### ios regenerate_app_icon
 ```
 fastlane ios regenerate_app_icon

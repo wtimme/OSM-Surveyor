@@ -48,6 +48,8 @@ platform :ios do
       allow_nothing_to_commit: true
     )
 
+    update_osm_oauth_credentials(options)
+
     sync_code_signing(type: "appstore")
 
     build_app(
@@ -61,6 +63,23 @@ platform :ios do
 
     upload_to_testflight(
       changelog: changelog
+    )
+  end
+
+  desc "Update the OAuth1 credentials that are used for communication with OpenStreetMap.org"
+  lane :update_osm_oauth_credentials do |options|
+    consumer_key = options[:osm_consumer_key]
+    consumer_secret = options[:osm_consumer_secret]
+    if !consumer_key || !consumer_secret
+      UI.user_error!("Please provide the OAuth credentials for OSM with `osm_consumer_key` and `osm_consumer_secret`")
+    end
+
+    update_plist(
+      plist_path: SECRETS_PLIST,
+      block: proc do |plist|
+        plist[:"OSM_OAuth_ConsumerKey"] = consumer_key
+        plist[:"OSM_OAuth_ConsumerSecret"] = consumer_secret
+      end
     )
   end
 
