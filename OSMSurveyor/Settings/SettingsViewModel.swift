@@ -59,10 +59,7 @@ final class SettingsViewModel {
         
         appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
         
-        sections = [
-            createAccountsSection(),
-            createHelpSection()
-        ]
+        sections = createSections()
     }
     
     convenience init() {
@@ -134,6 +131,13 @@ final class SettingsViewModel {
     }
     
     // MARK: Private methods
+    
+    private func createSections() -> [Section] {
+        return [
+            createAccountsSection(),
+            createHelpSection()
+        ]
+    }
     
     private func createAccountsSection() -> Section {
         let accountRows = keychainHandler.entries.map { keychainEntry in
