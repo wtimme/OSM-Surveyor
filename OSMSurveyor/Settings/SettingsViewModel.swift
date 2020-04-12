@@ -117,6 +117,12 @@ final class SettingsViewModel {
             
             if indexPath.row == indexOfLastRow {
                 coordinator?.startAddAccountFlow()
+            } else {
+                let username = keychainHandler.entries[indexPath.row].username
+                
+                coordinator?.askForConfirmationToRemoveAccount(username: username) {
+                    /// TODO: Implement me.
+                }
             }
         } else if indexPath.section == helpSection {
             if indexPath.row == 0 {
