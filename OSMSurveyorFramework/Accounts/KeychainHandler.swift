@@ -22,7 +22,7 @@ public struct OAuth1Credentials: Codable, Equatable {
 
 extension Notification.Name {
     /// Is posted when the Keychain handler has either added or removed an entry.
-    static let keychainHandlerDidChangeNumberOfEntries = Notification.Name("keychainHandlerDidChangeNumberOfEntries")
+    public static let keychainHandlerDidChangeNumberOfEntries = Notification.Name("keychainHandlerDidChangeNumberOfEntries")
 }
 
 public enum KeychainError: Error {
