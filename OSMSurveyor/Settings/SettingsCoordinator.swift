@@ -106,7 +106,19 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
     }
     
     func askForConfirmationToRemoveAccount(username: String, _ confirm: @escaping () -> Void) {
-        /// TODO: Implement me.
+        let title = "Remove account '\(username)' from the app?"
+        
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .destructive) { _ in
+            confirm()
+        }
+        alertController.addAction(confirmAction)
+        
+        navigationController?.present(alertController, animated: true)
     }
     
     func presentGitHubRepository() {
