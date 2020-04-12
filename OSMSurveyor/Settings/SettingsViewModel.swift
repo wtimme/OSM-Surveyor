@@ -9,6 +9,10 @@
 import Foundation
 import OSMSurveyorFramework
 
+protocol SettingsViewModelDelegate: class {
+    func reloadAccountSection(section: Int)
+}
+
 final class SettingsViewModel {
     // MARK: Types
     
