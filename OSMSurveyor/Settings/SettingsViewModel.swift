@@ -59,7 +59,10 @@ final class SettingsViewModel {
     
     // MARK: Initializer
     
-    init(keychainHandler: KeychainHandling, appName: String, appVersion: String, appBuildNumber: String) {
+    init(keychainHandler: KeychainHandling,
+         appName: String,
+         appVersion: String,
+         appBuildNumber: String) {
         self.keychainHandler = keychainHandler
         
         appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
