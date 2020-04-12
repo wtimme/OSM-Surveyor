@@ -70,7 +70,9 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
                                 self.onFinish?(.failure(error))
                             case let .success(permissions):
                                 if permissions.contains(.allow_read_prefs), permissions.contains(.allow_write_api) {
-                                    self.onFinish?(.success(userDetails.username))
+                                    self.attemptToAddEntryToKeychain(username: userDetails.username,
+                                                                     token: credentials.token,
+                                                                     tokenSecret: credentials.tokenSecret)
                                 } else {
                                     self.onFinish?(.failure(AddAccountFlowCoordinatorError.insufficientPermissions))
                                 }
@@ -79,6 +81,18 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
                     }
                 }
             }
+        }
+    }
+    
+    private func attemptToAddEntryToKeychain(username: String,
+                                             token: String,
+                                             tokenSecret: String) {
+        do {
+            try keychainHandler.add(username: username, credentials: OAuth1Credentials(token: token, tokenSecret: tokenSecret))
+            
+            onFinish?(.success(username))
+        } catch {
+            onFinish?(.failure(error))
         }
     }
 }

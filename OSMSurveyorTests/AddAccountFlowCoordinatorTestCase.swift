@@ -156,10 +156,56 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         XCTAssertTrue(AddAccountFlowCoordinatorError.insufficientPermissions == (coordinatorError as? AddAccountFlowCoordinatorError))
     }
     
-    func testStart_whenOAuthHandlerAuthorizedAndTheUserDetailsWereFetchedAndAllRequiredPermissionsArePresent_shouldExecuteOnFinishWithSuccess() {
+    func testStart_whenOAuthHandlerAuthorizedAndTheUserDetailsWereFetchedAndAllRequiredPermissionsArePresent_shouldAskKeychainHandlerToAddEntry() {
         /// Given
         let username = "jane.doe"
-        let permissions: [Permission] = [.allow_write_api, .allow_read_prefs]
+        let token = "lorem"
+        let tokenSecret = "ipsum"
+        
+        /// When
+        coordinator.start()
+        oAuthHandlerMock.authorizeCompletion?(.success((token, tokenSecret)))
+        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: username)))
+        apiClientMock.permissionsArguments?.completion(.success([.allow_write_api, .allow_read_prefs]))
+        
+        // Then
+        XCTAssertTrue(keychainHandlerMock.didCallAdd)
+        XCTAssertEqual(keychainHandlerMock.addArguments?.username, username)
+        XCTAssertEqual(keychainHandlerMock.addArguments?.credentials.token, token)
+        XCTAssertEqual(keychainHandlerMock.addArguments?.credentials.tokenSecret, tokenSecret)
+    }
+    
+    func testStart_whenKeychainThrewAnError_shouldExecuteOnFinishWithError() {
+        /// Given
+        let error = NSError(domain: "com.example.error", code: 1, userInfo: nil)
+        
+        let onFinishExpectation = expectation(description: "Coordinator should finish")
+        var coordinatorError: Error?
+        coordinator.onFinish = { result in
+            if case let .failure(resultingError) = result {
+                coordinatorError = resultingError
+            }
+            
+            onFinishExpectation.fulfill()
+        }
+        
+        keychainHandlerMock.addError = error
+        
+        /// When
+        coordinator.start()
+        oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
+        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: "")))
+        apiClientMock.permissionsArguments?.completion(.success([.allow_write_api, .allow_read_prefs]))
+        
+        // Then
+        waitForExpectations(timeout: 1, handler: nil)
+        
+        XCTAssertEqual(coordinatorError as? NSError, error)
+    }
+    
+    func testStart_whenKeychainDidNotThrowAnError_shouldExecuteOnFinishWithSuccessAndUsername() {
+        /// Given
+        let username = "jane.doe"
         
         let onFinishExpectation = expectation(description: "Coordinator should finish")
         var coordinatorUsername: String?
@@ -171,11 +217,13 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
             onFinishExpectation.fulfill()
         }
         
+        keychainHandlerMock.addError = nil
+        
         /// When
         coordinator.start()
         oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
         apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: username)))
-        apiClientMock.permissionsArguments?.completion(.success(permissions))
+        apiClientMock.permissionsArguments?.completion(.success([.allow_write_api, .allow_read_prefs]))
         
         // Then
         waitForExpectations(timeout: 1, handler: nil)
