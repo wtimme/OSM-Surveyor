@@ -19,10 +19,9 @@ class SettingsViewModelTestCase: XCTestCase {
 
     override func setUpWithError() throws {
         keychainHandlerMock = KeychainHandlerMock()
-        viewModel = SettingsViewModel()
-        
         coordinatorMock = SettingsCoordinatorMock()
-        viewModel.coordinator = coordinatorMock
+        
+        recreateViewModel()
     }
 
     override func tearDownWithError() throws {
@@ -54,10 +53,7 @@ class SettingsViewModelTestCase: XCTestCase {
         keychainHandlerMock.entries = []
         
         /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
-        viewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
-                                      appName: "",
-                                      appVersion: "",
-                                      appBuildNumber: "")
+        recreateViewModel()
         
         let accountSection = 0
         let numberOfRows = viewModel.numberOfRows(in: accountSection)
@@ -74,10 +70,7 @@ class SettingsViewModelTestCase: XCTestCase {
         }
         
         /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
-        viewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
-                                      appName: "",
-                                      appVersion: "",
-                                      appBuildNumber: "")
+        recreateViewModel()
         
         let accountSection = 0
         let numberOfRows = viewModel.numberOfRows(in: accountSection)
@@ -92,10 +85,7 @@ class SettingsViewModelTestCase: XCTestCase {
         keychainHandlerMock.entries = [(username: username, credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
         
         /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
-        viewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
-                                      appName: "",
-                                      appVersion: "",
-                                      appBuildNumber: "")
+        recreateViewModel()
         
         let row = viewModel.row(at: IndexPath(row: 0, section: accountSection))
         
@@ -192,6 +182,17 @@ class SettingsViewModelTestCase: XCTestCase {
         
         /// Then
         XCTAssertTrue(coordinatorMock.didCallPresentBugTracker)
+    }
+    
+    // MARK: Helper methods
+    
+    private func recreateViewModel() {
+        viewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
+                                      appName: "",
+                                      appVersion: "",
+                                      appBuildNumber: "")
+        
+        viewModel.coordinator = coordinatorMock
     }
     
 }
