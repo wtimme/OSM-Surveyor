@@ -188,6 +188,9 @@ final class SettingsViewModel {
         notificationCenter.addObserver(forName: Notification.Name.keychainHandlerDidChangeNumberOfEntries, object: nil, queue: nil) { [weak self] _ in
             guard let self = self else { return }
             
+            /// Re-create all sections so that when the delegate reloads the section, the view model reports updated data.
+            self.sections = self.createSections()
+            
             self.delegate?.reloadAccountSection(section: 0)
         }
     }

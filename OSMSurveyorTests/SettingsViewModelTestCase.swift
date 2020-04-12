@@ -164,6 +164,26 @@ class SettingsViewModelTestCase: XCTestCase {
         XCTAssertEqual(delegateMock.sectionToReload, accountSection)
     }
     
+    func test_whenReceivingKeychainDidChangeNumberOfEntriesNotification_shouldUpdateAccountSectionRows() {
+        /// Given
+        let accountSection = 0
+        
+        /// At the beginning, the Keychain handler only has one single entry
+        keychainHandlerMock.entries = [(username: "", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        /// Now, the Keychain handler reports two entries
+        keychainHandlerMock.entries = [(username: "", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: "", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        notificationCenter.post(name: .keychainHandlerDidChangeNumberOfEntries, object: nil)
+        
+        XCTAssertEqual(viewModel.numberOfRows(in: accountSection), keychainHandlerMock.entries.count + 1,
+                       "The account section should now contain three rows: two accounts and 'Add Account'")
+    }
+    
     // MARK: Help Section
     
     func testNumberOfRowsInSection_whenAskedAboutLastSection_shouldReturnExpectedNumber() {
