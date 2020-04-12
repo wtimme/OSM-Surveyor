@@ -17,7 +17,10 @@ class KeychainHandlerTestCase: XCTestCase {
     override func setUpWithError() throws {
         notificationCenter = NotificationCenter()
         
-        handler = KeychainHandler(service: "test",
+        /// For the service name, use something that is unique, in order to avoid needing to remove all items when tearing down.
+        let uniqueServiceName = "test_\(Date().timeIntervalSince1970)"
+        
+        handler = KeychainHandler(service: uniqueServiceName,
                                   notificationCenter: notificationCenter)
     }
 
