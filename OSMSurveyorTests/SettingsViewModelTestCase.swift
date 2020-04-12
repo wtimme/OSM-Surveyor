@@ -154,6 +154,16 @@ class SettingsViewModelTestCase: XCTestCase {
         XCTAssertTrue(coordinatorMock.didCallStartAddAccountFlow)
     }
     
+    func test_whenReceivingKeychainDidChangeNumberOfEntriesNotification_shouldAskDelegateToReloadAccountSection() {
+        /// Given
+        let accountSection = 0
+        
+        notificationCenter.post(name: .keychainHandlerDidChangeNumberOfEntries, object: nil)
+        
+        XCTAssertTrue(delegateMock.didCallReloadReloadSection)
+        XCTAssertEqual(delegateMock.sectionToReload, accountSection)
+    }
+    
     // MARK: Help Section
     
     func testNumberOfRowsInSection_whenAskedAboutLastSection_shouldReturnExpectedNumber() {

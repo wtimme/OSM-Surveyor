@@ -71,6 +71,8 @@ final class SettingsViewModel {
         appNameAndVersion = "\(appName) \(appVersion) (Build \(appBuildNumber))"
         
         sections = createSections()
+        
+        startToObserveNotificationCenter()
     }
     
     convenience init() {
@@ -180,5 +182,13 @@ final class SettingsViewModel {
         guard index >= 0, index < numberOfSections() else { return nil }
         
         return sections[index]
+    }
+    
+    private func startToObserveNotificationCenter() {
+        notificationCenter.addObserver(forName: Notification.Name.keychainHandlerDidChangeNumberOfEntries, object: nil, queue: nil) { [weak self] _ in
+            guard let self = self else { return }
+            
+            self.delegate?.reloadAccountSection(section: 0)
+        }
     }
 }
