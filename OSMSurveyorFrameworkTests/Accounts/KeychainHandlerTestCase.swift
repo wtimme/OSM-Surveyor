@@ -12,13 +12,18 @@ import XCTest
 class KeychainHandlerTestCase: XCTestCase {
     
     var handler: KeychainHandling!
+    var notificationCenter: NotificationCenter!
 
     override func setUpWithError() throws {
-        handler = KeychainHandler(service: "test")
+        notificationCenter = NotificationCenter()
+        
+        handler = KeychainHandler(service: "test",
+                                  notificationCenter: notificationCenter)
     }
 
     override func tearDownWithError() throws {
         handler = nil
+        notificationCenter = nil
     }
     
     func testAdd_shouldInsertEntry() {

@@ -39,9 +39,11 @@ public protocol KeychainHandling {
 
 public class KeychainHandler {
     private let keychain: Keychain
+    private let notificationCenter: NotificationCenter
     
-    public init(service: String) {
+    public init(service: String, notificationCenter: NotificationCenter = .default) {
         keychain = Keychain(service: service)
+        self.notificationCenter = notificationCenter
     }
 }
 
