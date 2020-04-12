@@ -53,6 +53,12 @@ class SettingsViewModelTestCase: XCTestCase {
     func testNumberOfRowsInSection_whenAskedAboutAccountSectionAndThereAreNoAccounts_shouldReturnOne() {
         keychainHandlerMock.entries = []
         
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        viewModel = SettingsViewModel(keychainHandler: keychainHandlerMock,
+                                      appName: "",
+                                      appVersion: "",
+                                      appBuildNumber: "")
+        
         let accountSection = 0
         let numberOfRows = viewModel.numberOfRows(in: accountSection)
         
