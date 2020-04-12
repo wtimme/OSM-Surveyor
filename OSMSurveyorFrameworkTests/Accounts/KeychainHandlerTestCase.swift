@@ -40,6 +40,40 @@ class KeychainHandlerTestCase: XCTestCase {
         XCTAssertEqual(handler.entries.first?.credentials, credentials)
     }
     
+    func testAdd_whenAddingAnEntry_shouldPostNotification() {
+        let username = "jane.doe"
+        let credentials = OAuth1Credentials(token: "lorem",
+                                            tokenSecret: "ipsum")
+        
+        _ = expectation(forNotification: .keychainHandlerDidChangeNumberOfEntries,
+                        object: nil,
+                        notificationCenter: notificationCenter)
+        
+        try? handler.add(username: username, credentials: credentials)
+        
+        waitForExpectations(timeout: 10)
+    }
+    
+    func testAdd_whenAddingAnEntryThatAlreadyExists_shouldNotPostNotification() {
+        let username = "jane.doe"
+        let credentials = OAuth1Credentials(token: "lorem",
+                                            tokenSecret: "ipsum")
+        
+        /// Add the entry for the first time.
+        try? handler.add(username: username, credentials: credentials)
+        
+        let notificationExpectation = expectation(forNotification: .keychainHandlerDidChangeNumberOfEntries,
+                                                  object: nil,
+                                                  notificationCenter: notificationCenter)
+        notificationExpectation.isInverted = true
+        
+        
+        /// Add the same entry another time.
+        try? handler.add(username: username, credentials: credentials)
+        
+        waitForExpectations(timeout: 1)
+    }
+    
     func testAdd_whenInsertingAUsernameThatAlreadyExists_shouldThrowCorrespondingError() {
         let username = "jane.doe"
         let credentials = OAuth1Credentials(token: "lorem", tokenSecret: "ipsum")
@@ -81,6 +115,33 @@ class KeychainHandlerTestCase: XCTestCase {
         
         let usernamesInKeychain = handler.entries.map { $0.username }
         XCTAssertFalse(usernamesInKeychain.contains(username))
+    }
+    
+    func testRemove_whenRemovingAnEntry_shouldPostNotification() {
+        let username = "jane.doe"
+        let credentials = OAuth1Credentials(token: "lorem",
+                                            tokenSecret: "ipsum")
+        
+        try? handler.add(username: username, credentials: credentials)
+        
+        _ = expectation(forNotification: .keychainHandlerDidChangeNumberOfEntries,
+                        object: nil,
+                        notificationCenter: notificationCenter)
+        
+        handler.remove(username: username)
+        
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testRemove_whenRemovingAnEntryThatDoesNotExist_shouldNotPostNotification() {
+        let notificationExpectation = expectation(forNotification: .keychainHandlerDidChangeNumberOfEntries,
+                                                  object: nil,
+                                                  notificationCenter: notificationCenter)
+        notificationExpectation.isInverted = true
+        
+        handler.remove(username: "")
+        
+        waitForExpectations(timeout: 1)
     }
 
 }

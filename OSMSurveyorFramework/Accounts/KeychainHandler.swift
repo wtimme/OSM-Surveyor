@@ -20,6 +20,11 @@ public struct OAuth1Credentials: Codable, Equatable {
     }
 }
 
+extension Notification.Name {
+    /// Is posted when the Keychain handler has either added or removed an entry.
+    static let keychainHandlerDidChangeNumberOfEntries = Notification.Name("keychainHandlerDidChangeNumberOfEntries")
+}
+
 public enum KeychainError: Error {
     /// The Keychain already contains an entry for the given username.
     case usernameAlreadyExists
@@ -72,9 +77,18 @@ extension KeychainHandler: KeychainHandling {
         guard let credentialsAsData = try? encoder.encode(credentials) else { return }
         
         keychain[data: username] = credentialsAsData
+        
+        notificationCenter.post(name: .keychainHandlerDidChangeNumberOfEntries, object: nil)
     }
     
     public func remove(username: String) {
+        guard keychain.allKeys().contains(username) else {
+            /// The Keychain does not have an account with the given `username`.
+            return
+        }
+        
         keychain[username] = nil
+        
+        notificationCenter.post(name: .keychainHandlerDidChangeNumberOfEntries, object: nil)
     }
 }
