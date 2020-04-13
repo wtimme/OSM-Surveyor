@@ -8,9 +8,11 @@
 
 import Foundation
 @testable import OSMSurveyorFramework
+@testable import OSMSurveyorFrameworkMocks
 
 final class OverpassQuestMock {
     let type: String
+    var interaction = QuestInteraction.makeQuestInteraction()
     
     init(type: String) {
         self.type = type

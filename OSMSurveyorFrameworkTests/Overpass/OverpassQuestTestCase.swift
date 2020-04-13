@@ -8,10 +8,13 @@
 
 import XCTest
 @testable import OSMSurveyorFramework
+@testable import OSMSurveyorFrameworkMocks
 
 class OverpassQuestTestCase: XCTestCase {
 
     private class MyExampleQuest: OverpassQuest {
+        let interaction = QuestInteraction.makeQuestInteraction()
+        
         func query(boundingBox: BoundingBox) -> String { return "" }
     }
     

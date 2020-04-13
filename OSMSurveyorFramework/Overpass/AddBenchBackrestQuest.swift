@@ -9,6 +9,11 @@
 import Foundation
 
 final class AddBenchBackrestQuest: OverpassQuest {
+    let interaction = QuestInteraction(
+        question: "Does this bench have a backrest?",
+        answerType: .boolean
+    )
+    
     func query(boundingBox: BoundingBox) -> OverpassQuery {
         let queryWithPlaceholder = """
         node["amenity"="bench"]["backrest"!~".*"]{{bbox}};

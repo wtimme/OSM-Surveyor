@@ -9,6 +9,11 @@
 import Foundation
 
 final class AddBusStopShelterQuest: OverpassQuest {
+    let interaction = QuestInteraction(
+        question: "Does this bus stop have a shelter?",
+        answerType: .boolean
+    )
+    
     func query(boundingBox: BoundingBox) -> OverpassQuery {
         let queryWithPlaceholder = """
         (
