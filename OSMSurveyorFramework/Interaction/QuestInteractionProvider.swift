@@ -15,6 +15,15 @@ public protocol QuestInteractionProviding {
 }
 
 public final class QuestInteractionProvider {
+    // MARK: Private properties
+    
+    private let questProvider: OverpassQuestProviding
+    
+    // MARK: Initializer
+    
+    init(questProvider: OverpassQuestProviding) {
+        self.questProvider = questProvider
+    }
 }
 
 extension QuestInteractionProvider: QuestInteractionProviding {
