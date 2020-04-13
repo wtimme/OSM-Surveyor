@@ -47,6 +47,7 @@
 		648DD12E244479A200AECBD0 /* QuestInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD12D244479A200AECBD0 /* QuestInteraction.swift */; };
 		648DD13224447C0500AECBD0 /* QuestInteractionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD13124447C0500AECBD0 /* QuestInteractionProvider.swift */; };
 		648DD13424447C7500AECBD0 /* QuestInteraction+MakeQuestInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD13324447C7500AECBD0 /* QuestInteraction+MakeQuestInteraction.swift */; };
+		648DD13724447E5300AECBD0 /* QuestInteractionProviderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD13624447E5300AECBD0 /* QuestInteractionProviderTestCase.swift */; };
 		6490F2ED24445DE700BD82F5 /* QuestInteractionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */; };
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
@@ -205,6 +206,7 @@
 		648DD12D244479A200AECBD0 /* QuestInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteraction.swift; sourceTree = "<group>"; };
 		648DD13124447C0500AECBD0 /* QuestInteractionProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionProvider.swift; sourceTree = "<group>"; };
 		648DD13324447C7500AECBD0 /* QuestInteraction+MakeQuestInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestInteraction+MakeQuestInteraction.swift"; sourceTree = "<group>"; };
+		648DD13624447E5300AECBD0 /* QuestInteractionProviderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionProviderTestCase.swift; sourceTree = "<group>"; };
 		6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionCoordinator.swift; sourceTree = "<group>"; };
 		649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -463,6 +465,7 @@
 		648DD13524447E2200AECBD0 /* Interaction */ = {
 			isa = PBXGroup;
 			children = (
+				648DD13624447E5300AECBD0 /* QuestInteractionProviderTestCase.swift */,
 			);
 			path = Interaction;
 			sourceTree = "<group>";
@@ -1130,6 +1133,7 @@
 				64A77B5F243A3186000A9822 /* OverpassQuestProviderMock.swift in Sources */,
 				64A77B56243A2831000A9822 /* OverpassQuestManagerTestCase.swift in Sources */,
 				64D5D9662442855D00AB0EC2 /* KeychainHandlerTestCase.swift in Sources */,
+				648DD13724447E5300AECBD0 /* QuestInteractionProviderTestCase.swift in Sources */,
 				64554154243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift in Sources */,
 				641AEEAA242E66E1000CA2A2 /* SlippyMapMathTestCase.swift in Sources */,
 				64A77B63243A344F000A9822 /* OverpassQuestMock.swift in Sources */,
