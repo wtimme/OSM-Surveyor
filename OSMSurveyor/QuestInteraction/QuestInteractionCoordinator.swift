@@ -9,6 +9,7 @@
 import UIKit
 
 protocol QuestInteractionCoordinatorProtocol: class {
+    func start(questType: String, questId: Int)
 }
 
 final class QuestInteractionCoordinator {
@@ -24,4 +25,7 @@ final class QuestInteractionCoordinator {
 }
 
 extension QuestInteractionCoordinator: QuestInteractionCoordinatorProtocol {
+    func start(questType: String, questId: Int) {
+        /// TODO: Implement me.
+    }
 }
