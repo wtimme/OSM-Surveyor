@@ -432,6 +432,7 @@
 		6470E7C92427CE6A009A6AAC /* OSMSurveyorTests */ = {
 			isa = PBXGroup;
 			children = (
+				648DD1422444BB9400AECBD0 /* Upload */,
 				648DD13C244484FD00AECBD0 /* QuestInteraction */,
 				64D5D9382441CDA600AB0EC2 /* Mocks */,
 				6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */,
@@ -491,6 +492,13 @@
 			isa = PBXGroup;
 			children = (
 				648DD1402444BACE00AECBD0 /* UploadFlowCoordinator.swift */,
+			);
+			path = Upload;
+			sourceTree = "<group>";
+		};
+		648DD1422444BB9400AECBD0 /* Upload */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Upload;
 			sourceTree = "<group>";
