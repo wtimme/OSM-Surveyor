@@ -31,6 +31,4 @@ extension OverpassQuestMock: OverpassQuest {
         
         return queryToReturn
     }
-    
-    
 }
