@@ -8,17 +8,23 @@
 
 import XCTest
 @testable import OSMSurveyor
+@testable import OSMSurveyorFrameworkMocks
 
 class QuestInteractionCoordinatorTestCase: XCTestCase {
     
     private var coordinator: QuestInteractionCoordinatorProtocol!
+    private var questInteractionProviderMock: QuestInteractionProviderMock!
 
     override func setUpWithError() throws {
-        coordinator = QuestInteractionCoordinator(navigationController: UINavigationController())
+        questInteractionProviderMock = QuestInteractionProviderMock()
+        
+        coordinator = QuestInteractionCoordinator(questInteractionProvider: questInteractionProviderMock,
+                                                  navigationController: UINavigationController())
     }
 
     override func tearDownWithError() throws {
         coordinator = nil
+        questInteractionProviderMock = nil
     }
 
 }

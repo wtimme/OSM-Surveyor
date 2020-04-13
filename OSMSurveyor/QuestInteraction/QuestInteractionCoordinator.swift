@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OSMSurveyorFramework
 
 enum QuestInteractionCoordinatorError: Error {
     /// The coordinator is not able to determine the interaction to use for the quest.
@@ -20,11 +21,14 @@ protocol QuestInteractionCoordinatorProtocol: class {
 final class QuestInteractionCoordinator {
     // MARK: Private properties
     
+    private let questInteractionProvider: QuestInteractionProviding
     private let navigationController: UINavigationController
     
     // MARK: Initializer
     
-    init(navigationController: UINavigationController) {
+    init(questInteractionProvider: QuestInteractionProviding,
+         navigationController: UINavigationController) {
+        self.questInteractionProvider = questInteractionProvider
         self.navigationController = navigationController
     }
 }

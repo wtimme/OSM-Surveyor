@@ -155,7 +155,8 @@ extension MapViewController: TGMapViewDelegate {
         }
         
         /// Let the interactor handle this.
-        let interactor = QuestInteractionCoordinator(navigationController: navigationController)
+        let interactor = QuestInteractionCoordinator(questInteractionProvider: QuestInteractionProvider(),
+                                                     navigationController: navigationController)
         questInteractionCoordinator = interactor
         interactor.start(questType: questType, questId: questId)
     }
