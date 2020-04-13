@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
     private var annotationManager = QuestAnnotationManager.shared
     private var annotationLayer: AnnotationLayerProtocol?
     
+    private var questInteractionCoordinator: QuestInteractionCoordinatorProtocol?
     private var settingsCoordinator: SettingsCoordinatorProtocol?
 
     override func viewDidLoad() {
@@ -138,7 +139,25 @@ extension MapViewController: TGMapViewDelegate {
     }
     
     func mapView(_ mapView: TGMapView, didSelectLabel labelPickResult: TGLabelPickResult?, atScreenPosition position: CGPoint) {
-        /// TODO: Implement me.
+        guard
+            let annotationProperties = labelPickResult?.properties,
+            let questType = annotationProperties["quest_type"],
+            let questIdAsString = annotationProperties["quest_id"],
+            let questId = Int(questIdAsString)
+        else {
+            /// This annotation does not have the properties required to show the quest UI; ignore it.
+            return
+        }
+        
+        guard let navigationController = navigationController else {
+            /// Without an `UINavigationController`, we are unable to present the UI.
+            return
+        }
+        
+        /// Let the interactor handle this.
+        let interactor = QuestInteractionCoordinator(navigationController: navigationController)
+        questInteractionCoordinator = interactor
+        interactor.start(questType: questType, questId: questId)
     }
     
     private func updateErrorLabel(_ text: String?) {
