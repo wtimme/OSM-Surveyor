@@ -158,7 +158,14 @@ extension MapViewController: TGMapViewDelegate {
         let interactor = QuestInteractionCoordinator(questInteractionProvider: QuestInteractionProvider(),
                                                      navigationController: navigationController)
         questInteractionCoordinator = interactor
-        interactor.start(questType: questType, questId: questId)
+        
+        do {
+            try interactor.start(questType: questType, questId: questId)
+        } catch QuestInteractionCoordinatorError.interactionNotFound {
+            assertionFailure("No interaction defined for the given quest type.")
+        } catch {
+            assertionFailure("An unknown error occurred while starting the interactor: \(error.localizedDescription)")
+        }
     }
     
     private func updateErrorLabel(_ text: String?) {

@@ -15,7 +15,7 @@ enum QuestInteractionCoordinatorError: Error {
 }
 
 protocol QuestInteractionCoordinatorProtocol: class {
-    func start(questType: String, questId: Int)
+    func start(questType: String, questId: Int) throws
 }
 
 final class QuestInteractionCoordinator {
@@ -34,7 +34,11 @@ final class QuestInteractionCoordinator {
 }
 
 extension QuestInteractionCoordinator: QuestInteractionCoordinatorProtocol {
-    func start(questType: String, questId: Int) {
+    func start(questType: String, questId: Int) throws {
+        guard let interaction = questInteractionProvider.questInteraction(for: questType) else {
+            throw QuestInteractionCoordinatorError.interactionNotFound
+        }
+        
         /// TODO: Implement me.
     }
 }

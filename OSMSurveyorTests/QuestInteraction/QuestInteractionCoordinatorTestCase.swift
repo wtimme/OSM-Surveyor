@@ -26,5 +26,33 @@ class QuestInteractionCoordinatorTestCase: XCTestCase {
         coordinator = nil
         questInteractionProviderMock = nil
     }
+    
+    func testStart_shouldAskProviderForQuestInteraction() {
+        /// Given
+        let questType = "example_quest"
+        
+        /// When
+        try? coordinator.start(questType: questType, questId: 0)
+        
+        /// Then
+        XCTAssertTrue(questInteractionProviderMock.didCallQuestInteraction)
+        XCTAssertEqual(questInteractionProviderMock.questTypeToRetrieveInteractionFor, questType)
+    }
+    
+    func testStart_whenNoInteractionWasFound_shouldThrowAnError() {
+        /// Given
+        questInteractionProviderMock.questInteractionToReturn = nil
+        
+        do {
+            try coordinator.start(questType: "", questId: 0)
+            
+            XCTFail("`start()` should've thrown an error")
+        } catch QuestInteractionCoordinatorError.interactionNotFound {
+            /// This is the expected outcome.
+        } catch {
+            /// Any other error is a failure.
+            XCTFail()
+        }
+    }
 
 }
