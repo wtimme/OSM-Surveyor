@@ -14,7 +14,7 @@ extension UIViewController: QuestInteractionDelegate {
                                              completion: @escaping (Bool) -> Void) {
         let alertControllerStyle: UIAlertController.Style
         if UIDevice.current.userInterfaceIdiom == .pad {
-            /// On iPad, we need to use `.actionSheet`. Otherwise, the app will crash.
+            /// On iPad, we need to use `.alert`. Otherwise, the app will crash.
             alertControllerStyle = .alert
         } else {
             alertControllerStyle = .actionSheet
