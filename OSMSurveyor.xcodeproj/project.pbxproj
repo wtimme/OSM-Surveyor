@@ -460,6 +460,13 @@
 			path = Interaction;
 			sourceTree = "<group>";
 		};
+		648DD13524447E2200AECBD0 /* Interaction */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interaction;
+			sourceTree = "<group>";
+		};
 		6490F2EB24445D9500BD82F5 /* QuestInteraction */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +599,7 @@
 		64D4D8D72427F7F900FB900A /* OSMSurveyorFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				648DD13524447E2200AECBD0 /* Interaction */,
 				64D5D9642442855100AB0EC2 /* Accounts */,
 				64A77B6C243A4B8D000A9822 /* Factories */,
 				64554152243C5C790049AD07 /* Annotations */,
