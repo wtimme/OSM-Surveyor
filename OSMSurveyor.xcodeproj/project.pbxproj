@@ -425,6 +425,7 @@
 		6470E7C92427CE6A009A6AAC /* OSMSurveyorTests */ = {
 			isa = PBXGroup;
 			children = (
+				648DD13C244484FD00AECBD0 /* QuestInteraction */,
 				64D5D9382441CDA600AB0EC2 /* Mocks */,
 				6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */,
 				6470E7CC2427CE6A009A6AAC /* Info.plist */,
@@ -469,6 +470,13 @@
 				648DD13624447E5300AECBD0 /* QuestInteractionProviderTestCase.swift */,
 			);
 			path = Interaction;
+			sourceTree = "<group>";
+		};
+		648DD13C244484FD00AECBD0 /* QuestInteraction */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = QuestInteraction;
 			sourceTree = "<group>";
 		};
 		6490F2EB24445D9500BD82F5 /* QuestInteraction */ = {
