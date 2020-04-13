@@ -17,7 +17,7 @@ final class FullQuestsDataProviderMock {
     private(set) var didCallFindQuests = false
     private(set) var findQuestsCallCounter = 0
     private(set) var findQuestsBoundingBox: BoundingBox?
-    var questsToReturn = [(coordinate: Coordinate, questType: String)]()
+    var questsToReturn = [(coordinate: Coordinate, questType: String, questId: Int)]()
 }
 
 extension FullQuestsDataProviderMock: FullQuestsDataProviding {
@@ -29,7 +29,7 @@ extension FullQuestsDataProviderMock: FullQuestsDataProviding {
         return elementKeysToReturn
     }
     
-    func findQuests(in boundingBox: BoundingBox) -> [(coordinate: Coordinate, questType: String)] {
+    func findQuests(in boundingBox: BoundingBox) -> [(coordinate: Coordinate, questType: String, questId: Int)] {
         didCallFindQuests = true
         findQuestsCallCounter += 1
         

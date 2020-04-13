@@ -12,7 +12,7 @@ import SQLite
 protocol FullQuestsDataProviding {
     func findElementKeysForQuests(ofTypes questTypes: [String], in boundingBox: BoundingBox) -> [ElementKey]
     
-    func findQuests(in boundingBox: BoundingBox) -> [(coordinate: Coordinate, questType: String)]
+    func findQuests(in boundingBox: BoundingBox) -> [(coordinate: Coordinate, questType: String, questId: Int)]
 }
 
 class FullQuestsViewHelper {
@@ -72,19 +72,22 @@ class FullQuestsViewHelper {
         }
     }
     
-    static func findQuests(in boundingBox: BoundingBox) -> [(coordinate: Coordinate, questType: String)] {
+    static func findQuests(in boundingBox: BoundingBox) -> [(coordinate: Coordinate, questType: String, questId: Int)] {
         guard let rows = findRows(in: boundingBox) else { return [] }
         
         return rows.compactMap { row in
             guard
                 let questType = try? row.get(QuestDataHelper.quest_type),
+                let questId = try? row.get(QuestDataHelper.quest_id),
                 let latitude = try? row.get(ElementsGeometryDataHelper.latitude),
                 let longitude = try? row.get(ElementsGeometryDataHelper.longitude)
             else {
                 return nil
             }
             
-            return (Coordinate(latitude: latitude, longitude: longitude), questType)
+            return (Coordinate(latitude: latitude, longitude: longitude),
+                    questType,
+                    Int(questId))
         }
     }
 }
@@ -94,7 +97,7 @@ extension FullQuestsViewHelper: FullQuestsDataProviding {
         return FullQuestsViewHelper.findElementKeysForQuests(ofTypes: questTypes, in: boundingBox)
     }
     
-    func findQuests(in boundingBox: BoundingBox) -> [(coordinate: Coordinate, questType: String)] {
+    func findQuests(in boundingBox: BoundingBox) -> [(coordinate: Coordinate, questType: String, questId: Int)] {
         return FullQuestsViewHelper.findQuests(in: boundingBox)
     }
 }

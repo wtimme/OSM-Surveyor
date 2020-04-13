@@ -82,9 +82,9 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         let secondCoordinate = Coordinate(latitude: 2, longitude: 2)
         let thirdCoordinate = Coordinate(latitude: 3, longitude: 3)
         
-        fullQuestsDataProviderMock.questsToReturn = [(firstCoordinate, ""),
-                                                     (secondCoordinate, ""),
-                                                     (thirdCoordinate, "")]
+        fullQuestsDataProviderMock.questsToReturn = [(firstCoordinate, "AddBenchBackrest", 1),
+                                                     (secondCoordinate, "AddBusStopShelter", 2),
+                                                     (thirdCoordinate, "AddBenchBackrest", 3)]
         
         /// When
         manager.mapDidUpdatePosition(to: boundingBox)
@@ -101,8 +101,8 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         let firstCoordinate = Coordinate(latitude: 1, longitude: 1)
         let secondCoordinate = Coordinate(latitude: 2, longitude: 2)
         
-        fullQuestsDataProviderMock.questsToReturn = [(firstCoordinate, ""),
-                                                     (secondCoordinate, "")]
+        fullQuestsDataProviderMock.questsToReturn = [(firstCoordinate, "AddBenchBackrest", 1),
+                                                     (secondCoordinate, "AddBusStopShelter", 2)]
         
         /// Update position for the first time.
         let firstBoundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 53.55546, longitude: 9.98903),
@@ -111,7 +111,7 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         
         /// Now, act as if new quests were found.
         let thirdCoordinate = Coordinate(latitude: 2, longitude: 2)
-        fullQuestsDataProviderMock.questsToReturn = [(thirdCoordinate, "")]
+        fullQuestsDataProviderMock.questsToReturn = [(thirdCoordinate, "AddBenchBackrest", 3)]
         
         /// Update position for a second time.
         let secondBoundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 54.55546, longitude: 10.98903),
