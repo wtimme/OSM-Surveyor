@@ -10,9 +10,15 @@ import Foundation
 
 public struct Annotation {
     public let coordinate: Coordinate
+    public let questType: String
+    public let questId: Int
     
-    public init(coordinate: Coordinate) {
+    public init(coordinate: Coordinate,
+                questType: String,
+                questId: Int) {
         self.coordinate = coordinate
+        self.questType = questType
+        self.questId = questId
     }
 }
 

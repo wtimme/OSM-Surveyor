@@ -73,7 +73,10 @@ extension QuestAnnotationManager: QuestAnnotationManaging {
         
         guard !quests.isEmpty else { return }
         
-        let annotations = quests.map { Annotation(coordinate: $0.coordinate) }
+        let annotations = quests.map {
+            Annotation(coordinate: $0.coordinate,
+                       questType: $0.questType,
+                       questId: $0.questId) }
         
         allAnnotations.append(contentsOf: annotations)
         

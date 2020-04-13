@@ -92,7 +92,11 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         /// Then
         XCTAssertTrue(delegateMock.didCallSetAnnotations)
         
-        let expectedAnnotations = [firstCoordinate, secondCoordinate, thirdCoordinate].map { Annotation(coordinate: $0) }
+        let expectedAnnotations = [
+            Annotation(coordinate: firstCoordinate, questType: "AddBenchBackrest", questId: 1),
+            Annotation(coordinate: secondCoordinate, questType: "AddBusStopShelter", questId: 2),
+            Annotation(coordinate: thirdCoordinate, questType: "AddBenchBackrest", questId: 3)
+        ]
         XCTAssertEqual(delegateMock.annotations, expectedAnnotations)
     }
     
@@ -122,7 +126,11 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         /// Then
         XCTAssertTrue(delegateMock.didCallSetAnnotations)
         
-        let expectedAnnotations = [firstCoordinate, secondCoordinate, thirdCoordinate].map { Annotation(coordinate: $0) }
+        let expectedAnnotations = [
+            Annotation(coordinate: firstCoordinate, questType: "AddBenchBackrest", questId: 1),
+            Annotation(coordinate: secondCoordinate, questType: "AddBusStopShelter", questId: 2),
+            Annotation(coordinate: thirdCoordinate, questType: "AddBenchBackrest", questId: 3)
+        ]
         XCTAssertEqual(delegateMock.annotations, expectedAnnotations)
     }
     
