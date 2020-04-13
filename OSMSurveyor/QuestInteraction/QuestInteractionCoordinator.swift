@@ -8,6 +8,11 @@
 
 import UIKit
 
+enum QuestInteractionCoordinatorError: Error {
+    /// The coordinator is not able to determine the interaction to use for the quest.
+    case interactionNotFound
+}
+
 protocol QuestInteractionCoordinatorProtocol: class {
     func start(questType: String, questId: Int)
 }
