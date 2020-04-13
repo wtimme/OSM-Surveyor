@@ -21,3 +21,5 @@ public struct QuestInteraction {
     /// The type of answer that the question can be resolved with.
     public let answerType: AnswerType
 }
+
+extension QuestInteraction: Equatable {}
