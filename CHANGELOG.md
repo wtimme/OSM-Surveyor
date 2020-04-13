@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Basic quest interaction
+
+At the moment, only boolean quests (Yes/No) are supported, and the changes
+are not yet being saved.
+
 ## [1.0.0 (8)] - 2020-04-12
 
 ### Added
