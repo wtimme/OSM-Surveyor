@@ -32,6 +32,7 @@ class QuestInteractionCoordinatorTestCase: XCTestCase {
         coordinator = nil
         questInteractionProviderMock = nil
         uploadFlowCoordinatorMock = nil
+        delegateMock = nil
     }
     
     func testStart_shouldAskProviderForQuestInteraction() {
