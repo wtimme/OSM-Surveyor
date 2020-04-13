@@ -40,7 +40,8 @@ extension TangramAnnotationLayer: AnnotationLayerProtocol {
                 "type": "point",
                 "kind": "ic_quest_bench",
                 "quest_group": "OSM",
-                "quest_id": "-1"
+                "quest_type": singleAnnotation.questType,
+                "quest_id": String(singleAnnotation.questId),
             ]
             
             return TGMapFeature(point: coordinate, properties: properties)
