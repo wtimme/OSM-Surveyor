@@ -22,14 +22,14 @@ final class QuestInteractionCoordinator {
     // MARK: Private properties
     
     private let questInteractionProvider: QuestInteractionProviding
-    private let navigationController: UINavigationController
+    private weak var delegate: QuestInteractionDelegate?
     
     // MARK: Initializer
     
     init(questInteractionProvider: QuestInteractionProviding,
-         navigationController: UINavigationController) {
+         delegate: QuestInteractionDelegate) {
         self.questInteractionProvider = questInteractionProvider
-        self.navigationController = navigationController
+        self.delegate = delegate
     }
 }
 

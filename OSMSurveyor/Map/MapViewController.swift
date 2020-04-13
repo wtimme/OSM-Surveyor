@@ -149,14 +149,9 @@ extension MapViewController: TGMapViewDelegate {
             return
         }
         
-        guard let navigationController = navigationController else {
-            /// Without an `UINavigationController`, we are unable to present the UI.
-            return
-        }
-        
         /// Let the interactor handle this.
         let interactor = QuestInteractionCoordinator(questInteractionProvider: QuestInteractionProvider(),
-                                                     navigationController: navigationController)
+                                                     delegate: self)
         questInteractionCoordinator = interactor
         
         do {

@@ -14,12 +14,14 @@ class QuestInteractionCoordinatorTestCase: XCTestCase {
     
     private var coordinator: QuestInteractionCoordinatorProtocol!
     private var questInteractionProviderMock: QuestInteractionProviderMock!
+    private var delegateMock: QuestInteractionDelegateMock!
 
     override func setUpWithError() throws {
         questInteractionProviderMock = QuestInteractionProviderMock()
+        delegateMock = QuestInteractionDelegateMock()
         
         coordinator = QuestInteractionCoordinator(questInteractionProvider: questInteractionProviderMock,
-                                                  navigationController: UINavigationController())
+                                                  delegate: delegateMock)
     }
 
     override func tearDownWithError() throws {
