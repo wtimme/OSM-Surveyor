@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import OSMSurveyor
+@testable import OSMSurveyorFramework
 @testable import OSMSurveyorFrameworkMocks
 
 class QuestInteractionCoordinatorTestCase: XCTestCase {
@@ -55,6 +56,21 @@ class QuestInteractionCoordinatorTestCase: XCTestCase {
             /// Any other error is a failure.
             XCTFail()
         }
+    }
+    
+    func testStart_whenInteractionTypeIsBoolean_shouldAskDelegateToPresentCorrespondingInterface() {
+        /// Given
+        let question = "Lorem ipsum?"
+        let interaction = QuestInteraction(question: question,
+                                           answerType: .boolean)
+        questInteractionProviderMock.questInteractionToReturn = interaction
+        
+        /// When
+        try? coordinator.start(questType: "", questId: 0)
+        
+        /// Then
+        XCTAssertTrue(delegateMock.didCallPresentBooleanQuestInterface)
+        XCTAssertEqual(delegateMock.presentBooleanQuestInterfaceArguments?.question, question)
     }
 
 }

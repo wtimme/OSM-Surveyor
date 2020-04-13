@@ -39,6 +39,11 @@ extension QuestInteractionCoordinator: QuestInteractionCoordinatorProtocol {
             throw QuestInteractionCoordinatorError.interactionNotFound
         }
         
-        /// TODO: Implement me.
+        switch interaction.answerType {
+        case .boolean:
+            delegate?.presentBooleanQuestInterface(question: interaction.question, completion: { _ in
+                /// TODO: Implement me.
+            })
+        }
     }
 }
