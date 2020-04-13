@@ -44,8 +44,11 @@ extension QuestInteractionCoordinator: QuestInteractionCoordinatorProtocol {
         
         switch interaction.answerType {
         case .boolean:
-            delegate?.presentBooleanQuestInterface(question: interaction.question, answer: { _ in
-                /// TODO: Implement me.
+            delegate?.presentBooleanQuestInterface(question: interaction.question, answer: { [weak self] _ in
+                guard let self = self else { return }
+                
+                self.uploadFlowCoordinator.start(questType: questType,
+                                                 questId: questId)
             })
         }
     }

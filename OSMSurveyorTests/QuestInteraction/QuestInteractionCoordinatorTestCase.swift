@@ -77,5 +77,22 @@ class QuestInteractionCoordinatorTestCase: XCTestCase {
         XCTAssertTrue(delegateMock.didCallPresentBooleanQuestInterface)
         XCTAssertEqual(delegateMock.presentBooleanQuestInterfaceArguments?.question, question)
     }
+    
+    func testStart_whenAnsweringQuestOfTypeBoolean_shouldAskUploadFlowCoordinatorToStart() {
+        /// Given
+        let questType = "example_quest"
+        let questId = 42
+        
+        questInteractionProviderMock.questInteractionToReturn = QuestInteraction.makeQuestInteraction(answerType: .boolean)
+        
+        /// When
+        try? coordinator.start(questType: questType, questId: questId)
+        delegateMock.presentBooleanQuestInterfaceArguments?.answer(true)
+        
+        /// Then
+        XCTAssertTrue(uploadFlowCoordinatorMock.didCallStart)
+        XCTAssertEqual(uploadFlowCoordinatorMock.startArguments?.questType, questType)
+        XCTAssertEqual(uploadFlowCoordinatorMock.startArguments?.questId, questId)
+    }
 
 }
