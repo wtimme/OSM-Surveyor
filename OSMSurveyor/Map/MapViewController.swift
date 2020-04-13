@@ -151,7 +151,7 @@ extension MapViewController: TGMapViewDelegate {
         
         /// Let the interactor handle this.
         let interactor = QuestInteractionCoordinator(questInteractionProvider: QuestInteractionProvider(),
-                                                     uploadFlowCoordinator: UploadFlowCoordinator(),
+                                                     uploadFlowCoordinator: UploadFlowCoordinator(presentingViewController: self),
                                                      delegate: self)
         questInteractionCoordinator = interactor
         

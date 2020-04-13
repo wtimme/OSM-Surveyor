@@ -14,7 +14,7 @@ class UploadFlowCoordinatorTestCase: XCTestCase {
     private var coordinator: UploadFlowCoordinatorProtocol!
 
     override func setUpWithError() throws {
-        coordinator = UploadFlowCoordinator()
+        coordinator = UploadFlowCoordinator(presentingViewController: UIViewController())
     }
 
     override func tearDownWithError() throws {

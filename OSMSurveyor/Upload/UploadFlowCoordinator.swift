@@ -6,13 +6,22 @@
 //  Copyright © 2020 Wolfgang Timme. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol UploadFlowCoordinatorProtocol {
     func start(questType: String, questId: Int)
 }
 
 final class UploadFlowCoordinator {
+    // MARK: Private properties
+    
+    private let presentingViewController: UIViewController
+    
+    // MARK: Initializer
+    
+    init(presentingViewController: UIViewController) {
+        self.presentingViewController = presentingViewController
+    }
 }
 
 extension UploadFlowCoordinator: UploadFlowCoordinatorProtocol {
