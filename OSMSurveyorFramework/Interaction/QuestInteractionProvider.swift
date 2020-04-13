@@ -28,7 +28,6 @@ public final class QuestInteractionProvider {
 
 extension QuestInteractionProvider: QuestInteractionProviding {
     public func questInteraction(for questType: String) -> QuestInteraction? {
-        /// TODO: Implement me.
-        return nil
+        return questProvider.quests.first(where: { $0.type == questType })?.interaction
     }
 }

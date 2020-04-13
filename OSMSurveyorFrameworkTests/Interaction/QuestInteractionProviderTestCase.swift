@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import OSMSurveyorFramework
+@testable import OSMSurveyorFrameworkMocks
 
 class QuestInteractionProviderTestCase: XCTestCase {
     
@@ -23,6 +24,24 @@ class QuestInteractionProviderTestCase: XCTestCase {
     override func tearDownWithError() throws {
         provider = nil
         questProviderMock = nil
+    }
+    
+    func testQuestInteraction_whenQuestWithTheGivenTypeExist_shouldReturnNil() {
+        questProviderMock.quests = []
+        
+        XCTAssertNil(provider.questInteraction(for: "example_quest"))
+    }
+    
+    func testQuestInteraction_whenQuestWithTheGivenTypeExists_shouldReturnTheQuestsInteraction() {
+        let questType = "example_quest"
+        
+        let questInteraction = QuestInteraction.makeQuestInteraction()
+        let questMock = OverpassQuestMock(type: questType)
+        questMock.interaction = questInteraction
+        
+        questProviderMock.quests = [questMock]
+        
+        XCTAssertEqual(provider.questInteraction(for: questType), questInteraction)
     }
 
 }
