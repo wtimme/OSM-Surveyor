@@ -49,6 +49,7 @@
 		648DD139244481D000AECBD0 /* QuestInteractionProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD138244481D000AECBD0 /* QuestInteractionProviderMock.swift */; };
 		648DD13A244482FB00AECBD0 /* QuestInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD1212444741700AECBD0 /* QuestInteractionDelegate.swift */; };
 		648DD13B2444831600AECBD0 /* QuestInteractionDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD1272444762300AECBD0 /* QuestInteractionDelegateMock.swift */; };
+		648DD13E2444851C00AECBD0 /* QuestInteractionCoordinatorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD13D2444851C00AECBD0 /* QuestInteractionCoordinatorTestCase.swift */; };
 		6490F2ED24445DE700BD82F5 /* QuestInteractionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */; };
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
@@ -209,6 +210,7 @@
 		648DD13324447C7500AECBD0 /* QuestInteraction+MakeQuestInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "QuestInteraction+MakeQuestInteraction.swift"; sourceTree = "<group>"; };
 		648DD13624447E5300AECBD0 /* QuestInteractionProviderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionProviderTestCase.swift; sourceTree = "<group>"; };
 		648DD138244481D000AECBD0 /* QuestInteractionProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionProviderMock.swift; sourceTree = "<group>"; };
+		648DD13D2444851C00AECBD0 /* QuestInteractionCoordinatorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionCoordinatorTestCase.swift; sourceTree = "<group>"; };
 		6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionCoordinator.swift; sourceTree = "<group>"; };
 		649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 		648DD13C244484FD00AECBD0 /* QuestInteraction */ = {
 			isa = PBXGroup;
 			children = (
+				648DD13D2444851C00AECBD0 /* QuestInteractionCoordinatorTestCase.swift */,
 			);
 			path = QuestInteraction;
 			sourceTree = "<group>";
@@ -1067,6 +1070,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D5D95D244234C000AB0EC2 /* AddAccountFlowCoordinatorTestCase.swift in Sources */,
+				648DD13E2444851C00AECBD0 /* QuestInteractionCoordinatorTestCase.swift in Sources */,
 				64D5D96D24431B1700AB0EC2 /* SettingsViewModelDelegateMock.swift in Sources */,
 				6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */,
 				64D5D93A2441CDD200AB0EC2 /* SettingsCoordinatorMock.swift in Sources */,
