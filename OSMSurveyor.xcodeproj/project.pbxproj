@@ -42,6 +42,7 @@
 		6470E7C02427CE6A009A6AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7BE2427CE6A009A6AAC /* LaunchScreen.storyboard */; };
 		6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */; };
 		64762E5C242DFEBC00E430B4 /* QuestDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */; };
+		6490F2ED24445DE700BD82F5 /* QuestInteractionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */; };
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
 		649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */; };
@@ -194,6 +195,7 @@
 		6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSMSurveyorTests.swift; sourceTree = "<group>"; };
 		6470E7CC2427CE6A009A6AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDatabase.swift; sourceTree = "<group>"; };
+		6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionCoordinator.swift; sourceTree = "<group>"; };
 		649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDataHelper.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 		6490F2EB24445D9500BD82F5 /* QuestInteraction */ = {
 			isa = PBXGroup;
 			children = (
+				6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */,
 			);
 			path = QuestInteraction;
 			sourceTree = "<group>";
@@ -1008,6 +1011,7 @@
 				6470E7B62427CE69009A6AAC /* SceneDelegate.swift in Sources */,
 				64D5D93C2441DAE500AB0EC2 /* AddAccountFlowCoordinator.swift in Sources */,
 				64D5D92E2441B1CC00AB0EC2 /* SettingsViewController.swift in Sources */,
+				6490F2ED24445DE700BD82F5 /* QuestInteractionCoordinator.swift in Sources */,
 				64D5D9302441B24200AB0EC2 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
