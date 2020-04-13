@@ -12,7 +12,15 @@ import OSMSurveyorFramework
 extension UIViewController: QuestInteractionDelegate {
     public func presentBooleanQuestInterface(question: String,
                                              completion: @escaping (Bool) -> Void) {
-        let alertController = UIAlertController(title: question, message: nil, preferredStyle: .alert)
+        let alertControllerStyle: UIAlertController.Style
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            /// On iPad, we need to use `.actionSheet`. Otherwise, the app will crash.
+            alertControllerStyle = .alert
+        } else {
+            alertControllerStyle = .actionSheet
+        }
+        
+        let alertController = UIAlertController(title: question, message: nil, preferredStyle: alertControllerStyle)
         
         let yesAction = UIAlertAction(title: "Yes", style: .default) { _ in
             completion(true)
