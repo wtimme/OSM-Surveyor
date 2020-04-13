@@ -15,19 +15,23 @@ class QuestInteractionCoordinatorTestCase: XCTestCase {
     
     private var coordinator: QuestInteractionCoordinatorProtocol!
     private var questInteractionProviderMock: QuestInteractionProviderMock!
+    private var uploadFlowCoordinatorMock: UploadFlowCoordinatorMock!
     private var delegateMock: QuestInteractionDelegateMock!
 
     override func setUpWithError() throws {
         questInteractionProviderMock = QuestInteractionProviderMock()
+        uploadFlowCoordinatorMock = UploadFlowCoordinatorMock()
         delegateMock = QuestInteractionDelegateMock()
         
         coordinator = QuestInteractionCoordinator(questInteractionProvider: questInteractionProviderMock,
+                                                  uploadFlowCoordinator: uploadFlowCoordinatorMock,
                                                   delegate: delegateMock)
     }
 
     override func tearDownWithError() throws {
         coordinator = nil
         questInteractionProviderMock = nil
+        uploadFlowCoordinatorMock = nil
     }
     
     func testStart_shouldAskProviderForQuestInteraction() {

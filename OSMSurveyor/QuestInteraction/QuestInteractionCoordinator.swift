@@ -22,13 +22,16 @@ final class QuestInteractionCoordinator {
     // MARK: Private properties
     
     private let questInteractionProvider: QuestInteractionProviding
+    private let uploadFlowCoordinator: UploadFlowCoordinatorProtocol
     private weak var delegate: QuestInteractionDelegate?
     
     // MARK: Initializer
     
     init(questInteractionProvider: QuestInteractionProviding,
+         uploadFlowCoordinator: UploadFlowCoordinatorProtocol,
          delegate: QuestInteractionDelegate) {
         self.questInteractionProvider = questInteractionProvider
+        self.uploadFlowCoordinator = uploadFlowCoordinator
         self.delegate = delegate
     }
 }
