@@ -9,7 +9,7 @@
 import Foundation
 
 /// An object that presents the quest interface.
-public protocol QuestInteractionDelegate: class {
+protocol QuestInteractionDelegate: class {
     func presentBooleanQuestInterface(question: String,
                                       completion: @escaping (Bool) -> Void)
 }

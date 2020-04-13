@@ -6,7 +6,7 @@
 //  Copyright © 2020 Wolfgang Timme. All rights reserved.
 //
 
-@testable import OSMSurveyorFramework
+@testable import OSMSurveyor
 
 final class QuestInteractionDelegateMock {
     private(set) var didCallPresentBooleanQuestInterface = false
