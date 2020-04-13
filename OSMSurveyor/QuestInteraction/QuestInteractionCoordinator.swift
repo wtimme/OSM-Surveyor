@@ -12,6 +12,15 @@ protocol QuestInteractionCoordinatorProtocol: class {
 }
 
 final class QuestInteractionCoordinator {
+    // MARK: Private properties
+    
+    private let navigationController: UINavigationController
+    
+    // MARK: Initializer
+    
+    init(navigationController: UINavigationController) {
+        self.navigationController = navigationController
+    }
 }
 
 extension QuestInteractionCoordinator: QuestInteractionCoordinatorProtocol {
