@@ -13,7 +13,7 @@ protocol QuestInteractionDelegate: class {
     /// Asks the delegate to present an interface for with a question and yes/no answers.
     /// - Parameters:
     ///   - question: The question to ask.
-    ///   - completion: Closure to execute when the user has provided an answer.
+    ///   - answer: Closure to execute when the user has provided an answer.
     func presentBooleanQuestInterface(question: String,
-                                      completion: @escaping (Bool) -> Void)
+                                      answer: @escaping (Bool) -> Void)
 }

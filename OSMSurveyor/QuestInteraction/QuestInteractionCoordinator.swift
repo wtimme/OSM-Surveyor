@@ -41,7 +41,7 @@ extension QuestInteractionCoordinator: QuestInteractionCoordinatorProtocol {
         
         switch interaction.answerType {
         case .boolean:
-            delegate?.presentBooleanQuestInterface(question: interaction.question, completion: { _ in
+            delegate?.presentBooleanQuestInterface(question: interaction.question, answer: { _ in
                 /// TODO: Implement me.
             })
         }

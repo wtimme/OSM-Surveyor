@@ -10,13 +10,13 @@
 
 final class QuestInteractionDelegateMock {
     private(set) var didCallPresentBooleanQuestInterface = false
-    private(set) var presentBooleanQuestInterfaceArguments: (question: String, completion: (Bool) -> Void)?
+    private(set) var presentBooleanQuestInterfaceArguments: (question: String, answer: (Bool) -> Void)?
 }
 
 extension QuestInteractionDelegateMock: QuestInteractionDelegate {
-    func presentBooleanQuestInterface(question: String, completion: @escaping (Bool) -> Void) {
+    func presentBooleanQuestInterface(question: String, answer: @escaping (Bool) -> Void) {
         didCallPresentBooleanQuestInterface = true
         
-        presentBooleanQuestInterfaceArguments = (question, completion)
+        presentBooleanQuestInterfaceArguments = (question, answer)
     }
 }
