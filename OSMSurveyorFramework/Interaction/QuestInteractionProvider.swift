@@ -24,6 +24,10 @@ public final class QuestInteractionProvider {
     init(questProvider: OverpassQuestProviding) {
         self.questProvider = questProvider
     }
+    
+    public convenience init() {
+        self.init(questProvider: StaticOverpassQuestProvider())
+    }
 }
 
 extension QuestInteractionProvider: QuestInteractionProviding {
