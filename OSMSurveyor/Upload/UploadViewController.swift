@@ -10,6 +10,20 @@ import UIKit
 
 class UploadViewController: UITableViewController {
 
+    // MARK: Private properties
+    
+    private let viewModel: UploadViewModel
+    
+    init(style: UITableView.Style = .insetGrouped, questId: Int) {
+        self.viewModel = UploadViewModel(questId: questId)
+        
+        super.init(style: style)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
