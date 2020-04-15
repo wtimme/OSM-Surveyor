@@ -9,6 +9,13 @@
 import UIKit
 
 final class UploadViewModel {
+    // MARK: Types
+    
+    /// Enum that controls the sections that are being displayed.
+    enum SectionIndex: Int, CaseIterable {
+        case accounts
+    }
+    
     // MARK: Public properties
     
     weak var delegate: TableViewModelDelegate?
@@ -23,12 +30,28 @@ final class UploadViewModel {
     
     init(questId: Int) {
         self.questId = questId
+        
+        sections = createSections()
     }
     
     // MARK: Private methods
     
+    private func createSections() -> [Table.Section] {
+        return SectionIndex.allCases.map { sectionIndex in
+            switch sectionIndex {
+            case .accounts:
+                return createAccountsSection()
+            }
+        }
+    }
+    
+    private func createAccountsSection() -> Table.Section {
+        return Table.Section(headerTitle: "Select account",
+                             rows: [])
+    }
+    
     private func section(at index: Int) -> Table.Section? {
-        guard index >= 0, index < numberOfSections() else { return nil }
+        guard SectionIndex(rawValue: index) != nil else { return nil }
         
         return sections[index]
     }
@@ -36,7 +59,7 @@ final class UploadViewModel {
 
 extension UploadViewModel: TableViewModelProtocol {
     func numberOfSections() -> Int {
-        return sections.count
+        return SectionIndex.allCases.count
     }
     
     func numberOfRows(in section: Int) -> Int {

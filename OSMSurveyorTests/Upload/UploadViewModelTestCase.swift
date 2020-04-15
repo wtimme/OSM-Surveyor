@@ -35,6 +35,15 @@ class UploadViewModelTestCase: XCTestCase {
         XCTAssertNil(viewModel.row(at: IndexPath(item: -101, section: 42)))
     }
     
+    // MARK: Accounts section
+    
+    func testHeaderTitle_whenAskedAboutAccountSection_shouldReturnExpectedTitle() {
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        let headerTitle = viewModel.headerTitleOfSection(accountSection)
+        
+        XCTAssertEqual(headerTitle, "Select account")
+    }
+    
     // MARK: Helper methods
     
     private func recreateViewModel(questId: Int = 0) {
