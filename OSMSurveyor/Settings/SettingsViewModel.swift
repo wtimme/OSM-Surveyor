@@ -57,8 +57,60 @@ final class SettingsViewModel {
         self.init(keychainHandler: KeychainHandler(service: "api.openstreetmap.org"), appName: appName, appVersion: appVersion, appBuildNumber: appBuildNumber)
     }
     
-    // MARK: Public methods
+    // MARK: Private methods
     
+    private func createSections() -> [Table.Section] {
+        return [
+            createAccountsSection(),
+            createHelpSection()
+        ]
+    }
+    
+    private func createAccountsSection() -> Table.Section {
+        let accountRows = keychainHandler.entries.map { keychainEntry in
+            Table.Row(title: keychainEntry.username,
+                      accessoryType: .disclosureIndicator)
+        }
+        
+        let addAccountRow = Table.Row(title: "Add Account",
+                                      accessoryType: .disclosureIndicator)
+        
+        let allRows = accountRows + [addAccountRow]
+        
+        return Table.Section(headerTitle: "OpenStreetMap Accounts",
+                             rows: allRows)
+    }
+    
+    private func createHelpSection() -> Table.Section {
+        let rows = [
+            Table.Row(title: "GitHub Repository"),
+            Table.Row(title: "Bug Tracker")
+        ]
+        
+        return Table.Section(headerTitle: "Help",
+                             footerTitle: appNameAndVersion,
+                             rows: rows)
+    }
+    
+    private func section(at index: Int) -> Table.Section? {
+        guard index >= 0, index < numberOfSections() else { return nil }
+        
+        return sections[index]
+    }
+    
+    private func startToObserveNotificationCenter() {
+        notificationCenter.addObserver(forName: Notification.Name.keychainHandlerDidChangeNumberOfEntries, object: nil, queue: nil) { [weak self] _ in
+            guard let self = self else { return }
+            
+            /// Re-create all sections so that when the delegate reloads the section, the view model reports updated data.
+            self.sections = self.createSections()
+            
+            self.delegate?.reloadAccountSection(section: 0)
+        }
+    }
+}
+
+extension SettingsViewModel: TableViewManaging {
     func numberOfSections() -> Int {
         return sections.count
     }
@@ -110,58 +162,6 @@ final class SettingsViewModel {
             } else if indexPath.row == 1 {
                 coordinator?.presentBugTracker()
             }
-        }
-    }
-    
-    // MARK: Private methods
-    
-    private func createSections() -> [Table.Section] {
-        return [
-            createAccountsSection(),
-            createHelpSection()
-        ]
-    }
-    
-    private func createAccountsSection() -> Table.Section {
-        let accountRows = keychainHandler.entries.map { keychainEntry in
-            Table.Row(title: keychainEntry.username,
-                      accessoryType: .disclosureIndicator)
-        }
-        
-        let addAccountRow = Table.Row(title: "Add Account",
-                                      accessoryType: .disclosureIndicator)
-        
-        let allRows = accountRows + [addAccountRow]
-        
-        return Table.Section(headerTitle: "OpenStreetMap Accounts",
-                             rows: allRows)
-    }
-    
-    private func createHelpSection() -> Table.Section {
-        let rows = [
-            Table.Row(title: "GitHub Repository"),
-            Table.Row(title: "Bug Tracker")
-        ]
-        
-        return Table.Section(headerTitle: "Help",
-                             footerTitle: appNameAndVersion,
-                             rows: rows)
-    }
-    
-    private func section(at index: Int) -> Table.Section? {
-        guard index >= 0, index < numberOfSections() else { return nil }
-        
-        return sections[index]
-    }
-    
-    private func startToObserveNotificationCenter() {
-        notificationCenter.addObserver(forName: Notification.Name.keychainHandlerDidChangeNumberOfEntries, object: nil, queue: nil) { [weak self] _ in
-            guard let self = self else { return }
-            
-            /// Re-create all sections so that when the delegate reloads the section, the view model reports updated data.
-            self.sections = self.createSections()
-            
-            self.delegate?.reloadAccountSection(section: 0)
         }
     }
 }
