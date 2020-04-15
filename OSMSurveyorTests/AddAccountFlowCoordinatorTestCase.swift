@@ -130,6 +130,23 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         XCTAssertEqual(apiClientMock.userDetailsArguments?.tokenSecret, tokenSecret)
     }
 
+    func testStart_whenAPIClientFailedToFetchUserDetails_shouldAskAlertPresenterToPresentAlert() {
+        /// Given
+        let localizedErrorDescription = "Lorem ipsum"
+        let error = NSError(domain: "com.example.error", code: 1, userInfo: [NSLocalizedDescriptionKey: localizedErrorDescription])
+
+        /// When
+        coordinator.start()
+        oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
+        apiClientMock.permissionsArguments?.completion(.success([.allow_write_api, .allow_read_prefs]))
+        apiClientMock.userDetailsArguments?.completion(.failure(error))
+
+        /// Then
+        XCTAssertTrue(alertPresenterMock.didCallPresentAlert)
+        XCTAssertEqual(alertPresenterMock.presentAlertArguments?.title, "Error")
+        XCTAssertEqual(alertPresenterMock.presentAlertArguments?.message, localizedErrorDescription)
+    }
+
     func testStart_whenOAuthHandlerAuthorizedAndAllRequiredPermissionsArePresentAndTheUserDetailsWereFetched_shouldAskKeychainHandlerToAddEntry() {
         /// Given
         let username = "jane.doe"
