@@ -1,5 +1,5 @@
 //
-//  SettingsViewModelDelegateMock.swift
+//  TableViewModelDelegate.swift
 //  OSMSurveyorTests
 //
 //  Created by Wolfgang Timme on 12.04.20.
@@ -9,12 +9,12 @@
 import Foundation
 @testable import OSMSurveyor
 
-final class SettingsViewModelDelegateMock {
+final class TableViewModelDelegateMock {
     private(set) var didCallReloadReloadSection = false
     private(set) var sectionToReload: Int?
 }
 
-extension SettingsViewModelDelegateMock: SettingsViewModelDelegate {
+extension TableViewModelDelegateMock: TableViewModelDelegate {
     func reloadSection(_ section: Int) {
         didCallReloadReloadSection = true
         

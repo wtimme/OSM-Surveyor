@@ -9,7 +9,7 @@
 import Foundation
 import OSMSurveyorFramework
 
-protocol SettingsViewModelDelegate: class {
+protocol TableViewModelDelegate: class {
     func reloadSection(_ section: Int)
 }
 
@@ -18,7 +18,7 @@ final class SettingsViewModel {
     // MARK: Public properties
     
     weak var coordinator: SettingsCoordinatorProtocol?
-    weak var delegate: SettingsViewModelDelegate?
+    weak var delegate: TableViewModelDelegate?
     
     // MARK: Private properties
     

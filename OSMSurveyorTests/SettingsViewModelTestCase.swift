@@ -17,13 +17,13 @@ class SettingsViewModelTestCase: XCTestCase {
     var keychainHandlerMock: KeychainHandlerMock!
     var notificationCenter: NotificationCenter!
     var coordinatorMock: SettingsCoordinatorMock!
-    var delegateMock: SettingsViewModelDelegateMock!
+    var delegateMock: TableViewModelDelegateMock!
 
     override func setUpWithError() throws {
         keychainHandlerMock = KeychainHandlerMock()
         notificationCenter = NotificationCenter()
         coordinatorMock = SettingsCoordinatorMock()
-        delegateMock = SettingsViewModelDelegateMock()
+        delegateMock = TableViewModelDelegateMock()
         
         recreateViewModel()
     }
