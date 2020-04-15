@@ -31,6 +31,8 @@ class UploadViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel.delegate = self
 
         title = "Prepare upload"
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
@@ -90,4 +92,10 @@ class UploadViewController: UITableViewController {
         dismiss(animated: true)
     }
 
+}
+
+extension UploadViewController: TableViewModelDelegate {
+    func reloadSection(_ section: Int) {
+        tableView.reloadSections(IndexSet(arrayLiteral: section), with: .automatic)
+    }
 }
