@@ -78,14 +78,9 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
                                                     keychainHandler: KeychainHandler())
         addAccountCoordinator = coordinator
         
-        coordinator.onFinish = { result in
-            switch result {
-            case .failure(_):
-                print("An error was already presented.")
-            case .success(_):
-                /// TODO: Implement me.
-                print("Account added successfully.")
-            }
+        coordinator.onFinish = {
+            /// TODO: Implement me.
+            print("Account added successfully.")
         }
         
         coordinator.start()
