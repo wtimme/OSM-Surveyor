@@ -81,9 +81,9 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
                                                     keychainHandler: KeychainHandler(service: "api.openstreetmap.org"))
         addAccountCoordinator = coordinator
 
-        coordinator.onFinish = {
-            // TODO: Implement me.
-            print("Account added successfully.")
+        coordinator.onFinish = { [weak self] in
+            /// Clean up
+            self?.addAccountCoordinator = nil
         }
 
         coordinator.start()
