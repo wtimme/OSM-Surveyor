@@ -29,6 +29,7 @@ final class AddAccountFlowCoordinator {
     // MARK: Private properties
 
     private let presentingViewController: UIViewController
+    private let alertPresenter: AlertPresenting
     private let oAuthHandler: OAuthHandling
     private let apiClient: OpenStreetMapAPIClientProtocol
     private let keychainHandler: KeychainHandling
@@ -36,11 +37,13 @@ final class AddAccountFlowCoordinator {
     // MARK: Initializer
 
     init(presentingViewController: UIViewController,
+         alertPresenter: AlertPresenting,
          oAuthHandler: OAuthHandling,
          apiClient: OpenStreetMapAPIClientProtocol,
          keychainHandler: KeychainHandling)
     {
         self.presentingViewController = presentingViewController
+        self.alertPresenter = alertPresenter
         self.oAuthHandler = oAuthHandler
         self.apiClient = apiClient
         self.keychainHandler = keychainHandler
