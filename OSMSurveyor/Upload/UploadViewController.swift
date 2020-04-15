@@ -35,6 +35,8 @@ class UploadViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                            target: self,
                                                            action: #selector(didTapCancelButton))
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultTableViewCellReuseIdentifier)
     }
 
     // MARK: UITableViewDataSource and delegate
