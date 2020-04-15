@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- "Select Account" section to the upload view
+
+### Changed
+- A couple of behind-the-scenes changes to make parts of the code more generic and reusable
+
 ## [1.0.0 (9)] - 2020-04-13
 
 ### Added
