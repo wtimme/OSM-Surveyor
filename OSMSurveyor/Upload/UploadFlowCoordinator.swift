@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OSMSurveyorFramework
 
 protocol UploadFlowCoordinatorProtocol: class {
     func start(questType: String, questId: Int)
@@ -20,6 +21,8 @@ final class UploadFlowCoordinator {
     
     private let presentingViewController: UIViewController
     private var navigationController: UINavigationController?
+    
+    private var addAccountCoordinator: AddAccountFlowCoordinatorProtocol?
     
     // MARK: Initializer
     
@@ -41,6 +44,29 @@ extension UploadFlowCoordinator: UploadFlowCoordinatorProtocol {
     }
     
     func startAddAccountFlow() {
-        /// TODO: Implement me.
+        guard let navigationController = navigationController else { return }
+        
+        guard
+            let pathToSecretsPropertyList = Bundle.main.path(forResource: "Secrets", ofType: "plist"),
+            let oAuthHandler = OAuthHandler(propertyListPath: pathToSecretsPropertyList),
+            let apiClient = OpenStreetMapAPIClient(propertyListPath: pathToSecretsPropertyList)
+        else {
+            assertionFailure("Unable to initialize the OAuthHandler")
+            return
+        }
+        
+        let coordinator = AddAccountFlowCoordinator(presentingViewController: navigationController,
+                                                    alertPresenter: navigationController,
+                                                    oAuthHandler: oAuthHandler,
+                                                    apiClient: apiClient,
+                                                    keychainHandler: KeychainHandler())
+        addAccountCoordinator = coordinator
+        
+        coordinator.onFinish = { [weak self] in
+            /// Clean up
+            self?.addAccountCoordinator = nil
+        }
+        
+        coordinator.start()
     }
 }
