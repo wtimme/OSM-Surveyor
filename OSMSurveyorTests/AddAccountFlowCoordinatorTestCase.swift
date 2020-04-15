@@ -52,29 +52,19 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         XCTAssertEqual(oAuthHandlerMock.authorizeFromViewController as? UIViewController, presentingViewController)
     }
     
-    func testStart_whenOAuthHandlerEncountersAnError_shouldExecuteOnFinishWithError() {
+    func testStart_whenOAuthHandlerEncountersAnError_shouldAskAlertPresenterToPresentAlert() {
         /// Given
-        let error = NSError(domain: "com.example.error", code: 1, userInfo: nil)
-        
-        let onFinishExpectation = expectation(description: "Coordinator should finish")
-        var coordinatorError: Error?
-        coordinator.onFinish = { result in
-            if case let .failure(resultingError) = result {
-                coordinatorError = resultingError
-            }
-            
-            onFinishExpectation.fulfill()
-        }
-        
-        coordinator.start()
+        let localizedErrorDescription = "Lorem ipsum"
+        let error = NSError(domain: "com.example.error", code: 1, userInfo: [NSLocalizedDescriptionKey: localizedErrorDescription])
         
         /// When
+        coordinator.start()
         oAuthHandlerMock.authorizeCompletion?(.failure(error))
         
         /// Then
-        waitForExpectations(timeout: 1, handler: nil)
-        
-        XCTAssertEqual(coordinatorError as? NSError, error)
+        XCTAssertTrue(alertPresenterMock.didCallPresentAlert)
+        XCTAssertEqual(alertPresenterMock.presentAlertArguments?.title, "Error")
+        XCTAssertEqual(alertPresenterMock.presentAlertArguments?.message, localizedErrorDescription)
     }
     
     func testStart_whenOAuthHandlerAuthorizedSuccessful_shouldAskOpenStreetMapAPIClientToFetchPermissions() {

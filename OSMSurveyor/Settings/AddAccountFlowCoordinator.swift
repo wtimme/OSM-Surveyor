@@ -56,7 +56,7 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
             
             switch result {
             case let .failure(error):
-                self.onFinish?(.failure(error))
+                self.handleError(error)
             case let .success(credentials):
                 self.apiClient.permissions(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { [weak self] permissionResult in
                     guard let self = self else { return }
