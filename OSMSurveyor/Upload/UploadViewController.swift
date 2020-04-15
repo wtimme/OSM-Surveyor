@@ -18,8 +18,9 @@ class UploadViewController: UITableViewController {
     
     // MARK: Initializer
     
-    init(style: UITableView.Style = .insetGrouped, questId: Int) {
-        self.viewModel = UploadViewModel(questId: questId)
+    init(style: UITableView.Style = .insetGrouped,
+         viewModel: TableViewModelProtocol) {
+        self.viewModel = viewModel
         
         super.init(style: style)
     }
