@@ -28,19 +28,19 @@ final class AddAccountFlowCoordinator {
 
     // MARK: Private properties
 
-    private let navigationController: UINavigationController
+    private let presentingViewController: UIViewController
     private let oAuthHandler: OAuthHandling
     private let apiClient: OpenStreetMapAPIClientProtocol
     private let keychainHandler: KeychainHandling
 
     // MARK: Initializer
 
-    init(navigationController: UINavigationController,
+    init(presentingViewController: UIViewController,
          oAuthHandler: OAuthHandling,
          apiClient: OpenStreetMapAPIClientProtocol,
          keychainHandler: KeychainHandling)
     {
-        self.navigationController = navigationController
+        self.presentingViewController = presentingViewController
         self.oAuthHandler = oAuthHandler
         self.apiClient = apiClient
         self.keychainHandler = keychainHandler
@@ -49,7 +49,7 @@ final class AddAccountFlowCoordinator {
 
 extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
     func start() {
-        oAuthHandler.authorize(from: navigationController) { [weak self] result in
+        oAuthHandler.authorize(from: presentingViewController) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

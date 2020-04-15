@@ -74,7 +74,7 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
             return
         }
 
-        let coordinator = AddAccountFlowCoordinator(navigationController: navigationController,
+        let coordinator = AddAccountFlowCoordinator(presentingViewController: navigationController,
                                                     oAuthHandler: oAuthHandler,
                                                     apiClient: apiClient,
                                                     keychainHandler: KeychainHandler(service: "api.openstreetmap.org"))

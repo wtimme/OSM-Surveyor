@@ -13,18 +13,18 @@ import XCTest
 
 class AddAccountFlowCoordinatorTestCase: XCTestCase {
     var coordinator: AddAccountFlowCoordinatorProtocol!
-    var navigationController: UINavigationController!
+    var presentingViewController: UIViewController!
     var oAuthHandlerMock: OAuthHandlerMock!
     var apiClientMock: OpenStreetMapAPIClientMock!
     var keychainHandlerMock: KeychainHandlerMock!
 
     override func setUpWithError() throws {
         oAuthHandlerMock = OAuthHandlerMock()
-        navigationController = UINavigationController()
+        presentingViewController = UIViewController()
         apiClientMock = OpenStreetMapAPIClientMock()
         keychainHandlerMock = KeychainHandlerMock()
 
-        coordinator = AddAccountFlowCoordinator(navigationController: navigationController,
+        coordinator = AddAccountFlowCoordinator(presentingViewController: presentingViewController,
                                                 oAuthHandler: oAuthHandlerMock,
                                                 apiClient: apiClientMock,
                                                 keychainHandler: keychainHandlerMock)
@@ -32,7 +32,7 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
 
     override func tearDownWithError() throws {
         coordinator = nil
-        navigationController = nil
+        presentingViewController = nil
         oAuthHandlerMock = nil
         apiClientMock = nil
         keychainHandlerMock = nil
@@ -44,7 +44,7 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
 
         /// Then
         XCTAssertTrue(oAuthHandlerMock.didCallAuthorize)
-        XCTAssertEqual(oAuthHandlerMock.authorizeFromViewController as? UIViewController, navigationController)
+        XCTAssertEqual(oAuthHandlerMock.authorizeFromViewController as? UIViewController, presentingViewController)
     }
 
     func testStart_whenOAuthHandlerEncountersAnError_shouldExecuteOnFinishWithError() {
