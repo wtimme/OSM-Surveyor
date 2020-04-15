@@ -95,7 +95,7 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
             
             onFinish?(.success(username))
         } catch {
-            onFinish?(.failure(error))
+            handleError(error)
         }
     }
     
@@ -106,6 +106,9 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
         if AddAccountFlowCoordinatorError.insufficientPermissions == (error as? AddAccountFlowCoordinatorError) {
             title = "Insufficient privileges"
             message = "Please allow the app to access ALL OAuth permissions. Do not uncheck the checkboxes! Otherwise, the app will not work properly."
+        } else if KeychainError.usernameAlreadyExists == (error as? KeychainError) {
+            title = "Account already added"
+            message = "An account can only be added once. Please remove the existing one before adding it again."
         } else {
             title = "Error"
             message = error.localizedDescription
