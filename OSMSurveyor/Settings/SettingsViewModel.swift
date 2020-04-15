@@ -14,36 +14,6 @@ protocol SettingsViewModelDelegate: class {
 }
 
 final class SettingsViewModel {
-    // MARK: Types
-    
-    struct Row {
-        enum AccessoryType {
-            case none
-            case disclosureIndicator
-        }
-        
-        let title: String
-        let accessoryType: AccessoryType
-        
-        init(title: String, accessoryType: AccessoryType = .none) {
-            self.title = title
-            self.accessoryType = accessoryType
-        }
-    }
-    
-    struct Section {
-        let headerTitle: String?
-        let footerTitle: String?
-        let rows: [Row]
-        
-        init(headerTitle: String? = nil,
-             footerTitle: String? = nil,
-             rows: [Row] = [Row]()) {
-            self.headerTitle = headerTitle
-            self.footerTitle = footerTitle
-            self.rows = rows
-        }
-    }
     
     // MARK: Public properties
     
@@ -56,7 +26,7 @@ final class SettingsViewModel {
     private let notificationCenter: NotificationCenter
     private let appNameAndVersion: String
     
-    private var sections = [Section]()
+    private var sections = [Table.Section]()
     
     // MARK: Initializer
     
@@ -97,7 +67,7 @@ final class SettingsViewModel {
         return self.section(at: section)?.rows.count ?? 0
     }
     
-    func row(at indexPath: IndexPath) -> Row? {
+    func row(at indexPath: IndexPath) -> Table.Row? {
         guard
             let section = self.section(at: indexPath.section),
             indexPath.row >= 0,
@@ -145,40 +115,40 @@ final class SettingsViewModel {
     
     // MARK: Private methods
     
-    private func createSections() -> [Section] {
+    private func createSections() -> [Table.Section] {
         return [
             createAccountsSection(),
             createHelpSection()
         ]
     }
     
-    private func createAccountsSection() -> Section {
+    private func createAccountsSection() -> Table.Section {
         let accountRows = keychainHandler.entries.map { keychainEntry in
-            Row(title: keychainEntry.username,
-                accessoryType: .disclosureIndicator)
+            Table.Row(title: keychainEntry.username,
+                      accessoryType: .disclosureIndicator)
         }
         
-        let addAccountRow = Row(title: "Add Account",
-                                accessoryType: .disclosureIndicator)
+        let addAccountRow = Table.Row(title: "Add Account",
+                                      accessoryType: .disclosureIndicator)
         
         let allRows = accountRows + [addAccountRow]
         
-        return Section(headerTitle: "OpenStreetMap Accounts",
-                       rows: allRows)
+        return Table.Section(headerTitle: "OpenStreetMap Accounts",
+                             rows: allRows)
     }
     
-    private func createHelpSection() -> Section {
+    private func createHelpSection() -> Table.Section {
         let rows = [
-            Row(title: "GitHub Repository"),
-            Row(title: "Bug Tracker")
+            Table.Row(title: "GitHub Repository"),
+            Table.Row(title: "Bug Tracker")
         ]
         
-        return Section(headerTitle: "Help",
-                       footerTitle: appNameAndVersion,
-                       rows: rows)
+        return Table.Section(headerTitle: "Help",
+                             footerTitle: appNameAndVersion,
+                             rows: rows)
     }
     
-    private func section(at index: Int) -> Section? {
+    private func section(at index: Int) -> Table.Section? {
         guard index >= 0, index < numberOfSections() else { return nil }
         
         return sections[index]
