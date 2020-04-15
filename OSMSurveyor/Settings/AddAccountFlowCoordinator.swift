@@ -64,7 +64,7 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
 
                     switch permissionResult {
                     case let .failure(error):
-                        self.onFinish?(.failure(error))
+                        self.handleError(error)
                     case let .success(permissions):
                         if permissions.contains(.allow_read_prefs), permissions.contains(.allow_write_api) {
                             self.apiClient.userDetails(oAuthToken: credentials.token, oAuthTokenSecret: credentials.tokenSecret) { [weak self] userDetailsResult in
