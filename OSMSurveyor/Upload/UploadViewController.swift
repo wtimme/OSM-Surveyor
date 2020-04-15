@@ -12,7 +12,11 @@ class UploadViewController: UITableViewController {
 
     // MARK: Private properties
     
-    private let viewModel: UploadViewModel
+    private(set) var viewModel: TableViewModelProtocol
+    
+    private let defaultTableViewCellReuseIdentifier = "defaultTableViewCellReuseIdentifier"
+    
+    // MARK: Initializer
     
     init(style: UITableView.Style = .insetGrouped, questId: Int) {
         self.viewModel = UploadViewModel(questId: questId)
@@ -33,16 +37,46 @@ class UploadViewController: UITableViewController {
                                                            action: #selector(didTapCancelButton))
     }
 
-    // MARK: - Table view data source
-
+    // MARK: UITableViewDataSource and delegate
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return viewModel.numberOfSections()
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return viewModel.numberOfRows(in: section)
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: defaultTableViewCellReuseIdentifier, for: indexPath)
+        
+        if let row = viewModel.row(at: indexPath) {
+            cell.textLabel?.text = row.title
+            
+            switch row.accessoryType {
+            case .disclosureIndicator:
+                cell.accessoryType = .disclosureIndicator
+            case .none:
+                cell.accessoryType = .none
+            }
+        }
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.headerTitleOfSection(section)
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return viewModel.footerTitleOfSection(section)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.selectRow(at: indexPath)
+        
+        /// Immediately deselect the row again, so that it doesn't visually stay selected.
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     // MARK: Private method
