@@ -27,6 +27,7 @@ final class UploadFlowCoordinator {
 extension UploadFlowCoordinator: UploadFlowCoordinatorProtocol {
     func start(questType: String, questId: Int) {
         let viewModel = UploadViewModel(questId: questId)
+        viewModel.coordinator = self
         
         let viewController = UploadViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)

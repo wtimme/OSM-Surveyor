@@ -16,9 +16,11 @@ class UploadViewModelTestCase: XCTestCase {
     private var viewModel: UploadViewModel!
     private var delegateMock: TableViewModelDelegateMock!
     private var keychainHandlerMock: KeychainHandlerMock!
+    private var coordinatorMock: UploadFlowCoordinatorMock!
 
     override func setUpWithError() throws {
         keychainHandlerMock = KeychainHandlerMock()
+        coordinatorMock = UploadFlowCoordinatorMock()
         delegateMock = TableViewModelDelegateMock()
         
         recreateViewModel()
@@ -27,6 +29,7 @@ class UploadViewModelTestCase: XCTestCase {
     override func tearDownWithError() throws {
         viewModel = nil
         keychainHandlerMock = nil
+        coordinatorMock = nil
         delegateMock = nil
     }
     
@@ -138,6 +141,7 @@ class UploadViewModelTestCase: XCTestCase {
         viewModel = UploadViewModel(keychainHandler: keychainHandlerMock,
                                     questId: questId)
         
+        viewModel.coordinator = coordinatorMock
         viewModel.delegate = delegateMock
     }
 

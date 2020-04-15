@@ -19,6 +19,7 @@ final class UploadViewModel {
     
     // MARK: Public properties
     
+    weak var coordinator: UploadFlowCoordinatorProtocol?
     weak var delegate: TableViewModelDelegate?
     
     // MARK: Private properties
