@@ -8,6 +8,10 @@
 
 import Foundation
 
+protocol TableViewModelDelegate: class {
+    func reloadSection(_ section: Int)
+}
+
 protocol TableViewModelProtocol {
     func numberOfSections() -> Int
     

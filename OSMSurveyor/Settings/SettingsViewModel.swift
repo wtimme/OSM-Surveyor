@@ -9,10 +9,6 @@
 import Foundation
 import OSMSurveyorFramework
 
-protocol TableViewModelDelegate: class {
-    func reloadSection(_ section: Int)
-}
-
 final class SettingsViewModel {
     
     // MARK: Public properties
