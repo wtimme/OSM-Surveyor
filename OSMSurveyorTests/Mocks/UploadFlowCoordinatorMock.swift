@@ -12,6 +12,8 @@ import Foundation
 final class UploadFlowCoordinatorMock {
     private(set) var didCallStart = false
     private(set) var startArguments: (questType: String, questId: Int)?
+    
+    private(set) var didCallStartAddAccountFlow = false
 }
 
 extension UploadFlowCoordinatorMock: UploadFlowCoordinatorProtocol {
@@ -19,5 +21,9 @@ extension UploadFlowCoordinatorMock: UploadFlowCoordinatorProtocol {
         didCallStart = true
         
         startArguments = (questType, questId)
+    }
+    
+    func startAddAccountFlow() {
+        didCallStartAddAccountFlow = true
     }
 }
