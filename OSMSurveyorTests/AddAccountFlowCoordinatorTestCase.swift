@@ -15,6 +15,7 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
     
     var coordinator: AddAccountFlowCoordinatorProtocol!
     var presentingViewController: UIViewController!
+    var alertPresenterMock: AlertPresenterMock!
     var oAuthHandlerMock: OAuthHandlerMock!
     var apiClientMock: OpenStreetMapAPIClientMock!
     var keychainHandlerMock: KeychainHandlerMock!
@@ -22,10 +23,12 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
     override func setUpWithError() throws {
         oAuthHandlerMock = OAuthHandlerMock()
         presentingViewController = UIViewController()
+        alertPresenterMock = AlertPresenterMock()
         apiClientMock = OpenStreetMapAPIClientMock()
         keychainHandlerMock = KeychainHandlerMock()
         
         coordinator = AddAccountFlowCoordinator(presentingViewController: presentingViewController,
+                                                alertPresenter: alertPresenterMock,
                                                 oAuthHandler: oAuthHandlerMock,
                                                 apiClient: apiClientMock,
                                                 keychainHandler: keychainHandlerMock)
@@ -34,6 +37,7 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
     override func tearDownWithError() throws {
         coordinator = nil
         presentingViewController = nil
+        alertPresenterMock = nil
         oAuthHandlerMock = nil
         apiClientMock = nil
         keychainHandlerMock = nil
