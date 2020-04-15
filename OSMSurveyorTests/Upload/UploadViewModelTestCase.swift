@@ -51,7 +51,8 @@ class UploadViewModelTestCase: XCTestCase {
     // MARK: Helper methods
     
     private func recreateViewModel(questId: Int = 0) {
-        viewModel = UploadViewModel(questId: questId)
+        viewModel = UploadViewModel(keychainHandler: keychainHandlerMock,
+                                    questId: questId)
         
         viewModel.delegate = delegateMock
     }

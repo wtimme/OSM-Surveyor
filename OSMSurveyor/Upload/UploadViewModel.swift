@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import OSMSurveyorFramework
 
 final class UploadViewModel {
     // MARK: Types
@@ -22,13 +23,16 @@ final class UploadViewModel {
     
     // MARK: Private properties
     
+    private let keychainHandler: KeychainHandling
     private let questId: Int
     
     private var sections = [Table.Section]()
     
     // MARK: Initializer
     
-    init(questId: Int) {
+    init(keychainHandler: KeychainHandling = KeychainHandler(),
+         questId: Int) {
+        self.keychainHandler = keychainHandler
         self.questId = questId
         
         sections = createSections()
