@@ -1,5 +1,5 @@
 //
-//  TableViewManaging.swift
+//  TableViewModelProtocol.swift
 //  OSMSurveyor
 //
 //  Created by Wolfgang Timme on 15.04.20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TableViewManaging {
+protocol TableViewModelProtocol {
     func numberOfSections() -> Int
     
     func numberOfRows(in section: Int) -> Int

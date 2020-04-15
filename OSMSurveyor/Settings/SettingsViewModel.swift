@@ -110,7 +110,7 @@ final class SettingsViewModel {
     }
 }
 
-extension SettingsViewModel: TableViewManaging {
+extension SettingsViewModel: TableViewModelProtocol {
     func numberOfSections() -> Int {
         return sections.count
     }
