@@ -13,6 +13,8 @@ protocol TableViewModelDelegate: class {
 }
 
 protocol TableViewModelProtocol {
+    var delegate: TableViewModelDelegate? { get set }
+    
     func numberOfSections() -> Int
     
     func numberOfRows(in section: Int) -> Int
