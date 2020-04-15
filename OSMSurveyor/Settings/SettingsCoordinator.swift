@@ -83,23 +83,8 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
 
         coordinator.onFinish = { result in
             switch result {
-            case let .failure(error):
-                let title: String?
-                let message: String?
-                if case AddAccountFlowCoordinatorError.insufficientPermissions = error {
-                    title = "Insufficient privileges"
-                    message = "Please allow the app to access ALL OAuth permissions. Do not uncheck the checkboxes! Otherwise, the app will not work properly."
-                } else if case KeychainError.usernameAlreadyExists = error {
-                    title = "Account already added"
-                    message = "An account can only be added once. Please remove the existing one before adding it again."
-                } else {
-                    title = "Error"
-                    message = error.localizedDescription
-                }
-
-                let controller = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                controller.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-                navigationController.present(controller, animated: true)
+            case .failure:
+                print("An error was already presented.")
             case .success:
                 // TODO: Implement me.
                 print("Account added successfully.")
