@@ -10,12 +10,12 @@ import UIKit
 
 final class SettingsViewController: UITableViewController {
     // MARK: Private properties
-    private let viewModel: SettingsViewModel
+    private(set) var viewModel: TableViewModelProtocol
     
     private let defaultTableViewCellReuseIdentifier = "defaultTableViewCellReuseIdentifier"
     
     init(style: UITableView.Style = .insetGrouped,
-         viewModel: SettingsViewModel = SettingsViewModel()) {
+         viewModel: TableViewModelProtocol = SettingsViewModel()) {
         self.viewModel = viewModel
         
         super.init(style: style)
