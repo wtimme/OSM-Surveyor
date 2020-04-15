@@ -25,5 +25,15 @@ class UploadViewModelTestCase: XCTestCase {
         viewModel = nil
         delegateMock = nil
     }
+    
+    func testNumberOfRowsInSection_whenProvidedWithInvalidSection_shouldReturnZero() {
+        XCTAssertEqual(viewModel.numberOfRows(in: 9999), 0)
+        XCTAssertEqual(viewModel.numberOfRows(in: -5), 0)
+    }
+    
+    func testRowAtIndexPath_whenProvidedWithInvalidIndexPath_shouldReturnNil() {
+        XCTAssertNil(viewModel.row(at: IndexPath(item: 23, section: -1)))
+        XCTAssertNil(viewModel.row(at: IndexPath(item: -101, section: 42)))
+    }
 
 }
