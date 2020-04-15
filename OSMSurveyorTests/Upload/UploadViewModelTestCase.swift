@@ -92,6 +92,37 @@ class UploadViewModelTestCase: XCTestCase {
         XCTAssertEqual(row?.title, username)
     }
     
+    func testRowAtIndexPath_forFirstRowWithAnActualAccount_shouldUseCheckmarkAsAccessoryType() {
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        
+        keychainHandlerMock.entries = [(username: "jane.doe", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: "lorem.ipsum", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        let row = viewModel.row(at: IndexPath(row: 0, section: accountSection))
+        
+        XCTAssertEqual(row?.accessoryType, .checkmark)
+    }
+    
+    func testRowAtIndexPath_forAllActualAccountsButTheFirst_shouldUseNoneAsAccessoryType() {
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        
+        keychainHandlerMock.entries = [(username: "jane.doe", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: "lorem.ipsum", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: "foo.bar", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        let secondAccountRow = viewModel.row(at: IndexPath(row: 1, section: accountSection))
+        XCTAssertEqual(secondAccountRow?.accessoryType, Table.Row.AccessoryType.none)
+        
+        let thirdAccountRow = viewModel.row(at: IndexPath(row: 2, section: accountSection))
+        XCTAssertEqual(thirdAccountRow?.accessoryType, Table.Row.AccessoryType.none)
+    }
+    
     func testRowAtIndexPath_forLastRowInAccountSection_shouldReturnAddAccount() {
         let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
         let indexOfLastRow = viewModel.numberOfRows(in: accountSection) - 1

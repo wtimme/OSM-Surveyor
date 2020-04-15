@@ -50,9 +50,18 @@ final class UploadViewModel {
     }
     
     private func createAccountsSection() -> Table.Section {
-        let accountRows = keychainHandler.entries.map { keychainEntry in
-            Table.Row(title: keychainEntry.username,
-                      accessoryType: .none)
+        let accountRows: [Table.Row] = keychainHandler.entries.enumerated().map { (index, keychainEntry) in
+            let accessoryType: Table.Row.AccessoryType
+            if 0 == index {
+                /// For now, act as if the first account is always selected.
+                /// Later, we need to add logic to remember which one was selected.
+                accessoryType = .checkmark
+            } else {
+                accessoryType = .none
+            }
+            
+            return Table.Row(title: keychainEntry.username,
+                             accessoryType: accessoryType)
         }
         
         let addAccountRow = Table.Row(title: "Add Account",
