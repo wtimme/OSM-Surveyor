@@ -12,13 +12,18 @@ import XCTest
 class UploadViewModelTestCase: XCTestCase {
     
     private var viewModel: UploadViewModel!
+    var delegateMock: TableViewModelDelegateMock!
 
     override func setUpWithError() throws {
         viewModel = UploadViewModel(questId: 0)
+        
+        delegateMock = TableViewModelDelegateMock()
+        viewModel.delegate = delegateMock
     }
 
     override func tearDownWithError() throws {
         viewModel = nil
+        delegateMock = nil
     }
 
 }
