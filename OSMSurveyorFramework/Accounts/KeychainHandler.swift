@@ -46,7 +46,7 @@ public class KeychainHandler {
     private let keychain: Keychain
     private let notificationCenter: NotificationCenter
     
-    public init(service: String, notificationCenter: NotificationCenter = .default) {
+    public init(service: String = "api.openstreetmap.org", notificationCenter: NotificationCenter = .default) {
         keychain = Keychain(service: service)
         self.notificationCenter = notificationCenter
     }

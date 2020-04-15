@@ -58,7 +58,7 @@ final class SettingsViewModel {
             fatalError("Unable to get the app details from the info dictionary.")
         }
         
-        self.init(keychainHandler: KeychainHandler(service: "api.openstreetmap.org"), appName: appName, appVersion: appVersion, appBuildNumber: appBuildNumber)
+        self.init(keychainHandler: KeychainHandler(), appName: appName, appVersion: appVersion, appBuildNumber: appBuildNumber)
     }
     
     // MARK: Private methods
