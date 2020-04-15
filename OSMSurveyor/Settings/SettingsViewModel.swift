@@ -11,6 +11,14 @@ import OSMSurveyorFramework
 
 final class SettingsViewModel {
     
+    // MARK: Types
+    
+    /// Enum that controls the sections that are being displayed.
+    enum SectionIndex: Int, CaseIterable {
+        case accounts
+        case help
+    }
+    
     // MARK: Public properties
     
     weak var coordinator: SettingsCoordinatorProtocol?
@@ -56,10 +64,14 @@ final class SettingsViewModel {
     // MARK: Private methods
     
     private func createSections() -> [Table.Section] {
-        return [
-            createAccountsSection(),
-            createHelpSection()
-        ]
+        return SectionIndex.allCases.map { sectionIndex in
+            switch sectionIndex {
+            case .accounts:
+                return createAccountsSection()
+            case .help:
+                return createHelpSection()
+            }
+        }
     }
     
     private func createAccountsSection() -> Table.Section {
@@ -89,7 +101,7 @@ final class SettingsViewModel {
     }
     
     private func section(at index: Int) -> Table.Section? {
-        guard index >= 0, index < numberOfSections() else { return nil }
+        guard SectionIndex(rawValue: index) != nil else { return nil }
         
         return sections[index]
     }
@@ -108,7 +120,7 @@ final class SettingsViewModel {
 
 extension SettingsViewModel: TableViewModelProtocol {
     func numberOfSections() -> Int {
-        return sections.count
+        return SectionIndex.allCases.count
     }
     
     func numberOfRows(in section: Int) -> Int {
@@ -137,11 +149,11 @@ extension SettingsViewModel: TableViewModelProtocol {
     }
     
     func selectRow(at indexPath: IndexPath) {
-        let accountSection = 0
-        let helpSection = numberOfSections() - 1
+        guard let sectionIndex = SectionIndex(rawValue: indexPath.section) else { return }
         
-        if indexPath.section == accountSection {
-            let indexOfLastRow = numberOfRows(in: accountSection) - 1
+        switch sectionIndex {
+        case .accounts:
+            let indexOfLastRow = numberOfRows(in: indexPath.section) - 1
             
             if indexPath.row == indexOfLastRow {
                 coordinator?.startAddAccountFlow()
@@ -152,7 +164,7 @@ extension SettingsViewModel: TableViewModelProtocol {
                     self?.keychainHandler.remove(username: username)
                 }
             }
-        } else if indexPath.section == helpSection {
+        case .help:
             if indexPath.row == 0 {
                 coordinator?.presentGitHubRepository()
             } else if indexPath.row == 1 {

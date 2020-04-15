@@ -49,7 +49,7 @@ class SettingsViewModelTestCase: XCTestCase {
     // MARK: Accounts section
     
     func testHeaderTitle_whenAskedAboutAccountSection_shouldReturnExpectedTitle() {
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         let headerTitle = viewModel.headerTitleOfSection(accountSection)
         
         XCTAssertEqual(headerTitle, "OpenStreetMap Accounts")
@@ -61,7 +61,7 @@ class SettingsViewModelTestCase: XCTestCase {
         /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
         recreateViewModel()
         
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         let numberOfRows = viewModel.numberOfRows(in: accountSection)
         
         XCTAssertEqual(numberOfRows, 1)
@@ -78,14 +78,14 @@ class SettingsViewModelTestCase: XCTestCase {
         /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
         recreateViewModel()
         
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         let numberOfRows = viewModel.numberOfRows(in: accountSection)
         
         XCTAssertEqual(numberOfRows, numberOfAccounts + 1)
     }
     
     func testRowAtIndexPath_forAllRowsInAccountSectionOtherThanTheLastOne_shouldUseUsernameAsTitle() {
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         
         let username = "jane.doe"
         keychainHandlerMock.entries = [(username: username, credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
@@ -100,7 +100,7 @@ class SettingsViewModelTestCase: XCTestCase {
     }
     
     func testSelectRow_forAllRowsInAccountSectionOtherThanTheLastOne_shouldTellCoordinatorToAskForConfirmationToRemoveAccount() {
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         
         let username = "jane.doe"
         keychainHandlerMock.entries = [(username: username, credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
@@ -116,7 +116,7 @@ class SettingsViewModelTestCase: XCTestCase {
     }
     
     func testSelectRow_afterConfirmingRemovalOfAccount_shouldAskKeychainHandlerToRemoveAccount() {
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         
         let username = "jane.doe"
         keychainHandlerMock.entries = [(username: username, credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
@@ -134,7 +134,7 @@ class SettingsViewModelTestCase: XCTestCase {
     }
     
     func testRowAtIndexPath_forLastRowInAccountSection_shouldReturnAddAccount() {
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         let indexOfLastRow = viewModel.numberOfRows(in: accountSection) - 1
         let row = viewModel.row(at: IndexPath(row: indexOfLastRow, section: accountSection))
         
@@ -144,7 +144,7 @@ class SettingsViewModelTestCase: XCTestCase {
     
     func testSelectRow_whenTappingLastRowInAccountSection_shouldAskCoordinatorToStartAddAccountFlow() {
         /// Given
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         let indexOfLastRow = viewModel.numberOfRows(in: accountSection) - 1
         
         /// When
@@ -156,7 +156,7 @@ class SettingsViewModelTestCase: XCTestCase {
     
     func test_whenReceivingKeychainDidChangeNumberOfEntriesNotification_shouldAskDelegateToReloadAccountSection() {
         /// Given
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         
         notificationCenter.post(name: .keychainHandlerDidChangeNumberOfEntries, object: nil)
         
@@ -166,7 +166,7 @@ class SettingsViewModelTestCase: XCTestCase {
     
     func test_whenReceivingKeychainDidChangeNumberOfEntriesNotification_shouldUpdateAccountSectionRows() {
         /// Given
-        let accountSection = 0
+        let accountSection = SettingsViewModel.SectionIndex.accounts.rawValue
         
         /// At the beginning, the Keychain handler only has one single entry
         keychainHandlerMock.entries = [(username: "", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
@@ -235,10 +235,10 @@ class SettingsViewModelTestCase: XCTestCase {
     
     func testSelectRow_whenTappingFirstRowInHelpSection_shouldAskCoordinatorToPresentGitHubRepository() {
         /// Given
-        let lastSection = viewModel.numberOfSections() - 1
+        let helpSection = SettingsViewModel.SectionIndex.help.rawValue
         
         /// When
-        viewModel.selectRow(at: IndexPath(row: 0, section: lastSection))
+        viewModel.selectRow(at: IndexPath(row: 0, section: helpSection))
         
         /// Then
         XCTAssertTrue(coordinatorMock.didCallPresentGitHubRepository)
@@ -246,10 +246,10 @@ class SettingsViewModelTestCase: XCTestCase {
     
     func testSelectRow_whenTappingSecondRowInHelpSection_shouldAskCoordinatorToPresentBugTracker() {
         /// Given
-        let lastSection = viewModel.numberOfSections() - 1
+        let helpSection = SettingsViewModel.SectionIndex.help.rawValue
         
         /// When
-        viewModel.selectRow(at: IndexPath(row: 1, section: lastSection))
+        viewModel.selectRow(at: IndexPath(row: 1, section: helpSection))
         
         /// Then
         XCTAssertTrue(coordinatorMock.didCallPresentBugTracker)
