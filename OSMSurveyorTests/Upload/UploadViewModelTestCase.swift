@@ -8,13 +8,16 @@
 
 import XCTest
 @testable import OSMSurveyor
+@testable import OSMSurveyorFrameworkMocks
 
 class UploadViewModelTestCase: XCTestCase {
     
     private var viewModel: UploadViewModel!
     private var delegateMock: TableViewModelDelegateMock!
+    private var keychainHandlerMock: KeychainHandlerMock!
 
     override func setUpWithError() throws {
+        keychainHandlerMock = KeychainHandlerMock()
         delegateMock = TableViewModelDelegateMock()
         
         recreateViewModel()
@@ -22,6 +25,7 @@ class UploadViewModelTestCase: XCTestCase {
 
     override func tearDownWithError() throws {
         viewModel = nil
+        keychainHandlerMock = nil
         delegateMock = nil
     }
     
