@@ -50,8 +50,18 @@ final class UploadViewModel {
     }
     
     private func createAccountsSection() -> Table.Section {
+        let accountRows = keychainHandler.entries.map { keychainEntry in
+            Table.Row(title: keychainEntry.username,
+                      accessoryType: .none)
+        }
+        
+        let addAccountRow = Table.Row(title: "Add Account",
+                                      accessoryType: .disclosureIndicator)
+        
+        let allRows = accountRows + [addAccountRow]
+        
         return Table.Section(headerTitle: "Select account",
-                             rows: [])
+                             rows: allRows)
     }
     
     private func section(at index: Int) -> Table.Section? {

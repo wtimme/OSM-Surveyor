@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import OSMSurveyor
+@testable import OSMSurveyorFramework
 @testable import OSMSurveyorFrameworkMocks
 
 class UploadViewModelTestCase: XCTestCase {
@@ -46,6 +47,58 @@ class UploadViewModelTestCase: XCTestCase {
         let headerTitle = viewModel.headerTitleOfSection(accountSection)
         
         XCTAssertEqual(headerTitle, "Select account")
+    }
+    
+    func testNumberOfRowsInSection_whenAskedAboutAccountSectionAndThereAreNoAccounts_shouldReturnOne() {
+        keychainHandlerMock.entries = []
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        let numberOfRows = viewModel.numberOfRows(in: accountSection)
+        
+        XCTAssertEqual(numberOfRows, 1)
+    }
+    
+    func testNumberOfRowsInSection_whenAskedAboutAccountSectionAndThereAreAccounts_shouldNumberOfAccountsPlusOne() {
+        let numberOfAccounts = 42
+        keychainHandlerMock.entries = (1...numberOfAccounts).map {
+            let credentials = OAuth1Credentials(token: "", tokenSecret: "")
+            
+            return (username: "User #\($0)", credentials: credentials)
+        }
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        let numberOfRows = viewModel.numberOfRows(in: accountSection)
+        
+        XCTAssertEqual(numberOfRows, numberOfAccounts + 1)
+    }
+    
+    func testRowAtIndexPath_forAllRowsInAccountSectionOtherThanTheLastOne_shouldUseUsernameAsTitle() {
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        
+        let username = "jane.doe"
+        keychainHandlerMock.entries = [(username: username, credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        let row = viewModel.row(at: IndexPath(row: 0, section: accountSection))
+        
+        XCTAssertEqual(row?.title, username)
+    }
+    
+    func testRowAtIndexPath_forLastRowInAccountSection_shouldReturnAddAccount() {
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        let indexOfLastRow = viewModel.numberOfRows(in: accountSection) - 1
+        let row = viewModel.row(at: IndexPath(row: indexOfLastRow, section: accountSection))
+        
+        XCTAssertEqual(row?.title, "Add Account")
+        XCTAssertEqual(row?.accessoryType, .disclosureIndicator)
     }
     
     // MARK: Helper methods
