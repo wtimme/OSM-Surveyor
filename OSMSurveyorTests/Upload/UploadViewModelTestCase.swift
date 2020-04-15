@@ -15,10 +15,9 @@ class UploadViewModelTestCase: XCTestCase {
     var delegateMock: TableViewModelDelegateMock!
 
     override func setUpWithError() throws {
-        viewModel = UploadViewModel(questId: 0)
-        
         delegateMock = TableViewModelDelegateMock()
-        viewModel.delegate = delegateMock
+        
+        recreateViewModel()
     }
 
     override func tearDownWithError() throws {
@@ -34,6 +33,14 @@ class UploadViewModelTestCase: XCTestCase {
     func testRowAtIndexPath_whenProvidedWithInvalidIndexPath_shouldReturnNil() {
         XCTAssertNil(viewModel.row(at: IndexPath(item: 23, section: -1)))
         XCTAssertNil(viewModel.row(at: IndexPath(item: -101, section: 42)))
+    }
+    
+    // MARK: Helper methods
+    
+    private func recreateViewModel(questId: Int = 0) {
+        viewModel = UploadViewModel(questId: questId)
+        
+        viewModel.delegate = delegateMock
     }
 
 }
