@@ -45,6 +45,7 @@
 		648E3ACF24F8EAB200B2210A /* QuestManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A20124F8E90F00B326D6 /* QuestManagerMock.swift */; };
 		648E3AD124F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E3AD024F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift */; };
 		648DD1582446DC4300AECBD0 /* AlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD1572446DC4300AECBD0 /* AlertPresenting.swift */; };
+		648DD15A2446DDE700AECBD0 /* AlertPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD1592446DDE700AECBD0 /* AlertPresenterMock.swift */; };
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
 		649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */; };
@@ -203,6 +204,7 @@
 		64762E5B242DFEBC00E430B4 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		648E3AD024F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraPosition+MakeCameraPosition.swift"; sourceTree = "<group>"; };
 		648DD1572446DC4300AECBD0 /* AlertPresenting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenting.swift; sourceTree = "<group>"; };
+		648DD1592446DDE700AECBD0 /* AlertPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenterMock.swift; sourceTree = "<group>"; };
 		649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDataHelper.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 			children = (
 				64D5D9392441CDD200AB0EC2 /* SettingsCoordinatorMock.swift */,
 				64D5D96C24431B1700AB0EC2 /* SettingsViewModelDelegateMock.swift */,
+				648DD1592446DDE700AECBD0 /* AlertPresenterMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -1051,6 +1054,7 @@
 				64D5D96D24431B1700AB0EC2 /* SettingsViewModelDelegateMock.swift in Sources */,
 				6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */,
 				64D5D93A2441CDD200AB0EC2 /* SettingsCoordinatorMock.swift in Sources */,
+				648DD15A2446DDE700AECBD0 /* AlertPresenterMock.swift in Sources */,
 				64D5D9322441B67400AB0EC2 /* SettingsViewModelTestCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
