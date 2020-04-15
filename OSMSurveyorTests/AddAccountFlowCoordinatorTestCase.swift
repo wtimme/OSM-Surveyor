@@ -108,19 +108,9 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         XCTAssertEqual(coordinatorError as? NSError, error)
     }
     
-    func testStart_whenPermissionsAreInsufficient_shouldExecuteOnFinishWithError() {
+    func testStart_whenPermissionsAreInsufficient_shouldAskAlertPresenterToPresentAlert() {
         /// Given
         let permissions: [Permission] = [.allow_read_gpx, .allow_write_notes]
-        
-        let onFinishExpectation = expectation(description: "Coordinator should finish")
-        var coordinatorError: Error?
-        coordinator.onFinish = { result in
-            if case let .failure(resultingError) = result {
-                coordinatorError = resultingError
-            }
-            
-            onFinishExpectation.fulfill()
-        }
         
         /// When
         coordinator.start()
@@ -128,9 +118,11 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         apiClientMock.permissionsArguments?.completion(.success(permissions))
         
         // Then
-        waitForExpectations(timeout: 1, handler: nil)
-        
-        XCTAssertTrue(AddAccountFlowCoordinatorError.insufficientPermissions == (coordinatorError as? AddAccountFlowCoordinatorError))
+        XCTAssertTrue(alertPresenterMock.didCallPresentAlert)
+        XCTAssertEqual(alertPresenterMock.presentAlertArguments?.title,
+                       "Insufficient privileges")
+        XCTAssertEqual(alertPresenterMock.presentAlertArguments?.message,
+                       "Please allow the app to access ALL OAuth permissions. Do not uncheck the checkboxes! Otherwise, the app will not work properly.")
     }
     
     func testStart_whenOAuthHandlerAuthorizedAndThePermissionsAreSufficient_shouldAskOpenStreetMapAPIClientToFetchUserDetails() {

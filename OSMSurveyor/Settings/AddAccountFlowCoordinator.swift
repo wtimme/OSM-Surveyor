@@ -79,7 +79,7 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
                                 }
                             }
                         } else {
-                            self.onFinish?(.failure(AddAccountFlowCoordinatorError.insufficientPermissions))
+                            self.handleError(AddAccountFlowCoordinatorError.insufficientPermissions)
                         }
                     }
                 }
@@ -100,8 +100,16 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
     }
     
     private func handleError(_ error: Error) {
-        let title = "Error"
-        let message = error.localizedDescription
+        let title: String
+        let message: String
+        
+        if AddAccountFlowCoordinatorError.insufficientPermissions == (error as? AddAccountFlowCoordinatorError) {
+            title = "Insufficient privileges"
+            message = "Please allow the app to access ALL OAuth permissions. Do not uncheck the checkboxes! Otherwise, the app will not work properly."
+        } else {
+            title = "Error"
+            message = error.localizedDescription
+        }
         
         alertPresenter.presentAlert(title: title,
                                     message: message)
