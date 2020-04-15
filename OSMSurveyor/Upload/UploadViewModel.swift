@@ -112,6 +112,15 @@ extension UploadViewModel: TableViewModelProtocol {
     }
     
     func selectRow(at indexPath: IndexPath) {
-        /// TODO: Implement me.
+        guard let sectionIndex = SectionIndex(rawValue: indexPath.section) else { return }
+        
+        switch sectionIndex {
+        case .accounts:
+            let indexOfLastRow = numberOfRows(in: indexPath.section) - 1
+            
+            if indexPath.row == indexOfLastRow {
+                coordinator?.startAddAccountFlow()
+            }
+        }
     }
 }

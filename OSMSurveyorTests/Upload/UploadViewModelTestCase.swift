@@ -135,6 +135,18 @@ class UploadViewModelTestCase: XCTestCase {
         XCTAssertEqual(row?.accessoryType, .disclosureIndicator)
     }
     
+    func testSelectRow_whenTappingLastRowInAccountSection_shouldAskCoordinatorToStartAddAccountFlow() {
+        /// Given
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        let indexOfLastRow = viewModel.numberOfRows(in: accountSection) - 1
+        
+        /// When
+        viewModel.selectRow(at: IndexPath(row: indexOfLastRow, section: accountSection))
+        
+        /// Then
+        XCTAssertTrue(coordinatorMock.didCallStartAddAccountFlow)
+    }
+    
     // MARK: Helper methods
     
     private func recreateViewModel(questId: Int = 0) {
