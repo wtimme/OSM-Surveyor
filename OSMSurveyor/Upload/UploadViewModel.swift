@@ -25,6 +25,7 @@ final class UploadViewModel {
     // MARK: Private properties
     
     private let keychainHandler: KeychainHandling
+    private let notificationCenter: NotificationCenter
     private let questId: Int
     
     private var sections = [Table.Section]()
@@ -32,11 +33,15 @@ final class UploadViewModel {
     // MARK: Initializer
     
     init(keychainHandler: KeychainHandling = KeychainHandler(),
+         notificationCenter: NotificationCenter = .default,
          questId: Int) {
         self.keychainHandler = keychainHandler
+        self.notificationCenter = notificationCenter
         self.questId = questId
         
         sections = createSections()
+        
+        startToObserveNotificationCenter()
     }
     
     // MARK: Private methods
@@ -78,6 +83,17 @@ final class UploadViewModel {
         guard SectionIndex(rawValue: index) != nil else { return nil }
         
         return sections[index]
+    }
+    
+    private func startToObserveNotificationCenter() {
+        notificationCenter.addObserver(forName: Notification.Name.keychainHandlerDidChangeNumberOfEntries, object: nil, queue: nil) { [weak self] _ in
+            guard let self = self else { return }
+            
+            /// Re-create all sections so that when the delegate reloads the section, the view model reports updated data.
+            self.sections = self.createSections()
+            
+            self.delegate?.reloadSection(SectionIndex.accounts.rawValue)
+        }
     }
 }
 

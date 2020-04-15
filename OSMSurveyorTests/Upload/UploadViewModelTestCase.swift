@@ -16,10 +16,12 @@ class UploadViewModelTestCase: XCTestCase {
     private var viewModel: UploadViewModel!
     private var delegateMock: TableViewModelDelegateMock!
     private var keychainHandlerMock: KeychainHandlerMock!
+    private var notificationCenter: NotificationCenter!
     private var coordinatorMock: UploadFlowCoordinatorMock!
 
     override func setUpWithError() throws {
         keychainHandlerMock = KeychainHandlerMock()
+        notificationCenter = NotificationCenter()
         coordinatorMock = UploadFlowCoordinatorMock()
         delegateMock = TableViewModelDelegateMock()
         
@@ -29,6 +31,7 @@ class UploadViewModelTestCase: XCTestCase {
     override func tearDownWithError() throws {
         viewModel = nil
         keychainHandlerMock = nil
+        notificationCenter = nil
         coordinatorMock = nil
         delegateMock = nil
     }
@@ -147,10 +150,31 @@ class UploadViewModelTestCase: XCTestCase {
         XCTAssertTrue(coordinatorMock.didCallStartAddAccountFlow)
     }
     
+    func test_whenReceivingKeychainDidChangeNumberOfEntriesNotification_shouldUpdateAccountSectionRows() {
+        /// Given
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        
+        /// At the beginning, the Keychain handler only has one single entry
+        keychainHandlerMock.entries = [(username: "", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        /// Now, the Keychain handler reports two entries
+        keychainHandlerMock.entries = [(username: "", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: "", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        notificationCenter.post(name: .keychainHandlerDidChangeNumberOfEntries, object: nil)
+        
+        XCTAssertEqual(viewModel.numberOfRows(in: accountSection), keychainHandlerMock.entries.count + 1,
+                       "The account section should now contain three rows: two accounts and 'Add Account'")
+    }
+    
     // MARK: Helper methods
     
     private func recreateViewModel(questId: Int = 0) {
         viewModel = UploadViewModel(keychainHandler: keychainHandlerMock,
+                                    notificationCenter: notificationCenter,
                                     questId: questId)
         
         viewModel.coordinator = coordinatorMock
