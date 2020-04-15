@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol UploadFlowCoordinatorProtocol {
+protocol UploadFlowCoordinatorProtocol: class {
     func start(questType: String, questId: Int)
 }
 
