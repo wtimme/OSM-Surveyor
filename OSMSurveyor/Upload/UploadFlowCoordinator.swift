@@ -19,6 +19,7 @@ final class UploadFlowCoordinator {
     // MARK: Private properties
     
     private let presentingViewController: UIViewController
+    private var navigationController: UINavigationController?
     
     // MARK: Initializer
     
@@ -34,6 +35,7 @@ extension UploadFlowCoordinator: UploadFlowCoordinatorProtocol {
         
         let viewController = UploadViewController(viewModel: viewModel)
         let navigationController = UINavigationController(rootViewController: viewController)
+        self.navigationController = navigationController
         
         presentingViewController.present(navigationController, animated: true)
     }
