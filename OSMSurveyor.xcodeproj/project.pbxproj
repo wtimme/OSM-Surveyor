@@ -421,6 +421,7 @@
 		6470E7B22427CE69009A6AAC /* OSMSurveyor */ = {
 			isa = PBXGroup;
 			children = (
+				648DD14E2446C48200AECBD0 /* TableView */,
 				648DD13F2444BA7A00AECBD0 /* Upload */,
 				6490F2EB24445D9500BD82F5 /* QuestInteraction */,
 				64D5D9332441B8B200AB0EC2 /* Extensions */,
@@ -514,6 +515,13 @@
 				648DD1432444BBBD00AECBD0 /* UploadFlowCoordinatorTestCase.swift */,
 			);
 			path = Upload;
+			sourceTree = "<group>";
+		};
+		648DD14E2446C48200AECBD0 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		6490F2EB24445D9500BD82F5 /* QuestInteraction */ = {
