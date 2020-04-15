@@ -15,6 +15,7 @@ struct Table {
         enum AccessoryType {
             case none
             case disclosureIndicator
+            case checkmark
         }
         
         let title: String

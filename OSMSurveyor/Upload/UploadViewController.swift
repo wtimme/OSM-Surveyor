@@ -56,6 +56,8 @@ class UploadViewController: UITableViewController {
             switch row.accessoryType {
             case .disclosureIndicator:
                 cell.accessoryType = .disclosureIndicator
+            case .checkmark:
+                cell.accessoryType = .checkmark
             case .none:
                 cell.accessoryType = .none
             }
