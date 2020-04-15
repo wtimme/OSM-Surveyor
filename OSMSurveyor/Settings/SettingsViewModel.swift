@@ -113,7 +113,7 @@ final class SettingsViewModel {
             /// Re-create all sections so that when the delegate reloads the section, the view model reports updated data.
             self.sections = self.createSections()
             
-            self.delegate?.reloadSection(0)
+            self.delegate?.reloadSection(SectionIndex.accounts.rawValue)
         }
     }
 }
