@@ -98,4 +98,12 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
             onFinish?(.failure(error))
         }
     }
+    
+    private func handleError(_ error: Error) {
+        let title = "Error"
+        let message = error.localizedDescription
+        
+        alertPresenter.presentAlert(title: title,
+                                    message: message)
+    }
 }
