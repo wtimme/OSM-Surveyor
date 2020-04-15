@@ -159,21 +159,9 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         XCTAssertEqual(keychainHandlerMock.addArguments?.credentials.tokenSecret, tokenSecret)
     }
 
-    func testStart_whenKeychainThrewAnError_shouldExecuteOnFinishWithError() {
+    func testStart_whenKeychainThrewAnError_shouldAskAlertPresenterToPresentAlert() {
         /// Given
-        let error = NSError(domain: "com.example.error", code: 1, userInfo: nil)
-
-        let onFinishExpectation = expectation(description: "Coordinator should finish")
-        var coordinatorError: Error?
-        coordinator.onFinish = { result in
-            if case let .failure(resultingError) = result {
-                coordinatorError = resultingError
-            }
-
-            onFinishExpectation.fulfill()
-        }
-
-        keychainHandlerMock.addError = error
+        keychainHandlerMock.addError = KeychainError.usernameAlreadyExists
 
         /// When
         coordinator.start()
@@ -182,9 +170,11 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: "")))
 
         // Then
-        waitForExpectations(timeout: 1, handler: nil)
-
-        XCTAssertEqual(coordinatorError as? NSError, error)
+        XCTAssertTrue(alertPresenterMock.didCallPresentAlert)
+        XCTAssertEqual(alertPresenterMock.presentAlertArguments?.title,
+                       "Account already added")
+        XCTAssertEqual(alertPresenterMock.presentAlertArguments?.message,
+                       "An account can only be added once. Please remove the existing one before adding it again.")
     }
 
     func testStart_whenKeychainDidNotThrowAnError_shouldExecuteOnFinishWithSuccessAndUsername() {
