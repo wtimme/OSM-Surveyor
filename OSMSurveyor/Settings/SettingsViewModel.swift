@@ -10,7 +10,7 @@ import Foundation
 import OSMSurveyorFramework
 
 protocol SettingsViewModelDelegate: class {
-    func reloadAccountSection(section: Int)
+    func reloadSection(_ section: Int)
 }
 
 final class SettingsViewModel {
@@ -105,7 +105,7 @@ final class SettingsViewModel {
             /// Re-create all sections so that when the delegate reloads the section, the view model reports updated data.
             self.sections = self.createSections()
             
-            self.delegate?.reloadAccountSection(section: 0)
+            self.delegate?.reloadSection(0)
         }
     }
 }

@@ -88,7 +88,7 @@ final class SettingsViewController: UITableViewController {
 }
 
 extension SettingsViewController: SettingsViewModelDelegate {
-    func reloadAccountSection(section: Int) {
+    func reloadSection(_ section: Int) {
         tableView.reloadSections(IndexSet(arrayLiteral: section), with: .automatic)
     }
 }
