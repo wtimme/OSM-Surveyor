@@ -184,17 +184,10 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
                        "An account can only be added once. Please remove the existing one before adding it again.")
     }
 
-    func testStart_whenKeychainDidNotThrowAnError_shouldExecuteOnFinishWithSuccessAndUsername() {
+    func testStart_whenKeychainDidNotThrowAnError_shouldExecuteOnFinish() {
         /// Given
-        let username = "jane.doe"
-
         let onFinishExpectation = expectation(description: "Coordinator should finish")
-        var coordinatorUsername: String?
-        coordinator.onFinish = { result in
-            if case let .success(username) = result {
-                coordinatorUsername = username
-            }
-
+        coordinator.onFinish = {
             onFinishExpectation.fulfill()
         }
 
@@ -204,11 +197,9 @@ class AddAccountFlowCoordinatorTestCase: XCTestCase {
         coordinator.start()
         oAuthHandlerMock.authorizeCompletion?(.success(("", "")))
         apiClientMock.permissionsArguments?.completion(.success([.allow_write_api, .allow_read_prefs]))
-        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: username)))
+        apiClientMock.userDetailsArguments?.completion(.success(UserDetails(username: "")))
 
         // Then
         waitForExpectations(timeout: 1, handler: nil)
-
-        XCTAssertEqual(coordinatorUsername, username)
     }
 }

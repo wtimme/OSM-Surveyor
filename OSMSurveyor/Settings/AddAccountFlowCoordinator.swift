@@ -17,14 +17,13 @@ protocol AddAccountFlowCoordinatorProtocol {
     func start()
 
     /// Closure that is executed as soon as the coordinator finished its flow.
-    /// In case of a success, the `Result` contains the username.
-    var onFinish: ((Result<String, Error>) -> Void)? { set get }
+    var onFinish: (() -> Void)? { set get }
 }
 
 final class AddAccountFlowCoordinator {
     // MARK: Public properties
 
-    var onFinish: ((Result<String, Error>) -> Void)?
+    var onFinish: (() -> Void)?
 
     // MARK: Private properties
 
@@ -95,7 +94,7 @@ extension AddAccountFlowCoordinator: AddAccountFlowCoordinatorProtocol {
         do {
             try keychainHandler.add(username: username, credentials: OAuth1Credentials(token: token, tokenSecret: tokenSecret))
 
-            onFinish?(.success(username))
+            onFinish?()
         } catch {
             handleError(error)
         }
