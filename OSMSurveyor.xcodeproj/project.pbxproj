@@ -59,6 +59,7 @@
 		648DD14D2444DA9F00AECBD0 /* UIColor+Branding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD14C2444DA9F00AECBD0 /* UIColor+Branding.swift */; };
 		648DD1502446C4B600AECBD0 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD14F2446C4B600AECBD0 /* Table.swift */; };
 		648DD1522446C5F400AECBD0 /* TableViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD1512446C5F400AECBD0 /* TableViewModelProtocol.swift */; };
+		648DD1562446CC9000AECBD0 /* UploadViewModelTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD1552446CC9000AECBD0 /* UploadViewModelTestCase.swift */; };
 		6490F2ED24445DE700BD82F5 /* QuestInteractionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */; };
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
@@ -229,6 +230,7 @@
 		648DD14C2444DA9F00AECBD0 /* UIColor+Branding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Branding.swift"; sourceTree = "<group>"; };
 		648DD14F2446C4B600AECBD0 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		648DD1512446C5F400AECBD0 /* TableViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewModelProtocol.swift; sourceTree = "<group>"; };
+		648DD1552446CC9000AECBD0 /* UploadViewModelTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewModelTestCase.swift; sourceTree = "<group>"; };
 		6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionCoordinator.swift; sourceTree = "<group>"; };
 		649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				648DD1432444BBBD00AECBD0 /* UploadFlowCoordinatorTestCase.swift */,
+				648DD1552446CC9000AECBD0 /* UploadViewModelTestCase.swift */,
 			);
 			path = Upload;
 			sourceTree = "<group>";
@@ -1128,6 +1131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D5D95D244234C000AB0EC2 /* AddAccountFlowCoordinatorTestCase.swift in Sources */,
+				648DD1562446CC9000AECBD0 /* UploadViewModelTestCase.swift in Sources */,
 				648DD13E2444851C00AECBD0 /* QuestInteractionCoordinatorTestCase.swift in Sources */,
 				64D5D96D24431B1700AB0EC2 /* TableViewModelDelegateMock.swift in Sources */,
 				648DD1442444BBBD00AECBD0 /* UploadFlowCoordinatorTestCase.swift in Sources */,
