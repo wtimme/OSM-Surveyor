@@ -27,4 +27,6 @@ final class AddBenchBackrestQuest: OverpassQuest {
         out meta;
         """
     }
+    
+    let commitMessage = "Add backrest information to benches"
 }

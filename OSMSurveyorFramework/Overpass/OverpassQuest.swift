@@ -21,6 +21,9 @@ protocol OverpassQuest {
     /// Determines the query for downloading the quest's elements in the given `BoundingBox`
     /// - Parameter boundingBox: The bounding box for which to get the query.
     func query(boundingBox: BoundingBox) -> OverpassQuery
+    
+    /// The message to use as the changeset's comment when uploading the change to the server.
+    var commitMessage: String { get }
 }
 
 extension OverpassQuest {

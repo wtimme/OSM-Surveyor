@@ -21,6 +21,8 @@ final class OverpassQuestMock {
     private(set) var didCallQuery = false
     private(set) var queryBoundingBox: BoundingBox?
     var queryToReturn: OverpassQuery = ""
+    
+    var commitMessage = "Lorem ipsum"
 }
 
 extension OverpassQuestMock: OverpassQuest {

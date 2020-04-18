@@ -30,4 +30,6 @@ final class AddBusStopShelterQuest: OverpassQuest {
         out meta;
         """
     }
+    
+    let commitMessage = "Add bus stop shelter"
 }

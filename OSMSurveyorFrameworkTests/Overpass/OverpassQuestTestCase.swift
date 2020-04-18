@@ -16,6 +16,8 @@ class OverpassQuestTestCase: XCTestCase {
         let interaction = QuestInteraction.makeQuestInteraction()
         
         func query(boundingBox: BoundingBox) -> String { return "" }
+        
+        let commitMessage = "Lorem ipsum"
     }
     
     func testType_whenUsingDefaultImplementation_shouldReturnClassNameWithoutQuestSuffix() {
