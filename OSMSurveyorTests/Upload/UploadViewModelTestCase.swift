@@ -104,18 +104,37 @@ class UploadViewModelTestCase: XCTestCase {
         XCTAssertEqual(row?.title, username)
     }
     
-    func testRowAtIndexPath_forFirstRowWithAnActualAccount_shouldUseCheckmarkAsAccessoryType() {
+    func testRowAtIndexPath_whenNoUsernameMatchesTheSelectedOneStoredInUserDefaults_shouldUseCheckmarkAsAccessoryTypeForTheFirstRow() {
+        /// Given
+        userDefaults.set("something random", forKey: selectedUsernameUserDefaultsKey)
+        
         let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
         
         keychainHandlerMock.entries = [(username: "jane.doe", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
                                        (username: "lorem.ipsum", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
         
-        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        /// Re-generate the view model, since the keychain handler's entries and the `UserDefaults` values are retrieved during initialization.
         recreateViewModel()
         
-        let row = viewModel.row(at: IndexPath(row: 0, section: accountSection))
+        XCTAssertEqual(viewModel.row(at: IndexPath(row: 0, section: accountSection))?.accessoryType, .checkmark)
+        XCTAssertEqual(viewModel.row(at: IndexPath(row: 1, section: accountSection))?.accessoryType, Table.Row.AccessoryType.none)
+    }
+    
+    func testRowAtIndexPath_whenUsernameMatchesTheSelectedOneStoredInUserDefaults_shouldUseCheckmarkAsAccessoryType() {
+        /// Given
+        let username = "lorem.ipsum"
+        userDefaults.set(username, forKey: selectedUsernameUserDefaultsKey)
         
-        XCTAssertEqual(row?.accessoryType, .checkmark)
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        
+        keychainHandlerMock.entries = [(username: "jane.doe", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: username, credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries and the `UserDefaults` values are retrieved during initialization.
+        recreateViewModel()
+        
+        XCTAssertEqual(viewModel.row(at: IndexPath(row: 0, section: accountSection))?.accessoryType, Table.Row.AccessoryType.none)
+        XCTAssertEqual(viewModel.row(at: IndexPath(row: 1, section: accountSection))?.accessoryType, .checkmark)
     }
     
     func testRowAtIndexPath_forAllActualAccountsButTheFirst_shouldUseNoneAsAccessoryType() {
@@ -142,6 +161,79 @@ class UploadViewModelTestCase: XCTestCase {
         
         XCTAssertEqual(row?.title, "Add Account")
         XCTAssertEqual(row?.accessoryType, .disclosureIndicator)
+    }
+    
+    func testSelectRow_whenTappingAnActualAccountRow_shouldSaveCorrespondingUsernameToUserDefaults() {
+        /// Given
+        let usernameOfSecondAccount = "lorem.ipsum"
+        keychainHandlerMock.entries = [(username: "jane.doe", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: usernameOfSecondAccount, credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: "foo.bar", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        viewModel.selectRow(at: IndexPath(row: 1, section: UploadViewModel.SectionIndex.accounts.rawValue))
+        
+        XCTAssertEqual(userDefaults.string(forKey: selectedUsernameUserDefaultsKey), usernameOfSecondAccount)
+    }
+    
+    func testSelectRow_whenTappingAnActualAccountRow_shouldAskDelegateToReloadAccountSection() {
+        /// Given
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        
+        keychainHandlerMock.entries = [(username: "jane.doe", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: "lorem.ipsum", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        /// When
+        viewModel.selectRow(at: IndexPath(row: 1, section: accountSection))
+        
+        /// Then
+        XCTAssertTrue(delegateMock.didCallReloadReloadSection)
+        XCTAssertEqual(delegateMock.sectionToReload, accountSection)
+    }
+    
+    func testSelectRow_whenTappingAnAccountRowThatIsAlreadySelected_shouldNotAskDelegateToReloadAccountSection() {
+        /// Given
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        
+        let selectedUsername = "lorem.ipsum"
+        userDefaults.set(selectedUsername, forKey: selectedUsernameUserDefaultsKey)
+        
+        keychainHandlerMock.entries = [(username: "jane.doe", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: selectedUsername, credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        /// When
+        viewModel.selectRow(at: IndexPath(row: 1, section: accountSection))
+        
+        /// Then
+        XCTAssertFalse(delegateMock.didCallReloadReloadSection)
+    }
+    
+    func testSelectRow_whenTappingAnActualAccountRow_shouldUseCheckmarkAsAccessoryTypeForThatRow() {
+        /// Given
+        let accountSection = UploadViewModel.SectionIndex.accounts.rawValue
+        
+        keychainHandlerMock.entries = [(username: "jane.doe", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: "lorem.ipsum", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: "foo.bar", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        let indexPathOfRowToSelect = IndexPath(row: 2, section: accountSection)
+        
+        /// Re-generate the view model, since the keychain handler's entries are retrieved during initialization.
+        recreateViewModel()
+        
+        /// When
+        viewModel.selectRow(at: indexPathOfRowToSelect)
+        
+        /// Then
+        XCTAssertEqual(viewModel.row(at: indexPathOfRowToSelect)?.accessoryType, .checkmark)
     }
     
     func testSelectRow_whenTappingLastRowInAccountSection_shouldAskCoordinatorToStartAddAccountFlow() {
@@ -182,6 +274,9 @@ class UploadViewModelTestCase: XCTestCase {
         /// Given
         keychainHandlerMock.entries = []
         
+        /// Re-generate the view model, since the keychain handler's entries and the `UserDefaults` are retrieved during initialization.
+        recreateViewModel()
+        
         /// When
         viewModel.didTapUploadButton()
         
@@ -189,10 +284,36 @@ class UploadViewModelTestCase: XCTestCase {
         XCTAssertFalse(coordinatorMock.didCallStartUpload)
     }
     
-    func testDidTapUploadButton_whenAnAccountsIsAvailable_shouldAskCoordinatorToStartUpload() {
+    func testDidTapUploadButton_whenNoUsernameMatchesTheSelectedOneStoredInUserDefaults_shouldAskCoordinatorToStartUploadWithTheFirstAccount() {
         /// Given
+        userDefaults.set("something random", forKey: selectedUsernameUserDefaultsKey)
+        
+        let credentialsOfFirstAccount = OAuth1Credentials(token: "foo", tokenSecret: "bar")
+        keychainHandlerMock.entries = [(username: "jane.doe", credentials: credentialsOfFirstAccount),
+                                       (username: "lorem.ipsum", credentials: OAuth1Credentials(token: "", tokenSecret: ""))]
+        
+        /// Re-generate the view model, since the keychain handler's entries and the `UserDefaults` are retrieved during initialization.
+        recreateViewModel()
+        
+        /// When
+        viewModel.didTapUploadButton()
+        
+        /// Then
+        XCTAssertTrue(coordinatorMock.didCallStartUpload)
+        XCTAssertEqual(coordinatorMock.oAuthCredentialsForUpload, credentialsOfFirstAccount)
+    }
+    
+    func testDidTapUploadButton_whenUsernameMatchesTheSelectedOneStoredInUserDefaults_shouldAskCoordinatorToStartUploadWithThatAccount() {
+        /// Given
+        let username = "lorem.ipsum"
         let credentials = OAuth1Credentials(token: "foo", tokenSecret: "bar")
-        keychainHandlerMock.entries = [(username: "", credentials: credentials)]
+        userDefaults.set(username, forKey: selectedUsernameUserDefaultsKey)
+        
+        keychainHandlerMock.entries = [(username: "jane.doe", credentials: OAuth1Credentials(token: "", tokenSecret: "")),
+                                       (username: username, credentials: credentials)]
+        
+        /// Re-generate the view model, since the keychain handler's entries and the `UserDefaults` are retrieved during initialization.
+        recreateViewModel()
         
         /// When
         viewModel.didTapUploadButton()

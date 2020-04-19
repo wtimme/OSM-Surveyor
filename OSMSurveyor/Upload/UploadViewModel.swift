@@ -34,6 +34,9 @@ final class UploadViewModel {
     
     private var sections = [Table.Section]()
     
+    /// The username of the account that the user has selected.
+    private var selectedUsername: String?
+    
     // MARK: Initializer
     
     init(keychainHandler: KeychainHandling = KeychainHandler(),
@@ -47,6 +50,8 @@ final class UploadViewModel {
         self.selectedUsernameUserDefaultsKey = selectedUsernameUserDefaultsKey
         self.questId = questId
         
+        selectedUsername = selectedUsernameFromUserDefaults()
+        
         sections = createSections()
         
         startToObserveNotificationCenter()
@@ -55,12 +60,27 @@ final class UploadViewModel {
     // MARK: Public methods
     
     func didTapUploadButton() {
-        guard let keychainEntry = keychainHandler.entries.first else { return }
+        guard let keychainEntry = keychainHandler.entries.first(where: { $0.username == selectedUsername }) else {
+            /// No credentials available for upload.
+            return
+        }
         
         coordinator?.startUpload(oAuthCredentials: keychainEntry.credentials)
     }
     
     // MARK: Private methods
+    
+    private func selectedUsernameFromUserDefaults() -> String? {
+        guard
+            let usernameFromUserDefaults = userDefaults.string(forKey: selectedUsernameUserDefaultsKey),
+            let keychainEntry = keychainHandler.entries.first(where: { $0.username == usernameFromUserDefaults })
+        else {
+            /// Nothing is saved in the `UserDefaults`. Use the first entry by default.
+            return keychainHandler.entries.first?.username
+        }
+        
+        return keychainEntry.username
+    }
     
     private func createSections() -> [Table.Section] {
         return SectionIndex.allCases.map { sectionIndex in
@@ -74,7 +94,7 @@ final class UploadViewModel {
     private func createAccountsSection() -> Table.Section {
         let accountRows: [Table.Row] = keychainHandler.entries.enumerated().map { (index, keychainEntry) in
             let accessoryType: Table.Row.AccessoryType
-            if 0 == index {
+            if keychainEntry.username == selectedUsername {
                 /// For now, act as if the first account is always selected.
                 /// Later, we need to add logic to remember which one was selected.
                 accessoryType = .checkmark
@@ -152,6 +172,23 @@ extension UploadViewModel: TableViewModelProtocol {
             
             if indexPath.row == indexOfLastRow {
                 coordinator?.startAddAccountFlow()
+            } else if indexPath.row < keychainHandler.entries.count {
+                let username = keychainHandler.entries[indexPath.row].username
+                
+                guard username != selectedUsername else {
+                    /// This username is already selected; nothing to do here.
+                    return
+                }
+                
+                selectedUsername = username
+                
+                /// Persist the username.
+                userDefaults.set(selectedUsername, forKey: selectedUsernameUserDefaultsKey)
+                
+                /// Re-create the sections, since the accessory type might have changed.
+                sections = createSections()
+                
+                delegate?.reloadSection(indexPath.section)
             }
         }
     }
