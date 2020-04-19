@@ -18,6 +18,7 @@ class UploadViewModelTestCase: XCTestCase {
     private var keychainHandlerMock: KeychainHandlerMock!
     private var notificationCenter: NotificationCenter!
     private var userDefaults: UserDefaults!
+    private let selectedUsernameUserDefaultsKey = "lorem_ipsum_dolor"
     private var coordinatorMock: UploadFlowCoordinatorMock!
 
     override func setUpWithError() throws {
@@ -207,6 +208,7 @@ class UploadViewModelTestCase: XCTestCase {
         viewModel = UploadViewModel(keychainHandler: keychainHandlerMock,
                                     notificationCenter: notificationCenter,
                                     userDefaults: userDefaults,
+                                    selectedUsernameUserDefaultsKey: selectedUsernameUserDefaultsKey,
                                     questId: questId)
         
         viewModel.coordinator = coordinatorMock

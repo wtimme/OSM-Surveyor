@@ -29,6 +29,9 @@ final class UploadViewModel {
     private let userDefaults: UserDefaults
     private let questId: Int
     
+    /// The `UserDefaults` key that is used to store the username that the user selected.
+    private let selectedUsernameUserDefaultsKey: String
+    
     private var sections = [Table.Section]()
     
     // MARK: Initializer
@@ -36,10 +39,12 @@ final class UploadViewModel {
     init(keychainHandler: KeychainHandling = KeychainHandler(),
          notificationCenter: NotificationCenter = .default,
          userDefaults: UserDefaults = .standard,
+         selectedUsernameUserDefaultsKey: String = "selectedUserName",
          questId: Int) {
         self.keychainHandler = keychainHandler
         self.notificationCenter = notificationCenter
         self.userDefaults = userDefaults
+        self.selectedUsernameUserDefaultsKey = selectedUsernameUserDefaultsKey
         self.questId = questId
         
         sections = createSections()
