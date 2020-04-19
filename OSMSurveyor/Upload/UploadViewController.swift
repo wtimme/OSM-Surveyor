@@ -12,14 +12,14 @@ class UploadViewController: UITableViewController {
 
     // MARK: Private properties
     
-    private(set) var viewModel: TableViewModelProtocol
+    private(set) var viewModel: UploadViewModel
     
     private let defaultTableViewCellReuseIdentifier = "defaultTableViewCellReuseIdentifier"
     
     // MARK: Initializer
     
     init(style: UITableView.Style = .insetGrouped,
-         viewModel: TableViewModelProtocol) {
+         viewModel: UploadViewModel) {
         self.viewModel = viewModel
         
         super.init(style: style)
