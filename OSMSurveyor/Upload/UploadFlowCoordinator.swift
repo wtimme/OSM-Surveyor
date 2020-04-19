@@ -14,6 +14,10 @@ protocol UploadFlowCoordinatorProtocol: class {
     
     /// Starts the flow for adding a new OpenStreetMap account.
     func startAddAccountFlow()
+    
+    /// Starts the upload of the changes to the server.
+    /// - Parameter oAuthCredentials: The OAuth1 credentials to use for the upload.
+    func startUpload(oAuthCredentials: OAuth1Credentials)
 }
 
 final class UploadFlowCoordinator {
@@ -68,5 +72,9 @@ extension UploadFlowCoordinator: UploadFlowCoordinatorProtocol {
         }
         
         coordinator.start()
+    }
+    
+    func startUpload(oAuthCredentials: OAuth1Credentials) {
+        /// TODO: Implement me.
     }
 }

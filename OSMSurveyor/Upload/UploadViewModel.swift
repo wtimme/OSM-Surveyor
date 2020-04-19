@@ -44,6 +44,14 @@ final class UploadViewModel {
         startToObserveNotificationCenter()
     }
     
+    // MARK: Public methods
+    
+    func didTapUploadButton() {
+        guard let keychainEntry = keychainHandler.entries.first else { return }
+        
+        coordinator?.startUpload(oAuthCredentials: keychainEntry.credentials)
+    }
+    
     // MARK: Private methods
     
     private func createSections() -> [Table.Section] {

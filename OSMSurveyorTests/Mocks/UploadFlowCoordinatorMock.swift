@@ -8,12 +8,16 @@
 
 import Foundation
 @testable import OSMSurveyor
+import OSMSurveyorFramework
 
 final class UploadFlowCoordinatorMock {
     private(set) var didCallStart = false
     private(set) var startArguments: (questType: String, questId: Int)?
     
     private(set) var didCallStartAddAccountFlow = false
+    
+    private(set) var didCallStartUpload = false
+    private(set) var oAuthCredentialsForUpload: OAuth1Credentials?
 }
 
 extension UploadFlowCoordinatorMock: UploadFlowCoordinatorProtocol {
@@ -25,5 +29,11 @@ extension UploadFlowCoordinatorMock: UploadFlowCoordinatorProtocol {
     
     func startAddAccountFlow() {
         didCallStartAddAccountFlow = true
+    }
+    
+    func startUpload(oAuthCredentials: OAuth1Credentials) {
+        didCallStartUpload = true
+        
+        oAuthCredentialsForUpload = oAuthCredentials
     }
 }

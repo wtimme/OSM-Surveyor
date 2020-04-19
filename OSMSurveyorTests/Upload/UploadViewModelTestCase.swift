@@ -170,6 +170,32 @@ class UploadViewModelTestCase: XCTestCase {
                        "The account section should now contain three rows: two accounts and 'Add Account'")
     }
     
+    // MARK: didTapUploadButton()
+    
+    func testDidTapUploadButton_whenNoAccountsAreAvailable_shouldNotAskCoordinatorToStartUpload() {
+        /// Given
+        keychainHandlerMock.entries = []
+        
+        /// When
+        viewModel.didTapUploadButton()
+        
+        /// Then
+        XCTAssertFalse(coordinatorMock.didCallStartUpload)
+    }
+    
+    func testDidTapUploadButton_whenAnAccountsIsAvailable_shouldAskCoordinatorToStartUpload() {
+        /// Given
+        let credentials = OAuth1Credentials(token: "foo", tokenSecret: "bar")
+        keychainHandlerMock.entries = [(username: "", credentials: credentials)]
+        
+        /// When
+        viewModel.didTapUploadButton()
+        
+        /// Then
+        XCTAssertTrue(coordinatorMock.didCallStartUpload)
+        XCTAssertEqual(coordinatorMock.oAuthCredentialsForUpload, credentials)
+    }
+    
     // MARK: Helper methods
     
     private func recreateViewModel(questId: Int = 0) {
