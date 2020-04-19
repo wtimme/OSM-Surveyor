@@ -38,6 +38,10 @@ class UploadViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel,
                                                            target: self,
                                                            action: #selector(didTapCancelButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Upload",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(didTapUploadButton))
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: defaultTableViewCellReuseIdentifier)
     }
@@ -90,6 +94,10 @@ class UploadViewController: UITableViewController {
     
     @objc private func didTapCancelButton() {
         dismiss(animated: true)
+    }
+    
+    @objc private func didTapUploadButton() {
+        viewModel.didTapUploadButton()
     }
 
 }
