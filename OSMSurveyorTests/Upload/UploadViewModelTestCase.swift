@@ -17,6 +17,7 @@ class UploadViewModelTestCase: XCTestCase {
     private var delegateMock: TableViewModelDelegateMock!
     private var keychainHandlerMock: KeychainHandlerMock!
     private var notificationCenter: NotificationCenter!
+    private var userDefaults: UserDefaults!
     private var coordinatorMock: UploadFlowCoordinatorMock!
 
     override func setUpWithError() throws {
@@ -25,6 +26,9 @@ class UploadViewModelTestCase: XCTestCase {
         coordinatorMock = UploadFlowCoordinatorMock()
         delegateMock = TableViewModelDelegateMock()
         
+        /// Create a unique `UserDefaults` instance.
+        userDefaults = UserDefaults(suiteName: UUID().uuidString)
+        
         recreateViewModel()
     }
 
@@ -32,6 +36,7 @@ class UploadViewModelTestCase: XCTestCase {
         viewModel = nil
         keychainHandlerMock = nil
         notificationCenter = nil
+        userDefaults = nil
         coordinatorMock = nil
         delegateMock = nil
     }
@@ -201,6 +206,7 @@ class UploadViewModelTestCase: XCTestCase {
     private func recreateViewModel(questId: Int = 0) {
         viewModel = UploadViewModel(keychainHandler: keychainHandlerMock,
                                     notificationCenter: notificationCenter,
+                                    userDefaults: userDefaults,
                                     questId: questId)
         
         viewModel.coordinator = coordinatorMock

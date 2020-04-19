@@ -26,6 +26,7 @@ final class UploadViewModel {
     
     private let keychainHandler: KeychainHandling
     private let notificationCenter: NotificationCenter
+    private let userDefaults: UserDefaults
     private let questId: Int
     
     private var sections = [Table.Section]()
@@ -34,9 +35,11 @@ final class UploadViewModel {
     
     init(keychainHandler: KeychainHandling = KeychainHandler(),
          notificationCenter: NotificationCenter = .default,
+         userDefaults: UserDefaults = .standard,
          questId: Int) {
         self.keychainHandler = keychainHandler
         self.notificationCenter = notificationCenter
+        self.userDefaults = userDefaults
         self.questId = questId
         
         sections = createSections()
