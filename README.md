@@ -8,6 +8,11 @@ missing information for objects around them.
 Do you want to help testing pre-releases of OSM Surveyor?
 [Become a TestFlight tester][4] today! 🚀
 
+# Screenshots
+
+![Screenshot of the map that displays annotations](screenshot.png?raw=true)
+![Screenshot of the quest UI with Dark Mode](screenshot-dark-mode.png?raw=true)
+
 # Continuous delivery
 
 OSM Surveyor makes use of fastlane.
