@@ -12,6 +12,20 @@ Do you want to help testing pre-releases of OSM Surveyor?
 
 ![Screenshot of the map that displays annotations](screenshot.png?raw=true)
 
+# Getting started with development
+
+This project makes use of [Bundler][5] for managing the Ruby dependencies
+(take a look at the `Gemfile`), and utilizes Cocoapods (see the `Podfile`) for
+managing the iOS-related dependencies.
+
+Getting started is quite easy. Open a terminal, change into your checkout's directory
+and follow these steps.
+
+1. Install [Bundler][5]: `gem install bundler`
+2. Install the Gems (such as Cocoapods and fastlane): `bundle install`
+3. Install the dependencies using Cocoapods: `bundle exec pod install`
+4. Open the workspace (`OMSSurveyor.xcworkspace`)
+
 # Continuous delivery
 
 OSM Surveyor makes use of fastlane.
@@ -36,3 +50,4 @@ Fetch the certificates for development with
 [2]: fastlane/README.md
 [3]: https://docs.fastlane.tools/actions/match/
 [4]: https://testflight.apple.com/join/wXtE44KZ
+[5]: https://bundler.io/
