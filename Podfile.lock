@@ -8,7 +8,7 @@ PODS:
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
-  - SwiftOverpassAPI (0.1.1)
+  - SwiftOverpassAPI (0.1.3)
   - Tangram-es (0.12.0)
 
 DEPENDENCIES:
@@ -17,7 +17,7 @@ DEPENDENCIES:
   - OAuthSwift (~> 2.1.0)
   - OAuthSwiftAlamofire (from `https://github.com/OAuthSwift/OAuthSwiftAlamofire.git`, branch `master`)
   - SQLite.swift
-  - SwiftOverpassAPI (from `https://github.com/wtimme/SwiftOverpassAPI.git`, branch `feature/1-Add-support-for-meta-data`)
+  - SwiftOverpassAPI
   - Tangram-es (~> 0.12.0)
 
 SPEC REPOS:
@@ -26,23 +26,18 @@ SPEC REPOS:
     - KeychainAccess
     - OAuthSwift
     - SQLite.swift
+    - SwiftOverpassAPI
     - Tangram-es
 
 EXTERNAL SOURCES:
   OAuthSwiftAlamofire:
     :branch: master
     :git: https://github.com/OAuthSwift/OAuthSwiftAlamofire.git
-  SwiftOverpassAPI:
-    :branch: feature/1-Add-support-for-meta-data
-    :git: https://github.com/wtimme/SwiftOverpassAPI.git
 
 CHECKOUT OPTIONS:
   OAuthSwiftAlamofire:
     :commit: 765093b8ab4ea32b2d39dd23ff4a047c68fadd21
     :git: https://github.com/OAuthSwift/OAuthSwiftAlamofire.git
-  SwiftOverpassAPI:
-    :commit: 7c72387c6732c7c1d7757639a064b971d3748dc5
-    :git: https://github.com/wtimme/SwiftOverpassAPI.git
 
 SPEC CHECKSUMS:
   Alamofire: 9d5c5f602928e512395b30950c5984eca840093c
@@ -50,9 +45,9 @@ SPEC CHECKSUMS:
   OAuthSwift: ab1675598273e04355e0282459c328e65c9ddacd
   OAuthSwiftAlamofire: 34e6b8f231ea7fad88ea96c0ab876fa12a11180e
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
-  SwiftOverpassAPI: 431ebc770f161cc72f03fccd9c267898e58a2698
+  SwiftOverpassAPI: c6e2f8a8c1caaaabd9f2df97433048ad49264fe5
   Tangram-es: 398024d49425e5eb3d860d33e5a4616753316ddd
 
-PODFILE CHECKSUM: fa6e020aa0f85313c7f7f0204d8b1b3e15c65db8
+PODFILE CHECKSUM: 85ddfa0ce018a4a160e1e5012d61019f23f8d2d5
 
 COCOAPODS: 1.9.1
