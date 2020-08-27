@@ -21,6 +21,12 @@ class LocationSearchViewController: UITableViewController {
 
     private let searchController = UISearchController(searchResultsController: nil)
 
+    private var searchResults = [SearchResult]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+
     // MARK: View Lifecycle
 
     override func viewDidLoad() {
@@ -35,6 +41,16 @@ class LocationSearchViewController: UITableViewController {
         DispatchQueue.main.async { [weak self] in
             self?.searchController.searchBar.becomeFirstResponder()
         }
+    }
+
+    // MARK: UITableView delegate and data source
+
+    override func numberOfSections(in _: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
+        return searchResults.count
     }
 
     // MARK: Private methods
