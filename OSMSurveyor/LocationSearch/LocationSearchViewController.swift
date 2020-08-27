@@ -69,7 +69,7 @@ class LocationSearchViewController: UITableViewController {
         cell.textLabel?.numberOfLines = 0
 
         let result = searchResults[indexPath.row]
-        cell.textLabel?.text = result.display_name
+        cell.textLabel?.text = result.displayName
 
         return cell
     }

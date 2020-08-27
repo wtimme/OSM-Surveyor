@@ -10,12 +10,12 @@ import Foundation
 
 /// Result from the Nominatim location search.
 public struct NominatimResult: Decodable {
-    public let display_name: String
+    public let displayName: String
     public let latitude: Double
     public let longitude: Double
 
     enum CodingKeys: String, CodingKey {
-        case display_name
+        case displayName = "display_name"
         case latitude = "lat"
         case longitude = "lon"
     }
@@ -25,7 +25,7 @@ extension NominatimResult {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        display_name = try container.decode(String.self, forKey: .display_name)
+        displayName = try container.decode(String.self, forKey: .displayName)
 
         let latitudeAsString = try container.decode(String.self, forKey: .latitude)
         latitude = (latitudeAsString as NSString).doubleValue
