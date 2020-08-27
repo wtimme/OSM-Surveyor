@@ -80,14 +80,14 @@ class LocationSearchViewController: UITableViewController {
         delegate?.didSelectLocation(coordinate: coordinate,
                                     boundingBox: selectedResult.boundingBox)
 
-        dismiss(animated: true, completion: nil)
+        presentingViewController?.dismiss(animated: true, completion: nil)
     }
 
     // MARK: Private methods
 
     private func setupSearchBar() {
         searchController.searchBar.delegate = self
-        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Name or address of a place"
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar

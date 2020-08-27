@@ -1,5 +1,5 @@
 //
-//  MapViewQuestDownloader.swift
+//  MapDataDownloader.swift
 //  OSMSurveyorFramework
 //
 //  Created by Wolfgang Timme on 01.04.20.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-public enum MapViewQuestDownloadError: Error {
+public enum MapDataDownloadError: Error {
     case screenAreaTooLarge
 }
 
-public protocol MapViewQuestDownloading {
+public protocol MapDataDownloading {
     /// Downloads the quests in the given `BoundingBox`.
     /// - Parameters:
     ///   - boundingBox: The bounding box in which to download the quests.
@@ -23,8 +23,8 @@ public protocol MapViewQuestDownloading {
                         ignoreDownloaded: Bool) throws
 }
 
-public final class MapViewQuestDownloader {
-    public static let shared: MapViewQuestDownloader = {
+public final class MapDataDownloader {
+    public static let shared: MapDataDownloader = {
         let downloadedQuestTypesManager = DownloadedTileDataHelper()
         let overpassQuestProvider = StaticOverpassQuestProvider()
         let overpassQueryExecutor = OverpassDownloader()
@@ -41,7 +41,7 @@ public final class MapViewQuestDownloader {
                                                 downloadedQuestTypesManager: downloadedQuestTypesManager,
                                                 questElementProcessor: questElementProcessor)
 
-        return MapViewQuestDownloader(questManager: questManager)
+        return MapDataDownloader(questManager: questManager)
     }()
 
     // MARK: Private properties
@@ -66,7 +66,7 @@ public final class MapViewQuestDownloader {
     }
 }
 
-extension MapViewQuestDownloader: MapViewQuestDownloading {
+extension MapDataDownloader: MapDataDownloading {
     public func downloadQuests(in boundingBox: BoundingBox,
                                cameraPosition: CameraPosition,
                                ignoreDownloaded: Bool) throws
@@ -75,7 +75,7 @@ extension MapViewQuestDownloader: MapViewQuestDownloading {
         let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedAreaInSquareKilometers()
 
         guard areaInSquareKilometers <= maximumDownloadableAreaInSquareKilometers else {
-            throw MapViewQuestDownloadError.screenAreaTooLarge
+            throw MapDataDownloadError.screenAreaTooLarge
         }
 
         let boundingBoxToDownload: BoundingBox

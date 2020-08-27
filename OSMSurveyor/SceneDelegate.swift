@@ -12,11 +12,12 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
-    func scene(_ scene: UIScene, willConnectTo _: UISceneSession, options _: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        // Determine the user activity from a new connection or from a session's state restoration.
+        guard let userActivity = connectionOptions.userActivities.first ?? session.stateRestorationActivity else { return }
+
+        // Remember this activity for later when this app quits or suspends.
+        scene.userActivity = userActivity
     }
 
     func sceneDidDisconnect(_: UIScene) {
@@ -53,5 +54,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if url.host == "oauth-callback" {
             OAuthHandler.shared?.handle(url: url)
         }
+    }
+
+    // MARK: State Restoration
+
+    func stateRestorationActivity(for scene: UIScene) -> NSUserActivity? {
+        return scene.userActivity
     }
 }

@@ -1,5 +1,5 @@
 //
-//  QuestAnnotationManager.swift
+//  AnnotationManager.swift
 //  OSMSurveyorFramework
 //
 //  Created by Wolfgang Timme on 06.04.20.
@@ -8,22 +8,22 @@
 
 import Foundation
 
-public protocol QuestAnnotationManaging {
-    var delegate: QuestAnnotationManagerDelegate? { get set }
+public protocol AnnotationManaging {
+    var delegate: AnnotationManagerDelegate? { get set }
 
     func mapDidUpdatePosition(to boundingBox: BoundingBox)
 }
 
-public final class QuestAnnotationManager {
+public final class AnnotationManager {
     // MARK: Public properties
 
-    public static let shared: QuestAnnotationManaging = {
+    public static let shared: AnnotationManaging = {
         let fullQuestsDataProvider = FullQuestsViewHelper()
 
-        return QuestAnnotationManager(fullQuestsDataProvider: fullQuestsDataProvider)
+        return AnnotationManager(fullQuestsDataProvider: fullQuestsDataProvider)
     }()
 
-    public weak var delegate: QuestAnnotationManagerDelegate?
+    public weak var delegate: AnnotationManagerDelegate?
 
     // MARK: Private properties
 
@@ -53,7 +53,7 @@ public final class QuestAnnotationManager {
     }
 }
 
-extension QuestAnnotationManager: QuestAnnotationManaging {
+extension AnnotationManager: AnnotationManaging {
     public func mapDidUpdatePosition(to boundingBox: BoundingBox) {
         guard let delegate = delegate else { return }
 

@@ -14,12 +14,19 @@ import UIKit
 class MapViewController: UIViewController {
     @IBOutlet private var mapView: TGMapView!
     @IBOutlet private var errorLabel: UILabel!
-    private let questDownloader: MapViewQuestDownloading = MapViewQuestDownloader.shared
-    private var annotationManager = QuestAnnotationManager.shared
+    private let mapDataDownloader: MapDataDownloading = MapDataDownloader.shared
+    private var annotationManager = AnnotationManager.shared
     private var annotationLayer: AnnotationLayerProtocol?
 
     private var questInteractionCoordinator: QuestInteractionCoordinatorProtocol?
     private var settingsCoordinator: SettingsCoordinatorProtocol?
+
+    // MARK: Keys of `NSUserActivity` for state restoration
+
+    private let latitudeUserActivityKey = "latitude"
+    private let longitudeUserActivityKey = "longitude"
+    private let zoomUserActivityKey = "zoom"
+    private let bearingUserActivityKey = "bearing"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +39,12 @@ class MapViewController: UIViewController {
 
         /// Make sure that the status bar has a white color.
         navigationController?.navigationBar.barStyle = .black
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        setMapToInitialPosition()
     }
 
     private func configureMap() {
@@ -58,6 +71,37 @@ class MapViewController: UIViewController {
         }
 
         mapView.loadScene(from: sceneURL, with: [])
+    }
+
+    private func setMapToInitialPosition() {
+        let latitude: Double
+        let longitude: Double
+        let zoom: CGFloat
+        let bearing: Double
+        if let activityUserInfo = view.window?.windowScene?.userActivity?.userInfo,
+            let latitudeFromActivity = activityUserInfo[latitudeUserActivityKey] as? Double,
+            let longitudeFromActivity = activityUserInfo[longitudeUserActivityKey] as? Double,
+            let zoomFromActivity = activityUserInfo[zoomUserActivityKey] as? CGFloat,
+            let bearingFromActivity = activityUserInfo[bearingUserActivityKey] as? Double
+        {
+            latitude = latitudeFromActivity
+            longitude = longitudeFromActivity
+            zoom = zoomFromActivity
+            bearing = bearingFromActivity
+        } else {
+            /// By default, use a coordinate from Hamburg, Germany.
+            latitude = 53.55439
+            longitude = 9.99413
+            zoom = 16
+            bearing = 0
+        }
+
+        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        let cameraPosition = TGCameraPosition(center: coordinate,
+                                              zoom: zoom,
+                                              bearing: bearing,
+                                              pitch: TGRadiansFromDegrees(-15))!
+        mapView.fly(to: cameraPosition, withDuration: 1, callback: nil)
     }
 
     private func setupAnnotationLayer() {
@@ -105,13 +149,13 @@ class MapViewController: UIViewController {
         }
 
         do {
-            try questDownloader.downloadQuests(in: boundingBox,
-                                               cameraPosition: cameraPosition,
-                                               ignoreDownloaded: ignoreDownloaded)
+            try mapDataDownloader.downloadQuests(in: boundingBox,
+                                                 cameraPosition: cameraPosition,
+                                                 ignoreDownloaded: ignoreDownloaded)
 
             print("All good. Would've downloaded now.")
             updateErrorLabel(nil)
-        } catch MapViewQuestDownloadError.screenAreaTooLarge {
+        } catch MapDataDownloadError.screenAreaTooLarge {
             updateErrorLabel("Please zoom in further")
         } catch {
             assertionFailure("Unexpected error: \(error.localizedDescription)")
@@ -119,22 +163,32 @@ class MapViewController: UIViewController {
             updateErrorLabel("Unexpected error")
         }
     }
+
+    /// Saves the map's current state into a `NSUserActivity` object so that it can be restored when the app is restarted.
+    private func updateUserActivity() {
+        var currentUserActivity = view.window?.windowScene?.userActivity
+        if currentUserActivity == nil {
+            currentUserActivity = NSUserActivity(activityType: "de.wtimme.OSMSurveyor.map")
+        }
+
+        currentUserActivity?.addUserInfoEntries(from: [
+            latitudeUserActivityKey: mapView.cameraPosition.center.latitude,
+            longitudeUserActivityKey: mapView.cameraPosition.center.longitude,
+            zoomUserActivityKey: mapView.cameraPosition.zoom,
+            bearingUserActivityKey: mapView.cameraPosition.bearing,
+        ])
+
+        view.window?.windowScene?.userActivity = currentUserActivity
+    }
 }
 
 extension MapViewController: TGMapViewDelegate {
-    func mapView(_ mapView: TGMapView, didLoadScene _: Int32, withError _: Error?) {
-        let coordinate = CLLocationCoordinate2D(latitude: 53.55439, longitude: 9.99413)
-        let cameraPosition = TGCameraPosition(center: coordinate,
-                                              zoom: 16,
-                                              bearing: 0,
-                                              pitch: TGRadiansFromDegrees(-15))!
-        mapView.fly(to: cameraPosition, withDuration: 1, callback: nil)
-    }
-
     func mapView(_: TGMapView, regionDidChangeAnimated _: Bool) {
         guard let boundingBox = screenAreaToBoundingBox() else { return }
 
         annotationManager.mapDidUpdatePosition(to: boundingBox)
+
+        updateUserActivity()
     }
 
     func mapView(_: TGMapView, didSelectLabel labelPickResult: TGLabelPickResult?, atScreenPosition _: CGPoint) {
@@ -247,7 +301,7 @@ extension MapViewController: MapViewControllerProtocol {
     }
 }
 
-extension MapViewController: QuestAnnotationManagerDelegate {
+extension MapViewController: AnnotationManagerDelegate {
     func setAnnotations(_ annotations: [Annotation]) {
         annotationLayer?.setAnnotations(annotations)
     }

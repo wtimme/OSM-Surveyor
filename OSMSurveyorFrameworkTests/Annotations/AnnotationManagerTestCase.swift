@@ -1,5 +1,5 @@
 //
-//  QuestAnnotationManagerTestCase.swift
+//  AnnotationManagerTestCase.swift
 //  OSMSurveyorFrameworkTests
 //
 //  Created by Wolfgang Timme on 07.04.20.
@@ -9,21 +9,21 @@
 @testable import OSMSurveyorFramework
 import XCTest
 
-class QuestAnnotationManagerTestCase: XCTestCase {
+class AnnotationManagerTestCase: XCTestCase {
     private let zoomForTiles = 10
 
-    private var manager: QuestAnnotationManaging!
+    private var manager: AnnotationManaging!
     private var fullQuestsDataProviderMock: FullQuestsDataProviderMock!
 
-    private var delegateMock: QuestAnnotationManagerDelegateMock!
+    private var delegateMock: AnnotationManagerDelegateMock!
 
     override func setUpWithError() throws {
         fullQuestsDataProviderMock = FullQuestsDataProviderMock()
 
-        manager = QuestAnnotationManager(zoomForDownloadedTiles: zoomForTiles,
-                                         fullQuestsDataProvider: fullQuestsDataProviderMock)
+        manager = AnnotationManager(zoomForDownloadedTiles: zoomForTiles,
+                                    fullQuestsDataProvider: fullQuestsDataProviderMock)
 
-        delegateMock = QuestAnnotationManagerDelegateMock()
+        delegateMock = AnnotationManagerDelegateMock()
         manager.delegate = delegateMock
     }
 
