@@ -26,6 +26,11 @@ and follow these steps.
 3. Install the dependencies using Cocoapods: `bundle exec pod install`
 4. Open the workspace (`OMSSurveyor.xcworkspace`)
 
+## Formatting
+
+In order to have a consistent code style, please make sure to install
+[SwiftFormat][6] and run it on a regular basis.
+
 # Continuous delivery
 
 OSM Surveyor makes use of fastlane.
@@ -51,3 +56,4 @@ Fetch the certificates for development with
 [3]: https://docs.fastlane.tools/actions/match/
 [4]: https://testflight.apple.com/join/wXtE44KZ
 [5]: https://bundler.io/
+[6]: https://github.com/nicklockwood/SwiftFormat
