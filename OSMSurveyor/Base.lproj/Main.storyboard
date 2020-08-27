@@ -60,7 +60,7 @@
                             </barButtonItem>
                             <barButtonItem style="plain" systemItem="search" id="LuF-Qx-TgA">
                                 <connections>
-                                    <segue destination="cxh-xi-hvw" kind="presentation" id="GV9-Qi-PIe"/>
+                                    <segue destination="Ake-ER-fhs" kind="presentation" id="zkM-Yp-8YX"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
@@ -101,23 +101,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqV-2E-Ui9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2290" y="127"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Iae-sh-yeI">
-            <objects>
-                <navigationController id="cxh-xi-hvw" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="499-GM-w5D">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="Ake-ER-fhs" kind="relationship" relationship="rootViewController" id="uAi-a6-p20"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PeH-pt-SZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1371" y="127"/>
+            <point key="canvasLocation" x="1193" y="127"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="mXb-V3-oV3">

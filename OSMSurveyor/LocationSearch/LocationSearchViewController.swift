@@ -21,12 +21,6 @@ class LocationSearchViewController: UITableViewController {
         setupSearchBar()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
