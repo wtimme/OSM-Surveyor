@@ -13,7 +13,7 @@ final class OAuthHandlerMock {
     private(set) var didCallAuthorize = false
     private(set) var authorizeFromViewController: Any?
     private(set) var authorizeCompletion: ((OAuthAuthorizationResult) -> Void)?
-    
+
     private(set) var didCallHandleURL = false
     private(set) var urlToHandle: URL?
 }
@@ -21,15 +21,14 @@ final class OAuthHandlerMock {
 extension OAuthHandlerMock: OAuthHandling {
     func authorize(from viewController: Any, completion: @escaping (OAuthAuthorizationResult) -> Void) {
         didCallAuthorize = true
-        
+
         authorizeFromViewController = viewController
         authorizeCompletion = completion
     }
-    
+
     func handle(url: URL) {
         didCallHandleURL = true
-        
+
         urlToHandle = url
     }
-    
 }

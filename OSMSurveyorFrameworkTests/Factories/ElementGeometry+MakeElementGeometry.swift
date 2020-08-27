@@ -14,7 +14,8 @@ extension ElementGeometry {
                              elementId: Int = 4,
                              polylines: [Polyline]? = nil,
                              polygons: [Polygon]? = nil,
-                             center: Coordinate = Coordinate(latitude: 49.1, longitude: 8.1)) -> ElementGeometry {
+                             center: Coordinate = Coordinate(latitude: 49.1, longitude: 8.1)) -> ElementGeometry
+    {
         return ElementGeometry(type: type,
                                elementId: elementId,
                                polylines: polylines,

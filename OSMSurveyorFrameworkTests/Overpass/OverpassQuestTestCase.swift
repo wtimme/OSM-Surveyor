@@ -6,19 +6,17 @@
 //  Copyright © 2020 Wolfgang Timme. All rights reserved.
 //
 
-import XCTest
 @testable import OSMSurveyorFramework
+import XCTest
 
 class OverpassQuestTestCase: XCTestCase {
-
     private class MyExampleQuest: OverpassQuest {
-        func query(boundingBox: BoundingBox) -> String { return "" }
+        func query(boundingBox _: BoundingBox) -> String { return "" }
     }
-    
+
     func testType_whenUsingDefaultImplementation_shouldReturnClassNameWithoutQuestSuffix() {
         let quest = MyExampleQuest()
-        
+
         XCTAssertEqual(quest.type, "MyExample")
     }
-
 }

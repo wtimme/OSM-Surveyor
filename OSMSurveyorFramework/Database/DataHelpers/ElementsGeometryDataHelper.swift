@@ -17,11 +17,11 @@ protocol ElementGeometryDataManaging {
 
 class ElementsGeometryDataHelper: DataHelperProtocol {
     static let TABLE_NAME = "elements_geometry"
-   
+
     static let table = Table(TABLE_NAME)
-    
+
     static var db: Connection?
-    
+
     /// Columns
     static let element_type = Expression<String>("element_type")
     static let element_id = Expression<Int>("element_id")
@@ -29,41 +29,40 @@ class ElementsGeometryDataHelper: DataHelperProtocol {
     static let geometry_polygons = Expression<SQLite.Blob?>("geometry_polygons")
     static let latitude = Expression<Double>("latitude")
     static let longitude = Expression<Double>("longitude")
-   
+
     typealias T = ElementGeometry
-   
+
     static func createTable() throws {
         guard let db = db else { return }
-        
+
         do {
-            let _ = try db.run(table.create(ifNotExists: true) { t in
+            _ = try db.run(table.create(ifNotExists: true) { t in
                 t.column(element_type)
                 t.column(element_id)
                 t.column(geometry_polylines)
                 t.column(geometry_polygons)
                 t.column(latitude)
                 t.column(longitude)
-                
+
                 t.primaryKey(element_type, element_id)
             })
         } catch {
             assertionFailure("Failed to create table: \(error.localizedDescription)")
         }
-       
     }
-   
+
     static func insert(item: T) throws -> Int64 {
         guard let db = db else { return 0 }
-        
+
         let encoder = JSONEncoder()
-        
+
         let polylinesAsData: Data?
         if let polylines = item.polylines {
             polylinesAsData = try encoder.encode(polylines)
         } else {
             polylinesAsData = nil
         }
-        
+
         let polygonsAsData: Data?
         if let polygons = item.polygons {
             polygonsAsData = try encoder.encode(polygons)
@@ -78,7 +77,8 @@ class ElementsGeometryDataHelper: DataHelperProtocol {
             geometry_polylines <- polylinesAsData?.datatypeValue,
             geometry_polygons <- polygonsAsData?.datatypeValue,
             latitude <- item.center.latitude,
-            longitude <- item.center.longitude)
+            longitude <- item.center.longitude
+        )
         do {
             return try db.run(insert)
         } catch {
@@ -86,10 +86,10 @@ class ElementsGeometryDataHelper: DataHelperProtocol {
             return -1
         }
     }
-   
-    static func delete (item: T) throws -> Void {
+
+    static func delete(item: T) throws {
         guard let db = db else { return }
-        
+
         let query = table
             .filter(element_type == item.type.rawValue)
             .filter(element_id == item.elementId)
@@ -103,10 +103,10 @@ class ElementsGeometryDataHelper: DataHelperProtocol {
             assertionFailure("Failed to delete")
         }
     }
-   
+
     static func find(elementType: ElementGeometry.ElementType, elementId: Int) throws -> T? {
         guard let db = db else { return nil }
-        
+
         let query = table
             .filter(element_type == elementType.rawValue)
             .filter(element_id == elementId)
@@ -117,15 +117,15 @@ class ElementsGeometryDataHelper: DataHelperProtocol {
                 return item(from: row)
             }
         }
-       
+
         return nil
     }
-    
+
     static func item(from row: Row) -> T? {
         guard let elementType = ElementGeometry.ElementType(rawValue: row[element_type]) else { return nil }
-        
+
         let jsonDecoder = JSONDecoder()
-        
+
         let polylines: [T.Polyline]?
         if let blob = row[geometry_polylines] {
             let data = Data.fromDatatypeValue(blob)
@@ -133,7 +133,7 @@ class ElementsGeometryDataHelper: DataHelperProtocol {
         } else {
             polylines = nil
         }
-        
+
         let polygons: [T.Polygon]?
         if let blob = row[geometry_polygons] {
             let data = Data.fromDatatypeValue(blob)
@@ -141,7 +141,7 @@ class ElementsGeometryDataHelper: DataHelperProtocol {
         } else {
             polygons = nil
         }
-        
+
         let center = Coordinate(latitude: row[latitude], longitude: row[longitude])
 
         return ElementGeometry(type: elementType,

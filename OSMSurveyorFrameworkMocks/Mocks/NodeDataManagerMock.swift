@@ -17,7 +17,7 @@ final class NodeDataManagerMock {
 extension NodeDataManagerMock: NodeDataManaging {
     func insert(_ node: Node) {
         didCallInsert = true
-        
+
         insertElement = node
     }
 }

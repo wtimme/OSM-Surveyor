@@ -13,7 +13,7 @@ public struct CameraPosition {
     public let zoom: Double
     public let bearing: Double
     public let pitch: Double
-    
+
     public init(center: Coordinate, zoom: Double, bearing: Double, pitch: Double) {
         self.center = center
         self.zoom = zoom

@@ -11,11 +11,11 @@ import Foundation
 
 final class OverpassQuestMock {
     let type: String
-    
+
     init(type: String) {
         self.type = type
     }
-    
+
     private(set) var didCallQuery = false
     private(set) var queryBoundingBox: BoundingBox?
     var queryToReturn: OverpassQuery = ""
@@ -24,11 +24,9 @@ final class OverpassQuestMock {
 extension OverpassQuestMock: OverpassQuest {
     func query(boundingBox: BoundingBox) -> OverpassQuery {
         didCallQuery = true
-        
+
         queryBoundingBox = boundingBox
-        
+
         return queryToReturn
     }
-    
-    
 }

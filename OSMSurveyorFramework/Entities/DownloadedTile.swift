@@ -13,10 +13,10 @@ import Foundation
 struct DownloadedTile {
     /// The `Tile` that was downloaded.
     let tile: Tile
-    
+
     /// The type of `Quest` that was downloaded.
     let questType: String
-    
+
     /// The `Date` at which the tile was last updated.
     let date: Date
 }

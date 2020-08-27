@@ -13,5 +13,4 @@ final class AccountHandlerMock {
     var accounts = [Account]()
 }
 
-extension AccountHandlerMock: AccountHandling {
-}
+extension AccountHandlerMock: AccountHandling {}

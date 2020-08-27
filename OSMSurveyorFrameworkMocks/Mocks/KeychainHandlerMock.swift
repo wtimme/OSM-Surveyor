@@ -11,11 +11,11 @@ import Foundation
 
 final class KeychainHandlerMock {
     var entries = [(username: String, credentials: OAuth1Credentials)]()
-    
+
     private(set) var didCallAdd = false
     private(set) var addArguments: (username: String, credentials: OAuth1Credentials)?
     var addError: Error?
-    
+
     private(set) var didCallRemove = false
     private(set) var usernameToRemove: String?
 }
@@ -23,17 +23,17 @@ final class KeychainHandlerMock {
 extension KeychainHandlerMock: KeychainHandling {
     func add(username: String, credentials: OAuth1Credentials) throws {
         didCallAdd = true
-        
+
         addArguments = (username, credentials)
-        
+
         if let error = addError {
             throw error
         }
     }
-    
+
     func remove(username: String) {
         didCallRemove = true
-        
+
         usernameToRemove = username
     }
 }

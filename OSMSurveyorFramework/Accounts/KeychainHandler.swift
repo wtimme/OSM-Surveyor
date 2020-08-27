@@ -13,7 +13,7 @@ import KeychainAccess
 public struct OAuth1Credentials: Codable, Equatable {
     public let token: String
     public let tokenSecret: String
-    
+
     public init(token: String, tokenSecret: String) {
         self.token = token
         self.tokenSecret = tokenSecret
@@ -32,20 +32,20 @@ public enum KeychainError: Error {
 
 public protocol KeychainHandling {
     var entries: [(username: String, credentials: OAuth1Credentials)] { get }
-    
+
     /// Adds a new account to the keychain.
     /// - Parameters:
     ///   - username: The username of the account.
     ///   - credentials: The OAuth1 credentials.
     func add(username: String, credentials: OAuth1Credentials) throws
-    
+
     func remove(username: String)
 }
 
 public class KeychainHandler {
     private let keychain: Keychain
     private let notificationCenter: NotificationCenter
-    
+
     public init(service: String, notificationCenter: NotificationCenter = .default) {
         keychain = Keychain(service: service)
         self.notificationCenter = notificationCenter
@@ -55,7 +55,7 @@ public class KeychainHandler {
 extension KeychainHandler: KeychainHandling {
     public var entries: [(username: String, credentials: OAuth1Credentials)] {
         let decoder = JSONDecoder()
-        
+
         return keychain.allKeys().compactMap { username in
             guard
                 let credentialsAsData = keychain[data: username],
@@ -63,32 +63,32 @@ extension KeychainHandler: KeychainHandling {
             else {
                 return nil
             }
-            
+
             return (username, credentials)
         }
     }
-    
+
     public func add(username: String, credentials: OAuth1Credentials) throws {
         guard !keychain.allKeys().contains(username) else {
             throw KeychainError.usernameAlreadyExists
         }
-        
+
         let encoder = JSONEncoder()
         guard let credentialsAsData = try? encoder.encode(credentials) else { return }
-        
+
         keychain[data: username] = credentialsAsData
-        
+
         notificationCenter.post(name: .keychainHandlerDidChangeNumberOfEntries, object: nil)
     }
-    
+
     public func remove(username: String) {
         guard keychain.allKeys().contains(username) else {
             /// The Keychain does not have an account with the given `username`.
             return
         }
-        
+
         keychain[username] = nil
-        
+
         notificationCenter.post(name: .keychainHandlerDidChangeNumberOfEntries, object: nil)
     }
 }

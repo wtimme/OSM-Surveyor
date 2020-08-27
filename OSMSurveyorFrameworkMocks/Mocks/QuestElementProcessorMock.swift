@@ -17,7 +17,7 @@ final class QuestElementProcessorMock {
 extension QuestElementProcessorMock: QuestElementProcessing {
     func processElements(_ elements: [(Element, ElementGeometry?)], in boundingBox: BoundingBox, forQuestOfType questType: String) {
         didCallProcessElements = true
-        
+
         processElementsArguments = (elements, boundingBox, questType)
     }
 }

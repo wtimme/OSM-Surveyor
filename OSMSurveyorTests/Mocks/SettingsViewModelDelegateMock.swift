@@ -17,7 +17,7 @@ final class SettingsViewModelDelegateMock {
 extension SettingsViewModelDelegateMock: SettingsViewModelDelegate {
     func reloadAccountSection(section: Int) {
         didCallReloadReloadSection = true
-        
+
         sectionToReload = section
     }
 }

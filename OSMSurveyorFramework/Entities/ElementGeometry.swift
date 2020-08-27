@@ -12,7 +12,7 @@ import Foundation
 struct ElementGeometry {
     typealias Polyline = [Coordinate]
     typealias Polygon = [Coordinate]
-    
+
     enum ElementType: String {
         case node = "NODE"
         case way = "WAY"

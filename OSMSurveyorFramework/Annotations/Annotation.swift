@@ -10,7 +10,7 @@ import Foundation
 
 public struct Annotation {
     public let coordinate: Coordinate
-    
+
     public init(coordinate: Coordinate) {
         self.coordinate = coordinate
     }

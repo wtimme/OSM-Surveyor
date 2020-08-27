@@ -16,9 +16,9 @@ final class AddBusStopShelterQuest: OverpassQuest {
           node["highway"="bus_stop"]["public_transport"!="stop_position"]["shelter"!~".*"]({{bbox}});
         );
         """
-        
+
         let queryWithBoundingBox = queryWithPlaceholder.replacingOccurrences(of: "{{bbox}}", with: boundingBox.toOverpassBoundingBox())
-        
+
         return """
         [out:json];
         \(queryWithBoundingBox)

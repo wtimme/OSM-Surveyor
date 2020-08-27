@@ -13,9 +13,9 @@ final class AddBenchBackrestQuest: OverpassQuest {
         let queryWithPlaceholder = """
         node["amenity"="bench"]["backrest"!~".*"]{{bbox}};
         """
-        
+
         let queryWithBoundingBox = queryWithPlaceholder.replacingOccurrences(of: "{{bbox}}", with: boundingBox.toOverpassBoundingBoxFilter())
-        
+
         return """
         [out:json];
         \(queryWithBoundingBox)

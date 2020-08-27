@@ -9,7 +9,7 @@
 import Foundation
 
 protocol Element {
-    var type: ElementGeometry.ElementType { get }    
+    var type: ElementGeometry.ElementType { get }
     var id: Int { get }
     var version: Int { get }
     var tags: [String: String] { get }
