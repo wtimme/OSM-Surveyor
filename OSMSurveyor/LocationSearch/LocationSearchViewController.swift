@@ -9,6 +9,10 @@
 import OSMSurveyorFramework
 import UIKit
 
+protocol LocationSearchDelegate: AnyObject {
+    func didSelectLocation(coordinate: Coordinate)
+}
+
 class LocationSearchViewController: UITableViewController {
     // MARK: Private properties
 
@@ -25,6 +29,10 @@ class LocationSearchViewController: UITableViewController {
 
     /// The work item for performing the search' URL request.
     private var searchWorkItem: DispatchWorkItem?
+
+    // MARK: Public properties
+
+    weak var delegate: LocationSearchDelegate?
 
     // MARK: View Lifecycle
 
@@ -64,6 +72,14 @@ class LocationSearchViewController: UITableViewController {
         cell.textLabel?.text = result.display_name
 
         return cell
+    }
+
+    override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedResult = searchResults[indexPath.row]
+        let coordinate = Coordinate(latitude: selectedResult.latitude, longitude: selectedResult.longitude)
+        delegate?.didSelectLocation(coordinate: coordinate)
+
+        dismiss(animated: true, completion: nil)
     }
 
     // MARK: Private methods
