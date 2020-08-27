@@ -9,13 +9,13 @@
 import Foundation
 
 public protocol NominatimResultProviding {
-    func performSearch(_ term: String, completion: (Result<[NominatimResult], Error>) -> Void)
+    func performSearch(_ term: String, completion: @escaping (Result<[NominatimResult], Error>) -> Void)
 }
 
 public class NominatimResultProvider: NominatimResultProviding {
     public init() {}
 
-    public func performSearch(_ term: String, completion: (Result<[NominatimResult], Error>) -> Void) {
+    public func performSearch(_ term: String, completion: @escaping (Result<[NominatimResult], Error>) -> Void) {
         let trimmedTerm = term.trimmingCharacters(in: .whitespaces)
 
         /// Make sure the term is not empty.
