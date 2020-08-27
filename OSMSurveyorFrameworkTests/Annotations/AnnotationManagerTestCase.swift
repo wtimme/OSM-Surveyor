@@ -1,5 +1,5 @@
 //
-//  QuestAnnotationManagerTestCase.swift
+//  AnnotationManagerTestCase.swift
 //  OSMSurveyorFrameworkTests
 //
 //  Created by Wolfgang Timme on 07.04.20.
@@ -9,7 +9,7 @@
 @testable import OSMSurveyorFramework
 import XCTest
 
-class QuestAnnotationManagerTestCase: XCTestCase {
+class AnnotationManagerTestCase: XCTestCase {
     private let zoomForTiles = 10
 
     private var manager: AnnotationManaging!
