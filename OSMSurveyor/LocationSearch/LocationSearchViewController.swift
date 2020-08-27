@@ -6,17 +6,10 @@
 //  Copyright © 2020 Wolfgang Timme. All rights reserved.
 //
 
+import OSMSurveyorFramework
 import UIKit
 
 class LocationSearchViewController: UITableViewController {
-    // MARK: Private types
-
-    private struct NominatimResult {
-        let display_name: String
-        let latitude: Double
-        let longitude: Double
-    }
-
     // MARK: Private properties
 
     private let searchController = UISearchController(searchResultsController: nil)
