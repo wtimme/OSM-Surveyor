@@ -73,6 +73,7 @@
 		64BDCB54242A9C710098536A /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 64BDCB53242A9C710098536A /* Secrets.plist */; };
 		64C6A1F424F7958600B326D6 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1F324F7958600B326D6 /* LocationSearchViewController.swift */; };
 		64C6A1F724F7AA0600B326D6 /* NominatimResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1F624F7AA0600B326D6 /* NominatimResult.swift */; };
+		64C6A1F924F7AB0A00B326D6 /* NominatimResultProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1F824F7AB0A00B326D6 /* NominatimResultProvider.swift */; };
 		64D4D8D22427F7F900FB900A /* OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */; };
 		64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D8D82427F7F900FB900A /* OSMSurveyorFrameworkTests.swift */; };
 		64D4D8DB2427F7F900FB900A /* OSMSurveyorFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -227,6 +228,7 @@
 		64BDCB53242A9C710098536A /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		64C6A1F324F7958600B326D6 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		64C6A1F624F7AA0600B326D6 /* NominatimResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominatimResult.swift; sourceTree = "<group>"; };
+		64C6A1F824F7AB0A00B326D6 /* NominatimResultProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominatimResultProvider.swift; sourceTree = "<group>"; };
 		64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSMSurveyorFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSMSurveyorFramework.h; sourceTree = "<group>"; };
 		64D4D8CC2427F7F900FB900A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -551,6 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				64C6A1F624F7AA0600B326D6 /* NominatimResult.swift */,
+				64C6A1F824F7AB0A00B326D6 /* NominatimResultProvider.swift */,
 			);
 			path = Nominatim;
 			sourceTree = "<group>";
@@ -1083,6 +1086,7 @@
 				64D5D9582442121100AB0EC2 /* KeychainHandler.swift in Sources */,
 				64A77B452439B840000A9822 /* Element.swift in Sources */,
 				64A77B65243A4495000A9822 /* QuestElementsProcessing.swift in Sources */,
+				64C6A1F924F7AB0A00B326D6 /* NominatimResultProvider.swift in Sources */,
 				64554149243BC06D0049AD07 /* QuestAnnotationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

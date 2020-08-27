@@ -12,6 +12,7 @@ import UIKit
 class LocationSearchViewController: UITableViewController {
     // MARK: Private properties
 
+    private let resultProvider: NominatimResultProviding = NominatimResultProvider()
     private let searchController = UISearchController(searchResultsController: nil)
 
     private var searchResults = [NominatimResult]() {
@@ -76,20 +77,16 @@ class LocationSearchViewController: UITableViewController {
     }
 
     private func performSearchRequest(for term: String) {
-        let trimmedTerm = term.trimmingCharacters(in: .whitespaces)
+        resultProvider.performSearch(term) { [weak self] result in
+            guard let self = self else { return }
 
-        /// Make sure the term is not empty.
-        guard trimmedTerm.count > 0 else { return }
-
-        guard
-            let escapedTerm = trimmedTerm.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
-            let url = URL(string: "https://nominatim.openstreetmap.org/?addressdetails=0&q=\(escapedTerm)&format=json")
-        else {
-            return
+            switch result {
+            case let .success(nominatimResults):
+                self.searchResults = nominatimResults
+            case let .failure(error):
+                print("Failed to search for locations: \(error.localizedDescription)")
+            }
         }
-
-        // TODO: Actually perform the request.
-        print(url.absoluteString)
     }
 }
 
