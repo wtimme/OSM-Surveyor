@@ -1,5 +1,5 @@
 //
-//  QuestAnnotationManagerDelegateMock.swift
+//  AnnotationManagerDelegateMock.swift
 //  OSMSurveyorFrameworkTests
 //
 //  Created by Wolfgang Timme on 07.04.20.
@@ -9,12 +9,12 @@
 import Foundation
 @testable import OSMSurveyorFramework
 
-final class QuestAnnotationManagerDelegateMock {
+final class AnnotationManagerDelegateMock {
     private(set) var didCallSetAnnotations = false
     private(set) var annotations = [Annotation]()
 }
 
-extension QuestAnnotationManagerDelegateMock: AnnotationManagerDelegate {
+extension AnnotationManagerDelegateMock: AnnotationManagerDelegate {
     func setAnnotations(_ annotations: [Annotation]) {
         didCallSetAnnotations = true
 

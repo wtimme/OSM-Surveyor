@@ -15,7 +15,7 @@ class QuestAnnotationManagerTestCase: XCTestCase {
     private var manager: AnnotationManaging!
     private var fullQuestsDataProviderMock: FullQuestsDataProviderMock!
 
-    private var delegateMock: QuestAnnotationManagerDelegateMock!
+    private var delegateMock: AnnotationManagerDelegateMock!
 
     override func setUpWithError() throws {
         fullQuestsDataProviderMock = FullQuestsDataProviderMock()
@@ -23,7 +23,7 @@ class QuestAnnotationManagerTestCase: XCTestCase {
         manager = AnnotationManager(zoomForDownloadedTiles: zoomForTiles,
                                     fullQuestsDataProvider: fullQuestsDataProviderMock)
 
-        delegateMock = QuestAnnotationManagerDelegateMock()
+        delegateMock = AnnotationManagerDelegateMock()
         manager.delegate = delegateMock
     }
 

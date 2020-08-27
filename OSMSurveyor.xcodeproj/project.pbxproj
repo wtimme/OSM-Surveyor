@@ -28,7 +28,7 @@
 		6455414B243BC1420049AD07 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6455414A243BC1420049AD07 /* Annotation.swift */; };
 		6455414D243BD7B00049AD07 /* QuestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6455414C243BD7B00049AD07 /* QuestAssets.xcassets */; };
 		6455414F243C5B9C0049AD07 /* AnnotationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6455414E243C5B9B0049AD07 /* AnnotationManagerDelegate.swift */; };
-		64554151243C5C030049AD07 /* QuestAnnotationManagerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554150243C5C030049AD07 /* QuestAnnotationManagerDelegateMock.swift */; };
+		64554151243C5C030049AD07 /* AnnotationManagerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554150243C5C030049AD07 /* AnnotationManagerDelegateMock.swift */; };
 		64554154243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554153243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift */; };
 		64554156243C5D3C0049AD07 /* FullQuestsDataProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554155243C5D3C0049AD07 /* FullQuestsDataProviderMock.swift */; };
 		646008B2243FB9E60015F89C /* AnnotationLayerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646008B1243FB9E60015F89C /* AnnotationLayerProtocol.swift */; };
@@ -179,7 +179,7 @@
 		6455414A243BC1420049AD07 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		6455414C243BD7B00049AD07 /* QuestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = QuestAssets.xcassets; sourceTree = "<group>"; };
 		6455414E243C5B9B0049AD07 /* AnnotationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationManagerDelegate.swift; sourceTree = "<group>"; };
-		64554150243C5C030049AD07 /* QuestAnnotationManagerDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestAnnotationManagerDelegateMock.swift; sourceTree = "<group>"; };
+		64554150243C5C030049AD07 /* AnnotationManagerDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationManagerDelegateMock.swift; sourceTree = "<group>"; };
 		64554153243C5CA30049AD07 /* QuestAnnotationManagerTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestAnnotationManagerTestCase.swift; sourceTree = "<group>"; };
 		64554155243C5D3C0049AD07 /* FullQuestsDataProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullQuestsDataProviderMock.swift; sourceTree = "<group>"; };
 		646008B1243FB9E60015F89C /* AnnotationLayerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationLayerProtocol.swift; sourceTree = "<group>"; };
@@ -504,7 +504,7 @@
 				64D6A184243A56490097FEDD /* QuestDataManagerMock.swift */,
 				6455413F243B9D500049AD07 /* ElementGeometryDataManagerMock.swift */,
 				64554141243BAA0F0049AD07 /* NodeDataManagerMock.swift */,
-				64554150243C5C030049AD07 /* QuestAnnotationManagerDelegateMock.swift */,
+				64554150243C5C030049AD07 /* AnnotationManagerDelegateMock.swift */,
 				64554155243C5D3C0049AD07 /* FullQuestsDataProviderMock.swift */,
 				64D5D9502441EF3D00AB0EC2 /* AccountHandlerMock.swift */,
 				64D5D95E2442353800AB0EC2 /* OAuthHandlerMock.swift */,
@@ -1107,7 +1107,7 @@
 				64A77B6E243A4B99000A9822 /* Node+MakeNode.swift in Sources */,
 				64A77B4D243A2291000A9822 /* OverpassQuestTestCase.swift in Sources */,
 				64D6A185243A56490097FEDD /* QuestDataManagerMock.swift in Sources */,
-				64554151243C5C030049AD07 /* QuestAnnotationManagerDelegateMock.swift in Sources */,
+				64554151243C5C030049AD07 /* AnnotationManagerDelegateMock.swift in Sources */,
 				64A77B70243A4C0E000A9822 /* BoundingBox+MakeBoundingBox.swift in Sources */,
 				64A77B5F243A3186000A9822 /* OverpassQuestProviderMock.swift in Sources */,
 				64A77B56243A2831000A9822 /* OverpassQuestManagerTestCase.swift in Sources */,
