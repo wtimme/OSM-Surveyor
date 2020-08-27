@@ -197,6 +197,13 @@ extension MapViewController: TGMapViewDelegate {
 
         return positionsAsCoordinates.enclosingBoundingBox
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender _: Any?) {
+        if let locationSearchViewController = segue.destination as? LocationSearchViewController {
+            /// Set the map view controller as the delegate, so that the map position is updated when a location was selected.
+            locationSearchViewController.delegate = self
+        }
+    }
 }
 
 extension MapViewController: MapViewControllerProtocol {
@@ -226,5 +233,15 @@ extension MapViewController: QuestAnnotationManagerDelegate {
 extension MapViewController: TGRecognizerDelegate {
     func mapView(_ view: TGMapView!, recognizer _: UIGestureRecognizer!, didRecognizeSingleTapGesture location: CGPoint) {
         view.pickLabel(at: location)
+    }
+}
+
+extension MapViewController: LocationSearchDelegate {
+    func didSelectLocation(coordinate: Coordinate) {
+        let cameraPosition = TGCameraPosition(center: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude),
+                                              zoom: 13,
+                                              bearing: 0,
+                                              pitch: TGRadiansFromDegrees(-15))!
+        mapView.fly(to: cameraPosition, withDuration: 2, callback: nil)
     }
 }
