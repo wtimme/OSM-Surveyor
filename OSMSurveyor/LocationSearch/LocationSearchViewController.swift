@@ -6,22 +6,22 @@
 //  Copyright © 2020 Wolfgang Timme. All rights reserved.
 //
 
-import OSMSurveyorFramework
 import UIKit
 
 class LocationSearchViewController: UITableViewController {
     // MARK: Private types
 
-    private struct SearchResult {
-        let title: String
-        let coordinate: Coordinate
+    private struct NominatimResult {
+        let display_name: String
+        let latitude: Double
+        let longitude: Double
     }
 
     // MARK: Private properties
 
     private let searchController = UISearchController(searchResultsController: nil)
 
-    private var searchResults = [SearchResult]() {
+    private var searchResults = [NominatimResult]() {
         didSet {
             tableView.reloadData()
         }
@@ -67,7 +67,7 @@ class LocationSearchViewController: UITableViewController {
         cell.textLabel?.numberOfLines = 0
 
         let result = searchResults[indexPath.row]
-        cell.textLabel?.text = result.title
+        cell.textLabel?.text = result.display_name
 
         return cell
     }
