@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol AnnotationManaging {
-    var delegate: QuestAnnotationManagerDelegate? { get set }
+    var delegate: AnnotationManagerDelegate? { get set }
 
     func mapDidUpdatePosition(to boundingBox: BoundingBox)
 }
@@ -23,7 +23,7 @@ public final class AnnotationManager {
         return AnnotationManager(fullQuestsDataProvider: fullQuestsDataProvider)
     }()
 
-    public weak var delegate: QuestAnnotationManagerDelegate?
+    public weak var delegate: AnnotationManagerDelegate?
 
     // MARK: Private properties
 

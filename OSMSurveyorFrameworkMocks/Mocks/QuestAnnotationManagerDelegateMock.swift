@@ -14,7 +14,7 @@ final class QuestAnnotationManagerDelegateMock {
     private(set) var annotations = [Annotation]()
 }
 
-extension QuestAnnotationManagerDelegateMock: QuestAnnotationManagerDelegate {
+extension QuestAnnotationManagerDelegateMock: AnnotationManagerDelegate {
     func setAnnotations(_ annotations: [Annotation]) {
         didCallSetAnnotations = true
 

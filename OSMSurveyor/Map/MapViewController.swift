@@ -278,7 +278,7 @@ extension MapViewController: MapViewControllerProtocol {
     }
 }
 
-extension MapViewController: QuestAnnotationManagerDelegate {
+extension MapViewController: AnnotationManagerDelegate {
     func setAnnotations(_ annotations: [Annotation]) {
         annotationLayer?.setAnnotations(annotations)
     }

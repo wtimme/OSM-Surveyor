@@ -1,5 +1,5 @@
 //
-//  QuestAnnotationManagerDelegate.swift
+//  AnnotationManagerDelegate.swift
 //  OSMSurveyorFramework
 //
 //  Created by Wolfgang Timme on 07.04.20.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol QuestAnnotationManagerDelegate: AnyObject {
+public protocol AnnotationManagerDelegate: AnyObject {
     func setAnnotations(_ annotations: [Annotation])
 }
