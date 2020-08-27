@@ -74,7 +74,7 @@
             </objects>
             <point key="canvasLocation" x="139" y="127"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Find Location-->
         <scene sceneID="V1I-S0-z7Y">
             <objects>
                 <tableViewController id="Ake-ER-fhs" sceneMemberID="viewController">
@@ -97,7 +97,7 @@
                             <outlet property="delegate" destination="Ake-ER-fhs" id="d7W-8J-Qw0"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Dbs-6r-UWm"/>
+                    <navigationItem key="navigationItem" title="Find Location" id="Dbs-6r-UWm"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PqV-2E-Ui9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
