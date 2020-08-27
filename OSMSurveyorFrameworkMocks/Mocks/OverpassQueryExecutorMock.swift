@@ -17,7 +17,7 @@ final class OverpassQueryExecutorMock {
 extension OverpassQueryExecutorMock: OverpassQueryExecuting {
     func execute(query: OverpassQuery, completion: @escaping (OverpassQueryResult) -> Void) {
         didCallExecuteQuery = true
-        
+
         executeQueryArguments = (query, completion)
     }
 }

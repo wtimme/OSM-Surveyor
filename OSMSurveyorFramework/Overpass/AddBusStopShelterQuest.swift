@@ -13,7 +13,7 @@ final class AddBusStopShelterQuest: OverpassQuest {
         question: "Does this bus stop have a shelter?",
         answerType: .boolean
     )
-    
+
     func query(boundingBox: BoundingBox) -> OverpassQuery {
         let queryWithPlaceholder = """
         (
@@ -21,15 +21,15 @@ final class AddBusStopShelterQuest: OverpassQuest {
           node["highway"="bus_stop"]["public_transport"!="stop_position"]["shelter"!~".*"]({{bbox}});
         );
         """
-        
+
         let queryWithBoundingBox = queryWithPlaceholder.replacingOccurrences(of: "{{bbox}}", with: boundingBox.toOverpassBoundingBox())
-        
+
         return """
         [out:json];
         \(queryWithBoundingBox)
         out meta;
         """
     }
-    
+
     let commitMessage = "Add bus stop shelter"
 }

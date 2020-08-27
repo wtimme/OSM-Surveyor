@@ -10,7 +10,8 @@
 
 extension Account {
     static func makeAccount(uuid: UUID = UUID(),
-                            username: String = "jane.doe") -> Account {
+                            username: String = "jane.doe") -> Account
+    {
         return Account(uuid: uuid,
                        username: username)
     }

@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol QuestAnnotationManagerDelegate: class {
+public protocol QuestAnnotationManagerDelegate: AnyObject {
     func setAnnotations(_ annotations: [Annotation])
 }

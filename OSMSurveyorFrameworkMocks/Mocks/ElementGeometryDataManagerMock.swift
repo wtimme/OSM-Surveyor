@@ -17,7 +17,7 @@ final class ElementGeometryDataManagerMock {
 extension ElementGeometryDataManagerMock: ElementGeometryDataManaging {
     func insert(_ element: ElementGeometry) {
         didCallInsert = true
-        
+
         insertElement = element
     }
 }

@@ -17,7 +17,7 @@ final class TableViewModelDelegateMock {
 extension TableViewModelDelegateMock: TableViewModelDelegate {
     func reloadSection(_ section: Int) {
         didCallReloadReloadSection = true
-        
+
         sectionToReload = section
     }
 }

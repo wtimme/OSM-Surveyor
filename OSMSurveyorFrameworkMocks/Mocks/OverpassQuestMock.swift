@@ -13,24 +13,24 @@ import Foundation
 final class OverpassQuestMock {
     let type: String
     var interaction = QuestInteraction.makeQuestInteraction()
-    
+
     init(type: String) {
         self.type = type
     }
-    
+
     private(set) var didCallQuery = false
     private(set) var queryBoundingBox: BoundingBox?
     var queryToReturn: OverpassQuery = ""
-    
+
     var commitMessage = "Lorem ipsum"
 }
 
 extension OverpassQuestMock: OverpassQuest {
     func query(boundingBox: BoundingBox) -> OverpassQuery {
         didCallQuery = true
-        
+
         queryBoundingBox = boundingBox
-        
+
         return queryToReturn
     }
 }

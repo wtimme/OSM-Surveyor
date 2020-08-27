@@ -13,7 +13,7 @@ public typealias OAuthAuthorizationResult = Result<(token: String, tokenSecret: 
 
 public protocol OAuthHandling {
     func authorize(from viewController: Any, completion: @escaping (OAuthAuthorizationResult) -> Void)
-    
+
     /// Asks the handler to handle the given `URL`.
     /// - Parameter url: The `URL` to handle.
     func handle(url: URL)
@@ -21,31 +21,32 @@ public protocol OAuthHandling {
 
 public final class OAuthHandler {
     // MARK: Public properties
-    
+
     /// Singleton instance. Is only available if the `OAuthHandler` has been initialized from somewhere.
     /// This is is far from ideal, but since the framework lacks a proper injection mechanism, this is a quick hack to have access to a shared instance.
     public private(set) static var shared: OAuthHandling?
-    
+
     // MARK: Private properties
-    
+
     private let oauthswift: OAuth1Swift
-    
+
     // MARK: Initializer
-    
+
     init(consumerKey: String,
          consumerSecret: String,
          requestTokenUrl: String = "https://www.openstreetmap.org/oauth/request_token",
          authorizeUrl: String = "https://www.openstreetmap.org/oauth/authorize",
-         accessTokenUrl: String = "https://www.openstreetmap.org/oauth/access_token") {
-        self.oauthswift = OAuth1Swift(consumerKey: consumerKey,
-                                      consumerSecret: consumerSecret,
-                                      requestTokenUrl: requestTokenUrl,
-                                      authorizeUrl: authorizeUrl,
-                                      accessTokenUrl: accessTokenUrl)
-        
+         accessTokenUrl: String = "https://www.openstreetmap.org/oauth/access_token")
+    {
+        oauthswift = OAuth1Swift(consumerKey: consumerKey,
+                                 consumerSecret: consumerSecret,
+                                 requestTokenUrl: requestTokenUrl,
+                                 authorizeUrl: authorizeUrl,
+                                 accessTokenUrl: accessTokenUrl)
+
         OAuthHandler.shared = self
     }
-    
+
     /// Initializes the handler with the path to a Property List file in which the OAuth secrets can be found.
     /// - Parameter propertyListPath: Path to a Property List file that contains the OAuth secrets.
     public convenience init?(propertyListPath: String) {
@@ -57,7 +58,7 @@ public final class OAuthHandler {
             assertionFailure("Unable to read OAuth secrets from file \(propertyListPath)")
             return nil
         }
-        
+
         self.init(consumerKey: consumerKey, consumerSecret: consumerSecret)
     }
 }
@@ -67,7 +68,7 @@ extension OAuthHandler: OAuthHandling {
         /// Configure OAuthSwift to use SFSafariViewController
         guard let viewController = viewController as? UIViewController else { return }
         oauthswift.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: oauthswift)
-        
+
         guard let callbackURL = URL(string: "osm-surveyor://oauth-callback/osm") else { return }
         oauthswift.authorize(withCallbackURL: callbackURL) { result in
             switch result {
@@ -78,7 +79,7 @@ extension OAuthHandler: OAuthHandling {
             }
         }
     }
-    
+
     public func handle(url: URL) {
         OAuthSwift.handle(url: url)
     }

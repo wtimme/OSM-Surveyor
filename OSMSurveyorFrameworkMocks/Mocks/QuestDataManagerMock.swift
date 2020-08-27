@@ -17,7 +17,7 @@ final class QuestDataManagerMock {
 extension QuestDataManagerMock: QuestDataManaging {
     func insert(questType: String, elementId: Int, geometry: ElementGeometry) {
         didCallInsert = true
-        
+
         insertArguments = (questType, elementId, geometry)
     }
 }

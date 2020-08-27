@@ -11,31 +11,30 @@ import TangramMap
 
 class TangramAnnotationLayer {
     // MARK: Public properties
-    
+
     static let Name = "streetcomplete_quests"
-    
+
     // MARK: Private properties
-    
+
     private let mapData: TGMapData
     private var features = [TGMapFeature]()
-    
+
     init(mapData: TGMapData) {
         self.mapData = mapData
     }
 }
 
 extension TangramAnnotationLayer: AnnotationLayerProtocol {
-    
     func setAnnotations(_ annotations: [Annotation]) {
         guard !annotations.isEmpty else {
             mapData.clear()
             return
         }
-        
+
         features = annotations.map { singleAnnotation in
             let coordinate = CLLocationCoordinate2D(latitude: singleAnnotation.coordinate.latitude,
                                                     longitude: singleAnnotation.coordinate.longitude)
-            
+
             let properties = [
                 "type": "point",
                 "kind": "ic_quest_bench",
@@ -43,10 +42,10 @@ extension TangramAnnotationLayer: AnnotationLayerProtocol {
                 "quest_type": singleAnnotation.questType,
                 "quest_id": String(singleAnnotation.questId),
             ]
-            
+
             return TGMapFeature(point: coordinate, properties: properties)
         }
-        
+
         mapData.setFeatures(features)
     }
 }

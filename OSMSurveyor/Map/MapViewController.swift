@@ -6,42 +6,41 @@
 //  Copyright © 2020 Wolfgang Timme. All rights reserved.
 //
 
-import UIKit
-import TangramMap
 import OSMSurveyorFramework
 import SafariServices
+import TangramMap
+import UIKit
 
 class MapViewController: UIViewController {
-    
     @IBOutlet private var mapView: TGMapView!
     @IBOutlet private var errorLabel: UILabel!
     private let questDownloader: MapViewQuestDownloading = MapViewQuestDownloader.shared
     private var annotationManager = QuestAnnotationManager.shared
     private var annotationLayer: AnnotationLayerProtocol?
-    
+
     private var questInteractionCoordinator: QuestInteractionCoordinatorProtocol?
     private var settingsCoordinator: SettingsCoordinatorProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         setupAnnotationLayer()
-        
+
         annotationManager.delegate = self
         testDatabaseIntegration()
         configureMap()
-        
+
         /// Make sure that the status bar has a white color.
         navigationController?.navigationBar.barStyle = .black
     }
-    
+
     private func configureMap() {
         mapView.mapViewDelegate = self
         mapView.gestureDelegate = self
-        
+
         loadMapScene()
     }
-    
+
     private func loadMapScene() {
         let sceneName: String
         switch traitCollection.userInterfaceStyle {
@@ -52,78 +51,78 @@ class MapViewController: UIViewController {
         @unknown default:
             sceneName = "scene-light"
         }
-        
+
         guard let sceneURL = Bundle.main.url(forResource: sceneName, withExtension: "yaml", subdirectory: "map_theme") else {
             /// Unable to get the scene.
             return
         }
-        
+
         mapView.loadScene(from: sceneURL, with: [])
     }
-    
+
     private func setupAnnotationLayer() {
         guard let mapData = mapView.addDataLayer(TangramAnnotationLayer.Name, generateCentroid: false) else {
             return
         }
-        
+
         annotationLayer = TangramAnnotationLayer(mapData: mapData)
     }
-    
+
     private func testDatabaseIntegration() {
         guard let database = QuestDatabase(filename: "db.sqlite3") else {
             print("Unable to get the database")
             return
         }
-        
+
         print("\(database)")
     }
 
     @IBAction private func showOpenStreetMapCopyrightAndLicensePage() {
         guard let url = URL(string: "https://www.openstreetmap.org/copyright") else { return }
-        
+
         let configuration = SFSafariViewController.Configuration()
         configuration.entersReaderIfAvailable = true
-        
+
         let viewController = SFSafariViewController(url: url, configuration: configuration)
         viewController.modalPresentationStyle = .pageSheet
         present(viewController, animated: true)
     }
-    
-    @IBAction private func didTapDownloadQuestsButton(_ sender: AnyObject) {
+
+    @IBAction private func didTapDownloadQuestsButton(_: AnyObject) {
         downloadQuestsInScreenArea()
     }
-    
+
     @IBAction private func didTapSettingsButton() {
         settingsCoordinator = SettingsCoordinator(presentingViewController: self)
-        
+
         settingsCoordinator?.start()
     }
-    
+
     private func downloadQuestsInScreenArea(ignoreDownloaded: Bool = false) {
         guard let boundingBox = screenAreaToBoundingBox() else {
             updateErrorLabel("Can’t scan here. Try to zoom in further or tilt the map less.")
             return
         }
-        
+
         do {
             try questDownloader.downloadQuests(in: boundingBox,
                                                cameraPosition: cameraPosition,
                                                ignoreDownloaded: ignoreDownloaded)
-            
+
             print("All good. Would've downloaded now.")
             updateErrorLabel(nil)
         } catch MapViewQuestDownloadError.screenAreaTooLarge {
             updateErrorLabel("Please zoom in further")
         } catch {
             assertionFailure("Unexpected error: \(error.localizedDescription)")
-            
+
             updateErrorLabel("Unexpected error")
         }
     }
 }
 
 extension MapViewController: TGMapViewDelegate {
-    func mapView(_ mapView: TGMapView, didLoadScene sceneID: Int32, withError sceneError: Error?) {
+    func mapView(_ mapView: TGMapView, didLoadScene _: Int32, withError _: Error?) {
         let coordinate = CLLocationCoordinate2D(latitude: 53.55439, longitude: 9.99413)
         let cameraPosition = TGCameraPosition(center: coordinate,
                                               zoom: 16,
@@ -131,14 +130,14 @@ extension MapViewController: TGMapViewDelegate {
                                               pitch: TGRadiansFromDegrees(-15))!
         mapView.fly(to: cameraPosition, withDuration: 1, callback: nil)
     }
-    
-    func mapView(_ mapView: TGMapView, regionDidChangeAnimated animated: Bool) {
+
+    func mapView(_: TGMapView, regionDidChangeAnimated _: Bool) {
         guard let boundingBox = screenAreaToBoundingBox() else { return }
-        
+
         annotationManager.mapDidUpdatePosition(to: boundingBox)
     }
-    
-    func mapView(_ mapView: TGMapView, didSelectLabel labelPickResult: TGLabelPickResult?, atScreenPosition position: CGPoint) {
+
+    func mapView(_: TGMapView, didSelectLabel labelPickResult: TGLabelPickResult?, atScreenPosition _: CGPoint) {
         guard
             let annotationProperties = labelPickResult?.properties,
             let questType = annotationProperties["quest_type"],
@@ -148,13 +147,13 @@ extension MapViewController: TGMapViewDelegate {
             /// This annotation does not have the properties required to show the quest UI; ignore it.
             return
         }
-        
+
         /// Let the interactor handle this.
         let interactor = QuestInteractionCoordinator(questInteractionProvider: QuestInteractionProvider(),
                                                      uploadFlowCoordinator: UploadFlowCoordinator(presentingViewController: self),
                                                      delegate: self)
         questInteractionCoordinator = interactor
-        
+
         do {
             try interactor.start(questType: questType, questId: questId)
         } catch QuestInteractionCoordinatorError.interactionNotFound {
@@ -163,39 +162,39 @@ extension MapViewController: TGMapViewDelegate {
             assertionFailure("An unknown error occurred while starting the interactor: \(error.localizedDescription)")
         }
     }
-    
+
     private func updateErrorLabel(_ text: String?) {
         errorLabel.text = text
         errorLabel.isHidden = text?.isEmpty ?? true
     }
-    
+
     private var cameraPosition: CameraPosition {
         let tangramCameraPosition = mapView.cameraPosition
-        
+
         return CameraPosition(center: Coordinate(latitude: tangramCameraPosition.center.latitude,
                                                  longitude: tangramCameraPosition.center.longitude),
                               zoom: Double(tangramCameraPosition.zoom),
                               bearing: tangramCameraPosition.bearing,
                               pitch: Double(tangramCameraPosition.pitch))
     }
-    
+
     struct Padding {
         let left: CGFloat
         let top: CGFloat
         let right: CGFloat
         let bottom: CGFloat
-        
+
         static var zero: Padding {
             return Padding(left: 0, top: 0, right: 0, bottom: 0)
         }
     }
-    
+
     private func screenAreaToBoundingBox(padding: Padding = .zero) -> BoundingBox? {
         let width = mapView.bounds.width
         let height = mapView.bounds.height
-        
+
         guard width > 0, height > 0 else { return nil }
-        
+
         let size = (width: width - padding.left - padding.right,
                     height: height - padding.top - padding.bottom)
 
@@ -209,16 +208,16 @@ extension MapViewController: TGMapViewDelegate {
             // 45°
             return nil
         }
-        
+
         let positions = [
             mapView.coordinate(fromViewPosition: CGPoint(x: padding.left, y: padding.top)),
             mapView.coordinate(fromViewPosition: CGPoint(x: padding.left + size.width, y: padding.top)),
             mapView.coordinate(fromViewPosition: CGPoint(x: padding.left, y: padding.top + size.height)),
-            mapView.coordinate(fromViewPosition: CGPoint(x: padding.left +  size.width, y: padding.top + size.height))
+            mapView.coordinate(fromViewPosition: CGPoint(x: padding.left + size.width, y: padding.top + size.height)),
         ]
-        
+
         let positionsAsCoordinates = positions.map { Coordinate(latitude: $0.latitude, longitude: $0.longitude) }
-        
+
         return positionsAsCoordinates.enclosingBoundingBox
     }
 }
@@ -227,16 +226,16 @@ extension MapViewController: MapViewControllerProtocol {
     func fly(to position: CameraPosition, duration: TimeInterval) {
         let center = CLLocationCoordinate2D(latitude: position.center.latitude,
                                             longitude: position.center.longitude)
-        
+
         guard
             let cameraPosition = TGCameraPosition(center: center,
                                                   zoom: CGFloat(position.zoom),
                                                   bearing: position.bearing,
                                                   pitch: CGFloat(position.pitch))
-            else {
+        else {
             return
         }
-        
+
         mapView.fly(to: cameraPosition, withDuration: duration, callback: nil)
     }
 }
@@ -248,7 +247,7 @@ extension MapViewController: QuestAnnotationManagerDelegate {
 }
 
 extension MapViewController: TGRecognizerDelegate {
-    func mapView(_ view: TGMapView!, recognizer: UIGestureRecognizer!, didRecognizeSingleTapGesture location: CGPoint) {
+    func mapView(_ view: TGMapView!, recognizer _: UIGestureRecognizer!, didRecognizeSingleTapGesture location: CGPoint) {
         view.pickLabel(at: location)
     }
 }

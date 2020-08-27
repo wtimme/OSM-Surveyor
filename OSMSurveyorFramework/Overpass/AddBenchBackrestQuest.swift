@@ -13,20 +13,20 @@ final class AddBenchBackrestQuest: OverpassQuest {
         question: "Does this bench have a backrest?",
         answerType: .boolean
     )
-    
+
     func query(boundingBox: BoundingBox) -> OverpassQuery {
         let queryWithPlaceholder = """
         node["amenity"="bench"]["backrest"!~".*"]{{bbox}};
         """
-        
+
         let queryWithBoundingBox = queryWithPlaceholder.replacingOccurrences(of: "{{bbox}}", with: boundingBox.toOverpassBoundingBoxFilter())
-        
+
         return """
         [out:json];
         \(queryWithBoundingBox)
         out meta;
         """
     }
-    
+
     let commitMessage = "Add backrest information to benches"
 }

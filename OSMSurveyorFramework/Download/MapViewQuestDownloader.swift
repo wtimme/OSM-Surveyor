@@ -34,29 +34,30 @@ public final class MapViewQuestDownloader {
                                                           questDataManager: QuestDataHelper(),
                                                           elementGeometryDataManager: ElementsGeometryDataHelper(),
                                                           nodeDataManager: NodeDataHelper())
-        
+
         let questManager = OverpassQuestManager(questProvider: overpassQuestProvider,
                                                 queryExecutor: overpassQueryExecutor,
                                                 zoomForDownloadedTiles: zoomForDownloadedTiles,
                                                 downloadedQuestTypesManager: downloadedQuestTypesManager,
                                                 questElementProcessor: questElementProcessor)
-        
+
         return MapViewQuestDownloader(questManager: questManager)
     }()
-    
+
     // MARK: Private properties
-    
+
     private let questManager: QuestManaging
     private let questTileZoom: Int
     private let minimumDownloadableAreaInSquareKilometers: Double
     private let maximumDownloadableAreaInSquareKilometers: Double
     private let minimumDownloadRadiusInMeters: Double
-    
+
     init(questManager: QuestManaging,
          questTileZoom: Int = 14,
          minimumDownloadableAreaInSquareKilometers: Double = 1,
          maximumDownloadableAreaInSquareKilometers: Double = 20,
-         minimumDownloadRadiusInMeters: Double = 600) {
+         minimumDownloadRadiusInMeters: Double = 600)
+    {
         self.questManager = questManager
         self.questTileZoom = questTileZoom
         self.minimumDownloadableAreaInSquareKilometers = minimumDownloadableAreaInSquareKilometers
@@ -68,28 +69,29 @@ public final class MapViewQuestDownloader {
 extension MapViewQuestDownloader: MapViewQuestDownloading {
     public func downloadQuests(in boundingBox: BoundingBox,
                                cameraPosition: CameraPosition,
-                               ignoreDownloaded: Bool) throws {
+                               ignoreDownloaded: Bool) throws
+    {
         let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: 14)
         let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedAreaInSquareKilometers()
-        
+
         guard areaInSquareKilometers <= maximumDownloadableAreaInSquareKilometers else {
             throw MapViewQuestDownloadError.screenAreaTooLarge
         }
-        
+
         let boundingBoxToDownload: BoundingBox
         if areaInSquareKilometers < minimumDownloadableAreaInSquareKilometers {
             boundingBoxToDownload = cameraPosition.center.enclosingBoundingBox(radius: minimumDownloadRadiusInMeters)
         } else {
             boundingBoxToDownload = boundingBoxOfEnclosingTiles
         }
-        
+
         let ignoreDownloadedQuestsBefore: Date
         if ignoreDownloaded {
             ignoreDownloadedQuestsBefore = Date()
         } else {
             ignoreDownloadedQuestsBefore = Date(timeIntervalSinceNow: -60 * 60 * 24)
         }
-        
+
         questManager.updateQuests(in: boundingBoxToDownload, ignoreDownloadedQuestsBefore: ignoreDownloadedQuestsBefore)
     }
 }

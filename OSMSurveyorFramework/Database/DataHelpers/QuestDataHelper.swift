@@ -22,11 +22,11 @@ protocol QuestDataManaging {
 
 class QuestDataHelper: DataHelperProtocol {
     static let TABLE_NAME = "osm_quests"
-   
+
     static let table = Table(TABLE_NAME)
-    
+
     static var db: Connection?
-    
+
     /// Columns
     static let quest_id = Expression<Int64>("quest_id")
     static let quest_type = Expression<String>("quest_type")
@@ -34,14 +34,14 @@ class QuestDataHelper: DataHelperProtocol {
     static let last_update = Expression<Int>("last_update")
     static let element_id = Expression<Int>("element_id")
     static let element_type = Expression<String>("element_type")
-   
+
     typealias T = Quest
-   
+
     static func createTable() throws {
         guard let db = db else { return }
-        
+
         do {
-            let _ = try db.run(table.create(ifNotExists: true) { t in
+            _ = try db.run(table.create(ifNotExists: true) { t in
                 t.column(quest_id, primaryKey: .autoincrement)
                 t.column(quest_type)
                 t.column(quest_status)
@@ -52,18 +52,18 @@ class QuestDataHelper: DataHelperProtocol {
         } catch {
             assertionFailure("Failed to create table: \(error.localizedDescription)")
         }
-       
     }
-   
+
     static func insert(item: T) throws -> Int64 {
         guard let db = db else { return 0 }
-        
+
         let insert = table.insert(
             quest_type <- item.type,
             quest_status <- item.status.rawValue,
             last_update <- Int(item.lastUpdate.timeIntervalSince1970),
             element_id <- item.elementId,
-            element_type <- item.elementType.rawValue)
+            element_type <- item.elementType.rawValue
+        )
         do {
             return try db.run(insert)
         } catch {
@@ -71,10 +71,10 @@ class QuestDataHelper: DataHelperProtocol {
             return -1
         }
     }
-   
-    static func delete (item: T) throws -> Void {
+
+    static func delete(item: T) throws {
         guard let db = db else { return }
-        
+
         let query = table.filter(quest_id == item.id)
         do {
             let tmp = try db.run(query.delete())
@@ -86,36 +86,35 @@ class QuestDataHelper: DataHelperProtocol {
             assertionFailure("Failed to delete")
         }
     }
-   
+
     static func find(itemId: Int64) throws -> T? {
         guard let db = db else { return nil }
-        
+
         let query = table.filter(quest_id == itemId)
         do {
             let rows = try db.prepare(query)
-            
+
             for row in rows {
                 return item(from: row)
             }
         }
-       
+
         return nil
-       
     }
-    
+
     static func item(from row: Row) -> T? {
         guard let questStatus = Quest.Status(rawValue: row[quest_status]) else {
             assertionFailure("Unable to determine the quest's status.")
             return nil
         }
-        
+
         let lastUpdateDate = Date(timeIntervalSince1970: TimeInterval(row[last_update]))
-        
+
         guard let elementType = ElementGeometry.ElementType(rawValue: row[element_type]) else {
             assertionFailure("Unable to determine the quest's element type.")
             return nil
         }
-        
+
         return Quest(id: row[quest_id],
                      type: row[quest_type],
                      status: questStatus,
@@ -123,15 +122,15 @@ class QuestDataHelper: DataHelperProtocol {
                      elementType: elementType,
                      elementId: row[element_id])
     }
-    
-    static private func insert(questType: String, elementId: Int, geometry: ElementGeometry) throws {
+
+    private static func insert(questType: String, elementId: Int, geometry: ElementGeometry) throws {
         let quest = Quest(id: 0,
                           type: questType,
                           status: .new,
                           lastUpdate: Date(),
                           elementType: geometry.type,
                           elementId: elementId)
-        
+
         try _ = insert(item: quest)
     }
 }
@@ -146,6 +145,4 @@ extension QuestDataHelper: QuestDataManaging {
             assertionFailure("Failed to insert Quest: \(error.localizedDescription)")
         }
     }
-    
-    
 }

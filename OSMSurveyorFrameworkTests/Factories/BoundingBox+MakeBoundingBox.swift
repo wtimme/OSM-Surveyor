@@ -11,7 +11,8 @@ import Foundation
 
 extension BoundingBox {
     static func makeBoundingBox(minimum: Coordinate = Coordinate(latitude: 50.0, longitude: 9.0),
-                                maximum: Coordinate = Coordinate(latitude: 52.0, longitude: 10.0)) -> BoundingBox {
+                                maximum: Coordinate = Coordinate(latitude: 52.0, longitude: 10.0)) -> BoundingBox
+    {
         return BoundingBox(minimum: minimum, maximum: maximum)
     }
 }
