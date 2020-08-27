@@ -8,4 +8,46 @@
 
 import UIKit
 
-class LocationSearchViewController: UITableViewController {}
+class LocationSearchViewController: UITableViewController {
+    // MARK: Private properties
+
+    private let searchController = UISearchController(searchResultsController: nil)
+
+    // MARK: View Lifecycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupSearchBar()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        DispatchQueue.main.async { [weak self] in
+            self?.searchController.searchBar.becomeFirstResponder()
+        }
+    }
+
+    // MARK: Private methods
+
+    private func setupSearchBar() {
+        searchController.searchBar.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.searchBar.placeholder = "Name or address of a place"
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+    }
+}
+
+extension LocationSearchViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_: UISearchBar) {
+        dismiss(animated: true)
+    }
+}
