@@ -6,6 +6,7 @@
 //  Copyright © 2020 Wolfgang Timme. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 
 public protocol NominatimResultProviding {
@@ -28,8 +29,13 @@ public class NominatimResultProvider: NominatimResultProviding {
             return
         }
 
-        // TODO: Actually perform the request.
-        print(url.absoluteString)
-        completion(.success([]))
+        AF.request(url).responseDecodable(of: [NominatimResult].self) { response in
+            switch response.result {
+            case let .success(searchResults):
+                completion(.success(searchResults))
+            case let .failure(error):
+                completion(.failure(error))
+            }
+        }
     }
 }
