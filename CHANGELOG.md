@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0 (12)] - 2020-08-27
+
+### Added
+- Location search that integrates Nominatim (the official OpenStreetMap search engine) into the app
+
 ## [1.0.0 (10)] - 2020-04-15
 
 ### Added
@@ -84,3 +89,4 @@ Initial release 🎉
 [1.0.0 (8)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-7...builds/beta/1.0.0-8
 [1.0.0 (9)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-8...builds/beta/1.0.0-9
 [1.0.0 (10)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-9...builds/beta/1.0.0-10
+[1.0.0 (12)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-8...builds/beta/1.0.0-12
