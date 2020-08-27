@@ -29,7 +29,8 @@ and follow these steps.
 ## Formatting
 
 In order to have a consistent code style, please make sure to install
-[SwiftFormat][6] and run it on a regular basis.
+[SwiftFormat][6] and run it on a regular basis. Consider setting up a `pre-commit`
+Git hook, as described [here][7].
 
 # Continuous delivery
 
@@ -57,3 +58,4 @@ Fetch the certificates for development with
 [4]: https://testflight.apple.com/join/wXtE44KZ
 [5]: https://bundler.io/
 [6]: https://github.com/nicklockwood/SwiftFormat
+[7]: https://github.com/nicklockwood/SwiftFormat#git-pre-commit-hook
