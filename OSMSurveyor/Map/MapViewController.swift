@@ -97,6 +97,10 @@ class MapViewController: UIViewController {
         settingsCoordinator?.start()
     }
 
+    @IBAction private func didTapLocationSearchButton() {
+        // TODO: Open location search.
+    }
+
     private func downloadQuestsInScreenArea(ignoreDownloaded: Bool = false) {
         guard let boundingBox = screenAreaToBoundingBox() else {
             updateErrorLabel("Can’t scan here. Try to zoom in further or tilt the map less.")

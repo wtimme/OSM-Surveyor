@@ -52,11 +52,18 @@
                                 <action selector="didTapSettingsButton" destination="BYZ-38-t0r" id="xhx-PU-f3i"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="wlM-wX-uE6">
-                            <connections>
-                                <action selector="didTapDownloadQuestsButton:" destination="BYZ-38-t0r" id="DBb-rl-Hfn"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="wlM-wX-uE6">
+                                <connections>
+                                    <action selector="didTapDownloadQuestsButton:" destination="BYZ-38-t0r" id="DBb-rl-Hfn"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem style="plain" systemItem="search" id="LuF-Qx-TgA">
+                                <connections>
+                                    <action selector="didTapLocationSearchButton" destination="BYZ-38-t0r" id="cnY-Kq-53n"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="errorLabel" destination="7xF-fL-NVc" id="1KG-X0-5Td"/>
