@@ -27,10 +27,14 @@ class LocationSearchViewController: UITableViewController {
         }
     }
 
+    private let cellReuseIdentifier = "searchResultCell"
+
     // MARK: View Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
 
         setupSearchBar()
     }
@@ -51,6 +55,18 @@ class LocationSearchViewController: UITableViewController {
 
     override func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return searchResults.count
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+
+        /// Make sure the text label can have multiple lines.
+        cell.textLabel?.numberOfLines = 0
+
+        let result = searchResults[indexPath.row]
+        cell.textLabel?.text = result.title
+
+        return cell
     }
 
     // MARK: Private methods
