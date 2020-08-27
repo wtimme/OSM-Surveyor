@@ -29,6 +29,9 @@ class LocationSearchViewController: UITableViewController {
 
     private let cellReuseIdentifier = "searchResultCell"
 
+    /// The work item for performing the search' URL request.
+    private var searchWorkItem: DispatchWorkItem?
+
     // MARK: View Lifecycle
 
     override func viewDidLoad() {
@@ -78,10 +81,41 @@ class LocationSearchViewController: UITableViewController {
         definesPresentationContext = true
         tableView.tableHeaderView = searchController.searchBar
     }
+
+    private func performSearchRequest(for term: String) {
+        let trimmedTerm = term.trimmingCharacters(in: .whitespaces)
+
+        /// Make sure the term is not empty.
+        guard trimmedTerm.count > 0 else { return }
+
+        guard
+            let escapedTerm = trimmedTerm.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+            let url = URL(string: "https://nominatim.openstreetmap.org/?addressdetails=0&q=\(escapedTerm)&format=json")
+        else {
+            return
+        }
+
+        // TODO: Actually perform the request.
+        print(url.absoluteString)
+    }
 }
 
 extension LocationSearchViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_: UISearchBar) {
         dismiss(animated: true)
+    }
+
+    func searchBar(_: UISearchBar, textDidChange searchText: String) {
+        /// Cancel any previously scheduled search.
+        searchWorkItem?.cancel()
+
+        /// Create a new work item for the new search text.
+        let workItem = DispatchWorkItem { [weak self] in
+            self?.performSearchRequest(for: searchText)
+        }
+        searchWorkItem = workItem
+
+        /// Execute the work item with a delay.
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.75, execute: workItem)
     }
 }
