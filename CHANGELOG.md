@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- Location search that integrates Nominatim (the official OpenStreetMap search engine) into the app
+
 ## [1.0.0 (8)] - 2020-04-12
 
 ### Added
