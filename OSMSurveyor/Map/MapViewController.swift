@@ -14,7 +14,7 @@ import UIKit
 class MapViewController: UIViewController {
     @IBOutlet private var mapView: TGMapView!
     @IBOutlet private var errorLabel: UILabel!
-    private let questDownloader: MapViewQuestDownloading = MapViewQuestDownloader.shared
+    private let mapDataDownloader: MapDataDownloading = MapDataDownloader.shared
     private var annotationManager = QuestAnnotationManager.shared
     private var annotationLayer: AnnotationLayerProtocol?
 
@@ -148,13 +148,13 @@ class MapViewController: UIViewController {
         }
 
         do {
-            try questDownloader.downloadQuests(in: boundingBox,
-                                               cameraPosition: cameraPosition,
-                                               ignoreDownloaded: ignoreDownloaded)
+            try mapDataDownloader.downloadQuests(in: boundingBox,
+                                                 cameraPosition: cameraPosition,
+                                                 ignoreDownloaded: ignoreDownloaded)
 
             print("All good. Would've downloaded now.")
             updateErrorLabel(nil)
-        } catch MapViewQuestDownloadError.screenAreaTooLarge {
+        } catch MapDataDownloadError.screenAreaTooLarge {
             updateErrorLabel("Please zoom in further")
         } catch {
             assertionFailure("Unexpected error: \(error.localizedDescription)")
