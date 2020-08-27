@@ -10,7 +10,7 @@ import OSMSurveyorFramework
 import UIKit
 
 protocol LocationSearchDelegate: AnyObject {
-    func didSelectLocation(coordinate: Coordinate)
+    func didSelectLocation(coordinate: Coordinate, boundingBox: BoundingBox)
 }
 
 class LocationSearchViewController: UITableViewController {
@@ -77,7 +77,8 @@ class LocationSearchViewController: UITableViewController {
     override func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedResult = searchResults[indexPath.row]
         let coordinate = Coordinate(latitude: selectedResult.latitude, longitude: selectedResult.longitude)
-        delegate?.didSelectLocation(coordinate: coordinate)
+        delegate?.didSelectLocation(coordinate: coordinate,
+                                    boundingBox: selectedResult.boundingBox)
 
         dismiss(animated: true, completion: nil)
     }

@@ -237,11 +237,12 @@ extension MapViewController: TGRecognizerDelegate {
 }
 
 extension MapViewController: LocationSearchDelegate {
-    func didSelectLocation(coordinate: Coordinate) {
-        let cameraPosition = TGCameraPosition(center: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude),
-                                              zoom: 13,
-                                              bearing: 0,
-                                              pitch: TGRadiansFromDegrees(-15))!
+    func didSelectLocation(coordinate _: Coordinate, boundingBox: BoundingBox) {
+        let cameraPosition = mapView.cameraThatFitsBounds(TGCoordinateBounds(sw: CLLocationCoordinate2D(latitude: boundingBox.maximum.latitude,
+                                                                                                        longitude: boundingBox.minimum.longitude),
+                                                                             ne: CLLocationCoordinate2D(latitude: boundingBox.minimum.latitude,
+                                                                                                        longitude: boundingBox.maximum.longitude)),
+                                                          withPadding: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10))
         mapView.fly(to: cameraPosition, withDuration: 2, callback: nil)
     }
 }
