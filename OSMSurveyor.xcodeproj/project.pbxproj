@@ -24,7 +24,7 @@
 		64554142243BAA0F0049AD07 /* NodeDataManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554141243BAA0F0049AD07 /* NodeDataManagerMock.swift */; };
 		64554144243BABDD0049AD07 /* ElementGeometry+MakeElementGeometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554143243BABDD0049AD07 /* ElementGeometry+MakeElementGeometry.swift */; };
 		64554146243BB5FB0049AD07 /* AddBusStopShelterQuest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554145243BB5FB0049AD07 /* AddBusStopShelterQuest.swift */; };
-		64554149243BC06D0049AD07 /* QuestAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554148243BC06D0049AD07 /* QuestAnnotationManager.swift */; };
+		64554149243BC06D0049AD07 /* AnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64554148243BC06D0049AD07 /* AnnotationManager.swift */; };
 		6455414B243BC1420049AD07 /* Annotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6455414A243BC1420049AD07 /* Annotation.swift */; };
 		6455414D243BD7B00049AD07 /* QuestAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6455414C243BD7B00049AD07 /* QuestAssets.xcassets */; };
 		6455414F243C5B9C0049AD07 /* QuestAnnotationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6455414E243C5B9B0049AD07 /* QuestAnnotationManagerDelegate.swift */; };
@@ -175,7 +175,7 @@
 		64554141243BAA0F0049AD07 /* NodeDataManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDataManagerMock.swift; sourceTree = "<group>"; };
 		64554143243BABDD0049AD07 /* ElementGeometry+MakeElementGeometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ElementGeometry+MakeElementGeometry.swift"; sourceTree = "<group>"; };
 		64554145243BB5FB0049AD07 /* AddBusStopShelterQuest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBusStopShelterQuest.swift; sourceTree = "<group>"; };
-		64554148243BC06D0049AD07 /* QuestAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestAnnotationManager.swift; sourceTree = "<group>"; };
+		64554148243BC06D0049AD07 /* AnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationManager.swift; sourceTree = "<group>"; };
 		6455414A243BC1420049AD07 /* Annotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Annotation.swift; sourceTree = "<group>"; };
 		6455414C243BD7B00049AD07 /* QuestAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = QuestAssets.xcassets; sourceTree = "<group>"; };
 		6455414E243C5B9B0049AD07 /* QuestAnnotationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestAnnotationManagerDelegate.swift; sourceTree = "<group>"; };
@@ -342,7 +342,7 @@
 		64554147243BC0560049AD07 /* Annotations */ = {
 			isa = PBXGroup;
 			children = (
-				64554148243BC06D0049AD07 /* QuestAnnotationManager.swift */,
+				64554148243BC06D0049AD07 /* AnnotationManager.swift */,
 				6455414E243C5B9B0049AD07 /* QuestAnnotationManagerDelegate.swift */,
 				6455414A243BC1420049AD07 /* Annotation.swift */,
 				646008B1243FB9E60015F89C /* AnnotationLayerProtocol.swift */,
@@ -1087,7 +1087,7 @@
 				64A77B452439B840000A9822 /* Element.swift in Sources */,
 				64A77B65243A4495000A9822 /* QuestElementsProcessing.swift in Sources */,
 				64C6A1F924F7AB0A00B326D6 /* NominatimResultProvider.swift in Sources */,
-				64554149243BC06D0049AD07 /* QuestAnnotationManager.swift in Sources */,
+				64554149243BC06D0049AD07 /* AnnotationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

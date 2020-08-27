@@ -15,7 +15,7 @@ class MapViewController: UIViewController {
     @IBOutlet private var mapView: TGMapView!
     @IBOutlet private var errorLabel: UILabel!
     private let mapDataDownloader: MapDataDownloading = MapDataDownloader.shared
-    private var annotationManager = QuestAnnotationManager.shared
+    private var annotationManager = AnnotationManager.shared
     private var annotationLayer: AnnotationLayerProtocol?
 
     private var settingsCoordinator: SettingsCoordinatorProtocol?
