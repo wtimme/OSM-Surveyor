@@ -6,9 +6,17 @@
 //  Copyright © 2020 Wolfgang Timme. All rights reserved.
 //
 
+import OSMSurveyorFramework
 import UIKit
 
 class LocationSearchViewController: UITableViewController {
+    // MARK: Private types
+
+    private struct SearchResult {
+        let title: String
+        let coordinate: Coordinate
+    }
+
     // MARK: Private properties
 
     private let searchController = UISearchController(searchResultsController: nil)
