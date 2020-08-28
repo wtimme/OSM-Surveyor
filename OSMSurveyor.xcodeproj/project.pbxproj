@@ -43,6 +43,7 @@
 		6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */; };
 		64762E5C242DFEBC00E430B4 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64762E5B242DFEBC00E430B4 /* Database.swift */; };
 		648E3ACF24F8EAB200B2210A /* QuestManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A20124F8E90F00B326D6 /* QuestManagerMock.swift */; };
+		648E3AD124F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E3AD024F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift */; };
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
 		649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */; };
@@ -199,6 +200,7 @@
 		6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSMSurveyorTests.swift; sourceTree = "<group>"; };
 		6470E7CC2427CE6A009A6AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64762E5B242DFEBC00E430B4 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		648E3AD024F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraPosition+MakeCameraPosition.swift"; sourceTree = "<group>"; };
 		649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelperProtocol.swift; sourceTree = "<group>"; };
 		649DEF32242E2162001AD0E2 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeDataHelper.swift; sourceTree = "<group>"; };
@@ -673,6 +675,7 @@
 			isa = PBXGroup;
 			children = (
 				64D5D9552441F23B00AB0EC2 /* Account+MakeAccount.swift */,
+				648E3AD024F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -1135,6 +1138,7 @@
 				64D5D9512441EF3D00AB0EC2 /* AccountHandlerMock.swift in Sources */,
 				64D5D95F2442353800AB0EC2 /* OAuthHandlerMock.swift in Sources */,
 				64D5D96124423B9200AB0EC2 /* OpenStreetMapAPIClientMock.swift in Sources */,
+				648E3AD124F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift in Sources */,
 				64D5D9562441F23B00AB0EC2 /* Account+MakeAccount.swift in Sources */,
 				64D5D9682442892D00AB0EC2 /* KeychainHandlerMock.swift in Sources */,
 			);
