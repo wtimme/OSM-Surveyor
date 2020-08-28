@@ -41,7 +41,6 @@
 		6470E7BD2427CE6A009A6AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7BC2427CE6A009A6AAC /* Assets.xcassets */; };
 		6470E7C02427CE6A009A6AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7BE2427CE6A009A6AAC /* LaunchScreen.storyboard */; };
 		6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */; };
-		64762E5C242DFEBC00E430B4 /* QuestDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */; };
 		648DD1242444754A00AECBD0 /* UIViewController+QuestInteractionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD1232444754A00AECBD0 /* UIViewController+QuestInteractionDelegate.swift */; };
 		648DD12E244479A200AECBD0 /* QuestInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD12D244479A200AECBD0 /* QuestInteraction.swift */; };
 		648DD13224447C0500AECBD0 /* QuestInteractionProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD13124447C0500AECBD0 /* QuestInteractionProvider.swift */; };
@@ -63,6 +62,9 @@
 		648DD1582446DC4300AECBD0 /* AlertPresenting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD1572446DC4300AECBD0 /* AlertPresenting.swift */; };
 		648DD15A2446DDE700AECBD0 /* AlertPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648DD1592446DDE700AECBD0 /* AlertPresenterMock.swift */; };
 		6490F2ED24445DE700BD82F5 /* QuestInteractionCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6490F2EC24445DE700BD82F5 /* QuestInteractionCoordinator.swift */; };
+		64762E5C242DFEBC00E430B4 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64762E5B242DFEBC00E430B4 /* Database.swift */; };
+		648E3ACF24F8EAB200B2210A /* QuestManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A20124F8E90F00B326D6 /* QuestManagerMock.swift */; };
+		648E3AD124F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648E3AD024F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift */; };
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
 		649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */; };
@@ -95,6 +97,7 @@
 		64C6A1F424F7958600B326D6 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1F324F7958600B326D6 /* LocationSearchViewController.swift */; };
 		64C6A1F724F7AA0600B326D6 /* NominatimResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1F624F7AA0600B326D6 /* NominatimResult.swift */; };
 		64C6A1F924F7AB0A00B326D6 /* NominatimResultProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1F824F7AB0A00B326D6 /* NominatimResultProvider.swift */; };
+		64C6A20024F8E27800B326D6 /* MapDataDownloaderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1FF24F8E27800B326D6 /* MapDataDownloaderTestCase.swift */; };
 		64D4D8D22427F7F900FB900A /* OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */; };
 		64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D8D82427F7F900FB900A /* OSMSurveyorFrameworkTests.swift */; };
 		64D4D8DB2427F7F900FB900A /* OSMSurveyorFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -217,7 +220,8 @@
 		6470E7C62427CE6A009A6AAC /* OSMSurveyorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OSMSurveyorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSMSurveyorTests.swift; sourceTree = "<group>"; };
 		6470E7CC2427CE6A009A6AAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestDatabase.swift; sourceTree = "<group>"; };
+		64762E5B242DFEBC00E430B4 /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
+		648E3AD024F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraPosition+MakeCameraPosition.swift"; sourceTree = "<group>"; };
 		648DD1212444741700AECBD0 /* QuestInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionDelegate.swift; sourceTree = "<group>"; };
 		648DD1232444754A00AECBD0 /* UIViewController+QuestInteractionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+QuestInteractionDelegate.swift"; sourceTree = "<group>"; };
 		648DD1272444762300AECBD0 /* QuestInteractionDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestInteractionDelegateMock.swift; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 		64C6A1F324F7958600B326D6 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		64C6A1F624F7AA0600B326D6 /* NominatimResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominatimResult.swift; sourceTree = "<group>"; };
 		64C6A1F824F7AB0A00B326D6 /* NominatimResultProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominatimResultProvider.swift; sourceTree = "<group>"; };
+		64C6A1FF24F8E27800B326D6 /* MapDataDownloaderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataDownloaderTestCase.swift; sourceTree = "<group>"; };
+		64C6A20124F8E90F00B326D6 /* QuestManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestManagerMock.swift; sourceTree = "<group>"; };
 		64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSMSurveyorFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSMSurveyorFramework.h; sourceTree = "<group>"; };
 		64D4D8CC2427F7F900FB900A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -487,7 +493,7 @@
 			isa = PBXGroup;
 			children = (
 				649DEF34242E21E3001AD0E2 /* DataHelpers */,
-				64762E5B242DFEBC00E430B4 /* QuestDatabase.swift */,
+				64762E5B242DFEBC00E430B4 /* Database.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -620,6 +626,7 @@
 				64D5D9502441EF3D00AB0EC2 /* AccountHandlerMock.swift */,
 				64D5D95E2442353800AB0EC2 /* OAuthHandlerMock.swift */,
 				64D5D96024423B9200AB0EC2 /* OpenStreetMapAPIClientMock.swift */,
+				64C6A20124F8E90F00B326D6 /* QuestManagerMock.swift */,
 				64D5D9672442892D00AB0EC2 /* KeychainHandlerMock.swift */,
 				648DD138244481D000AECBD0 /* QuestInteractionProviderMock.swift */,
 			);
@@ -640,6 +647,7 @@
 			isa = PBXGroup;
 			children = (
 				64A77B6A243A498D000A9822 /* QuestElementProcessorTestCase.swift */,
+				64C6A1FF24F8E27800B326D6 /* MapDataDownloaderTestCase.swift */,
 			);
 			path = Download;
 			sourceTree = "<group>";
@@ -786,6 +794,7 @@
 			children = (
 				64D5D9552441F23B00AB0EC2 /* Account+MakeAccount.swift */,
 				648DD13324447C7500AECBD0 /* QuestInteraction+MakeQuestInteraction.swift */,
+				648E3AD024F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -1194,7 +1203,7 @@
 				648DD12E244479A200AECBD0 /* QuestInteraction.swift in Sources */,
 				64B58EC7243515A000EE88C7 /* CameraPosition.swift in Sources */,
 				64D6A187243A5C120097FEDD /* StaticOverpassQuestProvider.swift in Sources */,
-				64762E5C242DFEBC00E430B4 /* QuestDatabase.swift in Sources */,
+				64762E5C242DFEBC00E430B4 /* Database.swift in Sources */,
 				64B58EC9243516EC00EE88C7 /* MapDataDownloader.swift in Sources */,
 				64A77B5D243A3141000A9822 /* OverpassQuestProviding.swift in Sources */,
 				64554146243BB5FB0049AD07 /* AddBusStopShelterQuest.swift in Sources */,
@@ -1232,6 +1241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				648E3ACF24F8EAB200B2210A /* QuestManagerMock.swift in Sources */,
 				64A77B6B243A498D000A9822 /* QuestElementProcessorTestCase.swift in Sources */,
 				64A77B59243A28D2000A9822 /* DownloadedQuestTypesManagerMock.swift in Sources */,
 				64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */,
@@ -1247,6 +1257,7 @@
 				64554151243C5C030049AD07 /* AnnotationManagerDelegateMock.swift in Sources */,
 				64A77B70243A4C0E000A9822 /* BoundingBox+MakeBoundingBox.swift in Sources */,
 				64A77B5F243A3186000A9822 /* OverpassQuestProviderMock.swift in Sources */,
+				64C6A20024F8E27800B326D6 /* MapDataDownloaderTestCase.swift in Sources */,
 				64A77B56243A2831000A9822 /* OverpassQuestManagerTestCase.swift in Sources */,
 				64D5D9662442855D00AB0EC2 /* KeychainHandlerTestCase.swift in Sources */,
 				648DD13724447E5300AECBD0 /* QuestInteractionProviderTestCase.swift in Sources */,
@@ -1266,6 +1277,7 @@
 				648DD13424447C7500AECBD0 /* QuestInteraction+MakeQuestInteraction.swift in Sources */,
 				64D5D96124423B9200AB0EC2 /* OpenStreetMapAPIClientMock.swift in Sources */,
 				648DD139244481D000AECBD0 /* QuestInteractionProviderMock.swift in Sources */,
+				648E3AD124F8EEF400B2210A /* CameraPosition+MakeCameraPosition.swift in Sources */,
 				64D5D9562441F23B00AB0EC2 /* Account+MakeAccount.swift in Sources */,
 				64D5D9682442892D00AB0EC2 /* KeychainHandlerMock.swift in Sources */,
 			);

@@ -13,14 +13,21 @@ public enum MapDataDownloadError: Error {
 }
 
 public protocol MapDataDownloading {
-    /// Downloads the quests in the given `BoundingBox`.
+    /// Downloads the map data in the given `BoundingBox`.
     /// - Parameters:
-    ///   - boundingBox: The bounding box in which to download the quests.
+    ///   - boundingBox: The bounding box in which to download the map data.
     ///   - cameraPosition: The current camera position of the map. Will be used to calculate a larger bounding box in case the provided one is too small.
-    ///   - ignoreDownloaded: Flag whether to ignore the tiles/areas that have already been downloaded, and forces the downloaded.
-    func downloadQuests(in boundingBox: BoundingBox,
-                        cameraPosition: CameraPosition,
-                        ignoreDownloaded: Bool) throws
+    ///   - ignoreDownloaded: Flag whether to ignore the tiles/areas that have already been downloaded, and forces the download.
+    func download(in boundingBox: BoundingBox,
+                  cameraPosition: CameraPosition,
+                  ignoreDownloaded: Bool) throws
+
+    /// Calculates the bounding box for the download.
+    /// - Parameters:
+    ///   - boundingBox: The bounding box in which to download the map data.
+    ///   - cameraPosition: The current camera position of the map. Will be used to calculate a larger bounding box in case the provided one is too small.
+    func calculateBoundingBox(covering boundingBox: BoundingBox,
+                              cameraPosition: CameraPosition) throws -> BoundingBox
 }
 
 public final class MapDataDownloader {
@@ -67,11 +74,26 @@ public final class MapDataDownloader {
 }
 
 extension MapDataDownloader: MapDataDownloading {
-    public func downloadQuests(in boundingBox: BoundingBox,
-                               cameraPosition: CameraPosition,
-                               ignoreDownloaded: Bool) throws
+    public func download(in boundingBox: BoundingBox,
+                         cameraPosition: CameraPosition,
+                         ignoreDownloaded: Bool) throws
     {
-        let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: 14)
+        let boundingBoxToDownload = try calculateBoundingBox(covering: boundingBox, cameraPosition: cameraPosition)
+
+        let ignoreDownloadedQuestsBefore: Date
+        if ignoreDownloaded {
+            ignoreDownloadedQuestsBefore = Date()
+        } else {
+            ignoreDownloadedQuestsBefore = Date(timeIntervalSinceNow: -60 * 60 * 24)
+        }
+
+        questManager.updateQuests(in: boundingBoxToDownload, ignoreDownloadedQuestsBefore: ignoreDownloadedQuestsBefore)
+    }
+
+    public func calculateBoundingBox(covering boundingBox: BoundingBox,
+                                     cameraPosition: CameraPosition) throws -> BoundingBox
+    {
+        let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: questTileZoom)
         let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedAreaInSquareKilometers()
 
         guard areaInSquareKilometers <= maximumDownloadableAreaInSquareKilometers else {
@@ -85,13 +107,6 @@ extension MapDataDownloader: MapDataDownloading {
             boundingBoxToDownload = boundingBoxOfEnclosingTiles
         }
 
-        let ignoreDownloadedQuestsBefore: Date
-        if ignoreDownloaded {
-            ignoreDownloadedQuestsBefore = Date()
-        } else {
-            ignoreDownloadedQuestsBefore = Date(timeIntervalSinceNow: -60 * 60 * 24)
-        }
-
-        questManager.updateQuests(in: boundingBoxToDownload, ignoreDownloadedQuestsBefore: ignoreDownloadedQuestsBefore)
+        return boundingBoxToDownload
     }
 }

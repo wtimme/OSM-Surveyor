@@ -1,5 +1,5 @@
 //
-//  QuestDatabase.swift
+//  Database.swift
 //  OSMSurveyorFramework
 //
 //  Created by Wolfgang Timme on 27.03.20.
@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-public class QuestDatabase {
+public class Database {
     // MARK: Private properties
 
     private let connection: Connection

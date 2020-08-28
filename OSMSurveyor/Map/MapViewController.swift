@@ -113,7 +113,7 @@ class MapViewController: UIViewController {
     }
 
     private func testDatabaseIntegration() {
-        guard let database = QuestDatabase(filename: "db.sqlite3") else {
+        guard let database = Database(filename: "db.sqlite3") else {
             print("Unable to get the database")
             return
         }
@@ -132,8 +132,8 @@ class MapViewController: UIViewController {
         present(viewController, animated: true)
     }
 
-    @IBAction private func didTapDownloadQuestsButton(_: AnyObject) {
-        downloadQuestsInScreenArea()
+    @IBAction private func didTapDownloadButton(_: AnyObject) {
+        downloadMapDataInScreenArea()
     }
 
     @IBAction private func didTapSettingsButton() {
@@ -142,16 +142,16 @@ class MapViewController: UIViewController {
         settingsCoordinator?.start()
     }
 
-    private func downloadQuestsInScreenArea(ignoreDownloaded: Bool = false) {
+    private func downloadMapDataInScreenArea(ignoreDownloaded: Bool = false) {
         guard let boundingBox = screenAreaToBoundingBox() else {
             updateErrorLabel("Can’t scan here. Try to zoom in further or tilt the map less.")
             return
         }
 
         do {
-            try mapDataDownloader.downloadQuests(in: boundingBox,
-                                                 cameraPosition: cameraPosition,
-                                                 ignoreDownloaded: ignoreDownloaded)
+            try mapDataDownloader.download(in: boundingBox,
+                                           cameraPosition: cameraPosition,
+                                           ignoreDownloaded: ignoreDownloaded)
 
             print("All good. Would've downloaded now.")
             updateErrorLabel(nil)
