@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0 (13)] - 2020-08-28
+
 ### Added
 - State restoration for the map
 
@@ -78,3 +80,4 @@ Initial release 🎉
 [1.0.0 (7)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-6...builds/beta/1.0.0-7
 [1.0.0 (8)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-7...builds/beta/1.0.0-8
 [1.0.0 (12)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-8...builds/beta/1.0.0-12
+[1.0.0 (13)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-12...builds/beta/1.0.0-13
