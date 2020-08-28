@@ -75,6 +75,7 @@
 		64C6A1F424F7958600B326D6 /* LocationSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1F324F7958600B326D6 /* LocationSearchViewController.swift */; };
 		64C6A1F724F7AA0600B326D6 /* NominatimResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1F624F7AA0600B326D6 /* NominatimResult.swift */; };
 		64C6A1F924F7AB0A00B326D6 /* NominatimResultProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1F824F7AB0A00B326D6 /* NominatimResultProvider.swift */; };
+		64C6A20024F8E27800B326D6 /* MapDataDownloaderTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A1FF24F8E27800B326D6 /* MapDataDownloaderTestCase.swift */; };
 		64D4D8D22427F7F900FB900A /* OSMSurveyorFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */; };
 		64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64D4D8D82427F7F900FB900A /* OSMSurveyorFrameworkTests.swift */; };
 		64D4D8DB2427F7F900FB900A /* OSMSurveyorFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -230,6 +231,7 @@
 		64C6A1F324F7958600B326D6 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		64C6A1F624F7AA0600B326D6 /* NominatimResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominatimResult.swift; sourceTree = "<group>"; };
 		64C6A1F824F7AB0A00B326D6 /* NominatimResultProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominatimResultProvider.swift; sourceTree = "<group>"; };
+		64C6A1FF24F8E27800B326D6 /* MapDataDownloaderTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDataDownloaderTestCase.swift; sourceTree = "<group>"; };
 		64C6A20124F8E90F00B326D6 /* QuestManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestManagerMock.swift; sourceTree = "<group>"; };
 		64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSMSurveyorFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSMSurveyorFramework.h; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 			isa = PBXGroup;
 			children = (
 				64A77B6A243A498D000A9822 /* QuestElementProcessorTestCase.swift */,
+				64C6A1FF24F8E27800B326D6 /* MapDataDownloaderTestCase.swift */,
 			);
 			path = Download;
 			sourceTree = "<group>";
@@ -1114,6 +1117,7 @@
 				64554151243C5C030049AD07 /* AnnotationManagerDelegateMock.swift in Sources */,
 				64A77B70243A4C0E000A9822 /* BoundingBox+MakeBoundingBox.swift in Sources */,
 				64A77B5F243A3186000A9822 /* OverpassQuestProviderMock.swift in Sources */,
+				64C6A20024F8E27800B326D6 /* MapDataDownloaderTestCase.swift in Sources */,
 				64A77B56243A2831000A9822 /* OverpassQuestManagerTestCase.swift in Sources */,
 				64D5D9662442855D00AB0EC2 /* KeychainHandlerTestCase.swift in Sources */,
 				64554154243C5CA30049AD07 /* AnnotationManagerTestCase.swift in Sources */,
