@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - State restoration for the map
 
+### Changed
+- Selecting a location from the Nominatim search results now requires only one tap instead of two.
+
 ## [1.0.0 (12)] - 2020-08-27
 
 ### Added
