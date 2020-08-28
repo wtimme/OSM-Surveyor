@@ -71,7 +71,7 @@ extension MapDataDownloader: MapDataDownloading {
                          cameraPosition: CameraPosition,
                          ignoreDownloaded: Bool) throws
     {
-        let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: 14)
+        let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: questTileZoom)
         let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedAreaInSquareKilometers()
 
         guard areaInSquareKilometers <= maximumDownloadableAreaInSquareKilometers else {
