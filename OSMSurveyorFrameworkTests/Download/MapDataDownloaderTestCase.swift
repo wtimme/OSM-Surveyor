@@ -16,11 +16,21 @@ class MapDataDownloaderTestCase: XCTestCase {
     override func setUpWithError() throws {
         questManagerMock = QuestManagerMock()
 
-        downloader = MapDataDownloader(questManager: questManagerMock)
+        setupDownloader()
     }
 
     override func tearDownWithError() throws {
         downloader = nil
         questManagerMock = nil
+    }
+
+    // MARK: Helper methods
+
+    private func setupDownloader(maximumDownloadableAreaInSquareKilometers: Double = 20,
+                                 questTileZoom: Int = 14)
+    {
+        downloader = MapDataDownloader(questManager: questManagerMock,
+                                       questTileZoom: questTileZoom,
+                                       maximumDownloadableAreaInSquareKilometers: maximumDownloadableAreaInSquareKilometers)
     }
 }
