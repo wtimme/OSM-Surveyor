@@ -55,7 +55,7 @@
                         <rightBarButtonItems>
                             <barButtonItem systemItem="refresh" id="wlM-wX-uE6">
                                 <connections>
-                                    <action selector="didTapDownloadQuestsButton:" destination="BYZ-38-t0r" id="DBb-rl-Hfn"/>
+                                    <action selector="didTapDownloadButton:" destination="BYZ-38-t0r" id="5rI-bx-vb0"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem style="plain" systemItem="search" id="LuF-Qx-TgA">

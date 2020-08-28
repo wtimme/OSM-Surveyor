@@ -131,7 +131,7 @@ class MapViewController: UIViewController {
         present(viewController, animated: true)
     }
 
-    @IBAction private func didTapDownloadQuestsButton(_: AnyObject) {
+    @IBAction private func didTapDownloadButton(_: AnyObject) {
         downloadQuestsInScreenArea()
     }
 
