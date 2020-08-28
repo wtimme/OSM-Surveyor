@@ -132,7 +132,7 @@ class MapViewController: UIViewController {
     }
 
     @IBAction private func didTapDownloadButton(_: AnyObject) {
-        downloadQuestsInScreenArea()
+        downloadMapDataInScreenArea()
     }
 
     @IBAction private func didTapSettingsButton() {
@@ -141,7 +141,7 @@ class MapViewController: UIViewController {
         settingsCoordinator?.start()
     }
 
-    private func downloadQuestsInScreenArea(ignoreDownloaded: Bool = false) {
+    private func downloadMapDataInScreenArea(ignoreDownloaded: Bool = false) {
         guard let boundingBox = screenAreaToBoundingBox() else {
             updateErrorLabel("Can’t scan here. Try to zoom in further or tilt the map less.")
             return
