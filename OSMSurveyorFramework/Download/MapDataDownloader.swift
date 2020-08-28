@@ -21,6 +21,13 @@ public protocol MapDataDownloading {
     func download(in boundingBox: BoundingBox,
                   cameraPosition: CameraPosition,
                   ignoreDownloaded: Bool) throws
+
+    /// Calculates the bounding box for the download.
+    /// - Parameters:
+    ///   - boundingBox: The bounding box in which to download the map data.
+    ///   - cameraPosition: The current camera position of the map. Will be used to calculate a larger bounding box in case the provided one is too small.
+    func calculateBoundingBox(covering boundingBox: BoundingBox,
+                              cameraPosition: CameraPosition) throws -> BoundingBox
 }
 
 public final class MapDataDownloader {
@@ -93,5 +100,25 @@ extension MapDataDownloader: MapDataDownloading {
         }
 
         questManager.updateQuests(in: boundingBoxToDownload, ignoreDownloadedQuestsBefore: ignoreDownloadedQuestsBefore)
+    }
+
+    public func calculateBoundingBox(covering boundingBox: BoundingBox,
+                                     cameraPosition: CameraPosition) throws -> BoundingBox
+    {
+        let boundingBoxOfEnclosingTiles = boundingBox.asBoundingBoxOfEnclosingTiles(zoom: questTileZoom)
+        let areaInSquareKilometers = boundingBoxOfEnclosingTiles.enclosedAreaInSquareKilometers()
+
+        guard areaInSquareKilometers <= maximumDownloadableAreaInSquareKilometers else {
+            throw MapDataDownloadError.screenAreaTooLarge
+        }
+
+        let boundingBoxToDownload: BoundingBox
+        if areaInSquareKilometers < minimumDownloadableAreaInSquareKilometers {
+            boundingBoxToDownload = cameraPosition.center.enclosingBoundingBox(radius: minimumDownloadRadiusInMeters)
+        } else {
+            boundingBoxToDownload = boundingBoxOfEnclosingTiles
+        }
+
+        return boundingBoxToDownload
     }
 }
