@@ -42,6 +42,7 @@
 		6470E7C02427CE6A009A6AAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6470E7BE2427CE6A009A6AAC /* LaunchScreen.storyboard */; };
 		6470E7CB2427CE6A009A6AAC /* OSMSurveyorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6470E7CA2427CE6A009A6AAC /* OSMSurveyorTests.swift */; };
 		64762E5C242DFEBC00E430B4 /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64762E5B242DFEBC00E430B4 /* Database.swift */; };
+		648E3ACF24F8EAB200B2210A /* QuestManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C6A20124F8E90F00B326D6 /* QuestManagerMock.swift */; };
 		649DEF30242E20D7001AD0E2 /* DataHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF2F242E20D7001AD0E2 /* DataHelperProtocol.swift */; };
 		649DEF33242E2162001AD0E2 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF32242E2162001AD0E2 /* Node.swift */; };
 		649DEF36242E222E001AD0E2 /* NodeDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 649DEF35242E222E001AD0E2 /* NodeDataHelper.swift */; };
@@ -229,6 +230,7 @@
 		64C6A1F324F7958600B326D6 /* LocationSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchViewController.swift; sourceTree = "<group>"; };
 		64C6A1F624F7AA0600B326D6 /* NominatimResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominatimResult.swift; sourceTree = "<group>"; };
 		64C6A1F824F7AB0A00B326D6 /* NominatimResultProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NominatimResultProvider.swift; sourceTree = "<group>"; };
+		64C6A20124F8E90F00B326D6 /* QuestManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestManagerMock.swift; sourceTree = "<group>"; };
 		64D4D8C92427F7F900FB900A /* OSMSurveyorFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OSMSurveyorFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D4D8CB2427F7F900FB900A /* OSMSurveyorFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OSMSurveyorFramework.h; sourceTree = "<group>"; };
 		64D4D8CC2427F7F900FB900A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 				64D5D9502441EF3D00AB0EC2 /* AccountHandlerMock.swift */,
 				64D5D95E2442353800AB0EC2 /* OAuthHandlerMock.swift */,
 				64D5D96024423B9200AB0EC2 /* OpenStreetMapAPIClientMock.swift */,
+				64C6A20124F8E90F00B326D6 /* QuestManagerMock.swift */,
 				64D5D9672442892D00AB0EC2 /* KeychainHandlerMock.swift */,
 			);
 			path = Mocks;
@@ -1095,6 +1098,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				648E3ACF24F8EAB200B2210A /* QuestManagerMock.swift in Sources */,
 				64A77B6B243A498D000A9822 /* QuestElementProcessorTestCase.swift in Sources */,
 				64A77B59243A28D2000A9822 /* DownloadedQuestTypesManagerMock.swift in Sources */,
 				64D4D8D92427F7F900FB900A /* OSMSurveyorFrameworkTests.swift in Sources */,
