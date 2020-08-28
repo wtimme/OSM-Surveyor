@@ -17,7 +17,7 @@ public protocol MapDataDownloading {
     /// - Parameters:
     ///   - boundingBox: The bounding box in which to download the map data.
     ///   - cameraPosition: The current camera position of the map. Will be used to calculate a larger bounding box in case the provided one is too small.
-    ///   - ignoreDownloaded: Flag whether to ignore the tiles/areas that have already been downloaded, and forces the downloaded.
+    ///   - ignoreDownloaded: Flag whether to ignore the tiles/areas that have already been downloaded, and forces the download.
     func download(in boundingBox: BoundingBox,
                   cameraPosition: CameraPosition,
                   ignoreDownloaded: Bool) throws
