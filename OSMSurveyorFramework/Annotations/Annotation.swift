@@ -9,15 +9,20 @@
 import Foundation
 
 public struct Annotation {
+    /// The OpenStreetMap type of the annotated element.
+    public let elementType: String
+
     /// The OpenStreetMap ID of the annotated element.
     public let elementId: Int
 
     /// The center coordinate of the object.
     public let coordinate: Coordinate
 
-    public init(elementId: Int,
+    public init(elementType: String,
+                elementId: Int,
                 coordinate: Coordinate)
     {
+        self.elementType = elementType
         self.elementId = elementId
         self.coordinate = coordinate
     }
