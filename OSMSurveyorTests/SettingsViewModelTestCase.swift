@@ -206,7 +206,7 @@ class SettingsViewModelTestCase: XCTestCase {
                        "Bug Tracker")
     }
 
-    func testRowAtIndexPath_forSecondRowInLastSection_shouldReturnPrivacyStatement() {
+    func testRowAtIndexPath_forThirdRowInLastSection_shouldReturnPrivacyStatement() {
         let lastSection = viewModel.numberOfSections() - 1
 
         XCTAssertEqual(viewModel.row(at: IndexPath(item: 2, section: lastSection))?.title,
