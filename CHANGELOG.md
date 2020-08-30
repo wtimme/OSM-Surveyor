@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Added "© JawgMaps" button to the bottom of the map
+
 ## [1.0.0 (14)] - 2020-08-30
 
 ### Changed
