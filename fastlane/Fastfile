@@ -49,6 +49,7 @@ platform :ios do
     )
 
     update_osm_oauth_credentials(options)
+    update_jawg_access_token(options)
 
     sync_code_signing(type: "appstore")
 
