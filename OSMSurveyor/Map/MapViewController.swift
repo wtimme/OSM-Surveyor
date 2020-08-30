@@ -69,7 +69,17 @@ class MapViewController: UIViewController {
             return
         }
 
-        mapView.loadScene(from: sceneURL, with: [])
+        guard
+            let pathToSecretsPropertyList = Bundle.main.path(forResource: "Secrets", ofType: "plist"),
+            let propertiesAsDictionary = NSDictionary(contentsOfFile: pathToSecretsPropertyList),
+            let jawgAccessToken = propertiesAsDictionary.object(forKey: "Jawg_Access_Token") as? String
+        else {
+            assertionFailure("Unable to read Jawg Access Token")
+            return
+        }
+
+        let apiKeySceneUpdate = TGSceneUpdate(path: "global.api_key", value: jawgAccessToken)
+        mapView.loadScene(from: sceneURL, with: [apiKeySceneUpdate])
     }
 
     private func setMapToInitialPosition() {
