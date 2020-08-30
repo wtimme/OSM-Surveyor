@@ -31,6 +31,11 @@ Push a new beta build to TestFlight
 fastlane ios update_osm_oauth_credentials
 ```
 Update the OAuth1 credentials that are used for communication with OpenStreetMap.org
+### ios update_jawg_access_token
+```
+fastlane ios update_jawg_access_token
+```
+Update the access token that is used to retrieve the map vector tiles from Jawg.io
 ### ios regenerate_app_icon
 ```
 fastlane ios regenerate_app_icon

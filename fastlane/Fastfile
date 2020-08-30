@@ -84,6 +84,21 @@ platform :ios do
     )
   end
 
+  desc "Update the access token that is used to retrieve the map vector tiles from Jawg.io"
+  lane :update_jawg_access_token do |options|
+    access_token = options[:jawg_access_token]
+    if !access_token
+      UI.user_error!("Please provide the Jawg.io access token with `jawg_access_token`")
+    end
+
+    update_plist(
+      plist_path: SECRETS_PLIST,
+      block: proc do |plist|
+        plist[:"Jawg_Access_Token"] = access_token
+      end
+    )
+  end
+
   desc "Re-generates the app icon from the base app_icon.png in the fastlane metadata directory"
   lane :regenerate_app_icon do
     appicon(
