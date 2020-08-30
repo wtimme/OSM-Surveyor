@@ -9,6 +9,7 @@
 import Foundation
 
 public struct Annotation {
+    /// The center coordinate of the object.
     public let coordinate: Coordinate
 
     public init(coordinate: Coordinate) {
