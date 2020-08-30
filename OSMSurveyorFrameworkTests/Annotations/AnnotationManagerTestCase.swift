@@ -79,9 +79,9 @@ class AnnotationManagerTestCase: XCTestCase {
         let secondCoordinate = Coordinate(latitude: 2, longitude: 2)
         let thirdCoordinate = Coordinate(latitude: 3, longitude: 3)
 
-        fullQuestsDataProviderMock.questsToReturn = [(firstCoordinate, ""),
-                                                     (secondCoordinate, ""),
-                                                     (thirdCoordinate, "")]
+        fullQuestsDataProviderMock.questsToReturn = [(1, firstCoordinate, ""),
+                                                     (2, secondCoordinate, ""),
+                                                     (3, thirdCoordinate, "")]
 
         /// When
         manager.mapDidUpdatePosition(to: boundingBox)
@@ -89,7 +89,11 @@ class AnnotationManagerTestCase: XCTestCase {
         /// Then
         XCTAssertTrue(delegateMock.didCallSetAnnotations)
 
-        let expectedAnnotations = [firstCoordinate, secondCoordinate, thirdCoordinate].map { Annotation(coordinate: $0) }
+        let expectedAnnotations = [
+            Annotation(elementId: 1, coordinate: firstCoordinate),
+            Annotation(elementId: 2, coordinate: secondCoordinate),
+            Annotation(elementId: 3, coordinate: thirdCoordinate),
+        ]
         XCTAssertEqual(delegateMock.annotations, expectedAnnotations)
     }
 
@@ -98,8 +102,8 @@ class AnnotationManagerTestCase: XCTestCase {
         let firstCoordinate = Coordinate(latitude: 1, longitude: 1)
         let secondCoordinate = Coordinate(latitude: 2, longitude: 2)
 
-        fullQuestsDataProviderMock.questsToReturn = [(firstCoordinate, ""),
-                                                     (secondCoordinate, "")]
+        fullQuestsDataProviderMock.questsToReturn = [(1, firstCoordinate, ""),
+                                                     (2, secondCoordinate, "")]
 
         /// Update position for the first time.
         let firstBoundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 53.55546, longitude: 9.98903),
@@ -108,7 +112,7 @@ class AnnotationManagerTestCase: XCTestCase {
 
         /// Now, act as if new quests were found.
         let thirdCoordinate = Coordinate(latitude: 2, longitude: 2)
-        fullQuestsDataProviderMock.questsToReturn = [(thirdCoordinate, "")]
+        fullQuestsDataProviderMock.questsToReturn = [(3, thirdCoordinate, "")]
 
         /// Update position for a second time.
         let secondBoundingBox = BoundingBox.makeBoundingBox(minimum: Coordinate(latitude: 54.55546, longitude: 10.98903),
@@ -119,7 +123,11 @@ class AnnotationManagerTestCase: XCTestCase {
         /// Then
         XCTAssertTrue(delegateMock.didCallSetAnnotations)
 
-        let expectedAnnotations = [firstCoordinate, secondCoordinate, thirdCoordinate].map { Annotation(coordinate: $0) }
+        let expectedAnnotations = [
+            Annotation(elementId: 1, coordinate: firstCoordinate),
+            Annotation(elementId: 2, coordinate: secondCoordinate),
+            Annotation(elementId: 3, coordinate: thirdCoordinate),
+        ]
         XCTAssertEqual(delegateMock.annotations, expectedAnnotations)
     }
 
