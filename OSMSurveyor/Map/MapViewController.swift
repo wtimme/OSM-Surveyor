@@ -141,6 +141,14 @@ class MapViewController: UIViewController {
         present(viewController, animated: true)
     }
 
+    @IBAction private func showJawgCopyrightPage() {
+        guard let url = URL(string: "https://www.jawg.io") else { return }
+
+        let viewController = SFSafariViewController(url: url)
+        viewController.modalPresentationStyle = .pageSheet
+        present(viewController, animated: true)
+    }
+
     @IBAction private func didTapDownloadButton(_: AnyObject) {
         downloadMapDataInScreenArea()
     }

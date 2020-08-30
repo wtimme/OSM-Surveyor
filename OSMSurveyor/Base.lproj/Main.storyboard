@@ -16,10 +16,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9a8-gM-C27">
-                                <rect key="frame" x="247" y="846" width="167" height="16"/>
+                                <rect key="frame" x="175" y="846" width="239" height="16"/>
                                 <subviews>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1A-Io-FWp">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="16"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <inset key="contentEdgeInsets" minX="2" minY="1" maxX="2" maxY="1"/>
+                                        <state key="normal" title="© JawgMaps">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showJawgCopyrightPage" destination="BYZ-38-t0r" eventType="touchUpInside" id="5pr-iL-Z04"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEY-nu-FTA">
-                                        <rect key="frame" x="0.0" y="0.0" width="167" height="16"/>
+                                        <rect key="frame" x="72" y="0.0" width="167" height="16"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <inset key="contentEdgeInsets" minX="2" minY="1" maxX="2" maxY="1"/>
