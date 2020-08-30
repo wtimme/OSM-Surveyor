@@ -38,6 +38,8 @@ extension TangramAnnotationLayer: AnnotationLayerProtocol {
             let properties = [
                 "type": "point",
                 "kind": "ic_quest_bench",
+                "osm_type": singleAnnotation.elementType,
+                "osm_id": "\(singleAnnotation.elementId)",
                 "quest_group": "OSM",
                 "quest_id": "-1",
             ]
