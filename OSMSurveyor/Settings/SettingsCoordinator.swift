@@ -139,7 +139,7 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
     func presentPrivacyStatement() {
         guard let url = URL(string: "https://github.com/wtimme/OSM-Surveyor/blob/develop/PRIVACY.md") else { return }
 
-        openExternalURL(url)
+        openExternalURL(url, enterReaderIfAvailable: true)
     }
 
     private func openExternalURL(_ url: URL, enterReaderIfAvailable: Bool = false) {
