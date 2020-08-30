@@ -1,13 +1,30 @@
 global:
-    api_key: false # intended to be overwritten by OSM-Surveyor
-    language: false
-    text_font_family: 'Montserrat'
+    api_key: false # intended to be overwritten by StreetComplete
+    language: false # intended to be overwritten by StreetComplete
+    language_script: Latn # intended to be overwritten by StreetComplete
+    text_font_family: 'Roboto'
     text_stroke_color: 'white'
+    text_water_color: '#fff'
     text_stroke: { color: global.text_stroke_color, width: 2.5px }
     text_places_stroke: { color: global.text_stroke_color, width: 2.5px }
+    text_countries_stroke: { color: global.text_stroke_color, width: 2.5px }
+    text_water_stroke: { color: global.water_color, width: 2.5px }
     text_fill_color: '#124'
-    text_size: 12px
+    text_size_scaling: 1 # intended to be overwritten by StreetComplete
+    text_size: |
+      function() {
+        var size = 13;
+        if ($zoom >= 18 && $zoom < 19) {
+          size = 15;
+        } else if ($zoom >= 19) {
+          size = 17;
+        }
+        return (size * global.text_size_scaling) + "px";
+      }
 
+    # The following colors are in most cases overwritten
+    # ones that are used are defined in streetcomplete-light-style.yaml
+    # and streetcomplete-dark-style.yaml files
     railway_color: '#99a'
     road_color: '#fff'
     highway_color: '#fa8'
@@ -20,7 +37,9 @@ global:
 
     earth_color: '#f3eacc'
     water_color: '#68d'
-    landuse_color: '#c6ddaa'
+    green_color: '#c6ddaa'
+    forest_color: '#a8c884'
+    town_color: '#f3dacd'
 
     building_color: rgb(204,214,238)
     building_outline_color: rgb(185,195,217)
@@ -35,8 +54,60 @@ global:
 
     name_source: |
         function() {
-            // Use preferred language label if available
-            return (global.language && feature['name:'+global.language]) || feature.name;
+            var userLang = global.language;
+            if (userLang) {
+                // Preference #1: Take name in own language (f.e. name:en used in Egypt a lot)
+                var nameInUserLang = feature['name:'+userLang];
+                if (nameInUserLang) return nameInUserLang;
+                
+                // find language of name of element
+                var elementLang;
+                var name = feature["name"];
+                var localizedNameRegex = /^name:([a-z]{2,3})$/;
+                for (key of Object.keys(feature)) {
+                    if (key == "name") continue;
+                    if (name == feature[key]) {
+                        var match = key.match(localizedNameRegex);
+                        if (match && match.length == 2) {
+                            elementLang = match[1];
+                            break;
+                        }
+                    }
+                }
+                
+                if (elementLang && elementLang != userLang) {
+                    var userScript = global.language_script;
+                    
+                    // Preference #2: Take international name (f.e. used in Greece a lot)
+                    var internationalName = feature["int_name"];
+                    if (internationalName) return internationalName;
+                    
+                    // Preference #3: Take name that is readable in user's script, usually romanized name. Used in Japan a lot
+                    var nameInUserScript = feature["name:" + elementLang + "-" + userScript];
+                    if (nameInUserScript) return nameInUserScript;
+                    // NOTE: more correct would be to check elementScript != userScript but the elementScript is hard to find out in pure JavaScript
+                    
+                    // Preference #4: Take name in English (cause it's kind of the "international") language
+                    if (userLang != "en") {
+                        var nameInEnglish = feature["name:en"]
+                        if (nameInEnglish) return nameInEnglish;
+                    }
+                    
+                    // Preference #5: Take name that is readable in Latin (cause it's kind of "international") script
+                    if (userScript != "Latn") {
+                        var nameInLatinScript = feature["name:" + elementLang + "-Latn"];
+                        if (nameInLatinScript) return nameInLatinScript;
+                    }
+                    
+                    // Preference #6: Take name of any other language whose script is the same as the user's script (f.e. French signs in Laos)
+                    // ... not implementable without a mapping of language code to script
+                    
+                    // Preference #7: Take name of any other language whose script is in Latin (cause it's kind of "international") script (f.e. French signs in Laos)
+                    // ... not implementable without a mapping of language code to script
+                }
+            }
+                    
+            return feature["name"];
         }
 
     suggested_min_zoom: |
@@ -53,7 +124,7 @@ scene:
 
 camera:
     type: perspective
-    max_tilt: 60
+    max_tilt: 40
     fov: 80
 
 lights:
@@ -71,15 +142,6 @@ sources:
         max_zoom: 16
         url_params:
             access-token: global.api_key
-
-fonts:
-    Montserrat:
-        - weight: normal
-          url: fonts/Montserrat-Regular.woff
-        - weight: 500
-          url: fonts/Montserrat-Medium.woff
-        - weight: 700
-          url: fonts/Montserrat-Bold.woff
 
 textures:
     oneway-arrow:
