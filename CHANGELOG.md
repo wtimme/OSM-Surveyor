@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0 (15)] - 2020-08-30
+
 ### Added
 - Privacy Statement in Settings
 - When tapping an annotation on the map, open its details page on OpenStreetMap.org
@@ -95,3 +97,4 @@ Initial release 🎉
 [1.0.0 (12)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-8...builds/beta/1.0.0-12
 [1.0.0 (13)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-12...builds/beta/1.0.0-13
 [1.0.0 (14)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-13...builds/beta/1.0.0-14
+[1.0.0 (15)]: https://github.com/wtimme/OSM-Surveyor/compare/builds/beta/1.0.0-14...builds/beta/1.0.0-15
