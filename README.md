@@ -30,6 +30,19 @@ You can also use fastlane to set the Jawg access token, like so:
 
     % bundle exec fastlane update_jawg_access_token jawg_access_token:"<JAWG_ACCESS_TOKEN>"
 
+### OAuth details for OpenStreetMap.org
+
+The app makes use of OAuth 1 to authenticate the mapper against the
+OpenStreetMap API. You'll need to sign in to [OpenStreetMap.org][1]
+and create a new OAuth application.
+Obtain the "Consumer Key" and "Consumer Secret" and set them in the
+`Secrets.plist` file, using the keys `OSM_OAuth_ConsumerKey` and
+`OSM_OAuth_ConsumerSecret`.
+
+You can also use fastlane to set the OAuth credentials for OpenStreetMap, like so:
+
+    % bundle exec fastlane update_osm_oauth_credentials osm_consumer_key:"<OSM_CONSUMER_KEY>" osm_consumer_secret:"<OSM_CONSUMER_SECRET>"
+
 ## Quick start
 
 Getting started is quite easy. Open a terminal, change into your checkout's directory
