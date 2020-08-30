@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Privacy Statement in Settings
+- When tapping an annotation on the map, open its details page on OpenStreetMap.org
 
 ### Changed
 - Added "© JawgMaps" button to the bottom of the map
