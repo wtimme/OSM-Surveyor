@@ -15,18 +15,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEY-nu-FTA">
+                            <stackView opaque="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9a8-gM-C27">
                                 <rect key="frame" x="247" y="846" width="167" height="16"/>
+                                <subviews>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEY-nu-FTA">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="16"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <inset key="contentEdgeInsets" minX="2" minY="1" maxX="2" maxY="1"/>
+                                        <state key="normal" title="© OpenStreetMap contributors">
+                                            <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showOpenStreetMapCopyrightAndLicensePage" destination="BYZ-38-t0r" eventType="touchUpInside" id="yCb-HU-Nel"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <inset key="contentEdgeInsets" minX="2" minY="1" maxX="2" maxY="1"/>
-                                <state key="normal" title="© OpenStreetMap contributors">
-                                    <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="showOpenStreetMapCopyrightAndLicensePage" destination="BYZ-38-t0r" eventType="touchUpInside" id="yCb-HU-Nel"/>
-                                </connections>
-                            </button>
+                            </stackView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Can’t scan here. Try to zoom in further or tilt the map less." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7xF-fL-NVc">
                                 <rect key="frame" x="0.0" y="88" width="414" height="41"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -37,12 +43,12 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uEY-nu-FTA" secondAttribute="bottom" id="1rr-ef-3Ue"/>
-                            <constraint firstItem="uEY-nu-FTA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6ae-ZO-kdV"/>
+                            <constraint firstItem="9a8-gM-C27" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0TZ-fV-f41"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7xF-fL-NVc" secondAttribute="trailing" id="C5B-bO-hlR"/>
-                            <constraint firstAttribute="trailing" secondItem="uEY-nu-FTA" secondAttribute="trailing" id="QXS-PX-HU6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9a8-gM-C27" secondAttribute="bottom" id="SJY-Na-qoI"/>
                             <constraint firstItem="7xF-fL-NVc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="V4R-IJ-Sbz"/>
                             <constraint firstItem="7xF-fL-NVc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="geQ-fc-Zls"/>
+                            <constraint firstAttribute="trailing" secondItem="9a8-gM-C27" secondAttribute="trailing" id="oNs-3o-Tbx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
