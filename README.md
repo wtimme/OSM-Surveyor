@@ -66,11 +66,12 @@ For a list of available actions, please refer to [the auto-generated README][2].
 
 ## Beta release
 
-In order to create a new Beta, you first need to sign in to [OpenStreetMap.org][1]
-and create a new OAuth application.
-Obtain the "Consumer Key" and "Consumer Secret", and run
+In order to create a new Beta, you need to obtain the OAuth credentials for
+OpenStreetMap, as well as the access token for Jawg (see "Prerequisites" above).
 
-    % bundle exec fastlane beta osm_consumer_key:"<OSM_CONSUMER_KEY>" osm_consumer_secret:"<OSM_CONSUMER_SECRET>"
+You can then run
+
+    % bundle exec fastlane beta osm_consumer_key:"<OSM_CONSUMER_KEY>" osm_consumer_secret:"<OSM_CONSUMER_SECRET>" jawg_access_token:"<JAWG_ACCESS_TOKEN>"
 
 ## Signing
 
