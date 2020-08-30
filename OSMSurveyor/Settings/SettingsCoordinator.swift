@@ -142,8 +142,11 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
         openExternalURL(url)
     }
 
-    private func openExternalURL(_ url: URL) {
-        let viewController = SFSafariViewController(url: url)
+    private func openExternalURL(_ url: URL, enterReaderIfAvailable: Bool = false) {
+        let configuration = SFSafariViewController.Configuration()
+        configuration.entersReaderIfAvailable = enterReaderIfAvailable
+
+        let viewController = SFSafariViewController(url: url, configuration: configuration)
         viewController.modalPresentationStyle = .currentContext
 
         navigationController?.present(viewController, animated: true)
