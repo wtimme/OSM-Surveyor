@@ -12,11 +12,13 @@ Do you want to help testing pre-releases of OSM Surveyor?
 
 ![Screenshot of the map that displays annotations](screenshot.png?raw=true)
 
-# Getting started with development
+# Development
 
 This project makes use of [Bundler][5] for managing the Ruby dependencies
 (take a look at the `Gemfile`), and utilizes Cocoapods (see the `Podfile`) for
 managing the iOS-related dependencies.
+
+## Quick start
 
 Getting started is quite easy. Open a terminal, change into your checkout's directory
 and follow these steps.
