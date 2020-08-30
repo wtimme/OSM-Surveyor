@@ -208,8 +208,26 @@ extension MapViewController: TGMapViewDelegate {
         updateUserActivity()
     }
 
-    func mapView(_: TGMapView, didSelectLabel _: TGLabelPickResult?, atScreenPosition _: CGPoint) {
-        // TODO: Implement me.
+    func mapView(_: TGMapView, didSelectLabel labelPickResult: TGLabelPickResult?, atScreenPosition _: CGPoint) {
+        guard
+            let properties = labelPickResult?.properties,
+            let elementType = properties["osm_type"],
+            let elementIdAsString = properties["osm_id"],
+            let elementId = Int(elementIdAsString)
+        else {
+            return
+        }
+
+        showDetailsForElement(ofType: elementType, identifiedBy: elementId)
+    }
+
+    private func showDetailsForElement(ofType elementType: String, identifiedBy elementId: Int) {
+        // TODO: Add proper flow.
+        guard let url = URL(string: "https://www.openstreetmap.org/\(elementType.lowercased())/\(elementId)") else { return }
+
+        let viewController = SFSafariViewController(url: url)
+        viewController.modalPresentationStyle = .pageSheet
+        present(viewController, animated: true)
     }
 
     private func updateErrorLabel(_ text: String?) {
