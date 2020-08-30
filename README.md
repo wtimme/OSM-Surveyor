@@ -18,6 +18,18 @@ This project makes use of [Bundler][5] for managing the Ruby dependencies
 (take a look at the `Gemfile`), and utilizes Cocoapods (see the `Podfile`) for
 managing the iOS-related dependencies.
 
+## Prerequisites
+
+### Access token for Jawg.io
+
+In order to render the map, the app makes use of vector map tiles provided by
+[Jawg][8]. You'll need to create an account with them and set the "Access Token"
+in the `Secrets.plist` file, using the key `Jawg_Access_Token`.
+
+You can also use fastlane to set the Jawg access token, like so:
+
+    % bundle exec fastlane update_jawg_access_token jawg_access_token:"<JAWG_ACCESS_TOKEN>"
+
 ## Quick start
 
 Getting started is quite easy. Open a terminal, change into your checkout's directory
@@ -61,3 +73,4 @@ Fetch the certificates for development with
 [5]: https://bundler.io/
 [6]: https://github.com/nicklockwood/SwiftFormat
 [7]: https://github.com/nicklockwood/SwiftFormat#git-pre-commit-hook
+[8]: https://www.jawg.io/
