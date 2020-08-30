@@ -28,6 +28,9 @@ protocol SettingsCoordinatorProtocol: AnyObject {
 
     /// Presents the bug/issue tracker.
     func presentBugTracker()
+
+    /// Presents the privacy statement.
+    func presentPrivacyStatement()
 }
 
 final class SettingsCoordinator {
@@ -129,6 +132,12 @@ extension SettingsCoordinator: SettingsCoordinatorProtocol {
 
     func presentBugTracker() {
         guard let url = URL(string: "https://github.com/wtimme/OSM-Surveyor/issues") else { return }
+
+        openExternalURL(url)
+    }
+
+    func presentPrivacyStatement() {
+        guard let url = URL(string: "https://github.com/wtimme/OSM-Surveyor/blob/develop/PRIVACY.md") else { return }
 
         openExternalURL(url)
     }

@@ -141,6 +141,8 @@ final class SettingsViewModel {
                 coordinator?.presentGitHubRepository()
             } else if indexPath.row == 1 {
                 coordinator?.presentBugTracker()
+            } else if indexPath.row == 2 {
+                coordinator?.presentPrivacyStatement()
             }
         }
     }
@@ -173,6 +175,7 @@ final class SettingsViewModel {
         let rows = [
             Row(title: "GitHub Repository"),
             Row(title: "Bug Tracker"),
+            Row(title: "Privacy Statement"),
         ]
 
         return Section(headerTitle: "Help",

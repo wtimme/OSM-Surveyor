@@ -13,6 +13,7 @@ final class SettingsCoordinatorMock {
     private(set) var didCallStartAddAccountFlow = false
     private(set) var didCallPresentGitHubRepository = false
     private(set) var didCallPresentBugTracker = false
+    private(set) var didCallPresentPrivacyStatement = false
 
     private(set) var didCallAskForConfirmationToRemoveAccount = false
     private(set) var askForConfirmationToRemoveAccountArguments: (username: String, confirm: () -> Void)?
@@ -37,5 +38,9 @@ extension SettingsCoordinatorMock: SettingsCoordinatorProtocol {
 
     func presentBugTracker() {
         didCallPresentBugTracker = true
+    }
+
+    func presentPrivacyStatement() {
+        didCallPresentPrivacyStatement = true
     }
 }

@@ -189,7 +189,7 @@ class SettingsViewModelTestCase: XCTestCase {
         let lastSection = viewModel.numberOfSections() - 1
         let numberOfRows = viewModel.numberOfRows(in: lastSection)
 
-        XCTAssertEqual(numberOfRows, 2)
+        XCTAssertEqual(numberOfRows, 3)
     }
 
     func testRowAtIndexPath_forFirstRowInLastSection_shouldReturnGitHubRepository() {
@@ -204,6 +204,13 @@ class SettingsViewModelTestCase: XCTestCase {
 
         XCTAssertEqual(viewModel.row(at: IndexPath(item: 1, section: lastSection))?.title,
                        "Bug Tracker")
+    }
+
+    func testRowAtIndexPath_forSecondRowInLastSection_shouldReturnPrivacyStatement() {
+        let lastSection = viewModel.numberOfSections() - 1
+
+        XCTAssertEqual(viewModel.row(at: IndexPath(item: 2, section: lastSection))?.title,
+                       "Privacy Statement")
     }
 
     func testLastSectionShouldHaveHelpAsHeaderTitle() {
@@ -252,6 +259,17 @@ class SettingsViewModelTestCase: XCTestCase {
 
         /// Then
         XCTAssertTrue(coordinatorMock.didCallPresentBugTracker)
+    }
+
+    func testSelectRow_whenTappingThirdRowInHelpSection_shouldAskCoordinatorToPresentPrivacyStatement() {
+        /// Given
+        let lastSection = viewModel.numberOfSections() - 1
+
+        /// When
+        viewModel.selectRow(at: IndexPath(row: 2, section: lastSection))
+
+        /// Then
+        XCTAssertTrue(coordinatorMock.didCallPresentPrivacyStatement)
     }
 
     // MARK: Helper methods
