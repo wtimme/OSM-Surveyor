@@ -1,4 +1,5 @@
 global:
+    api_key: false # intended to be overwritten by OSM-Surveyor
     language: false
     text_font_family: 'Montserrat'
     text_stroke_color: 'white'
@@ -63,10 +64,13 @@ lights:
         ambient: 0.7
 
 sources:
-    mapzen:
+    jawg:
         type: MVT
-        url: https://tiles.map-data.de/vector/v1/512/all/{z}/{x}/{y}.mvt
+        url: https://{s}.tile.jawg.io/streets-v1/{z}/{x}/{y}.pbf
+        url_subdomains: [a, b, c]
         max_zoom: 16
+        url_params:
+            access-token: global.api_key
 
 fonts:
     Montserrat:
