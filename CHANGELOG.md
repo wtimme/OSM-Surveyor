@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- Migrated from Mapzen.com to Jawg.io
+- Update map style with to the most recent version from StreetComplete
+
 ## [1.0.0 (13)] - 2020-08-28
 
 ### Added
